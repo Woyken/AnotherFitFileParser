@@ -1,0 +1,25 @@
+{
+    "name": "fitfileparser",
+    "version": "0.0.1",
+    "description": "",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build:watch": "tsc -w",
+        "build": "tsc",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Woyken/AnotherFitFileParser"
+    },
+    "author": "Woyken",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+        "@types/node": "^12.7.2",
+        "tslint": "^5.19.0",
+        "tslint-config-airbnb": "^5.11.1",
+        "typescript": "^3.6.2"
+    }
+}
