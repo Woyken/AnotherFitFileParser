@@ -1,4 +1,17 @@
 export class ByteStreamReader {
+    public static isOfType(value: any): value is ByteStreamReader {
+        if (!value) {
+            return false;
+        }
+        if (typeof value.pposition !== 'number') {
+            return false;
+        }
+        if (typeof value.readByte !== 'function') {
+            return false;
+        }
+        return true;
+    }
+
     read(outputBuffer: number[], offset: number, count: number) {
         for (let i = 0; i < count; i++) {
             outputBuffer[offset + i] = this.readByte();
