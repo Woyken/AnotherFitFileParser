@@ -4,6 +4,12 @@ import { DecodeMode } from './decodeMode';
 import { Fit } from './fit';
 import { DeveloperFieldDescription } from './developerFieldDescription';
 import { MesgDefinition } from './mesgDefinition';
+import { Mesg } from './mesg';
+import { Accumulator } from './accumulator';
+import { DeveloperDataLookup } from './developerDataLookup';
+import { CRC } from './crc';
+import { Field } from './field';
+import { Profile } from './profile';
 
 export class Decode {
     private readonly CRCSIZE: number = 2;
@@ -18,7 +24,7 @@ export class Decode {
     private invalidDataSize: boolean = false;
     private accumulator: Accumulator = new Accumulator();
 
-    private readonly m_lookup: DeveloperDataLookup = new DeveloperDataLookup();
+    private readonly lookup: DeveloperDataLookup = new DeveloperDataLookup();
     //#endregion
 
     //#region Properties
@@ -242,7 +248,7 @@ export class Decode {
                 mesgDefBuffer.push(...read);
             }
 
-            const newMesgDef: MesgDefinition = new MesgDefinition(mesgDefBuffer, this.m_lookup);
+            const newMesgDef: MesgDefinition = new MesgDefinition(mesgDefBuffer, this.lookup);
             this.localMesgDefs[newMesgDef.localMesgNum] = newMesgDef;
             if (this.mesgDefinitionEvent) {
                 this.mesgDefinitionEvent(newMesgDef);
@@ -318,10 +324,10 @@ export class Decode {
     private handleMetaData(newMesg: Mesg): void {
         if (newMesg.Num === MesgNum.developerDataId) {
             const mesg = new DeveloperDataIdMesg(newMesg);
-            this.m_lookup.add(mesg);
+            this.lookup.add(mesg);
         } else if (newMesg.num === MesgNum.fieldDescription) {
             const mesg = new FieldDescriptionMesg(newMesg);
-            const desc: DeveloperFieldDescription = this.m_lookup.add(mesg);
+            const desc: DeveloperFieldDescription = this.lookup.add(mesg);
             if (desc != null) {
                 if (this.developerFieldDescriptionEvent) {
                     this.developerFieldDescriptionEvent(desc);
