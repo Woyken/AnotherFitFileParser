@@ -54,7 +54,7 @@ export class MesgDefinition {
         return (this.header & Fit.devDataMask) === Fit.devDataMask;
     }
 
-    public developerFieldDefinitions(): DeveloperFieldDefinition[] {
+    public get developerFieldDefinitions(): DeveloperFieldDefinition[] {
         return this.devFieldDefs;
     }
 
