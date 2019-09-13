@@ -1,5 +1,11 @@
 import { Fit } from './fit';
 import { ByteStreamReader } from '../Utility/byteStreamReader';
+import { FieldDefinition } from './fieldDefinition';
+import { Mesg } from './mesg';
+import { DeveloperFieldDefinition } from './developerFieldDefinition';
+import { Field } from './field';
+import { DeveloperDataLookup } from './developerDataLookup';
+import { DeveloperField } from './developerField';
 
 export class MesgDefinition {
     public static isOfType(value: any): value is MesgDefinition {
@@ -19,16 +25,16 @@ export class MesgDefinition {
     }
 
     //#region Fields
-    private architecture: number;
-    private plocalMesgNum: number;
+    private architecture!: number;
+    private plocalMesgNum!: number;
     // tslint:disable-next-line:prefer-array-literal
     private fieldDefs: FieldDefinition[] = [];
     private readonly devFieldDefs: DeveloperFieldDefinition[] = [];
-    private header: number;
+    private header!: number;
     //#endregion
 
     //#region Properties
-    public globalMesgNum: number;
+    public globalMesgNum!: number;
     public get localMesgNum(): number {
         return this.plocalMesgNum;
     }
@@ -44,7 +50,7 @@ export class MesgDefinition {
         return this.devFieldDefs.length;
     }
 
-    public numFields: number;
+    public numFields!: number;
 
     public get isBigEndian(): boolean {
         return this.architecture === Fit.bigEndian;
@@ -65,43 +71,46 @@ export class MesgDefinition {
         fitSourceOrMesgOrMesgDef?: ByteStreamReader | Mesg | MesgDefinition,
         lookup?: DeveloperDataLookup,
     ) {
-        if (fitSource === undefined && lookup === undefined) {
-            this.ctorNoParams;
+        if (fitSourceOrMesgOrMesgDef === undefined && lookup === undefined) {
+            this.ctorNoParams();
             return;
         }
         if (Mesg.isOfType(fitSourceOrMesgOrMesgDef)) {
             this.ctorMesg(fitSourceOrMesgOrMesgDef);
+            return;
         }
         if (MesgDefinition.isOfType(fitSourceOrMesgOrMesgDef)) {
             this.ctorMesgDef(fitSourceOrMesgOrMesgDef);
+            return;
         }
-        this.read(fitSource, lookup);
+        this.read(fitSourceOrMesgOrMesgDef!, lookup!);
     }
 
-    private ctorNoParams() {
+    private ctorNoParams(): void {
         this.localMesgNum = 0;
         this.globalMesgNum = MesgNum.Invalid;
         this.architecture = Fit.littleEndian;
     }
 
-    public ctorMesg(mesg: Mesg) {
-        this.localMesgNum = mesg.localNum;
+    public ctorMesg(mesg: Mesg): void {
+        this.localMesgNum = mesg.LocalNum;
         this.globalMesgNum = mesg.num;
         this.architecture = Fit.littleEndian;
-        this.numFields = mesg.fieldsList.length;
+        this.numFields = mesg.FieldsList.length;
 
-        mesg.fieldsList.forEach((field: Field) => {
+        mesg.FieldsList.forEach((field: Field) => {
             this.fieldDefs.push(new FieldDefinition(field));
         });
-        mesg.developerFields.forEach((field: DeveloperFieldDefinition) => {
-            this.devFieldDefs.push(new DeveloperFieldDefinition(
-                field.Num,
-                field.GetSize(),
-                field.DeveloperDataIndex));
-        });
+        Array.from(mesg.DeveloperFields)
+            .forEach((field: DeveloperField) => {
+                this.devFieldDefs.push(DeveloperFieldDefinition.ctor1(
+                    field.Num,
+                    field.getSize(),
+                    field.DeveloperDataIndex));
+            });
     }
 
-    public ctorMesgDef(mesgDef: MesgDefinition) {
+    public ctorMesgDef(mesgDef: MesgDefinition): void {
         this.localMesgNum = mesgDef.plocalMesgNum;
         this.globalMesgNum = mesgDef.globalMesgNum;
         this.architecture = mesgDef.isBigEndian ? Fit.bigEndian : Fit.littleEndian;
@@ -150,9 +159,9 @@ export class MesgDefinition {
                 const tuple: [DeveloperDataIdMesg, FieldDescriptionMesg] = lookup.GetMesgs(key);
 
                 if (tuple != null) {
-                    defn = new DeveloperFieldDefinition(tuple.Item2, tuple.Item1, size);
+                    defn = DeveloperFieldDefinition.ctor2(tuple.Item2, tuple.Item1, size);
                 } else {
-                    defn = new DeveloperFieldDefinition(num, size, devIdx);
+                    defn = DeveloperFieldDefinition.ctor1(num, size, devIdx);
                 }
 
                 this.devFieldDefs.push(defn);
@@ -167,16 +176,16 @@ export class MesgDefinition {
         let mesgSize: number = 1;  // header
 
         mesgSize += this.fieldDefs.reduce((p, c) => {
-            return p.size + c.size;
+            return p + c.size;
         },                                0);
         mesgSize += this.devFieldDefs.reduce((p, c) => {
-            return p.size + c.size;
+            return p + c.size;
         },                                   0);
 
         return mesgSize;
     }
 
-    public addField(FieldDefinition field): void {
+    public addField(field: FieldDefinition): void {
         this.fieldDefs.push(field);
     }
 
@@ -205,50 +214,50 @@ export class MesgDefinition {
     public getDeveloperFieldDefinition(
         num: number,
         developerIndex: number,
-    ): DeveloperFieldDefinition {
+    ): DeveloperFieldDefinition | undefined {
         return this.devFieldDefs.find((def) => {
-            return (def.FieldNum === num) && (def.DeveloperDataIndex === developerIndex);
+            return (def.fieldNum === num) && (def.developerDataIndex === developerIndex);
         });
     }
 
     public supports(mesgDef: MesgDefinition | Mesg): boolean {
         if (Mesg.isOfType(mesgDef)) {
-            return this.supports(new MesgDefinition(mesg));
+            return this.supports(new MesgDefinition(mesgDef));
         }
 
         if (mesgDef == null) {
             return false;
         }
 
-        if (this.globalMesgNum !== mesgDef.GlobalMesgNum) {
+        if (this.globalMesgNum !== mesgDef.globalMesgNum) {
             return false;
         }
 
-        if (this.localMesgNum !== mesgDef.LocalMesgNum) {
+        if (this.localMesgNum !== mesgDef.localMesgNum) {
             return false;
         }
 
-        for (const fieldDef of mesgDef.GetFields()) {
-            const supportedFieldDef: FieldDefinition = this.getField(fieldDef.Num);
+        for (const fieldDef of mesgDef.getFields()) {
+            const supportedFieldDef: FieldDefinition | null = this.getField(fieldDef.num);
 
             if (supportedFieldDef === null) {
                 return false;
             }
 
-            if (fieldDef.Size > supportedFieldDef.Size) {
+            if (fieldDef.size > supportedFieldDef.size) {
                 return false;
             }
         }
 
-        for (const fieldDef of mesgDef.DeveloperFieldDefinitions) {
+        for (const fieldDef of mesgDef.developerFieldDefinitions) {
             // tslint:disable-next-line: max-line-length
-            const supportedFieldDef = this.getDeveloperFieldDefinition(fieldDef.FieldNum, fieldDef.DeveloperDataIndex);
+            const supportedFieldDef = this.getDeveloperFieldDefinition(fieldDef.fieldNum, fieldDef.developerDataIndex);
 
             if (supportedFieldDef == null) {
                 return false;
             }
 
-            if (fieldDef.Size > supportedFieldDef.Size) {
+            if (fieldDef.size > supportedFieldDef.size) {
                 return false;
             }
         }
