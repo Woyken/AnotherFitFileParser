@@ -5,6 +5,33 @@ import { FieldBase } from './fieldBase';
 import { FieldComponent } from './fieldComponent';
 
 export class Field extends FieldBase {
+    public static isOfType(value: any): value is Field {
+        if (typeof value.name !== 'string') {
+            return false;
+        }
+        if (typeof value.type !== 'number') {
+            return false;
+        }
+        if (typeof value.scale !== 'number') {
+            return false;
+        }
+        if (typeof value.offset !== 'number') {
+            return false;
+        }
+        if (typeof value.units !== 'string') {
+            return false;
+        }
+        if (typeof value.isAccumulated !== 'boolean') {
+            return false;
+        }
+        if (typeof value.num !== 'number') {
+            return false;
+        }
+        if (typeof value.isExpandedField !== 'boolean') {
+            return false;
+        }
+        return true;
+    }
     //#region; Fields;
     public name!: string;
     public type!: number;
