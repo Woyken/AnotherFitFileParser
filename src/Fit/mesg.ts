@@ -3,6 +3,8 @@ import { Accumulator } from './accumulator';
 import { Field } from './field';
 import { Fit } from './fit';
 import { MesgDefinition } from './mesgDefinition';
+import { DeveloperDataKey } from './developerDataKey';
+import { DeveloperField } from './developerField';
 
 export class Mesg {
     public static isOfType(value: any): value is Mesg {
@@ -36,7 +38,8 @@ export class Mesg {
     protected localNum: number = 0;
     protected systemTimeOffset: number = 0;
     private fields: Field[] = [];
-    private readonly developerFields: Record<DeveloperDataKey, DeveloperField> = {};
+    private readonly developerFields: Map<DeveloperDataKey, DeveloperField> =
+        new Map<DeveloperDataKey, DeveloperField>();
     //#endregion
 
     //#region Properties
@@ -61,13 +64,13 @@ export class Mesg {
         return this.fields;
     }
 
-    public get DeveloperFields(): DeveloperField[] {
-        return this.developerFields.Values;
+    public get DeveloperFields(): IterableIterator<DeveloperField> {
+        return this.developerFields.values();
     }
     //#endregion
 
     //#region Constructors
-    public ctorFromMsg(mesg?: Mesg) {
+    public ctorFromMsg(mesg?: Mesg): void {
         if (mesg === undefined) {
             this.name = 'unknown';
             this.num = MesgNum.invalid;
@@ -83,12 +86,13 @@ export class Mesg {
             }
         });
 
-        mesg.DeveloperFields.forEach((fld: DeveloperField) => {
-            if (fld.GetNumValues() > 0) {
-                const key = new DeveloperDataKey(fld.DeveloperDataIndex, fld.Num);
-                this.developerFields[key] = new DeveloperField(fld);
-            }
-        });
+        Array.from(mesg.DeveloperFields)
+            .forEach((fld: DeveloperField) => {
+                if (fld.getNumValues() > 0) {
+                    const key = new DeveloperDataKey(fld.DeveloperDataIndex, fld.Num);
+                    this.developerFields.set(key, new DeveloperField(fld));
+                }
+            });
     }
 
     public ctorFromNameAndNum(name: string, num: number): void {
@@ -818,7 +822,7 @@ export class Mesg {
                     if (newField.isNumeric()) {
                             // If the field is invalid, set the raw value so that
                             // the invalid value is not scaled or offset.
-                        if (FitBaseType.isNumericInvalid(bitsValue, newField.GetType())) {
+                        if (FitBaseType.isNumericInvalid(bitsValue, newField.getType())) {
                             if (this.hasField(newField.Num)) {
                                 f.setRawValue(f.getNumValues(), bitsValue);
                             } else {
