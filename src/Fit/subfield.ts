@@ -55,6 +55,31 @@ class SubfieldMap {
     /// </summary>
 // tslint:disable-next-line: max-classes-per-file
 export class Subfield {
+    public static isOfType(value: any): value is Subfield {
+        if (value == null) {
+            return false;
+        }
+        if (typeof value.name !== 'string') {
+            return false;
+        }
+        if (typeof value.type !== 'number') {
+            return false;
+        }
+        if (typeof value.scale !== 'number') {
+            return false;
+        }
+        if (typeof value.offset !== 'number') {
+            return false;
+        }
+        if (typeof value.units !== 'string') {
+            return false;
+        }
+        if (typeof value.canMesgSupport !== 'function') {
+            return false;
+        }
+        return true;
+    }
+
     //#region Fields
     private name: string;
     private type: number;
@@ -92,6 +117,20 @@ export class Subfield {
     //#endregion; // Properties
 
     //#region; Constructors;
+    public constructor(
+        nameOrCopy: string | Subfield,
+        type?: number,
+        scale?: number,
+        offset?: number,
+        units?: string,
+    ) {
+        if (typeof nameOrCopy === 'string') {
+            this.ctorFromData(nameOrCopy, type!, scale!, offset!, units!);
+            return;
+        }
+        this.ctorCopy(nameOrCopy);
+    }
+
     public ctorCopy(subfield: Subfield): void {
         if (subfield == null) {
             this.name = 'unknown';
@@ -121,7 +160,13 @@ export class Subfield {
         });
     }
 
-    public constructor(name: string, type: number, scale: number, offset: number, units: string) {
+    public ctorFromData(
+        name: string,
+        type: number,
+        scale: number,
+        offset: number,
+        units: string,
+    ): void {
         this.name = name;
         this.type = type;
         this.scale = scale;
