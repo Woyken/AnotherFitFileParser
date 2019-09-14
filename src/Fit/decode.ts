@@ -10,10 +10,11 @@ import { DeveloperDataLookup } from './developerDataLookup';
 import { CRC } from './crc';
 import { Field } from './field';
 import { Profile } from './profile';
+import { FieldComponent } from './fieldComponent';
 
 export class Decode {
     private readonly CRCSIZE: number = 2;
-    private readonly INVALID_DATA_SIZE = 0;
+    private readonly INVALID_DATA_SIZE: number = 0;
 
     //#region Fields
     // tslint:disable-next-line: prefer-array-literal
@@ -43,7 +44,7 @@ export class Decode {
 
     //#region Methods
     public mesgEvent?: (mesg: Mesg) => {};
-    public mesgDefinitionEvent?: () => {};
+    public mesgDefinitionEvent?: (mesgDef: MesgDefinition) => {};
     public developerFieldDescriptionEvent?: (description: DeveloperFieldDescription) => {};
 
     /**
@@ -92,7 +93,7 @@ export class Decode {
 
                 fitStream.position = fitStream.position - header.size;
                 fitStream.read(data, 0, data.length);
-                isValid = isValid && (CRC.Calc16(data, data.length) === 0x0000);
+                isValid = isValid && (CRC.calc16(data, data.length) === 0x0000);
             } else {
                 this.invalidDataSize = true;
                 isValid = false;
@@ -186,7 +187,7 @@ export class Decode {
         return readOK;
     }
 
-    public decodeNextMessage(fitStream: ByteStreamReader) {
+    public decodeNextMessage(fitStream: ByteStreamReader): void {
         const nextByte = fitStream.readByte();
 
         // Is it a compressed timestamp mesg?
@@ -212,7 +213,8 @@ export class Decode {
             }
             mesgBuffer.push(...read);
 
-            const newMesg: Mesg = new Mesg(mesgBuffer, this.localMesgDefs[localMesgNum]);
+            const newMesg: Mesg = new Mesg(
+                new ByteStreamReader(Buffer.from(mesgBuffer)), this.localMesgDefs[localMesgNum]);
             newMesg.insertField(0, timestampField);
             this.raiseMesgEvent(newMesg);
         } else if ((nextByte & Fit.mesgDefinitionMask) === Fit.mesgDefinitionMask) {
@@ -248,7 +250,8 @@ export class Decode {
                 mesgDefBuffer.push(...read);
             }
 
-            const newMesgDef: MesgDefinition = new MesgDefinition(mesgDefBuffer, this.lookup);
+            const newMesgDef: MesgDefinition = new MesgDefinition(
+                new ByteStreamReader(Buffer.from(mesgDefBuffer)), this.lookup);
             this.localMesgDefs[newMesgDef.localMesgNum] = newMesgDef;
             if (this.mesgDefinitionEvent) {
                 this.mesgDefinitionEvent(newMesgDef);
@@ -270,39 +273,40 @@ export class Decode {
             }
             mesgBuffer.push(...read);
 
-            const newMesg: Mesg = new Mesg(mesgBuffer, this.localMesgDefs[localMesgNum]);
+            const newMesg: Mesg = new Mesg(
+                new ByteStreamReader(Buffer.from(mesgBuffer)), this.localMesgDefs[localMesgNum]);
             // If the new message contains a timestamp field, record the value to use as
             // a reference for compressed timestamp headers
-            const timestampField: Field = newMesg.getField('Timestamp');
+            const timestampField: Field | undefined = newMesg.getField('Timestamp');
             if (timestampField != null) {
-                const tsValue: object = timestampField.getValue();
+                const tsValue: any = timestampField.getValue();
                 if (tsValue != null) {
                     this.timestamp = tsValue;
-                    this.lastTimeOffset = timestamp & Fit.compressedTimeMask;
+                    this.lastTimeOffset = this.timestamp & Fit.compressedTimeMask;
                 }
             }
 
-            newMesg.fieldsList.forEach((field: Field) => {
-                if (field.isAccumulated) {
+            newMesg.FieldsList.forEach((field: Field) => {
+                if (field.IsAccumulated) {
                     for (let i = 0; i < field.getNumValues(); i++) {
-                        let value: number = Convert.toInt64(field.getRawValue(i));
+                        let value = BigInt(field.getRawValue(i));
 
-                        newMesg.fieldsList.forEach((fieldIn: Field) => {
+                        newMesg.FieldsList.forEach((fieldIn: Field) => {
                             fieldIn.components.forEach((fc: FieldComponent) => {
                                 if ((fc.fieldNum === field.num) && (fc.accumulate)) {
                                     // tslint:disable-next-line: max-line-length
-                                    value = ((((value / field.scale) - field.offset) + fc.offset) * fc.scale);
+                                    value = BigInt(((((Number(value) / field.scale) - field.offset) + fc.offset) * fc.scale));
                                 }
                             });
                         });
-                        this.accumulator.set(newMesg.num, field.num, value);
+                        this.accumulator.set(newMesg.num, field.num, Number(value));
                     }
                 }
             });
 
             // tslint:disable-next-line: max-line-length
             // Now that the entire message is decoded we can evaluate subfields and expand any components
-            newMesg.ExpandComponents(this.accumulator);
+            newMesg.expandComponents(this.accumulator);
 
             this.raiseMesgEvent(newMesg);
         } else {
@@ -311,8 +315,8 @@ export class Decode {
     }
 
     private raiseMesgEvent(newMesg: Mesg): void {
-        if ((newMesg.Num === MesgNum.developerDataId) ||
-            (newMesg.Num === MesgNum.fieldDescription)) {
+        if ((newMesg.num === MesgNum.developerDataId) ||
+            (newMesg.num === MesgNum.fieldDescription)) {
             this.handleMetaData(newMesg);
         }
 

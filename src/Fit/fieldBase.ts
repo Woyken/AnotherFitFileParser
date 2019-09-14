@@ -7,11 +7,11 @@ export abstract class FieldBase {
         //#endregion
 
         //#region Properties
-    public abstract name: string;
-    public abstract type: number;
-    public abstract scale: number;
-    public abstract offset: number;
-    public abstract units: string;
+    public abstract get Name(): string;
+    public abstract get Type(): number;
+    public abstract get Scale(): number;
+    public abstract get Offset(): number;
+    public abstract get Units(): string;
         //#endregion
 
         //#region Constructors

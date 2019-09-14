@@ -1,10 +1,11 @@
 import { FieldBase } from './fieldBase';
 import { Fit } from './fit';
 import { Subfield } from './subfield';
+import { DeveloperFieldDefinition } from './developerFieldDefinition';
 
 export class DeveloperField extends FieldBase {
     //#region Fields
-    private definition: DeveloperFieldDefinition;
+    private definition!: DeveloperFieldDefinition;
     //#endregion
 
     //#region Properties
@@ -14,11 +15,11 @@ export class DeveloperField extends FieldBase {
     }
 
     public get Num(): number {
-        return this.definition.FieldNum;
+        return this.definition.fieldNum;
     }
 
     public get DeveloperDataIndex(): number {
-        return this.definition.DeveloperDataIndex;
+        return this.definition.developerDataIndex;
     }
 
     public get AppVersion(): number  {
@@ -122,7 +123,7 @@ export class DeveloperField extends FieldBase {
         developerDataIdMesg: DeveloperDataIdMesg,
     ): DeveloperField {
         const result = new DeveloperField();
-        result.definition = new DeveloperFieldDefinition(description, developerDataIdMesg, 0);
+        result.definition = DeveloperFieldDefinition.ctor2(description, developerDataIdMesg, 0);
         return result;
     }
 

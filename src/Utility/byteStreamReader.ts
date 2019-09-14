@@ -12,14 +12,14 @@ export class ByteStreamReader {
         return true;
     }
 
-    read(outputBuffer: number[], offset: number, count: number) {
+    public read(outputBuffer: number[], offset: number, count: number): void {
         for (let i = 0; i < count; i++) {
             outputBuffer[offset + i] = this.readByte();
         }
     }
-    private pposition = 0;
+    private pposition: number = 0;
 
-    public constructor(public buffer: Buffer) {
+    public constructor(public buffer: Buffer, public isBigEndian: boolean = false) {
     }
 
     public get position(): number {

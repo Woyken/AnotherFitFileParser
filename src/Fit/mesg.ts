@@ -5,6 +5,7 @@ import { Fit } from './fit';
 import { MesgDefinition } from './mesgDefinition';
 import { DeveloperDataKey } from './developerDataKey';
 import { DeveloperField } from './developerField';
+import { FieldComponent } from './fieldComponent';
 
 export class Mesg {
     public static isOfType(value: any): value is Mesg {
@@ -43,8 +44,8 @@ export class Mesg {
     //#endregion
 
     //#region Properties
-    public name: string;
-    public num: number;
+    public name!: string;
+    public num!: number;
     public get LocalNum(): number {
         return this.localNum;
     }
@@ -815,7 +816,7 @@ export class Mesg {
                         break;
                     }
 
-                    if (true === fC.accumulate) {
+                    if (fC.accumulate) {
                         bitsValue = accumulator.accumulate(this.num, fC.fieldNum, bitsValue.Value, fC.bits);
                     }
 
@@ -877,7 +878,7 @@ export class Mesg {
             if (activeSubfield === Fit.subfieldIndexMainField) {
                 componentList = this.FieldsList[i].components;
             } else {
-                componentList = this.FieldsList[i].getSubfield(activeSubfield).Components;
+                componentList = this.FieldsList[i].getSubfield(activeSubfield)!.Components;
             }
 
             // Traverse the component list
