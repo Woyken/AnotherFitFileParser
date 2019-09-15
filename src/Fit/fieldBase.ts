@@ -40,6 +40,7 @@ export abstract class FieldBase {
                 Subfield.isOfType(subfieldIndexOrNameOrSubfield)) {
             return this.getName_Subfield(subfieldIndexOrNameOrSubfield);
         }
+        throw new Error('invalid parameters.');
     }
 
     public getName_Idx(subfieldIndex: number): string {
@@ -51,7 +52,7 @@ export abstract class FieldBase {
     }
 
     private getName_Subfield(subfield?: Subfield): string {
-        return subfield == null ? this.name : subfield.Name;
+        return subfield == null ? this.Name : subfield.Name;
     }
 
     public getType(subfieldIndexOrNameOrSubfield?: number | string | Subfield): number {
@@ -65,6 +66,7 @@ export abstract class FieldBase {
                 Subfield.isOfType(subfieldIndexOrNameOrSubfield)) {
             return this.getType3(subfieldIndexOrNameOrSubfield);
         }
+        throw new Error('invalid parameters.');
     }
 
     public getType1(subfieldIndex: number): number {
@@ -75,8 +77,8 @@ export abstract class FieldBase {
         return this.getType(this.getSubfield(subFieldName));
     }
 
-    private getType3(subfield: Subfield): number {
-        return subfield == null ? this.type : subfield.type;
+    private getType3(subfield?: Subfield): number {
+        return subfield === undefined ? this.Type : subfield.Type;
     }
 
     public getUnits(subfieldIndexOrNameOrSubfield?: number | string | Subfield): string {
@@ -90,6 +92,7 @@ export abstract class FieldBase {
                 Subfield.isOfType(subfieldIndexOrNameOrSubfield)) {
             return this.getUnits3(subfieldIndexOrNameOrSubfield);
         }
+        throw new Error('invalid parameters.');
     }
 
     public getUnits1(subfieldIndex: number): string {
@@ -101,13 +104,13 @@ export abstract class FieldBase {
     }
 
     private getUnits3(subfield?: Subfield): string {
-        return subfield == null ? this.units : subfield.Units;
+        return subfield == null ? this.Units : subfield.Units;
     }
 
     public getSize(): number {
         let size = 0;
 
-        switch (this.type & Fit.baseTypeNumMask) {
+        switch (this.Type & Fit.baseTypeNumMask) {
             case Fit.enum:
             case Fit.sInt8:
             case Fit.uInt8:
@@ -124,7 +127,7 @@ export abstract class FieldBase {
             case Fit.uInt64:
             case Fit.uInt64z:
             case Fit.byte:
-                size = (this.getNumValues() * Fit.baseType[this.type & Fit.baseTypeNumMask].size);
+                size = (this.getNumValues() * Fit.baseType[this.Type & Fit.baseTypeNumMask].size);
                 break;
 
             case Fit.string:
@@ -163,8 +166,8 @@ export abstract class FieldBase {
         return this.isSigned(this.getSubfield(subfieldName));
     }
 
-    public isSigned3(subfield: Subfield): boolean {
-        let type: number = subfield == null ? this.type : subfield.Type;
+    public isSigned3(subfield?: Subfield): boolean {
+        let type: number = subfield === undefined ? this.Type : subfield.Type;
         type &= Fit.baseTypeNumMask;
         return Fit.baseType[type].isSigned;
     }
@@ -178,7 +181,7 @@ export abstract class FieldBase {
     }
 
     public getBitsValue(offset: number,  bits: number,  componentType: number): number | undefined {
-        let value: number? = 0 ;
+        let value: number | undefined = 0 ;
         let data: number = 0;
         let mask: number;
         let index: number = 0;
@@ -188,6 +191,7 @@ export abstract class FieldBase {
             // Ensure the destination type can hold the desired number of bits.
             // We don't support arrays in the destination at this time.
         if ((Fit.baseType[componentType & Fit.baseTypeNumMask].size * 8) < bits) {
+            // tslint:disable-next-line: no-parameter-reassignment
             bits = Fit.baseType[componentType & Fit.baseTypeNumMask].size * 8;
         }
 
@@ -195,8 +199,7 @@ export abstract class FieldBase {
             return undefined;
         }
 
-        while (bitsInValue < bits)
-        {
+        while (bitsInValue < bits) {
                 // If we run out of bits it likely is because our profile is newer and defines
                 // additional components not present in the field
             if (index === this.values.length) {
@@ -209,12 +212,14 @@ export abstract class FieldBase {
                 // If offset is larger than the containing types size,
                 // we must grab additional elements
             data >>= offset;
-            bitsInData = Fit.baseType[this.type & Fit.baseTypeNumMask].size * 8 - offset;
-            offset -= Fit.baseType[this.type & Fit.baseTypeNumMask].size * 8;
+            bitsInData = Fit.baseType[this.Type & Fit.baseTypeNumMask].size * 8 - offset;
+            // tslint:disable-next-line: no-parameter-reassignment
+            offset -= Fit.baseType[this.Type & Fit.baseTypeNumMask].size * 8;
 
             if (bitsInData > 0) {
                     // We have reached desired data, pull off bits until we
                     // get enough
+                // tslint:disable-next-line: no-parameter-reassignment
                 offset = 0;
                     // If there are more bits available in data than we need
                     // just capture those we need
@@ -271,8 +276,8 @@ export abstract class FieldBase {
         }
 
         if (subfield == null) {
-            scale = this.scale;
-            offset = this.offset;
+            scale = this.Scale;
+            offset = this.Offset;
         } else {
             scale = subfield.Scale;
             offset = subfield.Offset;
@@ -281,13 +286,13 @@ export abstract class FieldBase {
         let value: any;
         let castToFloat: boolean = false;
 
-        switch (this.type & Fit.baseTypeNumMask) {
+        switch (this.Type & Fit.baseTypeNumMask) {
             case Fit.enum:
             case Fit.byte:
             case Fit.uInt8:
             case Fit.uInt8z:
                 value = Convert.ToByte(value[index]);
-                if ((value === Fit.baseType[this.type & Fit.baseTypeNumMask].invalidValue) &&
+                if ((value === Fit.baseType[this.Type & Fit.baseTypeNumMask].invalidValue) &&
                        (scale !== 1.0)) {
                     castToFloat = true;
                 }
@@ -295,7 +300,7 @@ export abstract class FieldBase {
 
             case Fit.sInt8:
                 value = Convert.ToSByte(value[index]);
-                if ((value === Fit.baseType[this.type & Fit.baseTypeNumMask].invalidValue) &&
+                if ((value === Fit.baseType[this.Type & Fit.baseTypeNumMask].invalidValue) &&
                        (scale !== 1.0)) {
                     castToFloat = true;
                 }
@@ -303,7 +308,7 @@ export abstract class FieldBase {
 
             case Fit.sInt16:
                 value = Convert.ToInt16(value[index]);
-                if ((value === Fit.baseType[this.type & Fit.baseTypeNumMask].invalidValue) &&
+                if ((value === Fit.baseType[this.Type & Fit.baseTypeNumMask].invalidValue) &&
                        (scale !== 1.0)) {
                     castToFloat = true;
                 }
@@ -312,7 +317,7 @@ export abstract class FieldBase {
             case Fit.uInt16:
             case Fit.uInt16z:
                 value = Convert.ToUInt16(value[index]);
-                if ((value === Fit.baseType[this.type & Fit.baseTypeNumMask].invalidValue) &&
+                if ((value === Fit.baseType[this.Type & Fit.baseTypeNumMask].invalidValue) &&
                        (scale !== 1.0)) {
                     castToFloat = true;
                 }
@@ -320,7 +325,7 @@ export abstract class FieldBase {
 
             case Fit.sInt32:
                 value = Convert.ToInt32(value[index]);
-                if ((value === Fit.baseType[this.type & Fit.baseTypeNumMask].invalidValue) &&
+                if ((value === Fit.baseType[this.Type & Fit.baseTypeNumMask].invalidValue) &&
                        (scale !== 1.0)) {
                     castToFloat = true;
                 }
@@ -329,7 +334,7 @@ export abstract class FieldBase {
             case Fit.uInt32:
             case Fit.uInt32z:
                 value = Convert.ToUInt32(value[index]);
-                if ((value === Fit.baseType[this.type & Fit.baseTypeNumMask].invalidValue) &&
+                if ((value === Fit.baseType[this.Type & Fit.baseTypeNumMask].invalidValue) &&
                        (scale !== 1.0)) {
                     castToFloat = true;
                 }
@@ -337,7 +342,7 @@ export abstract class FieldBase {
 
             case Fit.sInt64:
                 value = Convert.ToInt64(value[index]);
-                if ((value === Fit.baseType[this.type & Fit.baseTypeNumMask].invalidValue) &&
+                if ((value === Fit.baseType[this.Type & Fit.baseTypeNumMask].invalidValue) &&
                        (scale !== 1.0)) {
                     castToFloat = true;
                 }
@@ -346,7 +351,7 @@ export abstract class FieldBase {
             case Fit.uInt64:
             case Fit.uInt64z:
                 value = Convert.ToUInt64(value[index]);
-                if ((value === Fit.baseType[this.type & Fit.baseTypeNumMask].invalidValue) &&
+                if ((value === Fit.baseType[this.Type & Fit.baseTypeNumMask].invalidValue) &&
                        (scale !== 1.0)) {
                     castToFloat = true;
                 }
@@ -384,7 +389,7 @@ export abstract class FieldBase {
         }
 
         if (this.isNumeric()) {
-            if (scale !== 1.0 || this.offset !== 0.0) {
+            if (scale !== 1.0 || this.Offset !== 0.0) {
                 value = ((Convert.toSingle(value) / scale) - offset);
             }
         }
@@ -392,230 +397,241 @@ export abstract class FieldBase {
         return value;
     }
 
-    // TODO convert SetValue methods
+    public setValue1(value: any): void {
+        this.setValue(0, value, undefined);
+    }
 
-    // public SetValue(value: any): void {
-    //     SetValue(0, value, (Subfield)null);
-    // }
+    public setValue2(value: any, subfieldIndex: number): void {
+        this.setValue(0, value, this.getSubfield(subfieldIndex));
+    }
 
-    // public SetValue(value: any, subfieldIndex: number): void {
-    //     SetValue(0, value, GetSubfield(subfieldIndex));
-    // }
+    public setValue3(value: any, subfieldName: string): void {
+        this.setValue(0, value, this.getSubfield(subfieldName));
+    }
 
-    // public SetValue(value: any, subfieldName: string): void {
-    //     SetValue(0, value, GetSubfield(subfieldName));
-    // }
+    public setValue4(index: number, value: any): void {
+        this.setValue(index, value, undefined);
+    }
 
-    // public SetValue(index: number, value: any): void {
-    //     SetValue(index, value, (Subfield)null);
-    // }
+    public setValue5(index: number, value: any, subfieldIndex: number): void {
+        this.setValue(index, value, this.getSubfield(subfieldIndex));
+    }
 
-    // public SetValue(index: number, value: any, subfieldIndex: number): void {
-    //     SetValue(index, value, GetSubfield(subfieldIndex));
-    // }
+    public setValue6(index: number, value: any, subfieldName: string): void {
+        this.setValue(index, value, this.getSubfield(subfieldName));
+    }
 
-    // public SetValue(index: number, value: any, subfieldName: string): void {
-    //     SetValue(index, value, GetSubfield(subfieldName));
-    // }
+    public setValue(index: number, value: any, subfield?: Subfield): void {
+        let scale: number;
+        let offset: number;
 
-    // public SetValue(index: number, value: any, subfield: Subfield): void {
-    //     let scale: number, offset;
+        while (index >= this.getNumValues()) {
+            // Add placeholders of the correct type so GetSize() will
+            // still compute correctly
+            switch (this.Type & Fit.baseTypeNumMask) {
+                case Fit.enum:
+                case Fit.byte:
+                case Fit.uInt8:
+                case Fit.uInt8z:
+                    this.values.push(0);
+                    break;
 
-    //     while (index >= this.getNumValues()) {
-    //         // Add placeholders of the correct type so GetSize() will
-    //         // still compute correctly
-    //         switch (this.type & Fit.baseTypeNumMask) {
-    //             case Fit.enum:
-    //             case Fit.byte:
-    //             case Fit.uInt8:
-    //             case Fit.uInt8z:
-    //                 value.Add(new byte());
-    //                 break;
+                case Fit.sInt8:
+                    this.values.push(0);
+                    break;
 
-    //             case Fit.sInt8:
-    //                 value.Add(new sbyte());
-    //                 break;
+                case Fit.sInt16:
+                    this.values.push(0);
+                    break;
 
-    //             case Fit.sInt16:
-    //                 value.Add(new short());
-    //                 break;
+                case Fit.uInt16:
+                case Fit.uInt16z:
+                    this.values.push(0);
+                    break;
 
-    //             case Fit.uInt16:
-    //             case Fit.uInt16z:
-    //                 value.Add(new ushort());
-    //                 break;
+                case Fit.sInt32:
+                    this.values.push(0);
+                    break;
 
-    //             case Fit.sInt32:
-    //                 value.Add(new int());
-    //                 break;
+                case Fit.uInt32:
+                case Fit.uInt32z:
+                    this.values.push(0);
+                    break;
 
-    //             case Fit.uInt32:
-    //             case Fit.uInt32z:
-    //                 value.Add(new uint());
-    //                 break;
+                case Fit.sInt64:
+                    this.values.push(0);
+                    break;
 
-    //             case Fit.sInt64:
-    //                 value.Add(new long());
-    //                 break;
+                case Fit.uInt64:
+                case Fit.uInt64z:
+                    this.values.push(0);
+                    break;
 
-    //             case Fit.uInt64:
-    //             case Fit.uInt64z:
-    //                 value.Add(new ulong());
-    //                 break;
+                case Fit.float32:
+                    this.values.push(0);
+                    break;
 
-    //             case Fit.float32:
-    //                 value.Add(new float());
-    //                 break;
+                case Fit.float64:
+                    this.values.push(0);
+                    break;
 
-    //             case Fit.float64:
-    //                 value.Add(new double());
-    //                 break;
+                case Fit.string:
+                    this.values.push(0);
+                    break;
 
-    //             case Fit.string:
-    //                 value.Add(new byte[0]);
-    //                 break;
+                default:
+                    break;
+            }
+        }
 
-    //             default:
-    //                 break;
-    //         }
-    //     }
+        if (subfield == null) {
+            scale = this.Scale;
+            offset = this.Offset;
+        } else {
+            scale = subfield.Scale;
+            offset = this.Offset;
+        }
 
-    //     if (subfield == null) {
-    //         scale = this.scale;
-    //         offset = this.offset;
-    //     } else {
-    //         scale = subfield.scale;
-    //         offset = this.offset;
-    //     }
+            // Cast to long as scale and offset only apply to integer based types
+            // and we want to make sure we have maximum precision.
+        let invalidValue: number = 0;
+        let castedValue: number = 0;
 
-    //         // Cast to long as scale and offset only apply to integer based types
-    //         // and we want to make sure we have maximum precision.
-    //     let invalidValue: number = 0;
-    //     let castedValue: number = 0;
+        if (this.isNumeric()) {
+                // Cast to long as scale and offset only apply to integer based types
+                // and we want to make sure we have maximum precision.
+            invalidValue = Convert.toDouble(Fit.baseType[this.Type & Fit.baseTypeNumMask]
+                            .invalidValue);
+            castedValue = Convert.toDouble(value);
 
-    //     if (this.isNumeric()) {
-    //             // Cast to long as scale and offset only apply to integer based types
-    //             // and we want to make sure we have maximum precision.
-    //         invalidValue = Convert.toDouble(Fit.baseType[this.type & Fit.baseTypeNumMask]
-    //                         .invalidValue);
-    //         castedValue = Convert.toDouble(value);
+                // If the field is numeric, check if the value is less than the base
+                // type's invalid value. For "z" base types where 0 is invalid, check
+                // that the value is > 0. Apply scale and offset if valid.
+            if ((castedValue < invalidValue) ||
+                   ((invalidValue === 0) && (castedValue > 0))) {
+                if (scale !== 1.0 || this.Offset !== 0.0) {
+                    // tslint:disable-next-line: no-parameter-reassignment
+                    value = Convert.toSingle(value);
+                    // tslint:disable-next-line: no-parameter-reassignment
+                    value = (value + offset) * scale;
+                }
+            }
+        }
 
-    //             // If the field is numeric, check if the value is less than the base
-    //             // type's invalid value. For "z" base types where 0 is invalid, check
-    //             // that the value is > 0. Apply scale and offset if valid.
-    //         if ((castedValue < invalidValue) ||
-    //                ((invalidValue === 0) && (castedValue > 0))) {
-    //             if (scale !== 1.0 || Offset !== 0.0) {
-    //                 value = Convert.toSingle(value);
-    //                 value = (value + offset) * scale;
-    //             }
-    //         }
-    //     }
+            // Must convert value back to the base type, if there was a scale or offset it will
+            // have been converted to float.  Caller also may have passed in an unexpected type.
+        let success: boolean = false;
 
-    //         // Must convert value back to the base type, if there was a scale or offset it will
-    //         // have been converted to float.  Caller also may have passed in an unexpected type.
-    //     let success: boolean = false;
+        switch (this.Type & Fit.baseTypeNumMask) {
+            case Fit.enum:
+            case Fit.byte:
+            case Fit.uInt8:
+            case Fit.uInt8z:
+                if ((Convert.toDouble(value) >= 0) &&
+                    (Convert.toDouble(value) <= 255)) {
+                    // tslint:disable-next-line: no-parameter-reassignment
+                    value = Convert.toByte(value);
+                    success = true;
+                }
+                break;
 
-    //     switch (Type & Fit.baseTypeNumMask) {
-    //         case Fit.enum:
-    //         case Fit.byte:
-    //         case Fit.uInt8:
-    //         case Fit.uInt8z:
-    //             if ((Convert.toDouble(value) >= byte.MinValue) &&
-    //                 (Convert.toDouble(value) <= byte.MaxValue)) {
-    //                 value = Convert.toByte(value);
-    //                 success = true;
-    //             }
-    //             break;
+            case Fit.sInt8:
+                if ((Convert.toDouble(value) >= -128) &&
+                    (Convert.toDouble(value) <= 127)) {
+                    // tslint:disable-next-line: no-parameter-reassignment
+                    value = Convert.toSByte(value);
+                    success = true;
+                }
+                break;
 
-    //         case Fit.sInt8:
-    //             if ((Convert.toDouble(value) >= sbyte.MinValue) &&
-    //                 (Convert.toDouble(value) <= sbyte.MaxValue)) {
-    //                 value = Convert.toSByte(value);
-    //                 success = true;
-    //             }
-    //             break;
+            case Fit.sInt16:
+                if ((Convert.toDouble(value) >= -32768) &&
+                    (Convert.toDouble(value) <= 32767)) {
+                    // tslint:disable-next-line: no-parameter-reassignment
+                    value = Convert.ToInt16(value);
+                    success = true;
+                }
+                break;
 
-    //         case Fit.sInt16:
-    //             if ((Convert.toDouble(value) >= short.MinValue) &&
-    //                 (Convert.toDouble(value) <= short.MaxValue)) {
-    //                 value = Convert.ToInt16(value);
-    //                 success = true;
-    //             }
-    //             break;
+            case Fit.uInt16:
+            case Fit.uInt16z:
+                if ((Convert.toDouble(value) >= 0) &&
+                    (Convert.toDouble(value) <= 65535)) {
+                    value = Convert.ToUInt16(value);
+                    success = true;
+                }
+                break;
 
-    //         case Fit.uInt16:
-    //         case Fit.uInt16z:
-    //             if ((Convert.toDouble(value) >= ushort.MinValue) &&
-    //                 (Convert.toDouble(value) <= ushort.MaxValue)) {
-    //                 value = Convert.ToUInt16(value);
-    //                 success = true;
-    //             }
-    //             break;
+            case Fit.sInt32:
+                if ((Convert.toDouble(value) >= -2147483648) &&
+                    (Convert.toDouble(value) <= 2147483647)) {
+                    // tslint:disable-next-line: no-parameter-reassignment
+                    value = Convert.ToInt32(value);
+                    success = true;
+                }
+                break;
 
-    //         case Fit.sInt32:
-    //             if ((Convert.toDouble(value) >= int.MinValue) &&
-    //                 (Convert.toDouble(value) <= int.MaxValue)) {
-    //                 value = Convert.ToInt32(value);
-    //                 success = true;
-    //             }
-    //             break;
+            case Fit.uInt32:
+            case Fit.uInt32z:
+                if ((Convert.toDouble(value) >= -2147483648) &&
+                    (Convert.toDouble(value) <= 2147483647)) {
+                    // tslint:disable-next-line: no-parameter-reassignment
+                    value = Convert.ToUInt32(value);
+                    success = true;
+                }
+                break;
 
-    //         case Fit.uInt32:
-    //         case Fit.uInt32z:
-    //             if ((Convert.toDouble(value) >= uint.MinValue) &&
-    //                 (Convert.toDouble(value) <= uint.MaxValue)) {
-    //                 value = Convert.ToUInt32(value);
-    //                 success = true;
-    //             }
-    //             break;
+            case Fit.sInt64:
+                // tslint:disable-next-line: no-parameter-reassignment
+                value = Convert.ToInt64(value);
+                success = true;
+                break;
 
-    //         case Fit.sInt64:
-    //             value = Convert.ToInt64(value);
-    //             success = true;
-    //             break;
+            case Fit.uInt64:
+            case Fit.uInt64z:
+                // tslint:disable-next-line: no-parameter-reassignment
+                value = Convert.ToUInt64(value);
+                success = true;
+                break;
 
-    //         case Fit.uInt64:
-    //         case Fit.uInt64z:
-    //             value = Convert.ToUInt64(value);
-    //             success = true;
-    //             break;
+            case Fit.float32:
+                if ((Convert.toDouble(value) >= -3.402823E+38) &&
+                    (Convert.toDouble(value) <= 3.402823E+38)) {
+                    // tslint:disable-next-line:no-parameter-reassignment
+                    value = Convert.toSingle(value);
+                    success = true;
+                }
+                break;
 
-    //         case Fit.float32:
-    //             if ((Convert.toDouble(value) >= float.MinValue) && (Convert.toDouble(value) <= float.MaxValue)) {
-    //                 value = Convert.toSingle(value);
-    //                 success = true;
-    //             }
-    //             break;
+            case Fit.float64:
+                if ((value >= -1.79769313486232E+308) && (value <= 1.79769313486232E+308)) {
+                    // tslint:disable-next-line:no-parameter-reassignment
+                    value = Convert.toDouble(value);
+                    success = true;
+                }
+                break;
 
-    //         case Fit.float64:
-    //             if (((double)value >= double.MinValue; ) && ((double); value <= double.MaxValue; ))
-    //             {
-    //                 value = Convert.toDouble(value);
-    //                 success = true;
-    //             }
-    //             break;
+            case Fit.string:
+                success = true;
+                break;
 
-    //         case Fit.string:
-    //             success = true;
-    //             break;
+            default:
+                break;
+        }
 
-    //         default:
-    //             break;
-    //     }
-
-    //         // If the conversion failed, set the value to invalid
-    //     if (!success) {
-    //         value = Fit.baseType[Type & Fit.baseTypeNumMask].invalidValue;
-    //     }
-    //     value[index] = value;
-    // }
+            // If the conversion failed, set the value to invalid
+        if (!success) {
+            // tslint:disable-next-line: no-parameter-reassignment
+            value = Fit.baseType[this.Type & Fit.baseTypeNumMask].invalidValue;
+        }
+        value[index] = value;
+    }
 
     public setRawValue(index: number, value: any): void {
         while (index >= this.getNumValues()) {
                 // Add placeholders of the correct type so GetSize() will
                 // still compute correctly
-            switch (this.type & Fit.baseTypeNumMask) {
+            switch (this.Type & Fit.baseTypeNumMask) {
                 case Fit.enum:
                 case Fit.byte:
                 case Fit.uInt8:
@@ -671,50 +687,60 @@ export abstract class FieldBase {
             }
         }
         // Must convert value back to the base type, caller may have passed in an unexpected type.
-        switch (this.type & Fit.baseTypeNumMask) {
+        switch (this.Type & Fit.baseTypeNumMask) {
             case Fit.enum:
             case Fit.byte:
             case Fit.uInt8:
             case Fit.uInt8z:
+                // tslint:disable-next-line:no-parameter-reassignment
                 value = Convert.ToByte(value);
                 break;
 
             case Fit.sInt8:
+                // tslint:disable-next-line:no-parameter-reassignment
                 value = Convert.ToSByte(value);
                 break;
 
             case Fit.sInt16:
+                // tslint:disable-next-line:no-parameter-reassignment
                 value = Convert.ToInt16(value);
                 break;
 
             case Fit.uInt16:
             case Fit.uInt16z:
+                // tslint:disable-next-line:no-parameter-reassignment
                 value = Convert.ToUInt16(value);
                 break;
 
             case Fit.sInt32:
+                // tslint:disable-next-line:no-parameter-reassignment
                 value = Convert.ToInt32(value);
                 break;
 
             case Fit.uInt32:
             case Fit.uInt32z:
+                // tslint:disable-next-line:no-parameter-reassignment
                 value = Convert.ToUInt32(value);
                 break;
 
             case Fit.sInt64:
+                // tslint:disable-next-line:no-parameter-reassignment
                 value = Convert.ToInt64(value);
                 break;
 
             case Fit.uInt64:
             case Fit.uInt64z:
+                // tslint:disable-next-line:no-parameter-reassignment
                 value = Convert.ToUInt64(value);
                 break;
 
             case Fit.float32:
+                // tslint:disable-next-line:no-parameter-reassignment
                 value = Convert.toSingle(value);
                 break;
 
             case Fit.float64:
+                // tslint:disable-next-line:no-parameter-reassignment
                 value = Convert.toDouble(value);
                 break;
 
@@ -722,7 +748,7 @@ export abstract class FieldBase {
                 break;
 
         }
-        value[index] = value;
+        this.values[index] = value;
     }
 
     public getRawValue(index: number): any {
@@ -735,7 +761,7 @@ export abstract class FieldBase {
 
     public isNumeric(): boolean {
         let isNumeric: boolean;
-        switch (this.type & Fit.baseTypeNumMask) {
+        switch (this.Type & Fit.baseTypeNumMask) {
             case Fit.enum:
             case Fit.string:
                 isNumeric = false;
@@ -760,7 +786,7 @@ export abstract class FieldBase {
                 break;
 
             default:
-                throw new Error(`Field:IsNumeric - Unexpected Fit Type ${this.type}`);
+                throw new Error(`Field:IsNumeric - Unexpected Fit Type ${this.Type}`);
 
         }
         return isNumeric;

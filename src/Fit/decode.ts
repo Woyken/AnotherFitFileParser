@@ -11,6 +11,7 @@ import { CRC } from './crc';
 import { Field } from './field';
 import { Profile } from './profile';
 import { FieldComponent } from './fieldComponent';
+import { MesgNum } from './Profile/Types/mesgNum';
 
 export class Decode {
     private readonly CRCSIZE: number = 2;
@@ -38,6 +39,7 @@ export class Decode {
     //#endregion
 
     //#region Constructors
+    // tslint:disable-next-line: no-empty
     constructor() {
     }
     //#endregion
@@ -196,8 +198,10 @@ export class Decode {
             const timeOffset = nextByte & Fit.compressedTimeMask;
             this.timestamp += ((timeOffset - this.lastTimeOffset) & Fit.compressedTimeMask);
             this.lastTimeOffset = timeOffset;
-            const timestampField: Field = new Field(Profile.getMesg(MesgNum.record).getField('Timestamp'));
-            timestampField.setValue(this.timestamp);
+            const timestampField: Field = new Field(
+                Profile.getMesg(MesgNum.Record)!
+                    .getField('Timestamp'));
+            timestampField.setValue1(this.timestamp);
 
             const localMesgNum: number = ((nextByte & Fit.compressedLocalMesgNumMask) >> 5);
             mesgBuffer.push(localMesgNum);
@@ -315,8 +319,8 @@ export class Decode {
     }
 
     private raiseMesgEvent(newMesg: Mesg): void {
-        if ((newMesg.num === MesgNum.developerDataId) ||
-            (newMesg.num === MesgNum.fieldDescription)) {
+        if ((newMesg.num === MesgNum.DeveloperDataId) ||
+            (newMesg.num === MesgNum.FieldDescription)) {
             this.handleMetaData(newMesg);
         }
 
@@ -326,12 +330,12 @@ export class Decode {
     }
 
     private handleMetaData(newMesg: Mesg): void {
-        if (newMesg.Num === MesgNum.developerDataId) {
+        if (newMesg.num === MesgNum.DeveloperDataId) {
             const mesg = new DeveloperDataIdMesg(newMesg);
             this.lookup.add(mesg);
-        } else if (newMesg.num === MesgNum.fieldDescription) {
+        } else if (newMesg.num === MesgNum.FieldDescription) {
             const mesg = new FieldDescriptionMesg(newMesg);
-            const desc: DeveloperFieldDescription = this.lookup.add(mesg);
+            const desc: DeveloperFieldDescription | undefined = this.lookup.add1(mesg);
             if (desc != null) {
                 if (this.developerFieldDescriptionEvent) {
                     this.developerFieldDescriptionEvent(desc);

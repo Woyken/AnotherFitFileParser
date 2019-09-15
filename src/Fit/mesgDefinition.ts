@@ -156,7 +156,7 @@ export class MesgDefinition {
                 const devIdx: number = br.ReadByte();
                 let defn: DeveloperFieldDefinition;
                 const key = new DeveloperDataKey(devIdx, num);
-                const tuple: [DeveloperDataIdMesg, FieldDescriptionMesg] = lookup.GetMesgs(key);
+                const tuple: [DeveloperDataIdMesg, FieldDescriptionMesg] = lookup.getMesgs(key);
 
                 if (tuple != null) {
                     defn = DeveloperFieldDefinition.ctor2(tuple.Item2, tuple.Item1, size);
