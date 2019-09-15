@@ -1,3 +1,5 @@
+import { BitConverter } from '../BitConverter/bitConverter';
+
 export class ByteStreamReader {
     public static isOfType(value: any): value is ByteStreamReader {
         if (!value) {
@@ -17,9 +19,18 @@ export class ByteStreamReader {
             outputBuffer[offset + i] = this.readByte();
         }
     }
+    public buffer: Buffer;
     private pposition: number = 0;
 
-    public constructor(public buffer: Buffer, public isBigEndian: boolean = false) {
+    public constructor(
+        bufferOrStream: Buffer | ByteStreamReader,
+        public isBigEndian: boolean = false,
+    ) {
+        if (ByteStreamReader.isOfType(bufferOrStream)) {
+            this.buffer = Buffer.from(bufferOrStream.buffer, bufferOrStream.position);
+            return;
+        }
+        this.buffer = bufferOrStream;
     }
 
     public get position(): number {
@@ -40,6 +51,15 @@ export class ByteStreamReader {
         return readNumber;
     }
 
+    public readSByte(): number {
+        let readNumber = this.readByte();
+        if (readNumber > 127) {
+            readNumber = readNumber - 256;
+        }
+        this.pposition++;
+        return readNumber;
+    }
+
     public readBytes(numBytes: number): number[] {
         const resultArray: number[] = [];
         for (let i = 0; i < numBytes; i++) {
@@ -48,17 +68,36 @@ export class ByteStreamReader {
         return resultArray;
     }
 
+    public readSingle(): number {
+        return BitConverter.toSingle(this.readBytes(4), 0, this.isBigEndian);
+    }
+
+    public readDouble(): number {
+        return BitConverter.toDouble(this.readBytes(8), 0, this.isBigEndian);
+    }
+
     public readUInt16(): number {
-        return this.readByte() + (this.readByte() << 8);
+        return BitConverter.toUInt16(this.readBytes(2), 0, this.isBigEndian);
+    }
+
+    public readInt16(): number {
+        return BitConverter.toInt16(this.readBytes(2), 0, this.isBigEndian);
     }
 
     public readUInt32(): number {
-        return (
-            this.readByte() +
-            (this.readByte() << 8) +
-            (this.readByte() << 16) +
-            (this.readByte() << 24)
-        );
+        return BitConverter.toUInt32(this.readBytes(4), 0, this.isBigEndian);
+    }
+
+    public readInt32(): number {
+        return BitConverter.toInt32(this.readBytes(4), 0, this.isBigEndian);
+    }
+
+    public readUInt64(): bigint {
+        return BitConverter.toUInt64(this.readBytes(8), 0, this.isBigEndian);
+    }
+
+    public readInt64(): bigint {
+        return BitConverter.toInt64(this.readBytes(8), 0, this.isBigEndian);
     }
 
     public readChars(numOfChars: number): string[] {
