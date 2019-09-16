@@ -1,5 +1,5 @@
 import { Subfield } from './subfield';
-import { Profile } from './profile';
+import { ProfileType } from './profile';
 import { Fit } from './fit';
 import { FieldBase } from './fieldBase';
 import { FieldComponent } from './fieldComponent';
@@ -39,7 +39,7 @@ export class Field extends FieldBase {
     public offset!: number;
     public units!: string;
     private isAccumulated!: boolean;
-    private profileType: Profile.Type;
+    private profileType!: ProfileType;
 
     public subfields: Subfield[] = [];
     public components: FieldComponent[] = [];
@@ -72,7 +72,7 @@ export class Field extends FieldBase {
         return this.isAccumulated;
     }
 
-    public get ProfileType(): Profile.Type {
+    public get ProfileType(): ProfileType {
         return this.profileType;
     }
 
@@ -88,9 +88,9 @@ export class Field extends FieldBase {
         offset?: number,
         units?: string,
         accumulated?: boolean,
-        profileType?: Profile.Type,
+        profileType?: ProfileType,
     ) {
-        super(nameOrField);
+        super(typeof nameOrField === 'string' ? undefined : nameOrField);
         if (typeof nameOrField === 'string') {
             this.ctorFromData(
                 nameOrField, num!, type!, scale, offset, units, accumulated, profileType);
@@ -108,7 +108,7 @@ export class Field extends FieldBase {
             this.offset = 0;
             this.units = '';
             this.isAccumulated = false;
-            this.profileType = Profile.Type.Enum;
+            this.profileType = ProfileType.Enum;
             this.isExpandedField = false;
             return;
         }
@@ -133,14 +133,14 @@ export class Field extends FieldBase {
     }
 
     public ctorFromData(
-        name?: string,
+        name: string | undefined,
         num: number,
         type: number,
         scale: number = 1.0,
         offset: number = 0.0,
         units: string = '',
         accumulated: boolean = false,
-        profileType: Profile.Type = Profile.Type.NumTypes,
+        profileType: ProfileType = ProfileType.NumTypes,
     ): void {
         this.name = name === undefined ? 'unknown' : name;
         this.num = num;

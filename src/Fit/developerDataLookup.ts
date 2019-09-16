@@ -1,23 +1,29 @@
 import { DeveloperDataKey } from './developerDataKey';
 import { DeveloperFieldDescription } from './developerFieldDescription';
+import { FieldDescriptionMesg } from './Profile/Mesgs/fieldDescriptionMesg';
+import { DeveloperDataIdMesg } from './Profile/Mesgs/developerDataIdMesg';
 
 export class DeveloperDataLookup {
     private readonly fieldDescriptionMesgs: Map<DeveloperDataKey, FieldDescriptionMesg>;
     private readonly developerDataIdMesgs: Map<number, DeveloperDataIdMesg>;
 
     public constructor() {
-        this.fieldDescriptionMesgs = new Dictionary<DeveloperDataKey, FieldDescriptionMesg>();
-        this.developerDataIdMesgs = new Dictionary<byte, DeveloperDataIdMesg>();
+        this.fieldDescriptionMesgs = new Map<DeveloperDataKey, FieldDescriptionMesg>();
+        this.developerDataIdMesgs = new Map<number, DeveloperDataIdMesg>();
     }
 
     public getMesgs(
         key: DeveloperDataKey,
     ): { ddmsg: DeveloperDataIdMesg, fdmsg: FieldDescriptionMesg } | undefined {
-        const devIdMesg: DeveloperDataIdMesg;
-        const descriptionMesg: FieldDescriptionMesg;
+        let devIdMesg: DeveloperDataIdMesg | undefined;
+        let descriptionMesg: FieldDescriptionMesg | undefined;
 
-        this.developerDataIdMesgs.TryGetValue(key.DeveloperDataIndex, out devIdMesg);
-        this.fieldDescriptionMesgs.TryGetValue(key, out descriptionMesg);
+        if (this.developerDataIdMesgs.has(key.developerDataIndex)) {
+            devIdMesg = this.developerDataIdMesgs.get(key.developerDataIndex);
+        }
+        if (this.fieldDescriptionMesgs.has(key)) {
+            descriptionMesg = this.fieldDescriptionMesgs.get(key);
+        }
 
         if (devIdMesg !== undefined && descriptionMesg !== undefined) {
             return {
@@ -30,7 +36,7 @@ export class DeveloperDataLookup {
     }
 
     public add(mesg: DeveloperDataIdMesg): void {
-        const index: number | undefined = mesg.GetDeveloperDataIndex();
+        const index: number | undefined = mesg.getDeveloperDataIndex();
         if (index === undefined) {
             return;
         }
@@ -52,8 +58,8 @@ export class DeveloperDataLookup {
     public add1(mesg: FieldDescriptionMesg): DeveloperFieldDescription | undefined {
         let desc: DeveloperFieldDescription | undefined;
 
-        const developerDataIndex: number | undefined = mesg.GetDeveloperDataIndex();
-        const fieldDefinitionNumber: number | undefined = mesg.GetFieldDefinitionNumber();
+        const developerDataIndex: number | undefined = mesg.getDeveloperDataIndex();
+        const fieldDefinitionNumber: number | undefined = mesg.getFieldDefinitionNumber();
         if ((developerDataIndex !== undefined) &&
             (fieldDefinitionNumber !== undefined)) {
             const key = new DeveloperDataKey(

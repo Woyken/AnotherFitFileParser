@@ -6,6 +6,8 @@ import { DeveloperFieldDefinition } from './developerFieldDefinition';
 import { Field } from './field';
 import { DeveloperDataLookup } from './developerDataLookup';
 import { DeveloperField } from './developerField';
+import { DeveloperDataKey } from './developerDataKey';
+import { MesgNum } from './Profile/Types/mesgNum';
 
 export class MesgDefinition {
     public static isOfType(value: any): value is MesgDefinition {
@@ -88,7 +90,7 @@ export class MesgDefinition {
 
     private ctorNoParams(): void {
         this.localMesgNum = 0;
-        this.globalMesgNum = MesgNum.Invalid;
+        this.globalMesgNum = MesgNum.invalid;
         this.architecture = Fit.littleEndian;
     }
 
@@ -128,38 +130,39 @@ export class MesgDefinition {
 
     private read(fitSource: ByteStreamReader, lookup: DeveloperDataLookup): void {
         fitSource.position = 0;
-        const br: EndianBinaryReader = new EndianBinaryReader(fitSource, false);
+        const br: ByteStreamReader = new ByteStreamReader(fitSource, false);
 
-        this.header = br.ReadByte();
+        this.header = br.readByte();
         this.localMesgNum = this.header & Fit.localMesgNumMask;
 
-        const reserved: number = br.ReadByte();
-        this.architecture = br.ReadByte();
-        br.IsBigEndian = this.isBigEndian;
-        this.globalMesgNum = br.ReadUInt16();
-        this.numFields = br.ReadByte();
+        /* const reserved: number = */ br.readByte();
+        this.architecture = br.readByte();
+        br.isBigEndian = this.isBigEndian;
+        this.globalMesgNum = br.readUInt16();
+        this.numFields = br.readByte();
         for (let i = 0; i < this.numFields; i++) {
-            const num: number = br.ReadByte();
-            const size: number = br.ReadByte();
-            const type: number = br.ReadByte();
+            const num: number = br.readByte();
+            const size: number = br.readByte();
+            const type: number = br.readByte();
 
             const newField: FieldDefinition = new FieldDefinition(num, size, type);
             this.fieldDefs.push(newField);
         }
 
         if (this.containsDevData) {
-            const devFldCount: number = br.ReadByte();
+            const devFldCount: number = br.readByte();
             for (let i = 0; i < devFldCount; i++) {
                 // Seek to the Size
-                const num: number = br.ReadByte();
-                const size: number = br.ReadByte();
-                const devIdx: number = br.ReadByte();
+                const num: number = br.readByte();
+                const size: number = br.readByte();
+                const devIdx: number = br.readByte();
                 let defn: DeveloperFieldDefinition;
                 const key = new DeveloperDataKey(devIdx, num);
-                const tuple: [DeveloperDataIdMesg, FieldDescriptionMesg] = lookup.getMesgs(key);
+                const tuple = lookup.getMesgs(key);
 
+                // tslint:disable-next-line: prefer-conditional-expression
                 if (tuple != null) {
-                    defn = DeveloperFieldDefinition.ctor2(tuple.Item2, tuple.Item1, size);
+                    defn = DeveloperFieldDefinition.ctor2(tuple.fdmsg, tuple.ddmsg, size);
                 } else {
                     defn = DeveloperFieldDefinition.ctor1(num, size, devIdx);
                 }

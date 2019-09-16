@@ -9,17 +9,19 @@ class DetailedProtocolVersion {
         this.minorVersion = minor;
     }
 
-    public get version() {
+    public get version(): number {
         return (this.majorVersion << Fit.protocolVersionMajorShift) | this.minorVersion;
     }
 }
 
+// tslint:disable-next-line: max-classes-per-file
 export class ProtocolVersion {
-    public static V10 = new DetailedProtocolVersion(1, 0);
-    public static V20 = new DetailedProtocolVersion(2, 0);
+    public static V10: DetailedProtocolVersion = new DetailedProtocolVersion(1, 0);
+    public static V20: DetailedProtocolVersion = new DetailedProtocolVersion(2, 0);
 
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class FitType {
     public constructor(
         public endianAbility: boolean,
@@ -32,8 +34,8 @@ export class FitType {
     ) {}
 }
 
-export class Fit
-    {
+// tslint:disable-next-line: max-classes-per-file
+export class Fit {
     public static readonly protocolVersionMajorShift: number = 4;
     // tslint:disable-next-line: max-line-length
     public static readonly protocolVersionMajorMask: number = (0x0F << Fit.protocolVersionMajorShift);

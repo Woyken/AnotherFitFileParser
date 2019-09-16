@@ -1,6 +1,7 @@
 import { Mesg } from './mesg';
 import { Field } from './field';
 import { Fit } from './fit';
+import { FieldComponent } from './fieldComponent';
 
 //#region Internal Classes
 /// <summary>
@@ -34,12 +35,12 @@ class SubfieldMap {
     /// <param name="mesg">message of interest</param>
     /// <returns>true if the subfield is active</returns>
     public canMesgSupport(mesg: Mesg): boolean {
-        const field: Field = mesg.getField(this.refFieldNum);
+        const field: Field | undefined = mesg.getField(this.refFieldNum);
 
-        if (field != null) {
+        if (field !== undefined) {
             const value: any = field.getValue(0, Fit.subfieldIndexMainField);
             // Float refvalues are not supported
-            if (Convert.toInt64(value) === Convert.toInt64(this.refFieldValue)) {
+            if (value === this.refFieldValue) {
                 return true;
             }
         }
@@ -81,13 +82,13 @@ export class Subfield {
     }
 
     //#region Fields
-    private name: string;
-    private type: number;
-    private scale: number;
-    private offset: number;
-    private units: string;
-    private maps: SubfieldMap[];
-    private components: FieldComponent[];
+    private name!: string;
+    private type!: number;
+    private scale!: number;
+    private offset!: number;
+    private units!: string;
+    private maps!: SubfieldMap[];
+    private components!: FieldComponent[];
     //#endregion // Fields
 
     //#region Properties
@@ -111,7 +112,7 @@ export class Subfield {
         return this.units;
     }
 
-    public get Components(): FieldComponent {
+    public get Components(): FieldComponent[] {
         return this.components;
     }
     //#endregion; // Properties

@@ -12,6 +12,8 @@ import { Profile } from './profile';
 import { DeveloperFieldDefinition } from './developerFieldDefinition';
 import { FieldBase } from './fieldBase';
 import { Subfield } from './subfield';
+import { FitBaseType } from './Profile/Types/fitBaseType';
+import { DateTime } from './Profile/Types/dateTime';
 
 export class Mesg {
     public static isOfType(value: any): value is Mesg {
@@ -80,7 +82,7 @@ export class Mesg {
     public ctorFromMsg(mesg?: Mesg): void {
         if (mesg === undefined) {
             this.name = 'unknown';
-            this.num = MesgNum.Invalid;
+            this.num = MesgNum.invalid;
             return;
         }
         this.name = mesg.name;
@@ -782,11 +784,11 @@ export class Mesg {
             this.setField(field);
         }
 
-        field!.setValue(fieldArrayIndex, value, name);
+        field!.setValue6(fieldArrayIndex, value, name);
     }
 
-    public timestampToDateTime(timestamp: number = 0): DateTime {
-        let dateTime: DateTime;
+    public timestampToDateTime(timestamp: number | undefined): DateTime | undefined {
+        let dateTime: DateTime | undefined;
         if (timestamp !== undefined) {
             dateTime = new DateTime(timestamp);
             dateTime.convertSystemTimeToUTC(this.systemTimeOffset);
@@ -808,7 +810,7 @@ export class Mesg {
         currentField: Field,
         offset: number,
         accumulator: Accumulator,
-    ): FieldComponentExpansion[] {
+    ): Generator<FieldComponentExpansion, void, unknown> {
         // When components.Count > 0 a field will be created and appended to the field list
         if ((componentList != null) && (componentList.length > 0)) {
             for (const fC of componentList) {
@@ -829,12 +831,13 @@ export class Mesg {
                     // which is a bad idea to start with)
                     let bitsValue: number | undefined =
                             currentField.getBitsValue(offset, fC.bits, newField.Type);
-                    if (bitsValue == null) {
+                    if (bitsValue === undefined) {
                         break;
                     }
 
                     if (fC.accumulate) {
-                        bitsValue = accumulator.accumulate(this.num, fC.fieldNum, bitsValue.Value, fC.bits);
+                        // tslint:disable-next-line: max-line-length
+                        bitsValue = accumulator.accumulate(this.num, fC.fieldNum, bitsValue, fC.bits);
                     }
 
                     if (newField.isNumeric()) {
@@ -847,7 +850,7 @@ export class Mesg {
                                 newField.setRawValue(0, bitsValue);
                             }
                         } else {
-                            let fbitsValue = Convert.toDouble(bitsValue);
+                            let fbitsValue = bitsValue;
 
                             fbitsValue = (fbitsValue / fC.scale) - fC.offset;
 
@@ -892,6 +895,7 @@ export class Mesg {
             // Determine the active subfield
             const activeSubfield = this.getActiveSubFieldIndex(this.FieldsList[i].num);
 
+            // tslint:disable-next-line: prefer-conditional-expression
             if (activeSubfield === Fit.subfieldIndexMainField) {
                 componentList = this.FieldsList[i].components;
             } else {

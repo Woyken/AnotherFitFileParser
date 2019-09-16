@@ -2,6 +2,8 @@ import { FieldBase } from './fieldBase';
 import { Fit } from './fit';
 import { Subfield } from './subfield';
 import { DeveloperFieldDefinition } from './developerFieldDefinition';
+import { DeveloperDataIdMesg } from './Profile/Mesgs/developerDataIdMesg';
+import { FieldDescriptionMesg } from './Profile/Mesgs/fieldDescriptionMesg';
 
 export class DeveloperField extends FieldBase {
     //#region Fields
@@ -24,8 +26,8 @@ export class DeveloperField extends FieldBase {
 
     public get AppVersion(): number  {
         if (this.definition.IsDefined) {
-            return this.definition.DeveloperIdMesg.GetApplicationVersion() ?
-                this.definition.DeveloperIdMesg.GetApplicationVersion() : 0;
+            return this.definition.DeveloperIdMesg!.getApplicationVersion() ?
+                this.definition.DeveloperIdMesg!.getApplicationVersion()! : 0;
         }
 
         return 0;
@@ -33,12 +35,12 @@ export class DeveloperField extends FieldBase {
 
     public get AppId(): number[] | undefined {
         if (this.definition.IsDefined) {
-            const msg = this.definition.DeveloperIdMesg;
+            const msg = this.definition.DeveloperIdMesg!;
             // tslint:disable-next-line: prefer-array-literal
             const appId: number[] = new Array(msg.getNumApplicationId());
 
             for (let i = 0; i < appId.length; i++) {
-                appId[i] = msg.GetApplicationId(i) ? msg.GetApplicationId(i) : 0xFF;
+                appId[i] = msg.getApplicationId(i) ? msg.getApplicationId(i)! : 0xFF;
             }
 
             return appId;
@@ -47,15 +49,15 @@ export class DeveloperField extends FieldBase {
         return undefined;
     }
 
-    public get Name(): string {
+    public get Name(): string | undefined {
         return this.definition.IsDefined ?
-            this.definition.DescriptionMesg.GetFieldNameAsString(0) : null;
+            this.definition.DescriptionMesg!.getFieldNameAsString(0) : undefined;
     }
 
     public get Type(): number {
         if (this.definition.IsDefined) {
-            return this.definition.DescriptionMesg.GetFitBaseTypeId() ?
-                this.definition.DescriptionMesg.GetFitBaseTypeId() : Fit.uInt8;
+            return this.definition.DescriptionMesg!.getFitBaseTypeId() ?
+                this.definition.DescriptionMesg!.getFitBaseTypeId()! : Fit.uInt8;
         }
 
         return Fit.uInt8;
@@ -63,8 +65,8 @@ export class DeveloperField extends FieldBase {
 
     public get Scale(): number {
         if (this.definition.IsDefined) {
-            return this.definition.DescriptionMesg.GetScale() ?
-                this.definition.DescriptionMesg.GetScale() : 1.0;
+            return this.definition.DescriptionMesg!.getScale() ?
+                this.definition.DescriptionMesg!.getScale()! : 1.0;
         }
 
         return 1.0;
@@ -72,16 +74,16 @@ export class DeveloperField extends FieldBase {
 
     public get Offset(): number {
         if (this.definition.IsDefined) {
-            return this.definition.DescriptionMesg.GetOffset() ?
-                this.definition.DescriptionMesg.GetOffset() : 0.0;
+            return this.definition.DescriptionMesg!.getOffset() ?
+                this.definition.DescriptionMesg!.getOffset()! : 0.0;
         }
 
         return 0.0;
     }
 
-    public get Units(): string {
+    public get Units(): string | undefined {
         return this.definition.IsDefined ?
-            this.definition.DescriptionMesg.GetUnitsAsString(0) : null;
+            this.definition.DescriptionMesg!.getUnitsAsString(0) : undefined;
     }
 
     /// <summary>
@@ -93,8 +95,8 @@ export class DeveloperField extends FieldBase {
     /// </returns>
     public get NativeOverride(): number {
         if (this.definition.IsDefined) {
-            return this.definition.DescriptionMesg.GetNativeFieldNum() ?
-                this.definition.DescriptionMesg.GetNativeFieldNum() : Fit.fieldNumInvalid;
+            return this.definition.DescriptionMesg!.getNativeFieldNum() ?
+                this.definition.DescriptionMesg!.getNativeFieldNum()! : Fit.fieldNumInvalid;
         }
 
         return Fit.fieldNumInvalid;
@@ -130,7 +132,8 @@ export class DeveloperField extends FieldBase {
     //#endregion
 
     //#region Methods
-    public getSubfield(subfieldNameOrIndex: string | number): Subfield | undefined {
+    // tslint:disable-next-line: variable-name
+    public getSubfield(_subfieldNameOrIndex: string | number): Subfield | undefined {
         // Developer Fields do not currently support Sub Fields
         return;
     }

@@ -1,6 +1,9 @@
+import { DeveloperDataIdMesg } from './Profile/Mesgs/developerDataIdMesg';
+import { FieldDescriptionMesg } from './Profile/Mesgs/fieldDescriptionMesg';
+
 export class DeveloperFieldDefinition {
-    private descriptionMesg: FieldDescriptionMesg;
-    private developerIdMesg: DeveloperDataIdMesg;
+    private descriptionMesg: FieldDescriptionMesg | undefined;
+    private developerIdMesg: DeveloperDataIdMesg  | undefined;
 
     /// <summary>
     /// Gets a boolean indicating if the Field Definition has associated meta
@@ -28,14 +31,14 @@ export class DeveloperFieldDefinition {
     /// <summary>
     /// Gets the current description message for the field
     /// </summary>
-    public get DescriptionMesg(): FieldDescriptionMesg {
+    public get DescriptionMesg(): FieldDescriptionMesg | undefined {
         return this.descriptionMesg;
     }
 
     /// <summary>
     /// Gets the Associated Developer Id for the message
     /// </summary>
-    public get DeveloperIdMesg(): DeveloperDataIdMesg {
+    public get DeveloperIdMesg(): DeveloperDataIdMesg | undefined {
         return this.developerIdMesg;
     }
 
@@ -48,7 +51,7 @@ export class DeveloperFieldDefinition {
         developerDataIndex: number,
     ): DeveloperFieldDefinition {
         const result = new DeveloperFieldDefinition();
-        result.descriptionMesg = null;
+        result.descriptionMesg = undefined;
         result.fieldNum = fieldNum;
         result.size = size;
         result.developerDataIndex = developerDataIndex;
@@ -70,8 +73,8 @@ export class DeveloperFieldDefinition {
         size: number,
     ): DeveloperFieldDefinition {
         const result = new DeveloperFieldDefinition();
-        const fieldDefinitionNumber: number | undefined = desc.GetFieldDefinitionNumber();
-        const developerDataIndex: number | undefined = desc.GetDeveloperDataIndex();
+        const fieldDefinitionNumber: number | undefined = desc.getFieldDefinitionNumber();
+        const developerDataIndex: number | undefined = desc.getDeveloperDataIndex();
         if ((developerDataIndex != null) &&
             (fieldDefinitionNumber != null)) {
             result.descriptionMesg = desc;

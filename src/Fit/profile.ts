@@ -4,7 +4,7 @@ import { Field } from './field';
 import { FieldComponent } from './fieldComponent';
 import { MesgNum } from './Profile/Types/mesgNum';
 
-enum Type {
+export enum ProfileType {
     Enum,
     Sint8,
     Uint8,
@@ -228,7 +228,7 @@ export class Profile {
             return mesg.getField(fieldNum);
         }
 
-        return new Field('unknown', fieldNum, 0, 1, 0, '', false, Type.Enum);
+        return new Field('unknown', fieldNum, 0, 1, 0, '', false, ProfileType.Enum);
     }
 
     public static getField1(globalMesgNum: number, fieldName: string): Field | undefined {
@@ -259,127 +259,127 @@ export class Profile {
         }
 
         switch (num) {
-            case MesgNum.FileId:
+            case MesgNum.fileId:
                 newMesg = Profile.createFileIdMesg();
                 break;
 
-            case MesgNum.FileCreator:
+            case MesgNum.fileCreator:
                 newMesg = Profile.createFileCreatorMesg();
                 break;
 
-            case MesgNum.TimestampCorrelation:
+            case MesgNum.timestampCorrelation:
                 newMesg = Profile.createTimestampCorrelationMesg();
                 break;
 
-            case MesgNum.Software:
+            case MesgNum.software:
                 newMesg = Profile.createSoftwareMesg();
                 break;
 
-            case MesgNum.SlaveDevice:
+            case MesgNum.slaveDevice:
                 newMesg = Profile.createSlaveDeviceMesg();
                 break;
 
-            case MesgNum.Capabilities:
+            case MesgNum.capabilities:
                 newMesg = Profile.createCapabilitiesMesg();
                 break;
 
-            case MesgNum.FileCapabilities:
+            case MesgNum.fileCapabilities:
                 newMesg = Profile.createFileCapabilitiesMesg();
                 break;
 
-            case MesgNum.MesgCapabilities:
+            case MesgNum.mesgCapabilities:
                 newMesg = Profile.createMesgCapabilitiesMesg();
                 break;
 
-            case MesgNum.FieldCapabilities:
+            case MesgNum.fieldCapabilities:
                 newMesg = Profile.createFieldCapabilitiesMesg();
                 break;
 
-            case MesgNum.DeviceSettings:
+            case MesgNum.deviceSettings:
                 newMesg = Profile.createDeviceSettingsMesg();
                 break;
 
-            case MesgNum.UserProfile:
+            case MesgNum.userProfile:
                 newMesg = Profile.createUserProfileMesg();
                 break;
 
-            case MesgNum.HrmProfile:
+            case MesgNum.hrmProfile:
                 newMesg = Profile.createHrmProfileMesg();
                 break;
 
-            case MesgNum.SdmProfile:
+            case MesgNum.sdmProfile:
                 newMesg = Profile.createSdmProfileMesg();
                 break;
 
-            case MesgNum.BikeProfile:
+            case MesgNum.bikeProfile:
                 newMesg = Profile.createBikeProfileMesg();
                 break;
 
-            case MesgNum.Connectivity:
+            case MesgNum.connectivity:
                 newMesg = Profile.createConnectivityMesg();
                 break;
 
-            case MesgNum.WatchfaceSettings:
+            case MesgNum.watchfaceSettings:
                 newMesg = Profile.createWatchfaceSettingsMesg();
                 break;
 
-            case MesgNum.OhrSettings:
+            case MesgNum.ohrSettings:
                 newMesg = Profile.createOhrSettingsMesg();
                 break;
 
-            case MesgNum.ZonesTarget:
+            case MesgNum.zonesTarget:
                 newMesg = Profile.createZonesTargetMesg();
                 break;
 
-            case MesgNum.Sport:
+            case MesgNum.sport:
                 newMesg = Profile.createSportMesg();
                 break;
 
-            case MesgNum.HrZone:
+            case MesgNum.hrZone:
                 newMesg = Profile.createHrZoneMesg();
                 break;
 
-            case MesgNum.SpeedZone:
+            case MesgNum.speedZone:
                 newMesg = Profile.createSpeedZoneMesg();
                 break;
 
-            case MesgNum.CadenceZone:
+            case MesgNum.cadenceZone:
                 newMesg = Profile.createCadenceZoneMesg();
                 break;
 
-            case MesgNum.PowerZone:
+            case MesgNum.powerZone:
                 newMesg = Profile.createPowerZoneMesg();
                 break;
 
-            case MesgNum.MetZone:
+            case MesgNum.metZone:
                 newMesg = Profile.createMetZoneMesg();
                 break;
 
-            case MesgNum.DiveSettings:
+            case MesgNum.diveSettings:
                 newMesg = Profile.createDiveSettingsMesg();
                 break;
 
-            case MesgNum.DiveAlarm:
+            case MesgNum.diveAlarm:
                 newMesg = Profile.createDiveAlarmMesg();
                 break;
 
-            case MesgNum.DiveGas:
+            case MesgNum.diveGas:
                 newMesg = Profile.createDiveGasMesg();
                 break;
 
-            case MesgNum.Goal:
+            case MesgNum.goal:
                 newMesg = Profile.createGoalMesg();
                 break;
 
-            case MesgNum.Activity:
+            case MesgNum.activity:
                 newMesg = Profile.createActivityMesg();
                 break;
 
-            case MesgNum.Session:
+            case MesgNum.session:
                 newMesg = Profile.createSessionMesg();
                 break;
 
-            case MesgNum.Lap:
+            case MesgNum.lap:
                 newMesg = Profile.createLapMesg();
                 break;
 
@@ -387,219 +387,219 @@ export class Profile {
                 newMesg = Profile.createLengthMesg();
                 break;
 
-            case MesgNum.Record:
+            case MesgNum.record:
                 newMesg = Profile.createRecordMesg();
                 break;
 
-            case MesgNum.Event:
+            case MesgNum.event:
                 newMesg = Profile.createEventMesg();
                 break;
 
-            case MesgNum.DeviceInfo:
+            case MesgNum.deviceInfo:
                 newMesg = Profile.createDeviceInfoMesg();
                 break;
 
-            case MesgNum.TrainingFile:
+            case MesgNum.trainingFile:
                 newMesg = Profile.createTrainingFileMesg();
                 break;
 
-            case MesgNum.Hrv:
+            case MesgNum.hrv:
                 newMesg = Profile.createHrvMesg();
                 break;
 
-            case MesgNum.WeatherConditions:
+            case MesgNum.weatherConditions:
                 newMesg = Profile.createWeatherConditionsMesg();
                 break;
 
-            case MesgNum.WeatherAlert:
+            case MesgNum.weatherAlert:
                 newMesg = Profile.createWeatherAlertMesg();
                 break;
 
-            case MesgNum.GpsMetadata:
+            case MesgNum.gpsMetadata:
                 newMesg = Profile.createGpsMetadataMesg();
                 break;
 
-            case MesgNum.CameraEvent:
+            case MesgNum.cameraEvent:
                 newMesg = Profile.createCameraEventMesg();
                 break;
 
-            case MesgNum.GyroscopeData:
+            case MesgNum.gyroscopeData:
                 newMesg = Profile.createGyroscopeDataMesg();
                 break;
 
-            case MesgNum.AccelerometerData:
+            case MesgNum.accelerometerData:
                 newMesg = Profile.createAccelerometerDataMesg();
                 break;
 
-            case MesgNum.MagnetometerData:
+            case MesgNum.magnetometerData:
                 newMesg = Profile.createMagnetometerDataMesg();
                 break;
 
-            case MesgNum.BarometerData:
+            case MesgNum.barometerData:
                 newMesg = Profile.createBarometerDataMesg();
                 break;
 
-            case MesgNum.ThreeDSensorCalibration:
+            case MesgNum.threeDSensorCalibration:
                 newMesg = Profile.createThreeDSensorCalibrationMesg();
                 break;
 
-            case MesgNum.OneDSensorCalibration:
+            case MesgNum.oneDSensorCalibration:
                 newMesg = Profile.createOneDSensorCalibrationMesg();
                 break;
 
-            case MesgNum.VideoFrame:
+            case MesgNum.videoFrame:
                 newMesg = Profile.createVideoFrameMesg();
                 break;
 
-            case MesgNum.ObdiiData:
+            case MesgNum.obdiiData:
                 newMesg = Profile.createObdiiDataMesg();
                 break;
 
-            case MesgNum.NmeaSentence:
+            case MesgNum.nmeaSentence:
                 newMesg = Profile.createNmeaSentenceMesg();
                 break;
 
-            case MesgNum.AviationAttitude:
+            case MesgNum.aviationAttitude:
                 newMesg = Profile.createAviationAttitudeMesg();
                 break;
 
-            case MesgNum.Video:
+            case MesgNum.video:
                 newMesg = Profile.createVideoMesg();
                 break;
 
-            case MesgNum.VideoTitle:
+            case MesgNum.videoTitle:
                 newMesg = Profile.createVideoTitleMesg();
                 break;
 
-            case MesgNum.VideoDescription:
+            case MesgNum.videoDescription:
                 newMesg = Profile.createVideoDescriptionMesg();
                 break;
 
-            case MesgNum.VideoClip:
+            case MesgNum.videoClip:
                 newMesg = Profile.createVideoClipMesg();
                 break;
 
-            case MesgNum.Set:
+            case MesgNum.set:
                 newMesg = Profile.createSetMesg();
                 break;
 
-            case MesgNum.Course:
+            case MesgNum.course:
                 newMesg = Profile.createCourseMesg();
                 break;
 
-            case MesgNum.CoursePoint:
+            case MesgNum.coursePoint:
                 newMesg = Profile.createCoursePointMesg();
                 break;
 
-            case MesgNum.SegmentId:
+            case MesgNum.segmentId:
                 newMesg = Profile.createSegmentIdMesg();
                 break;
 
-            case MesgNum.SegmentLeaderboardEntry:
+            case MesgNum.segmentLeaderboardEntry:
                 newMesg = Profile.createSegmentLeaderboardEntryMesg();
                 break;
 
-            case MesgNum.SegmentPoint:
+            case MesgNum.segmentPoint:
                 newMesg = Profile.createSegmentPointMesg();
                 break;
 
-            case MesgNum.SegmentLap:
+            case MesgNum.segmentLap:
                 newMesg = Profile.createSegmentLapMesg();
                 break;
 
-            case MesgNum.SegmentFile:
+            case MesgNum.segmentFile:
                 newMesg = Profile.createSegmentFileMesg();
                 break;
 
-            case MesgNum.Workout:
+            case MesgNum.workout:
                 newMesg = Profile.createWorkoutMesg();
                 break;
 
-            case MesgNum.WorkoutSession:
+            case MesgNum.workoutSession:
                 newMesg = Profile.createWorkoutSessionMesg();
                 break;
 
-            case MesgNum.WorkoutStep:
+            case MesgNum.workoutStep:
                 newMesg = Profile.createWorkoutStepMesg();
                 break;
 
-            case MesgNum.ExerciseTitle:
+            case MesgNum.exerciseTitle:
                 newMesg = Profile.createExerciseTitleMesg();
                 break;
 
-            case MesgNum.Schedule:
+            case MesgNum.schedule:
                 newMesg = Profile.createScheduleMesg();
                 break;
 
-            case MesgNum.Totals:
+            case MesgNum.totals:
                 newMesg = Profile.createTotalsMesg();
                 break;
 
-            case MesgNum.WeightScale:
+            case MesgNum.weightScale:
                 newMesg = Profile.createWeightScaleMesg();
                 break;
 
-            case MesgNum.BloodPressure:
+            case MesgNum.bloodPressure:
                 newMesg = Profile.createBloodPressureMesg();
                 break;
 
-            case MesgNum.MonitoringInfo:
+            case MesgNum.monitoringInfo:
                 newMesg = Profile.createMonitoringInfoMesg();
                 break;
 
-            case MesgNum.Monitoring:
+            case MesgNum.monitoring:
                 newMesg = Profile.createMonitoringMesg();
                 break;
 
-            case MesgNum.Hr:
+            case MesgNum.hr:
                 newMesg = Profile.createHrMesg();
                 break;
 
-            case MesgNum.StressLevel:
+            case MesgNum.stressLevel:
                 newMesg = Profile.createStressLevelMesg();
                 break;
 
-            case MesgNum.MemoGlob:
+            case MesgNum.memoGlob:
                 newMesg = Profile.createMemoGlobMesg();
                 break;
 
-            case MesgNum.AntChannelId:
+            case MesgNum.antChannelId:
                 newMesg = Profile.createAntChannelIdMesg();
                 break;
 
-            case MesgNum.AntRx:
+            case MesgNum.antRx:
                 newMesg = Profile.createAntRxMesg();
                 break;
 
-            case MesgNum.AntTx:
+            case MesgNum.antTx:
                 newMesg = Profile.createAntTxMesg();
                 break;
 
-            case MesgNum.ExdScreenConfiguration:
+            case MesgNum.exdScreenConfiguration:
                 newMesg = Profile.createExdScreenConfigurationMesg();
                 break;
 
-            case MesgNum.ExdDataFieldConfiguration:
+            case MesgNum.exdDataFieldConfiguration:
                 newMesg = Profile.createExdDataFieldConfigurationMesg();
                 break;
 
-            case MesgNum.ExdDataConceptConfiguration:
+            case MesgNum.exdDataConceptConfiguration:
                 newMesg = Profile.createExdDataConceptConfigurationMesg();
                 break;
 
-            case MesgNum.FieldDescription:
+            case MesgNum.fieldDescription:
                 newMesg = Profile.createFieldDescriptionMesg();
                 break;
 
-            case MesgNum.DeveloperDataId:
+            case MesgNum.developerDataId:
                 newMesg = Profile.createDeveloperDataIdMesg();
                 break;
 
-            case MesgNum.DiveSummary:
+            case MesgNum.diveSummary:
                 newMesg = Profile.createDiveSummaryMesg();
                 break;
 
-            case MesgNum.Pad:
+            case MesgNum.pad:
                 newMesg = Profile.createPadMesg();
                 break;
 
@@ -618,13 +618,14 @@ export class Profile {
     private static createFileIdMesg(): Mesg {
         let fieldIndex: number;
         let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('FileId', MesgNum.FileId);
+        const newMesg: Mesg = new Mesg('FileId', MesgNum.fileId);
         fieldIndex = 0;
-        newMesg.setField(new Field('Type', 0, 0, 1, 0, '', false, Type.File));
+        newMesg.setField(new Field('Type', 0, 0, 1, 0, '', false, ProfileType.File));
         fieldIndex++;
-        newMesg.setField(new Field('Manufacturer', 1, 132, 1, 0, '', false, Type.Manufacturer));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('Manufacturer', 1, 132, 1, 0, '', false, ProfileType.Manufacturer));
         fieldIndex++;
-        newMesg.setField(new Field('Product', 2, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('Product', 2, 132, 1, 0, '', false, ProfileType.Uint16));
         subfieldIndex = 0;
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('FaveroProduct', 132, 1, 0, ''));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(1, 263);
@@ -635,65 +636,50 @@ export class Profile {
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(1, 13);
         subfieldIndex++;
         fieldIndex++;
-        newMesg.setField(new Field('SerialNumber', 3, 140, 1, 0, '', false, Type.Uint32z));
+        newMesg.setField(new Field('SerialNumber', 3, 140, 1, 0, '', false, ProfileType.Uint32z));
         fieldIndex++;
-        newMesg.setField(new Field('TimeCreated', 4, 134, 1, 0, '', false, Type.DateTime));
+        newMesg.setField(new Field('TimeCreated', 4, 134, 1, 0, '', false, ProfileType.DateTime));
         fieldIndex++;
-        newMesg.setField(new Field('Number', 5, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('Number', 5, 132, 1, 0, '', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('ProductName', 8, 7, 1, 0, '', false, Type.String));
+        newMesg.setField(new Field('ProductName', 8, 7, 1, 0, '', false, ProfileType.String));
         fieldIndex++;
 
         return newMesg;
     }
 
     private static createFileCreatorMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('FileCreator', MesgNum.FileCreator);
-        fieldIndex = 0;
-        newMesg.setField(new Field('SoftwareVersion', 0, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('HardwareVersion', 1, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('FileCreator', MesgNum.fileCreator);
+        newMesg.setField(new Field('SoftwareVersion', 0, 132, 1, 0, '', false, ProfileType.Uint16));
+        newMesg.setField(new Field('HardwareVersion', 1, 2, 1, 0, '', false, ProfileType.Uint8));
 
         return newMesg;
     }
 
     private static createTimestampCorrelationMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('TimestampCorrelation', MesgNum.TimestampCorrelation);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('FractionalTimestamp', 0, 132, 32768, 0, 's', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('SystemTimestamp', 1, 134, 1, 0, 's', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('FractionalSystemTimestamp', 2, 132, 32768, 0, 's', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('LocalTimestamp', 3, 134, 1, 0, 's', false, Type.LocalDateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('TimestampMs', 4, 132, 1, 0, 'ms', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('SystemTimestampMs', 5, 132, 1, 0, 'ms', false, Type.Uint16));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('TimestampCorrelation', MesgNum.timestampCorrelation);
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('FractionalTimestamp', 0, 132, 32768, 0, 's', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('SystemTimestamp', 1, 134, 1, 0, 's', false, ProfileType.DateTime));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('FractionalSystemTimestamp', 2, 132, 32768, 0, 's', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('LocalTimestamp', 3, 134, 1, 0, 's', false, ProfileType.LocalDateTime));
+        newMesg.setField(new Field('TimestampMs', 4, 132, 1, 0, 'ms', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('SystemTimestampMs', 5, 132, 1, 0, 'ms', false, ProfileType.Uint16));
 
         return newMesg;
     }
 
     private static createSoftwareMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('Software', MesgNum.Software);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('Version', 3, 132, 100, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('PartNumber', 5, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('Software', MesgNum.software);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('Version', 3, 132, 100, 0, '', false, ProfileType.Uint16));
+        newMesg.setField(new Field('PartNumber', 5, 7, 1, 0, '', false, ProfileType.String));
 
         return newMesg;
     }
@@ -701,11 +687,12 @@ export class Profile {
     private static createSlaveDeviceMesg(): Mesg {
         let fieldIndex: number;
         let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('SlaveDevice', MesgNum.SlaveDevice);
+        const newMesg: Mesg = new Mesg('SlaveDevice', MesgNum.slaveDevice);
         fieldIndex = 0;
-        newMesg.setField(new Field('Manufacturer', 0, 132, 1, 0, '', false, Type.Manufacturer));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('Manufacturer', 0, 132, 1, 0, '', false, ProfileType.Manufacturer));
         fieldIndex++;
-        newMesg.setField(new Field('Product', 1, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('Product', 1, 132, 1, 0, '', false, ProfileType.Uint16));
         subfieldIndex = 0;
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('FaveroProduct', 132, 1, 0, ''));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 263);
@@ -721,39 +708,27 @@ export class Profile {
     }
 
     private static createCapabilitiesMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('Capabilities', MesgNum.Capabilities);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Languages', 0, 10, 1, 0, '', false, Type.Uint8z));
-        fieldIndex++;
-        newMesg.setField(new Field('Sports', 1, 10, 1, 0, '', false, Type.SportBits0));
-        fieldIndex++;
-        newMesg.setField(new Field('WorkoutsSupported', 21, 140, 1, 0, '', false, Type.WorkoutCapabilities));
-        fieldIndex++;
-        newMesg.setField(new Field('ConnectivitySupported', 23, 140, 1, 0, '', false, Type.ConnectivityCapabilities));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('Capabilities', MesgNum.capabilities);
+        newMesg.setField(new Field('Languages', 0, 10, 1, 0, '', false, ProfileType.Uint8z));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('Sports', 1, 10, 1, 0, '', false, ProfileType.SportBits0));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('WorkoutsSupported', 21, 140, 1, 0, '', false, ProfileType.WorkoutCapabilities));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('ConnectivitySupported', 23, 140, 1, 0, '', false, ProfileType.ConnectivityCapabilities));
 
         return newMesg;
     }
 
     private static createFileCapabilitiesMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('FileCapabilities', MesgNum.FileCapabilities);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('Type', 0, 0, 1, 0, '', false, Type.File));
-        fieldIndex++;
-        newMesg.setField(new Field('Flags', 1, 10, 1, 0, '', false, Type.FileFlags));
-        fieldIndex++;
-        newMesg.setField(new Field('Directory', 2, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('MaxCount', 3, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('MaxSize', 4, 134, 1, 0, 'bytes', false, Type.Uint32));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('FileCapabilities', MesgNum.fileCapabilities);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('Type', 0, 0, 1, 0, '', false, ProfileType.File));
+        newMesg.setField(new Field('Flags', 1, 10, 1, 0, '', false, ProfileType.FileFlags));
+        newMesg.setField(new Field('Directory', 2, 7, 1, 0, '', false, ProfileType.String));
+        newMesg.setField(new Field('MaxCount', 3, 132, 1, 0, '', false, ProfileType.Uint16));
+        newMesg.setField(new Field('MaxSize', 4, 134, 1, 0, 'bytes', false, ProfileType.Uint32));
 
         return newMesg;
     }
@@ -761,17 +736,18 @@ export class Profile {
     private static createMesgCapabilitiesMesg(): Mesg {
         let fieldIndex: number;
         let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('MesgCapabilities', MesgNum.MesgCapabilities);
+        const newMesg: Mesg = new Mesg('MesgCapabilities', MesgNum.mesgCapabilities);
         fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
         fieldIndex++;
-        newMesg.setField(new Field('File', 0, 0, 1, 0, '', false, Type.File));
+        newMesg.setField(new Field('File', 0, 0, 1, 0, '', false, ProfileType.File));
         fieldIndex++;
-        newMesg.setField(new Field('MesgNum', 1, 132, 1, 0, '', false, Type.MesgNum));
+        newMesg.setField(new Field('MesgNum', 1, 132, 1, 0, '', false, ProfileType.MesgNum));
         fieldIndex++;
-        newMesg.setField(new Field('CountType', 2, 0, 1, 0, '', false, Type.MesgCount));
+        newMesg.setField(new Field('CountType', 2, 0, 1, 0, '', false, ProfileType.MesgCount));
         fieldIndex++;
-        newMesg.setField(new Field('Count', 3, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('Count', 3, 132, 1, 0, '', false, ProfileType.Uint16));
         subfieldIndex = 0;
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('NumPerFile', 132, 1, 0, ''));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(2, 0);
@@ -779,6 +755,7 @@ export class Profile {
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('MaxPerFile', 132, 1, 0, ''));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(2, 1);
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('MaxPerFileType', 132, 1, 0, ''));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(2, 2);
         subfieldIndex++;
@@ -788,294 +765,209 @@ export class Profile {
     }
 
     private static createFieldCapabilitiesMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('FieldCapabilities', MesgNum.FieldCapabilities);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('File', 0, 0, 1, 0, '', false, Type.File));
-        fieldIndex++;
-        newMesg.setField(new Field('MesgNum', 1, 132, 1, 0, '', false, Type.MesgNum));
-        fieldIndex++;
-        newMesg.setField(new Field('FieldNum', 2, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('Count', 3, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('FieldCapabilities', MesgNum.fieldCapabilities);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('File', 0, 0, 1, 0, '', false, ProfileType.File));
+        newMesg.setField(new Field('MesgNum', 1, 132, 1, 0, '', false, ProfileType.MesgNum));
+        newMesg.setField(new Field('FieldNum', 2, 2, 1, 0, '', false, ProfileType.Uint8));
+        newMesg.setField(new Field('Count', 3, 132, 1, 0, '', false, ProfileType.Uint16));
 
         return newMesg;
     }
 
     private static createDeviceSettingsMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('DeviceSettings', MesgNum.DeviceSettings);
-        fieldIndex = 0;
-        newMesg.setField(new Field('ActiveTimeZone', 0, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('UtcOffset', 1, 134, 1, 0, '', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('TimeOffset', 2, 134, 1, 0, 's', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('TimeMode', 4, 0, 1, 0, '', false, Type.TimeMode));
-        fieldIndex++;
-        newMesg.setField(new Field('TimeZoneOffset', 5, 1, 4, 0, 'hr', false, Type.Sint8));
-        fieldIndex++;
-        newMesg.setField(new Field('BacklightMode', 12, 0, 1, 0, '', false, Type.BacklightMode));
-        fieldIndex++;
-        newMesg.setField(new Field('ActivityTrackerEnabled', 36, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('ClockTime', 39, 134, 1, 0, '', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('PagesEnabled', 40, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('MoveAlertEnabled', 46, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('DateMode', 47, 0, 1, 0, '', false, Type.DateMode));
-        fieldIndex++;
-        newMesg.setField(new Field('DisplayOrientation', 55, 0, 1, 0, '', false, Type.DisplayOrientation));
-        fieldIndex++;
-        newMesg.setField(new Field('MountingSide', 56, 0, 1, 0, '', false, Type.Side));
-        fieldIndex++;
-        newMesg.setField(new Field('DefaultPage', 57, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('AutosyncMinSteps', 58, 132, 1, 0, 'steps', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('AutosyncMinTime', 59, 132, 1, 0, 'minutes', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('LactateThresholdAutodetectEnabled', 80, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('BleAutoUploadEnabled', 86, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('AutoSyncFrequency', 89, 0, 1, 0, '', false, Type.AutoSyncFrequency));
-        fieldIndex++;
-        newMesg.setField(new Field('AutoActivityDetect', 90, 134, 1, 0, '', false, Type.AutoActivityDetect));
-        fieldIndex++;
-        newMesg.setField(new Field('NumberOfScreens', 94, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('SmartNotificationDisplayOrientation', 95, 0, 1, 0, '', false, Type.DisplayOrientation));
-        fieldIndex++;
-        newMesg.setField(new Field('TapInterface', 134, 0, 1, 0, '', false, Type.Switch));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('DeviceSettings', MesgNum.deviceSettings);
+        newMesg.setField(new Field('ActiveTimeZone', 0, 2, 1, 0, '', false, ProfileType.Uint8));
+        newMesg.setField(new Field('UtcOffset', 1, 134, 1, 0, '', false, ProfileType.Uint32));
+        newMesg.setField(new Field('TimeOffset', 2, 134, 1, 0, 's', false, ProfileType.Uint32));
+        newMesg.setField(new Field('TimeMode', 4, 0, 1, 0, '', false, ProfileType.TimeMode));
+        newMesg.setField(new Field('TimeZoneOffset', 5, 1, 4, 0, 'hr', false, ProfileType.Sint8));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('BacklightMode', 12, 0, 1, 0, '', false, ProfileType.BacklightMode));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ActivityTrackerEnabled', 36, 0, 1, 0, '', false, ProfileType.Bool));
+        newMesg.setField(new Field('ClockTime', 39, 134, 1, 0, '', false, ProfileType.DateTime));
+        newMesg.setField(new Field('PagesEnabled', 40, 132, 1, 0, '', false, ProfileType.Uint16));
+        newMesg.setField(new Field('MoveAlertEnabled', 46, 0, 1, 0, '', false, ProfileType.Bool));
+        newMesg.setField(new Field('DateMode', 47, 0, 1, 0, '', false, ProfileType.DateMode));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('DisplayOrientation', 55, 0, 1, 0, '', false, ProfileType.DisplayOrientation));
+        newMesg.setField(new Field('MountingSide', 56, 0, 1, 0, '', false, ProfileType.Side));
+        newMesg.setField(new Field('DefaultPage', 57, 132, 1, 0, '', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('AutosyncMinSteps', 58, 132, 1, 0, 'steps', false, ProfileType.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AutosyncMinTime', 59, 132, 1, 0, 'minutes', false, ProfileType.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('LactateThresholdAutodetectEnabled', 80, 0, 1, 0, '', false, ProfileType.Bool));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('BleAutoUploadEnabled', 86, 0, 1, 0, '', false, ProfileType.Bool));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AutoSyncFrequency', 89, 0, 1, 0, '', false, ProfileType.AutoSyncFrequency));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AutoActivityDetect', 90, 134, 1, 0, '', false, ProfileType.AutoActivityDetect));
+        newMesg.setField(new Field('NumberOfScreens', 94, 2, 1, 0, '', false, ProfileType.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('SmartNotificationDisplayOrientation', 95, 0, 1, 0, '', false, ProfileType.DisplayOrientation));
+        newMesg.setField(new Field('TapInterface', 134, 0, 1, 0, '', false, ProfileType.Switch));
 
         return newMesg;
     }
 
     private static createUserProfileMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('UserProfile', MesgNum.UserProfile);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('FriendlyName', 0, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('Gender', 1, 0, 1, 0, '', false, Type.Gender));
-        fieldIndex++;
-        newMesg.setField(new Field('Age', 2, 2, 1, 0, 'years', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('Height', 3, 2, 100, 0, 'm', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('Weight', 4, 132, 10, 0, 'kg', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('Language', 5, 0, 1, 0, '', false, Type.Language));
-        fieldIndex++;
-        newMesg.setField(new Field('ElevSetting', 6, 0, 1, 0, '', false, Type.DisplayMeasure));
-        fieldIndex++;
-        newMesg.setField(new Field('WeightSetting', 7, 0, 1, 0, '', false, Type.DisplayMeasure));
-        fieldIndex++;
-        newMesg.setField(new Field('RestingHeartRate', 8, 2, 1, 0, 'bpm', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('DefaultMaxRunningHeartRate', 9, 2, 1, 0, 'bpm', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('DefaultMaxBikingHeartRate', 10, 2, 1, 0, 'bpm', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('DefaultMaxHeartRate', 11, 2, 1, 0, 'bpm', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('HrSetting', 12, 0, 1, 0, '', false, Type.DisplayHeart));
-        fieldIndex++;
-        newMesg.setField(new Field('SpeedSetting', 13, 0, 1, 0, '', false, Type.DisplayMeasure));
-        fieldIndex++;
-        newMesg.setField(new Field('DistSetting', 14, 0, 1, 0, '', false, Type.DisplayMeasure));
-        fieldIndex++;
-        newMesg.setField(new Field('PowerSetting', 16, 0, 1, 0, '', false, Type.DisplayPower));
-        fieldIndex++;
-        newMesg.setField(new Field('ActivityClass', 17, 0, 1, 0, '', false, Type.ActivityClass));
-        fieldIndex++;
-        newMesg.setField(new Field('PositionSetting', 18, 0, 1, 0, '', false, Type.DisplayPosition));
-        fieldIndex++;
-        newMesg.setField(new Field('TemperatureSetting', 21, 0, 1, 0, '', false, Type.DisplayMeasure));
-        fieldIndex++;
-        newMesg.setField(new Field('LocalId', 22, 132, 1, 0, '', false, Type.UserLocalId));
-        fieldIndex++;
-        newMesg.setField(new Field('GlobalId', 23, 13, 1, 0, '', false, Type.Byte));
-        fieldIndex++;
-        newMesg.setField(new Field('WakeTime', 28, 134, 1, 0, '', false, Type.LocaltimeIntoDay));
-        fieldIndex++;
-        newMesg.setField(new Field('SleepTime', 29, 134, 1, 0, '', false, Type.LocaltimeIntoDay));
-        fieldIndex++;
-        newMesg.setField(new Field('HeightSetting', 30, 0, 1, 0, '', false, Type.DisplayMeasure));
-        fieldIndex++;
-        newMesg.setField(new Field('UserRunningStepLength', 31, 132, 1000, 0, 'm', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('UserWalkingStepLength', 32, 132, 1000, 0, 'm', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('DepthSetting', 47, 0, 1, 0, '', false, Type.DisplayMeasure));
-        fieldIndex++;
-        newMesg.setField(new Field('DiveCount', 49, 134, 1, 0, '', false, Type.Uint32));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('UserProfile', MesgNum.userProfile);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('FriendlyName', 0, 7, 1, 0, '', false, ProfileType.String));
+        newMesg.setField(new Field('Gender', 1, 0, 1, 0, '', false, ProfileType.Gender));
+        newMesg.setField(new Field('Age', 2, 2, 1, 0, 'years', false, ProfileType.Uint8));
+        newMesg.setField(new Field('Height', 3, 2, 100, 0, 'm', false, ProfileType.Uint8));
+        newMesg.setField(new Field('Weight', 4, 132, 10, 0, 'kg', false, ProfileType.Uint16));
+        newMesg.setField(new Field('Language', 5, 0, 1, 0, '', false, ProfileType.Language));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ElevSetting', 6, 0, 1, 0, '', false, ProfileType.DisplayMeasure));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('WeightSetting', 7, 0, 1, 0, '', false, ProfileType.DisplayMeasure));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('RestingHeartRate', 8, 2, 1, 0, 'bpm', false, ProfileType.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('DefaultMaxRunningHeartRate', 9, 2, 1, 0, 'bpm', false, ProfileType.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('DefaultMaxBikingHeartRate', 10, 2, 1, 0, 'bpm', false, ProfileType.Uint8));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('DefaultMaxHeartRate', 11, 2, 1, 0, 'bpm', false, ProfileType.Uint8));
+        newMesg.setField(new Field('HrSetting', 12, 0, 1, 0, '', false, ProfileType.DisplayHeart));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('SpeedSetting', 13, 0, 1, 0, '', false, ProfileType.DisplayMeasure));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('DistSetting', 14, 0, 1, 0, '', false, ProfileType.DisplayMeasure));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('PowerSetting', 16, 0, 1, 0, '', false, ProfileType.DisplayPower));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ActivityClass', 17, 0, 1, 0, '', false, ProfileType.ActivityClass));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('PositionSetting', 18, 0, 1, 0, '', false, ProfileType.DisplayPosition));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('TemperatureSetting', 21, 0, 1, 0, '', false, ProfileType.DisplayMeasure));
+        newMesg.setField(new Field('LocalId', 22, 132, 1, 0, '', false, ProfileType.UserLocalId));
+        newMesg.setField(new Field('GlobalId', 23, 13, 1, 0, '', false, ProfileType.Byte));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('WakeTime', 28, 134, 1, 0, '', false, ProfileType.LocaltimeIntoDay));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('SleepTime', 29, 134, 1, 0, '', false, ProfileType.LocaltimeIntoDay));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('HeightSetting', 30, 0, 1, 0, '', false, ProfileType.DisplayMeasure));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('UserRunningStepLength', 31, 132, 1000, 0, 'm', false, ProfileType.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('UserWalkingStepLength', 32, 132, 1000, 0, 'm', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('DepthSetting', 47, 0, 1, 0, '', false, ProfileType.DisplayMeasure));
+        newMesg.setField(new Field('DiveCount', 49, 134, 1, 0, '', false, ProfileType.Uint32));
 
         return newMesg;
     }
 
     private static createHrmProfileMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('HrmProfile', MesgNum.HrmProfile);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('Enabled', 0, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('HrmAntId', 1, 139, 1, 0, '', false, Type.Uint16z));
-        fieldIndex++;
-        newMesg.setField(new Field('LogHrv', 2, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('HrmAntIdTransType', 3, 10, 1, 0, '', false, Type.Uint8z));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('HrmProfile', MesgNum.hrmProfile);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('Enabled', 0, 0, 1, 0, '', false, ProfileType.Bool));
+        newMesg.setField(new Field('HrmAntId', 1, 139, 1, 0, '', false, ProfileType.Uint16z));
+        newMesg.setField(new Field('LogHrv', 2, 0, 1, 0, '', false, ProfileType.Bool));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('HrmAntIdTransType', 3, 10, 1, 0, '', false, ProfileType.Uint8z));
 
         return newMesg;
     }
 
     private static createSdmProfileMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('SdmProfile', MesgNum.SdmProfile);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('Enabled', 0, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('SdmAntId', 1, 139, 1, 0, '', false, Type.Uint16z));
-        fieldIndex++;
-        newMesg.setField(new Field('SdmCalFactor', 2, 132, 10, 0, '%', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('Odometer', 3, 134, 100, 0, 'm', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('SpeedSource', 4, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('SdmAntIdTransType', 5, 10, 1, 0, '', false, Type.Uint8z));
-        fieldIndex++;
-        newMesg.setField(new Field('OdometerRollover', 7, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('SdmProfile', MesgNum.sdmProfile);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('Enabled', 0, 0, 1, 0, '', false, ProfileType.Bool));
+        newMesg.setField(new Field('SdmAntId', 1, 139, 1, 0, '', false, ProfileType.Uint16z));
+        newMesg.setField(new Field('SdmCalFactor', 2, 132, 10, 0, '%', false, ProfileType.Uint16));
+        newMesg.setField(new Field('Odometer', 3, 134, 100, 0, 'm', false, ProfileType.Uint32));
+        newMesg.setField(new Field('SpeedSource', 4, 0, 1, 0, '', false, ProfileType.Bool));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('SdmAntIdTransType', 5, 10, 1, 0, '', false, ProfileType.Uint8z));
+        newMesg.setField(new Field('OdometerRollover', 7, 2, 1, 0, '', false, ProfileType.Uint8));
 
         return newMesg;
     }
 
     private static createBikeProfileMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('BikeProfile', MesgNum.BikeProfile);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('Name', 0, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('Sport', 1, 0, 1, 0, '', false, Type.Sport));
-        fieldIndex++;
-        newMesg.setField(new Field('SubSport', 2, 0, 1, 0, '', false, Type.SubSport));
-        fieldIndex++;
-        newMesg.setField(new Field('Odometer', 3, 134, 100, 0, 'm', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('BikeSpdAntId', 4, 139, 1, 0, '', false, Type.Uint16z));
-        fieldIndex++;
-        newMesg.setField(new Field('BikeCadAntId', 5, 139, 1, 0, '', false, Type.Uint16z));
-        fieldIndex++;
-        newMesg.setField(new Field('BikeSpdcadAntId', 6, 139, 1, 0, '', false, Type.Uint16z));
-        fieldIndex++;
-        newMesg.setField(new Field('BikePowerAntId', 7, 139, 1, 0, '', false, Type.Uint16z));
-        fieldIndex++;
-        newMesg.setField(new Field('CustomWheelsize', 8, 132, 1000, 0, 'm', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('AutoWheelsize', 9, 132, 1000, 0, 'm', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('BikeWeight', 10, 132, 10, 0, 'kg', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('PowerCalFactor', 11, 132, 10, 0, '%', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('AutoWheelCal', 12, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('AutoPowerZero', 13, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('Id', 14, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('SpdEnabled', 15, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('CadEnabled', 16, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('SpdcadEnabled', 17, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('PowerEnabled', 18, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('CrankLength', 19, 2, 2, -110, 'mm', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('Enabled', 20, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('BikeSpdAntIdTransType', 21, 10, 1, 0, '', false, Type.Uint8z));
-        fieldIndex++;
-        newMesg.setField(new Field('BikeCadAntIdTransType', 22, 10, 1, 0, '', false, Type.Uint8z));
-        fieldIndex++;
-        newMesg.setField(new Field('BikeSpdcadAntIdTransType', 23, 10, 1, 0, '', false, Type.Uint8z));
-        fieldIndex++;
-        newMesg.setField(new Field('BikePowerAntIdTransType', 24, 10, 1, 0, '', false, Type.Uint8z));
-        fieldIndex++;
-        newMesg.setField(new Field('OdometerRollover', 37, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('FrontGearNum', 38, 10, 1, 0, '', false, Type.Uint8z));
-        fieldIndex++;
-        newMesg.setField(new Field('FrontGear', 39, 10, 1, 0, '', false, Type.Uint8z));
-        fieldIndex++;
-        newMesg.setField(new Field('RearGearNum', 40, 10, 1, 0, '', false, Type.Uint8z));
-        fieldIndex++;
-        newMesg.setField(new Field('RearGear', 41, 10, 1, 0, '', false, Type.Uint8z));
-        fieldIndex++;
-        newMesg.setField(new Field('ShimanoDi2Enabled', 44, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('BikeProfile', MesgNum.bikeProfile);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('Name', 0, 7, 1, 0, '', false, ProfileType.String));
+        newMesg.setField(new Field('Sport', 1, 0, 1, 0, '', false, ProfileType.Sport));
+        newMesg.setField(new Field('SubSport', 2, 0, 1, 0, '', false, ProfileType.SubSport));
+        newMesg.setField(new Field('Odometer', 3, 134, 100, 0, 'm', false, ProfileType.Uint32));
+        newMesg.setField(new Field('BikeSpdAntId', 4, 139, 1, 0, '', false, ProfileType.Uint16z));
+        newMesg.setField(new Field('BikeCadAntId', 5, 139, 1, 0, '', false, ProfileType.Uint16z));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('BikeSpdcadAntId', 6, 139, 1, 0, '', false, ProfileType.Uint16z));
+        newMesg.setField(new Field('BikePowerAntId', 7, 139, 1, 0, '', false, ProfileType.Uint16z));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('CustomWheelsize', 8, 132, 1000, 0, 'm', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('AutoWheelsize', 9, 132, 1000, 0, 'm', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('BikeWeight', 10, 132, 10, 0, 'kg', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('PowerCalFactor', 11, 132, 10, 0, '%', false, ProfileType.Uint16));
+        newMesg.setField(new Field('AutoWheelCal', 12, 0, 1, 0, '', false, ProfileType.Bool));
+        newMesg.setField(new Field('AutoPowerZero', 13, 0, 1, 0, '', false, ProfileType.Bool));
+        newMesg.setField(new Field('Id', 14, 2, 1, 0, '', false, ProfileType.Uint8));
+        newMesg.setField(new Field('SpdEnabled', 15, 0, 1, 0, '', false, ProfileType.Bool));
+        newMesg.setField(new Field('CadEnabled', 16, 0, 1, 0, '', false, ProfileType.Bool));
+        newMesg.setField(new Field('SpdcadEnabled', 17, 0, 1, 0, '', false, ProfileType.Bool));
+        newMesg.setField(new Field('PowerEnabled', 18, 0, 1, 0, '', false, ProfileType.Bool));
+        newMesg.setField(new Field('CrankLength', 19, 2, 2, -110, 'mm', false, ProfileType.Uint8));
+        newMesg.setField(new Field('Enabled', 20, 0, 1, 0, '', false, ProfileType.Bool));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('BikeSpdAntIdTransType', 21, 10, 1, 0, '', false, ProfileType.Uint8z));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('BikeCadAntIdTransType', 22, 10, 1, 0, '', false, ProfileType.Uint8z));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('BikeSpdcadAntIdTransType', 23, 10, 1, 0, '', false, ProfileType.Uint8z));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('BikePowerAntIdTransType', 24, 10, 1, 0, '', false, ProfileType.Uint8z));
+        newMesg.setField(new Field('OdometerRollover', 37, 2, 1, 0, '', false, ProfileType.Uint8));
+        newMesg.setField(new Field('FrontGearNum', 38, 10, 1, 0, '', false, ProfileType.Uint8z));
+        newMesg.setField(new Field('FrontGear', 39, 10, 1, 0, '', false, ProfileType.Uint8z));
+        newMesg.setField(new Field('RearGearNum', 40, 10, 1, 0, '', false, ProfileType.Uint8z));
+        newMesg.setField(new Field('RearGear', 41, 10, 1, 0, '', false, ProfileType.Uint8z));
+        newMesg.setField(new Field('ShimanoDi2Enabled', 44, 0, 1, 0, '', false, ProfileType.Bool));
 
         return newMesg;
     }
 
     private static createConnectivityMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('Connectivity', MesgNum.Connectivity);
-        fieldIndex = 0;
-        newMesg.setField(new Field('BluetoothEnabled', 0, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('BluetoothLeEnabled', 1, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('AntEnabled', 2, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('Name', 3, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('LiveTrackingEnabled', 4, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('WeatherConditionsEnabled', 5, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('WeatherAlertsEnabled', 6, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('AutoActivityUploadEnabled', 7, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('CourseDownloadEnabled', 8, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('WorkoutDownloadEnabled', 9, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('GpsEphemerisDownloadEnabled', 10, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('IncidentDetectionEnabled', 11, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('GrouptrackEnabled', 12, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('Connectivity', MesgNum.connectivity);
+        newMesg.setField(new Field('BluetoothEnabled', 0, 0, 1, 0, '', false, ProfileType.Bool));
+        newMesg.setField(new Field('BluetoothLeEnabled', 1, 0, 1, 0, '', false, ProfileType.Bool));
+        newMesg.setField(new Field('AntEnabled', 2, 0, 1, 0, '', false, ProfileType.Bool));
+        newMesg.setField(new Field('Name', 3, 7, 1, 0, '', false, ProfileType.String));
+        newMesg.setField(new Field('LiveTrackingEnabled', 4, 0, 1, 0, '', false, ProfileType.Bool));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('WeatherConditionsEnabled', 5, 0, 1, 0, '', false, ProfileType.Bool));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('WeatherAlertsEnabled', 6, 0, 1, 0, '', false, ProfileType.Bool));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('AutoActivityUploadEnabled', 7, 0, 1, 0, '', false, ProfileType.Bool));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('CourseDownloadEnabled', 8, 0, 1, 0, '', false, ProfileType.Bool));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('WorkoutDownloadEnabled', 9, 0, 1, 0, '', false, ProfileType.Bool));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('GpsEphemerisDownloadEnabled', 10, 0, 1, 0, '', false, ProfileType.Bool));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('IncidentDetectionEnabled', 11, 0, 1, 0, '', false, ProfileType.Bool));
+        newMesg.setField(new Field('GrouptrackEnabled', 12, 0, 1, 0, '', false, ProfileType.Bool));
 
         return newMesg;
     }
@@ -1083,13 +975,14 @@ export class Profile {
     private static createWatchfaceSettingsMesg(): Mesg {
         let fieldIndex: number;
         let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('WatchfaceSettings', MesgNum.WatchfaceSettings);
+        const newMesg: Mesg = new Mesg('WatchfaceSettings', MesgNum.watchfaceSettings);
         fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
         fieldIndex++;
-        newMesg.setField(new Field('Mode', 0, 0, 1, 0, '', false, Type.WatchfaceMode));
+        newMesg.setField(new Field('Mode', 0, 0, 1, 0, '', false, ProfileType.WatchfaceMode));
         fieldIndex++;
-        newMesg.setField(new Field('Layout', 1, 13, 1, 0, '', false, Type.Byte));
+        newMesg.setField(new Field('Layout', 1, 13, 1, 0, '', false, ProfileType.Byte));
         subfieldIndex = 0;
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('DigitalLayout', 0, 1, 0, ''));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 0);
@@ -1103,125 +996,83 @@ export class Profile {
     }
 
     private static createOhrSettingsMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('OhrSettings', MesgNum.OhrSettings);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('Enabled', 0, 0, 1, 0, '', false, Type.Switch));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('OhrSettings', MesgNum.ohrSettings);
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
+        newMesg.setField(new Field('Enabled', 0, 0, 1, 0, '', false, ProfileType.Switch));
 
         return newMesg;
     }
 
     private static createZonesTargetMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('ZonesTarget', MesgNum.ZonesTarget);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MaxHeartRate', 1, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('ThresholdHeartRate', 2, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('FunctionalThresholdPower', 3, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('HrCalcType', 5, 0, 1, 0, '', false, Type.HrZoneCalc));
-        fieldIndex++;
-        newMesg.setField(new Field('PwrCalcType', 7, 0, 1, 0, '', false, Type.PwrZoneCalc));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('ZonesTarget', MesgNum.zonesTarget);
+        newMesg.setField(new Field('MaxHeartRate', 1, 2, 1, 0, '', false, ProfileType.Uint8));
+        newMesg.setField(new Field('ThresholdHeartRate', 2, 2, 1, 0, '', false, ProfileType.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('FunctionalThresholdPower', 3, 132, 1, 0, '', false, ProfileType.Uint16));
+        newMesg.setField(new Field('HrCalcType', 5, 0, 1, 0, '', false, ProfileType.HrZoneCalc));
+        newMesg.setField(new Field('PwrCalcType', 7, 0, 1, 0, '', false, ProfileType.PwrZoneCalc));
 
         return newMesg;
     }
 
     private static createSportMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('Sport', MesgNum.Sport);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Sport', 0, 0, 1, 0, '', false, Type.Sport));
-        fieldIndex++;
-        newMesg.setField(new Field('SubSport', 1, 0, 1, 0, '', false, Type.SubSport));
-        fieldIndex++;
-        newMesg.setField(new Field('Name', 3, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('Sport', MesgNum.sport);
+        newMesg.setField(new Field('Sport', 0, 0, 1, 0, '', false, ProfileType.Sport));
+        newMesg.setField(new Field('SubSport', 1, 0, 1, 0, '', false, ProfileType.SubSport));
+        newMesg.setField(new Field('Name', 3, 7, 1, 0, '', false, ProfileType.String));
 
         return newMesg;
     }
 
     private static createHrZoneMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('HrZone', MesgNum.HrZone);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('HighBpm', 1, 2, 1, 0, 'bpm', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('Name', 2, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('HrZone', MesgNum.hrZone);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('HighBpm', 1, 2, 1, 0, 'bpm', false, ProfileType.Uint8));
+        newMesg.setField(new Field('Name', 2, 7, 1, 0, '', false, ProfileType.String));
 
         return newMesg;
     }
 
     private static createSpeedZoneMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('SpeedZone', MesgNum.SpeedZone);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('HighValue', 0, 132, 1000, 0, 'm/s', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('Name', 1, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('SpeedZone', MesgNum.speedZone);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('HighValue', 0, 132, 1000, 0, 'm/s', false, ProfileType.Uint16));
+        newMesg.setField(new Field('Name', 1, 7, 1, 0, '', false, ProfileType.String));
 
         return newMesg;
     }
 
     private static createCadenceZoneMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('CadenceZone', MesgNum.CadenceZone);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('HighValue', 0, 2, 1, 0, 'rpm', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('Name', 1, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('CadenceZone', MesgNum.cadenceZone);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('HighValue', 0, 2, 1, 0, 'rpm', false, ProfileType.Uint8));
+        newMesg.setField(new Field('Name', 1, 7, 1, 0, '', false, ProfileType.String));
 
         return newMesg;
     }
 
     private static createPowerZoneMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('PowerZone', MesgNum.PowerZone);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('HighValue', 1, 132, 1, 0, 'watts', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('Name', 2, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('PowerZone', MesgNum.powerZone);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('HighValue', 1, 132, 1, 0, 'watts', false, ProfileType.Uint16));
+        newMesg.setField(new Field('Name', 2, 7, 1, 0, '', false, ProfileType.String));
 
         return newMesg;
     }
 
     private static createMetZoneMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('MetZone', MesgNum.MetZone);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('HighBpm', 1, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('Calories', 2, 132, 10, 0, 'kcal / min', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('FatCalories', 3, 2, 10, 0, 'kcal / min', false, Type.Uint8));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('MetZone', MesgNum.metZone);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('HighBpm', 1, 2, 1, 0, '', false, ProfileType.Uint8));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('Calories', 2, 132, 10, 0, 'kcal / min', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('FatCalories', 3, 2, 10, 0, 'kcal / min', false, ProfileType.Uint8));
 
         return newMesg;
     }
@@ -1229,55 +1080,68 @@ export class Profile {
     private static createDiveSettingsMesg(): Mesg {
         let fieldIndex: number;
         let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('DiveSettings', MesgNum.DiveSettings);
+        const newMesg: Mesg = new Mesg('DiveSettings', MesgNum.diveSettings);
         fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
         fieldIndex++;
-        newMesg.setField(new Field('Name', 0, 7, 1, 0, '', false, Type.String));
+        newMesg.setField(new Field('Name', 0, 7, 1, 0, '', false, ProfileType.String));
         fieldIndex++;
-        newMesg.setField(new Field('Model', 1, 0, 1, 0, '', false, Type.TissueModelType));
+        newMesg.setField(new Field('Model', 1, 0, 1, 0, '', false, ProfileType.TissueModelType));
         fieldIndex++;
-        newMesg.setField(new Field('GfLow', 2, 2, 1, 0, 'percent', false, Type.Uint8));
+        newMesg.setField(new Field('GfLow', 2, 2, 1, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('GfHigh', 3, 2, 1, 0, 'percent', false, Type.Uint8));
+        newMesg.setField(new Field('GfHigh', 3, 2, 1, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('WaterType', 4, 0, 1, 0, '', false, Type.WaterType));
+        newMesg.setField(new Field('WaterType', 4, 0, 1, 0, '', false, ProfileType.WaterType));
         fieldIndex++;
-        newMesg.setField(new Field('WaterDensity', 5, 136, 1, 0, 'kg/m^3', false, Type.Float32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('WaterDensity', 5, 136, 1, 0, 'kg/m^3', false, ProfileType.Float32));
         fieldIndex++;
-        newMesg.setField(new Field('Po2Warn', 6, 2, 100, 0, 'percent', false, Type.Uint8));
+        newMesg.setField(new Field('Po2Warn', 6, 2, 100, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('Po2Critical', 7, 2, 100, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('Po2Critical', 7, 2, 100, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('Po2Deco', 8, 2, 100, 0, 'percent', false, Type.Uint8));
+        newMesg.setField(new Field('Po2Deco', 8, 2, 100, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('SafetyStopEnabled', 9, 0, 1, 0, '', false, Type.Bool));
+        newMesg.setField(new Field('SafetyStopEnabled', 9, 0, 1, 0, '', false, ProfileType.Bool));
         fieldIndex++;
-        newMesg.setField(new Field('BottomDepth', 10, 136, 1, 0, '', false, Type.Float32));
+        newMesg.setField(new Field('BottomDepth', 10, 136, 1, 0, '', false, ProfileType.Float32));
         fieldIndex++;
-        newMesg.setField(new Field('BottomTime', 11, 134, 1, 0, '', false, Type.Uint32));
+        newMesg.setField(new Field('BottomTime', 11, 134, 1, 0, '', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('ApneaCountdownEnabled', 12, 0, 1, 0, '', false, Type.Bool));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ApneaCountdownEnabled', 12, 0, 1, 0, '', false, ProfileType.Bool));
         fieldIndex++;
-        newMesg.setField(new Field('ApneaCountdownTime', 13, 134, 1, 0, '', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ApneaCountdownTime', 13, 134, 1, 0, '', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('BacklightMode', 14, 0, 1, 0, '', false, Type.DiveBacklightMode));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('BacklightMode', 14, 0, 1, 0, '', false, ProfileType.DiveBacklightMode));
         fieldIndex++;
-        newMesg.setField(new Field('BacklightBrightness', 15, 2, 1, 0, '', false, Type.Uint8));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('BacklightBrightness', 15, 2, 1, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('BacklightTimeout', 16, 2, 1, 0, '', false, Type.BacklightTimeout));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('BacklightTimeout', 16, 2, 1, 0, '', false, ProfileType.BacklightTimeout));
         fieldIndex++;
-        newMesg.setField(new Field('RepeatDiveInterval', 17, 132, 1, 0, 's', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('RepeatDiveInterval', 17, 132, 1, 0, 's', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('SafetyStopTime', 18, 132, 1, 0, 's', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('SafetyStopTime', 18, 132, 1, 0, 's', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('HeartRateSourceType', 19, 0, 1, 0, '', false, Type.SourceType));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('HeartRateSourceType', 19, 0, 1, 0, '', false, ProfileType.SourceType));
         fieldIndex++;
-        newMesg.setField(new Field('HeartRateSource', 20, 2, 1, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('HeartRateSource', 20, 2, 1, 0, '', false, ProfileType.Uint8));
         subfieldIndex = 0;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('HeartRateAntplusDeviceType', 2, 1, 0, ''));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(19, 1);
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('HeartRateLocalDeviceType', 2, 1, 0, ''));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(19, 5);
         subfieldIndex++;
@@ -1287,101 +1151,65 @@ export class Profile {
     }
 
     private static createDiveAlarmMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('DiveAlarm', MesgNum.DiveAlarm);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('Depth', 0, 134, 1000, 0, 'm', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('Time', 1, 133, 1, 0, 's', false, Type.Sint32));
-        fieldIndex++;
-        newMesg.setField(new Field('Enabled', 2, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('AlarmType', 3, 0, 1, 0, '', false, Type.DiveAlarmType));
-        fieldIndex++;
-        newMesg.setField(new Field('Sound', 4, 0, 1, 0, '', false, Type.Tone));
-        fieldIndex++;
-        newMesg.setField(new Field('DiveTypes', 5, 0, 1, 0, '', false, Type.SubSport));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('DiveAlarm', MesgNum.diveAlarm);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('Depth', 0, 134, 1000, 0, 'm', false, ProfileType.Uint32));
+        newMesg.setField(new Field('Time', 1, 133, 1, 0, 's', false, ProfileType.Sint32));
+        newMesg.setField(new Field('Enabled', 2, 0, 1, 0, '', false, ProfileType.Bool));
+        newMesg.setField(new Field('AlarmType', 3, 0, 1, 0, '', false, ProfileType.DiveAlarmType));
+        newMesg.setField(new Field('Sound', 4, 0, 1, 0, '', false, ProfileType.Tone));
+        newMesg.setField(new Field('DiveTypes', 5, 0, 1, 0, '', false, ProfileType.SubSport));
 
         return newMesg;
     }
 
     private static createDiveGasMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('DiveGas', MesgNum.DiveGas);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('HeliumContent', 0, 2, 1, 0, 'percent', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('OxygenContent', 1, 2, 1, 0, 'percent', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('Status', 2, 0, 1, 0, '', false, Type.DiveGasStatus));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('DiveGas', MesgNum.diveGas);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('HeliumContent', 0, 2, 1, 0, 'percent', false, ProfileType.Uint8));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('OxygenContent', 1, 2, 1, 0, 'percent', false, ProfileType.Uint8));
+        newMesg.setField(new Field('Status', 2, 0, 1, 0, '', false, ProfileType.DiveGasStatus));
 
         return newMesg;
     }
 
     private static createGoalMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('Goal', MesgNum.Goal);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('Sport', 0, 0, 1, 0, '', false, Type.Sport));
-        fieldIndex++;
-        newMesg.setField(new Field('SubSport', 1, 0, 1, 0, '', false, Type.SubSport));
-        fieldIndex++;
-        newMesg.setField(new Field('StartDate', 2, 134, 1, 0, '', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('EndDate', 3, 134, 1, 0, '', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('Type', 4, 0, 1, 0, '', false, Type.Goal));
-        fieldIndex++;
-        newMesg.setField(new Field('Value', 5, 134, 1, 0, '', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('Repeat', 6, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('TargetValue', 7, 134, 1, 0, '', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('Recurrence', 8, 0, 1, 0, '', false, Type.GoalRecurrence));
-        fieldIndex++;
-        newMesg.setField(new Field('RecurrenceValue', 9, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('Enabled', 10, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('Source', 11, 0, 1, 0, '', false, Type.GoalSource));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('Goal', MesgNum.goal);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('Sport', 0, 0, 1, 0, '', false, ProfileType.Sport));
+        newMesg.setField(new Field('SubSport', 1, 0, 1, 0, '', false, ProfileType.SubSport));
+        newMesg.setField(new Field('StartDate', 2, 134, 1, 0, '', false, ProfileType.DateTime));
+        newMesg.setField(new Field('EndDate', 3, 134, 1, 0, '', false, ProfileType.DateTime));
+        newMesg.setField(new Field('Type', 4, 0, 1, 0, '', false, ProfileType.Goal));
+        newMesg.setField(new Field('Value', 5, 134, 1, 0, '', false, ProfileType.Uint32));
+        newMesg.setField(new Field('Repeat', 6, 0, 1, 0, '', false, ProfileType.Bool));
+        newMesg.setField(new Field('TargetValue', 7, 134, 1, 0, '', false, ProfileType.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('Recurrence', 8, 0, 1, 0, '', false, ProfileType.GoalRecurrence));
+        newMesg.setField(new Field('RecurrenceValue', 9, 132, 1, 0, '', false, ProfileType.Uint16));
+        newMesg.setField(new Field('Enabled', 10, 0, 1, 0, '', false, ProfileType.Bool));
+        newMesg.setField(new Field('Source', 11, 0, 1, 0, '', false, ProfileType.GoalSource));
 
         return newMesg;
     }
 
     private static createActivityMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('Activity', MesgNum.Activity);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, '', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('TotalTimerTime', 0, 134, 1000, 0, 's', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('NumSessions', 1, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('Type', 2, 0, 1, 0, '', false, Type.Activity));
-        fieldIndex++;
-        newMesg.setField(new Field('Event', 3, 0, 1, 0, '', false, Type.Event));
-        fieldIndex++;
-        newMesg.setField(new Field('EventType', 4, 0, 1, 0, '', false, Type.EventType));
-        fieldIndex++;
-        newMesg.setField(new Field('LocalTimestamp', 5, 134, 1, 0, '', false, Type.LocalDateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('EventGroup', 6, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('Activity', MesgNum.activity);
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, '', false, ProfileType.DateTime));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalTimerTime', 0, 134, 1000, 0, 's', false, ProfileType.Uint32));
+        newMesg.setField(new Field('NumSessions', 1, 132, 1, 0, '', false, ProfileType.Uint16));
+        newMesg.setField(new Field('Type', 2, 0, 1, 0, '', false, ProfileType.Activity));
+        newMesg.setField(new Field('Event', 3, 0, 1, 0, '', false, ProfileType.Event));
+        newMesg.setField(new Field('EventType', 4, 0, 1, 0, '', false, ProfileType.EventType));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('LocalTimestamp', 5, 134, 1, 0, '', false, ProfileType.LocalDateTime));
+        newMesg.setField(new Field('EventGroup', 6, 2, 1, 0, '', false, ProfileType.Uint8));
 
         return newMesg;
     }
@@ -1389,263 +1217,343 @@ export class Profile {
     private static createSessionMesg(): Mesg {
         let fieldIndex: number;
         let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('Session', MesgNum.Session);
+        const newMesg: Mesg = new Mesg('Session', MesgNum.session);
         fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
         fieldIndex++;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
         fieldIndex++;
-        newMesg.setField(new Field('Event', 0, 0, 1, 0, '', false, Type.Event));
+        newMesg.setField(new Field('Event', 0, 0, 1, 0, '', false, ProfileType.Event));
         fieldIndex++;
-        newMesg.setField(new Field('EventType', 1, 0, 1, 0, '', false, Type.EventType));
+        newMesg.setField(new Field('EventType', 1, 0, 1, 0, '', false, ProfileType.EventType));
         fieldIndex++;
-        newMesg.setField(new Field('StartTime', 2, 134, 1, 0, '', false, Type.DateTime));
+        newMesg.setField(new Field('StartTime', 2, 134, 1, 0, '', false, ProfileType.DateTime));
         fieldIndex++;
-        newMesg.setField(new Field('StartPositionLat', 3, 133, 1, 0, 'semicircles', false, Type.Sint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('StartPositionLat', 3, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('StartPositionLong', 4, 133, 1, 0, 'semicircles', false, Type.Sint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('StartPositionLong', 4, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('Sport', 5, 0, 1, 0, '', false, Type.Sport));
+        newMesg.setField(new Field('Sport', 5, 0, 1, 0, '', false, ProfileType.Sport));
         fieldIndex++;
-        newMesg.setField(new Field('SubSport', 6, 0, 1, 0, '', false, Type.SubSport));
+        newMesg.setField(new Field('SubSport', 6, 0, 1, 0, '', false, ProfileType.SubSport));
         fieldIndex++;
-        newMesg.setField(new Field('TotalElapsedTime', 7, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalElapsedTime', 7, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('TotalTimerTime', 8, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalTimerTime', 8, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('TotalDistance', 9, 134, 100, 0, 'm', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalDistance', 9, 134, 100, 0, 'm', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('TotalCycles', 10, 134, 1, 0, 'cycles', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalCycles', 10, 134, 1, 0, 'cycles', false, ProfileType.Uint32));
         subfieldIndex = 0;
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('TotalStrides', 134, 1, 0, 'strides'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(5, 1);
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(5, 11);
         subfieldIndex++;
         fieldIndex++;
-        newMesg.setField(new Field('TotalCalories', 11, 132, 1, 0, 'kcal', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalCalories', 11, 132, 1, 0, 'kcal', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('TotalFatCalories', 13, 132, 1, 0, 'kcal', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalFatCalories', 13, 132, 1, 0, 'kcal', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgSpeed', 14, 132, 1000, 0, 'm/s', false, Type.Uint16));
+        newMesg.setField(new Field('AvgSpeed', 14, 132, 1000, 0, 'm/s', false, ProfileType.Uint16));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(124, false, 16, 1000, 0)); // enhanced_avg_speed
         fieldIndex++;
-        newMesg.setField(new Field('MaxSpeed', 15, 132, 1000, 0, 'm/s', false, Type.Uint16));
+        newMesg.setField(new Field('MaxSpeed', 15, 132, 1000, 0, 'm/s', false, ProfileType.Uint16));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(125, false, 16, 1000, 0)); // enhanced_max_speed
         fieldIndex++;
-        newMesg.setField(new Field('AvgHeartRate', 16, 2, 1, 0, 'bpm', false, Type.Uint8));
+        newMesg.setField(new Field('AvgHeartRate', 16, 2, 1, 0, 'bpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('MaxHeartRate', 17, 2, 1, 0, 'bpm', false, Type.Uint8));
+        newMesg.setField(new Field('MaxHeartRate', 17, 2, 1, 0, 'bpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgCadence', 18, 2, 1, 0, 'rpm', false, Type.Uint8));
+        newMesg.setField(new Field('AvgCadence', 18, 2, 1, 0, 'rpm', false, ProfileType.Uint8));
         subfieldIndex = 0;
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('AvgRunningCadence', 2, 1, 0, 'strides/min'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(5, 1);
         subfieldIndex++;
         fieldIndex++;
-        newMesg.setField(new Field('MaxCadence', 19, 2, 1, 0, 'rpm', false, Type.Uint8));
+        newMesg.setField(new Field('MaxCadence', 19, 2, 1, 0, 'rpm', false, ProfileType.Uint8));
         subfieldIndex = 0;
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('MaxRunningCadence', 2, 1, 0, 'strides/min'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(5, 1);
         subfieldIndex++;
         fieldIndex++;
-        newMesg.setField(new Field('AvgPower', 20, 132, 1, 0, 'watts', false, Type.Uint16));
+        newMesg.setField(new Field('AvgPower', 20, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxPower', 21, 132, 1, 0, 'watts', false, Type.Uint16));
+        newMesg.setField(new Field('MaxPower', 21, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('TotalAscent', 22, 132, 1, 0, 'm', false, Type.Uint16));
+        newMesg.setField(new Field('TotalAscent', 22, 132, 1, 0, 'm', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('TotalDescent', 23, 132, 1, 0, 'm', false, Type.Uint16));
+        newMesg.setField(new Field('TotalDescent', 23, 132, 1, 0, 'm', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('TotalTrainingEffect', 24, 2, 10, 0, '', false, Type.Uint8));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalTrainingEffect', 24, 2, 10, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('FirstLapIndex', 25, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('FirstLapIndex', 25, 132, 1, 0, '', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('NumLaps', 26, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('NumLaps', 26, 132, 1, 0, '', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('EventGroup', 27, 2, 1, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('EventGroup', 27, 2, 1, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('Trigger', 28, 0, 1, 0, '', false, Type.SessionTrigger));
+        newMesg.setField(new Field('Trigger', 28, 0, 1, 0, '', false, ProfileType.SessionTrigger));
         fieldIndex++;
-        newMesg.setField(new Field('NecLat', 29, 133, 1, 0, 'semicircles', false, Type.Sint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('NecLat', 29, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('NecLong', 30, 133, 1, 0, 'semicircles', false, Type.Sint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('NecLong', 30, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('SwcLat', 31, 133, 1, 0, 'semicircles', false, Type.Sint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('SwcLat', 31, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('SwcLong', 32, 133, 1, 0, 'semicircles', false, Type.Sint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('SwcLong', 32, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('NormalizedPower', 34, 132, 1, 0, 'watts', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('NormalizedPower', 34, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('TrainingStressScore', 35, 132, 10, 0, 'tss', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('TrainingStressScore', 35, 132, 10, 0, 'tss', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('IntensityFactor', 36, 132, 1000, 0, 'if', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('IntensityFactor', 36, 132, 1000, 0, 'if', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('LeftRightBalance', 37, 132, 1, 0, '', false, Type.LeftRightBalance100));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('LeftRightBalance', 37, 132, 1, 0, '', false, ProfileType.LeftRightBalance100));
         fieldIndex++;
-        newMesg.setField(new Field('AvgStrokeCount', 41, 134, 10, 0, 'strokes/lap', false, Type.Uint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgStrokeCount', 41, 134, 10, 0, 'strokes/lap', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('AvgStrokeDistance', 42, 132, 100, 0, 'm', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('AvgStrokeDistance', 42, 132, 100, 0, 'm', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('SwimStroke', 43, 0, 1, 0, 'swim_stroke', false, Type.SwimStroke));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('SwimStroke', 43, 0, 1, 0, 'swim_stroke', false, ProfileType.SwimStroke));
         fieldIndex++;
-        newMesg.setField(new Field('PoolLength', 44, 132, 100, 0, 'm', false, Type.Uint16));
+        newMesg.setField(new Field('PoolLength', 44, 132, 100, 0, 'm', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('ThresholdPower', 45, 132, 1, 0, 'watts', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ThresholdPower', 45, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('PoolLengthUnit', 46, 0, 1, 0, '', false, Type.DisplayMeasure));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('PoolLengthUnit', 46, 0, 1, 0, '', false, ProfileType.DisplayMeasure));
         fieldIndex++;
-        newMesg.setField(new Field('NumActiveLengths', 47, 132, 1, 0, 'lengths', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('NumActiveLengths', 47, 132, 1, 0, 'lengths', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('TotalWork', 48, 134, 1, 0, 'J', false, Type.Uint32));
+        newMesg.setField(new Field('TotalWork', 48, 134, 1, 0, 'J', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('AvgAltitude', 49, 132, 5, 500, 'm', false, Type.Uint16));
+        newMesg.setField(new Field('AvgAltitude', 49, 132, 5, 500, 'm', false, ProfileType.Uint16));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(126, false, 16, 5, 500)); // enhanced_avg_altitude
         fieldIndex++;
-        newMesg.setField(new Field('MaxAltitude', 50, 132, 5, 500, 'm', false, Type.Uint16));
+        newMesg.setField(new Field('MaxAltitude', 50, 132, 5, 500, 'm', false, ProfileType.Uint16));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(128, false, 16, 5, 500)); // enhanced_max_altitude
         fieldIndex++;
-        newMesg.setField(new Field('GpsAccuracy', 51, 2, 1, 0, 'm', false, Type.Uint8));
+        newMesg.setField(new Field('GpsAccuracy', 51, 2, 1, 0, 'm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgGrade', 52, 131, 100, 0, '%', false, Type.Sint16));
+        newMesg.setField(new Field('AvgGrade', 52, 131, 100, 0, '%', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgPosGrade', 53, 131, 100, 0, '%', false, Type.Sint16));
+        newMesg.setField(new Field('AvgPosGrade', 53, 131, 100, 0, '%', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgNegGrade', 54, 131, 100, 0, '%', false, Type.Sint16));
+        newMesg.setField(new Field('AvgNegGrade', 54, 131, 100, 0, '%', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxPosGrade', 55, 131, 100, 0, '%', false, Type.Sint16));
+        newMesg.setField(new Field('MaxPosGrade', 55, 131, 100, 0, '%', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxNegGrade', 56, 131, 100, 0, '%', false, Type.Sint16));
+        newMesg.setField(new Field('MaxNegGrade', 56, 131, 100, 0, '%', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgTemperature', 57, 1, 1, 0, 'C', false, Type.Sint8));
+        newMesg.setField(new Field('AvgTemperature', 57, 1, 1, 0, 'C', false, ProfileType.Sint8));
         fieldIndex++;
-        newMesg.setField(new Field('MaxTemperature', 58, 1, 1, 0, 'C', false, Type.Sint8));
+        newMesg.setField(new Field('MaxTemperature', 58, 1, 1, 0, 'C', false, ProfileType.Sint8));
         fieldIndex++;
-        newMesg.setField(new Field('TotalMovingTime', 59, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalMovingTime', 59, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('AvgPosVerticalSpeed', 60, 131, 1000, 0, 'm/s', false, Type.Sint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgPosVerticalSpeed', 60, 131, 1000, 0, 'm/s', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgNegVerticalSpeed', 61, 131, 1000, 0, 'm/s', false, Type.Sint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgNegVerticalSpeed', 61, 131, 1000, 0, 'm/s', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxPosVerticalSpeed', 62, 131, 1000, 0, 'm/s', false, Type.Sint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MaxPosVerticalSpeed', 62, 131, 1000, 0, 'm/s', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxNegVerticalSpeed', 63, 131, 1000, 0, 'm/s', false, Type.Sint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MaxNegVerticalSpeed', 63, 131, 1000, 0, 'm/s', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('MinHeartRate', 64, 2, 1, 0, 'bpm', false, Type.Uint8));
+        newMesg.setField(new Field('MinHeartRate', 64, 2, 1, 0, 'bpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('TimeInHrZone', 65, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TimeInHrZone', 65, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('TimeInSpeedZone', 66, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TimeInSpeedZone', 66, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('TimeInCadenceZone', 67, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TimeInCadenceZone', 67, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('TimeInPowerZone', 68, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TimeInPowerZone', 68, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('AvgLapTime', 69, 134, 1000, 0, 's', false, Type.Uint32));
+        newMesg.setField(new Field('AvgLapTime', 69, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('BestLapIndex', 70, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('BestLapIndex', 70, 132, 1, 0, '', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MinAltitude', 71, 132, 5, 500, 'm', false, Type.Uint16));
+        newMesg.setField(new Field('MinAltitude', 71, 132, 5, 500, 'm', false, ProfileType.Uint16));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(127, false, 16, 5, 500)); // enhanced_min_altitude
         fieldIndex++;
-        newMesg.setField(new Field('PlayerScore', 82, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('PlayerScore', 82, 132, 1, 0, '', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('OpponentScore', 83, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('OpponentScore', 83, 132, 1, 0, '', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('OpponentName', 84, 7, 1, 0, '', false, Type.String));
+        newMesg.setField(new Field('OpponentName', 84, 7, 1, 0, '', false, ProfileType.String));
         fieldIndex++;
-        newMesg.setField(new Field('StrokeCount', 85, 132, 1, 0, 'counts', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('StrokeCount', 85, 132, 1, 0, 'counts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('ZoneCount', 86, 132, 1, 0, 'counts', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ZoneCount', 86, 132, 1, 0, 'counts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxBallSpeed', 87, 132, 100, 0, 'm/s', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MaxBallSpeed', 87, 132, 100, 0, 'm/s', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgBallSpeed', 88, 132, 100, 0, 'm/s', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('AvgBallSpeed', 88, 132, 100, 0, 'm/s', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgVerticalOscillation', 89, 132, 10, 0, 'mm', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgVerticalOscillation', 89, 132, 10, 0, 'mm', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgStanceTimePercent', 90, 132, 100, 0, 'percent', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgStanceTimePercent', 90, 132, 100, 0, 'percent', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgStanceTime', 91, 132, 10, 0, 'ms', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('AvgStanceTime', 91, 132, 10, 0, 'ms', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgFractionalCadence', 92, 2, 128, 0, 'rpm', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgFractionalCadence', 92, 2, 128, 0, 'rpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('MaxFractionalCadence', 93, 2, 128, 0, 'rpm', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MaxFractionalCadence', 93, 2, 128, 0, 'rpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('TotalFractionalCycles', 94, 2, 128, 0, 'cycles', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('TotalFractionalCycles', 94, 2, 128, 0, 'cycles', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgTotalHemoglobinConc', 95, 132, 100, 0, 'g/dL', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgTotalHemoglobinConc', 95, 132, 100, 0, 'g/dL', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MinTotalHemoglobinConc', 96, 132, 100, 0, 'g/dL', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MinTotalHemoglobinConc', 96, 132, 100, 0, 'g/dL', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxTotalHemoglobinConc', 97, 132, 100, 0, 'g/dL', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MaxTotalHemoglobinConc', 97, 132, 100, 0, 'g/dL', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgSaturatedHemoglobinPercent', 98, 132, 10, 0, '%', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgSaturatedHemoglobinPercent', 98, 132, 10, 0, '%', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MinSaturatedHemoglobinPercent', 99, 132, 10, 0, '%', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MinSaturatedHemoglobinPercent', 99, 132, 10, 0, '%', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxSaturatedHemoglobinPercent', 100, 132, 10, 0, '%', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MaxSaturatedHemoglobinPercent', 100, 132, 10, 0, '%', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgLeftTorqueEffectiveness', 101, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgLeftTorqueEffectiveness', 101, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgRightTorqueEffectiveness', 102, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgRightTorqueEffectiveness', 102, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgLeftPedalSmoothness', 103, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgLeftPedalSmoothness', 103, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgRightPedalSmoothness', 104, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgRightPedalSmoothness', 104, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgCombinedPedalSmoothness', 105, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgCombinedPedalSmoothness', 105, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('SportIndex', 111, 2, 1, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('SportIndex', 111, 2, 1, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('TimeStanding', 112, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TimeStanding', 112, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('StandCount', 113, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('StandCount', 113, 132, 1, 0, '', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgLeftPco', 114, 1, 1, 0, 'mm', false, Type.Sint8));
+        newMesg.setField(new Field('AvgLeftPco', 114, 1, 1, 0, 'mm', false, ProfileType.Sint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgRightPco', 115, 1, 1, 0, 'mm', false, Type.Sint8));
+        newMesg.setField(new Field('AvgRightPco', 115, 1, 1, 0, 'mm', false, ProfileType.Sint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgLeftPowerPhase', 116, 2, 0.7111111, 0, 'degrees', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgLeftPowerPhase', 116, 2, 0.7111111, 0, 'degrees', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgLeftPowerPhasePeak', 117, 2, 0.7111111, 0, 'degrees', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgLeftPowerPhasePeak', 117, 2, 0.7111111, 0, 'degrees', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgRightPowerPhase', 118, 2, 0.7111111, 0, 'degrees', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgRightPowerPhase', 118, 2, 0.7111111, 0, 'degrees', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgRightPowerPhasePeak', 119, 2, 0.7111111, 0, 'degrees', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgRightPowerPhasePeak', 119, 2, 0.7111111, 0, 'degrees', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgPowerPosition', 120, 132, 1, 0, 'watts', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgPowerPosition', 120, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxPowerPosition', 121, 132, 1, 0, 'watts', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MaxPowerPosition', 121, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgCadencePosition', 122, 2, 1, 0, 'rpm', false, Type.Uint8));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('AvgCadencePosition', 122, 2, 1, 0, 'rpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('MaxCadencePosition', 123, 2, 1, 0, 'rpm', false, Type.Uint8));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MaxCadencePosition', 123, 2, 1, 0, 'rpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('EnhancedAvgSpeed', 124, 134, 1000, 0, 'm/s', false, Type.Uint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('EnhancedAvgSpeed', 124, 134, 1000, 0, 'm/s', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('EnhancedMaxSpeed', 125, 134, 1000, 0, 'm/s', false, Type.Uint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('EnhancedMaxSpeed', 125, 134, 1000, 0, 'm/s', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('EnhancedAvgAltitude', 126, 134, 5, 500, 'm', false, Type.Uint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('EnhancedAvgAltitude', 126, 134, 5, 500, 'm', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('EnhancedMinAltitude', 127, 134, 5, 500, 'm', false, Type.Uint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('EnhancedMinAltitude', 127, 134, 5, 500, 'm', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('EnhancedMaxAltitude', 128, 134, 5, 500, 'm', false, Type.Uint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('EnhancedMaxAltitude', 128, 134, 5, 500, 'm', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('AvgLevMotorPower', 129, 132, 1, 0, 'watts', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgLevMotorPower', 129, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxLevMotorPower', 130, 132, 1, 0, 'watts', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MaxLevMotorPower', 130, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('LevBatteryConsumption', 131, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('LevBatteryConsumption', 131, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgVerticalRatio', 132, 132, 100, 0, 'percent', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgVerticalRatio', 132, 132, 100, 0, 'percent', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgStanceTimeBalance', 133, 132, 100, 0, 'percent', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgStanceTimeBalance', 133, 132, 100, 0, 'percent', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgStepLength', 134, 132, 10, 0, 'mm', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('AvgStepLength', 134, 132, 10, 0, 'mm', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('TotalAnaerobicTrainingEffect', 137, 2, 10, 0, '', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('TotalAnaerobicTrainingEffect', 137, 2, 10, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgVam', 139, 132, 1000, 0, 'm/s', false, Type.Uint16));
+        newMesg.setField(new Field('AvgVam', 139, 132, 1000, 0, 'm/s', false, ProfileType.Uint16));
         fieldIndex++;
 
         return newMesg;
@@ -1654,431 +1562,531 @@ export class Profile {
     private static createLapMesg(): Mesg {
         let fieldIndex: number;
         let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('Lap', MesgNum.Lap);
+        const newMesg: Mesg = new Mesg('Lap', MesgNum.lap);
         fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
         fieldIndex++;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
         fieldIndex++;
-        newMesg.setField(new Field('Event', 0, 0, 1, 0, '', false, Type.Event));
+        newMesg.setField(new Field('Event', 0, 0, 1, 0, '', false, ProfileType.Event));
         fieldIndex++;
-        newMesg.setField(new Field('EventType', 1, 0, 1, 0, '', false, Type.EventType));
+        newMesg.setField(new Field('EventType', 1, 0, 1, 0, '', false, ProfileType.EventType));
         fieldIndex++;
-        newMesg.setField(new Field('StartTime', 2, 134, 1, 0, '', false, Type.DateTime));
+        newMesg.setField(new Field('StartTime', 2, 134, 1, 0, '', false, ProfileType.DateTime));
         fieldIndex++;
-        newMesg.setField(new Field('StartPositionLat', 3, 133, 1, 0, 'semicircles', false, Type.Sint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('StartPositionLat', 3, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('StartPositionLong', 4, 133, 1, 0, 'semicircles', false, Type.Sint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('StartPositionLong', 4, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('EndPositionLat', 5, 133, 1, 0, 'semicircles', false, Type.Sint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('EndPositionLat', 5, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('EndPositionLong', 6, 133, 1, 0, 'semicircles', false, Type.Sint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('EndPositionLong', 6, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('TotalElapsedTime', 7, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalElapsedTime', 7, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('TotalTimerTime', 8, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalTimerTime', 8, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('TotalDistance', 9, 134, 100, 0, 'm', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalDistance', 9, 134, 100, 0, 'm', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('TotalCycles', 10, 134, 1, 0, 'cycles', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalCycles', 10, 134, 1, 0, 'cycles', false, ProfileType.Uint32));
         subfieldIndex = 0;
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('TotalStrides', 134, 1, 0, 'strides'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(25, 1);
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(25, 11);
         subfieldIndex++;
         fieldIndex++;
-        newMesg.setField(new Field('TotalCalories', 11, 132, 1, 0, 'kcal', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalCalories', 11, 132, 1, 0, 'kcal', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('TotalFatCalories', 12, 132, 1, 0, 'kcal', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalFatCalories', 12, 132, 1, 0, 'kcal', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgSpeed', 13, 132, 1000, 0, 'm/s', false, Type.Uint16));
+        newMesg.setField(new Field('AvgSpeed', 13, 132, 1000, 0, 'm/s', false, ProfileType.Uint16));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(110, false, 16, 1000, 0)); // enhanced_avg_speed
         fieldIndex++;
-        newMesg.setField(new Field('MaxSpeed', 14, 132, 1000, 0, 'm/s', false, Type.Uint16));
+        newMesg.setField(new Field('MaxSpeed', 14, 132, 1000, 0, 'm/s', false, ProfileType.Uint16));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(111, false, 16, 1000, 0)); // enhanced_max_speed
         fieldIndex++;
-        newMesg.setField(new Field('AvgHeartRate', 15, 2, 1, 0, 'bpm', false, Type.Uint8));
+        newMesg.setField(new Field('AvgHeartRate', 15, 2, 1, 0, 'bpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('MaxHeartRate', 16, 2, 1, 0, 'bpm', false, Type.Uint8));
+        newMesg.setField(new Field('MaxHeartRate', 16, 2, 1, 0, 'bpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgCadence', 17, 2, 1, 0, 'rpm', false, Type.Uint8));
+        newMesg.setField(new Field('AvgCadence', 17, 2, 1, 0, 'rpm', false, ProfileType.Uint8));
         subfieldIndex = 0;
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('AvgRunningCadence', 2, 1, 0, 'strides/min'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(25, 1);
         subfieldIndex++;
         fieldIndex++;
-        newMesg.setField(new Field('MaxCadence', 18, 2, 1, 0, 'rpm', false, Type.Uint8));
+        newMesg.setField(new Field('MaxCadence', 18, 2, 1, 0, 'rpm', false, ProfileType.Uint8));
         subfieldIndex = 0;
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('MaxRunningCadence', 2, 1, 0, 'strides/min'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(25, 1);
         subfieldIndex++;
         fieldIndex++;
-        newMesg.setField(new Field('AvgPower', 19, 132, 1, 0, 'watts', false, Type.Uint16));
+        newMesg.setField(new Field('AvgPower', 19, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxPower', 20, 132, 1, 0, 'watts', false, Type.Uint16));
+        newMesg.setField(new Field('MaxPower', 20, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('TotalAscent', 21, 132, 1, 0, 'm', false, Type.Uint16));
+        newMesg.setField(new Field('TotalAscent', 21, 132, 1, 0, 'm', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('TotalDescent', 22, 132, 1, 0, 'm', false, Type.Uint16));
+        newMesg.setField(new Field('TotalDescent', 22, 132, 1, 0, 'm', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('Intensity', 23, 0, 1, 0, '', false, Type.Intensity));
+        newMesg.setField(new Field('Intensity', 23, 0, 1, 0, '', false, ProfileType.Intensity));
         fieldIndex++;
-        newMesg.setField(new Field('LapTrigger', 24, 0, 1, 0, '', false, Type.LapTrigger));
+        newMesg.setField(new Field('LapTrigger', 24, 0, 1, 0, '', false, ProfileType.LapTrigger));
         fieldIndex++;
-        newMesg.setField(new Field('Sport', 25, 0, 1, 0, '', false, Type.Sport));
+        newMesg.setField(new Field('Sport', 25, 0, 1, 0, '', false, ProfileType.Sport));
         fieldIndex++;
-        newMesg.setField(new Field('EventGroup', 26, 2, 1, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('EventGroup', 26, 2, 1, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('NumLengths', 32, 132, 1, 0, 'lengths', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('NumLengths', 32, 132, 1, 0, 'lengths', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('NormalizedPower', 33, 132, 1, 0, 'watts', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('NormalizedPower', 33, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('LeftRightBalance', 34, 132, 1, 0, '', false, Type.LeftRightBalance100));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('LeftRightBalance', 34, 132, 1, 0, '', false, ProfileType.LeftRightBalance100));
         fieldIndex++;
-        newMesg.setField(new Field('FirstLengthIndex', 35, 132, 1, 0, '', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('FirstLengthIndex', 35, 132, 1, 0, '', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgStrokeDistance', 37, 132, 100, 0, 'm', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('AvgStrokeDistance', 37, 132, 100, 0, 'm', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('SwimStroke', 38, 0, 1, 0, '', false, Type.SwimStroke));
+        newMesg.setField(new Field('SwimStroke', 38, 0, 1, 0, '', false, ProfileType.SwimStroke));
         fieldIndex++;
-        newMesg.setField(new Field('SubSport', 39, 0, 1, 0, '', false, Type.SubSport));
+        newMesg.setField(new Field('SubSport', 39, 0, 1, 0, '', false, ProfileType.SubSport));
         fieldIndex++;
-        newMesg.setField(new Field('NumActiveLengths', 40, 132, 1, 0, 'lengths', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('NumActiveLengths', 40, 132, 1, 0, 'lengths', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('TotalWork', 41, 134, 1, 0, 'J', false, Type.Uint32));
+        newMesg.setField(new Field('TotalWork', 41, 134, 1, 0, 'J', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('AvgAltitude', 42, 132, 5, 500, 'm', false, Type.Uint16));
+        newMesg.setField(new Field('AvgAltitude', 42, 132, 5, 500, 'm', false, ProfileType.Uint16));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(112, false, 16, 5, 500)); // enhanced_avg_altitude
         fieldIndex++;
-        newMesg.setField(new Field('MaxAltitude', 43, 132, 5, 500, 'm', false, Type.Uint16));
+        newMesg.setField(new Field('MaxAltitude', 43, 132, 5, 500, 'm', false, ProfileType.Uint16));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(114, false, 16, 5, 500)); // enhanced_max_altitude
         fieldIndex++;
-        newMesg.setField(new Field('GpsAccuracy', 44, 2, 1, 0, 'm', false, Type.Uint8));
+        newMesg.setField(new Field('GpsAccuracy', 44, 2, 1, 0, 'm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgGrade', 45, 131, 100, 0, '%', false, Type.Sint16));
+        newMesg.setField(new Field('AvgGrade', 45, 131, 100, 0, '%', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgPosGrade', 46, 131, 100, 0, '%', false, Type.Sint16));
+        newMesg.setField(new Field('AvgPosGrade', 46, 131, 100, 0, '%', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgNegGrade', 47, 131, 100, 0, '%', false, Type.Sint16));
+        newMesg.setField(new Field('AvgNegGrade', 47, 131, 100, 0, '%', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxPosGrade', 48, 131, 100, 0, '%', false, Type.Sint16));
+        newMesg.setField(new Field('MaxPosGrade', 48, 131, 100, 0, '%', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxNegGrade', 49, 131, 100, 0, '%', false, Type.Sint16));
+        newMesg.setField(new Field('MaxNegGrade', 49, 131, 100, 0, '%', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgTemperature', 50, 1, 1, 0, 'C', false, Type.Sint8));
+        newMesg.setField(new Field('AvgTemperature', 50, 1, 1, 0, 'C', false, ProfileType.Sint8));
         fieldIndex++;
-        newMesg.setField(new Field('MaxTemperature', 51, 1, 1, 0, 'C', false, Type.Sint8));
+        newMesg.setField(new Field('MaxTemperature', 51, 1, 1, 0, 'C', false, ProfileType.Sint8));
         fieldIndex++;
-        newMesg.setField(new Field('TotalMovingTime', 52, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalMovingTime', 52, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('AvgPosVerticalSpeed', 53, 131, 1000, 0, 'm/s', false, Type.Sint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgPosVerticalSpeed', 53, 131, 1000, 0, 'm/s', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgNegVerticalSpeed', 54, 131, 1000, 0, 'm/s', false, Type.Sint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgNegVerticalSpeed', 54, 131, 1000, 0, 'm/s', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxPosVerticalSpeed', 55, 131, 1000, 0, 'm/s', false, Type.Sint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MaxPosVerticalSpeed', 55, 131, 1000, 0, 'm/s', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxNegVerticalSpeed', 56, 131, 1000, 0, 'm/s', false, Type.Sint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MaxNegVerticalSpeed', 56, 131, 1000, 0, 'm/s', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('TimeInHrZone', 57, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TimeInHrZone', 57, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('TimeInSpeedZone', 58, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TimeInSpeedZone', 58, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('TimeInCadenceZone', 59, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TimeInCadenceZone', 59, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('TimeInPowerZone', 60, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TimeInPowerZone', 60, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('RepetitionNum', 61, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('RepetitionNum', 61, 132, 1, 0, '', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MinAltitude', 62, 132, 5, 500, 'm', false, Type.Uint16));
+        newMesg.setField(new Field('MinAltitude', 62, 132, 5, 500, 'm', false, ProfileType.Uint16));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(113, false, 16, 5, 500)); // enhanced_min_altitude
         fieldIndex++;
-        newMesg.setField(new Field('MinHeartRate', 63, 2, 1, 0, 'bpm', false, Type.Uint8));
+        newMesg.setField(new Field('MinHeartRate', 63, 2, 1, 0, 'bpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('WktStepIndex', 71, 132, 1, 0, '', false, Type.MessageIndex));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('WktStepIndex', 71, 132, 1, 0, '', false, ProfileType.MessageIndex));
         fieldIndex++;
-        newMesg.setField(new Field('OpponentScore', 74, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('OpponentScore', 74, 132, 1, 0, '', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('StrokeCount', 75, 132, 1, 0, 'counts', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('StrokeCount', 75, 132, 1, 0, 'counts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('ZoneCount', 76, 132, 1, 0, 'counts', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ZoneCount', 76, 132, 1, 0, 'counts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgVerticalOscillation', 77, 132, 10, 0, 'mm', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgVerticalOscillation', 77, 132, 10, 0, 'mm', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgStanceTimePercent', 78, 132, 100, 0, 'percent', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgStanceTimePercent', 78, 132, 100, 0, 'percent', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgStanceTime', 79, 132, 10, 0, 'ms', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('AvgStanceTime', 79, 132, 10, 0, 'ms', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgFractionalCadence', 80, 2, 128, 0, 'rpm', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgFractionalCadence', 80, 2, 128, 0, 'rpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('MaxFractionalCadence', 81, 2, 128, 0, 'rpm', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MaxFractionalCadence', 81, 2, 128, 0, 'rpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('TotalFractionalCycles', 82, 2, 128, 0, 'cycles', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('TotalFractionalCycles', 82, 2, 128, 0, 'cycles', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('PlayerScore', 83, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('PlayerScore', 83, 132, 1, 0, '', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgTotalHemoglobinConc', 84, 132, 100, 0, 'g/dL', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgTotalHemoglobinConc', 84, 132, 100, 0, 'g/dL', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MinTotalHemoglobinConc', 85, 132, 100, 0, 'g/dL', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MinTotalHemoglobinConc', 85, 132, 100, 0, 'g/dL', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxTotalHemoglobinConc', 86, 132, 100, 0, 'g/dL', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MaxTotalHemoglobinConc', 86, 132, 100, 0, 'g/dL', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgSaturatedHemoglobinPercent', 87, 132, 10, 0, '%', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgSaturatedHemoglobinPercent', 87, 132, 10, 0, '%', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MinSaturatedHemoglobinPercent', 88, 132, 10, 0, '%', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MinSaturatedHemoglobinPercent', 88, 132, 10, 0, '%', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxSaturatedHemoglobinPercent', 89, 132, 10, 0, '%', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MaxSaturatedHemoglobinPercent', 89, 132, 10, 0, '%', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgLeftTorqueEffectiveness', 91, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgLeftTorqueEffectiveness', 91, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgRightTorqueEffectiveness', 92, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgRightTorqueEffectiveness', 92, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgLeftPedalSmoothness', 93, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgLeftPedalSmoothness', 93, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgRightPedalSmoothness', 94, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgRightPedalSmoothness', 94, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgCombinedPedalSmoothness', 95, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgCombinedPedalSmoothness', 95, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('TimeStanding', 98, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TimeStanding', 98, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('StandCount', 99, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('StandCount', 99, 132, 1, 0, '', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgLeftPco', 100, 1, 1, 0, 'mm', false, Type.Sint8));
+        newMesg.setField(new Field('AvgLeftPco', 100, 1, 1, 0, 'mm', false, ProfileType.Sint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgRightPco', 101, 1, 1, 0, 'mm', false, Type.Sint8));
+        newMesg.setField(new Field('AvgRightPco', 101, 1, 1, 0, 'mm', false, ProfileType.Sint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgLeftPowerPhase', 102, 2, 0.7111111, 0, 'degrees', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgLeftPowerPhase', 102, 2, 0.7111111, 0, 'degrees', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgLeftPowerPhasePeak', 103, 2, 0.7111111, 0, 'degrees', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgLeftPowerPhasePeak', 103, 2, 0.7111111, 0, 'degrees', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgRightPowerPhase', 104, 2, 0.7111111, 0, 'degrees', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgRightPowerPhase', 104, 2, 0.7111111, 0, 'degrees', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgRightPowerPhasePeak', 105, 2, 0.7111111, 0, 'degrees', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgRightPowerPhasePeak', 105, 2, 0.7111111, 0, 'degrees', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgPowerPosition', 106, 132, 1, 0, 'watts', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgPowerPosition', 106, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxPowerPosition', 107, 132, 1, 0, 'watts', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MaxPowerPosition', 107, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgCadencePosition', 108, 2, 1, 0, 'rpm', false, Type.Uint8));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('AvgCadencePosition', 108, 2, 1, 0, 'rpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('MaxCadencePosition', 109, 2, 1, 0, 'rpm', false, Type.Uint8));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MaxCadencePosition', 109, 2, 1, 0, 'rpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('EnhancedAvgSpeed', 110, 134, 1000, 0, 'm/s', false, Type.Uint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('EnhancedAvgSpeed', 110, 134, 1000, 0, 'm/s', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('EnhancedMaxSpeed', 111, 134, 1000, 0, 'm/s', false, Type.Uint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('EnhancedMaxSpeed', 111, 134, 1000, 0, 'm/s', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('EnhancedAvgAltitude', 112, 134, 5, 500, 'm', false, Type.Uint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('EnhancedAvgAltitude', 112, 134, 5, 500, 'm', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('EnhancedMinAltitude', 113, 134, 5, 500, 'm', false, Type.Uint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('EnhancedMinAltitude', 113, 134, 5, 500, 'm', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('EnhancedMaxAltitude', 114, 134, 5, 500, 'm', false, Type.Uint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('EnhancedMaxAltitude', 114, 134, 5, 500, 'm', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('AvgLevMotorPower', 115, 132, 1, 0, 'watts', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgLevMotorPower', 115, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxLevMotorPower', 116, 132, 1, 0, 'watts', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MaxLevMotorPower', 116, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('LevBatteryConsumption', 117, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('LevBatteryConsumption', 117, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgVerticalRatio', 118, 132, 100, 0, 'percent', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgVerticalRatio', 118, 132, 100, 0, 'percent', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgStanceTimeBalance', 119, 132, 100, 0, 'percent', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgStanceTimeBalance', 119, 132, 100, 0, 'percent', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgStepLength', 120, 132, 10, 0, 'mm', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('AvgStepLength', 120, 132, 10, 0, 'mm', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgVam', 121, 132, 1000, 0, 'm/s', false, Type.Uint16));
+        newMesg.setField(new Field('AvgVam', 121, 132, 1000, 0, 'm/s', false, ProfileType.Uint16));
         fieldIndex++;
 
         return newMesg;
     }
 
     private static createLengthMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
         const newMesg: Mesg = new Mesg('Length', MesgNum.Length);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, '', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('Event', 0, 0, 1, 0, '', false, Type.Event));
-        fieldIndex++;
-        newMesg.setField(new Field('EventType', 1, 0, 1, 0, '', false, Type.EventType));
-        fieldIndex++;
-        newMesg.setField(new Field('StartTime', 2, 134, 1, 0, '', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('TotalElapsedTime', 3, 134, 1000, 0, 's', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('TotalTimerTime', 4, 134, 1000, 0, 's', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('TotalStrokes', 5, 132, 1, 0, 'strokes', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('AvgSpeed', 6, 132, 1000, 0, 'm/s', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('SwimStroke', 7, 0, 1, 0, 'swim_stroke', false, Type.SwimStroke));
-        fieldIndex++;
-        newMesg.setField(new Field('AvgSwimmingCadence', 9, 2, 1, 0, 'strokes/min', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('EventGroup', 10, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('TotalCalories', 11, 132, 1, 0, 'kcal', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('LengthType', 12, 0, 1, 0, '', false, Type.LengthType));
-        fieldIndex++;
-        newMesg.setField(new Field('PlayerScore', 18, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('OpponentScore', 19, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('StrokeCount', 20, 132, 1, 0, 'counts', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('ZoneCount', 21, 132, 1, 0, 'counts', false, Type.Uint16));
-        fieldIndex++;
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, '', false, ProfileType.DateTime));
+        newMesg.setField(new Field('Event', 0, 0, 1, 0, '', false, ProfileType.Event));
+        newMesg.setField(new Field('EventType', 1, 0, 1, 0, '', false, ProfileType.EventType));
+        newMesg.setField(new Field('StartTime', 2, 134, 1, 0, '', false, ProfileType.DateTime));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalElapsedTime', 3, 134, 1000, 0, 's', false, ProfileType.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalTimerTime', 4, 134, 1000, 0, 's', false, ProfileType.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalStrokes', 5, 132, 1, 0, 'strokes', false, ProfileType.Uint16));
+        newMesg.setField(new Field('AvgSpeed', 6, 132, 1000, 0, 'm/s', false, ProfileType.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('SwimStroke', 7, 0, 1, 0, 'swim_stroke', false, ProfileType.SwimStroke));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgSwimmingCadence', 9, 2, 1, 0, 'strokes/min', false, ProfileType.Uint8));
+        newMesg.setField(new Field('EventGroup', 10, 2, 1, 0, '', false, ProfileType.Uint8));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalCalories', 11, 132, 1, 0, 'kcal', false, ProfileType.Uint16));
+        newMesg.setField(new Field('LengthType', 12, 0, 1, 0, '', false, ProfileType.LengthType));
+        newMesg.setField(new Field('PlayerScore', 18, 132, 1, 0, '', false, ProfileType.Uint16));
+        newMesg.setField(new Field('OpponentScore', 19, 132, 1, 0, '', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('StrokeCount', 20, 132, 1, 0, 'counts', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ZoneCount', 21, 132, 1, 0, 'counts', false, ProfileType.Uint16));
 
         return newMesg;
     }
 
     private static createRecordMesg(): Mesg {
         let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('Record', MesgNum.Record);
+        const newMesg: Mesg = new Mesg('Record', MesgNum.record);
         fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
         fieldIndex++;
-        newMesg.setField(new Field('PositionLat', 0, 133, 1, 0, 'semicircles', false, Type.Sint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('PositionLat', 0, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('PositionLong', 1, 133, 1, 0, 'semicircles', false, Type.Sint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('PositionLong', 1, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('Altitude', 2, 132, 5, 500, 'm', false, Type.Uint16));
+        newMesg.setField(new Field('Altitude', 2, 132, 5, 500, 'm', false, ProfileType.Uint16));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(78, false, 16, 5, 500)); // enhanced_altitude
         fieldIndex++;
-        newMesg.setField(new Field('HeartRate', 3, 2, 1, 0, 'bpm', false, Type.Uint8));
+        newMesg.setField(new Field('HeartRate', 3, 2, 1, 0, 'bpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('Cadence', 4, 2, 1, 0, 'rpm', false, Type.Uint8));
+        newMesg.setField(new Field('Cadence', 4, 2, 1, 0, 'rpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('Distance', 5, 134, 100, 0, 'm', true, Type.Uint32));
+        newMesg.setField(new Field('Distance', 5, 134, 100, 0, 'm', true, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('Speed', 6, 132, 1000, 0, 'm/s', false, Type.Uint16));
+        newMesg.setField(new Field('Speed', 6, 132, 1000, 0, 'm/s', false, ProfileType.Uint16));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(73, false, 16, 1000, 0)); // enhanced_speed
         fieldIndex++;
-        newMesg.setField(new Field('Power', 7, 132, 1, 0, 'watts', false, Type.Uint16));
+        newMesg.setField(new Field('Power', 7, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('CompressedSpeedDistance', 8, 13, 1, 0, '', false, Type.Byte));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('CompressedSpeedDistance', 8, 13, 1, 0, '', false, ProfileType.Byte));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(6, false, 12, 100, 0)); // speed
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(5, true, 12, 16, 0)); // distance
         fieldIndex++;
-        newMesg.setField(new Field('Grade', 9, 131, 100, 0, '%', false, Type.Sint16));
+        newMesg.setField(new Field('Grade', 9, 131, 100, 0, '%', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('Resistance', 10, 2, 1, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('Resistance', 10, 2, 1, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('TimeFromCourse', 11, 133, 1000, 0, 's', false, Type.Sint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TimeFromCourse', 11, 133, 1000, 0, 's', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('CycleLength', 12, 2, 100, 0, 'm', false, Type.Uint8));
+        newMesg.setField(new Field('CycleLength', 12, 2, 100, 0, 'm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('Temperature', 13, 1, 1, 0, 'C', false, Type.Sint8));
+        newMesg.setField(new Field('Temperature', 13, 1, 1, 0, 'C', false, ProfileType.Sint8));
         fieldIndex++;
-        newMesg.setField(new Field('Speed1s', 17, 2, 16, 0, 'm/s', false, Type.Uint8));
+        newMesg.setField(new Field('Speed1s', 17, 2, 16, 0, 'm/s', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('Cycles', 18, 2, 1, 0, 'cycles', false, Type.Uint8));
+        newMesg.setField(new Field('Cycles', 18, 2, 1, 0, 'cycles', false, ProfileType.Uint8));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(19, true, 8, 1, 0)); // total_cycles
         fieldIndex++;
-        newMesg.setField(new Field('TotalCycles', 19, 134, 1, 0, 'cycles', true, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalCycles', 19, 134, 1, 0, 'cycles', true, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('CompressedAccumulatedPower', 28, 132, 1, 0, 'watts', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('CompressedAccumulatedPower', 28, 132, 1, 0, 'watts', false, ProfileType.Uint16));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(29, true, 16, 1, 0)); // accumulated_power
         fieldIndex++;
-        newMesg.setField(new Field('AccumulatedPower', 29, 134, 1, 0, 'watts', true, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('AccumulatedPower', 29, 134, 1, 0, 'watts', true, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('LeftRightBalance', 30, 2, 1, 0, '', false, Type.LeftRightBalance));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('LeftRightBalance', 30, 2, 1, 0, '', false, ProfileType.LeftRightBalance));
         fieldIndex++;
-        newMesg.setField(new Field('GpsAccuracy', 31, 2, 1, 0, 'm', false, Type.Uint8));
+        newMesg.setField(new Field('GpsAccuracy', 31, 2, 1, 0, 'm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('VerticalSpeed', 32, 131, 1000, 0, 'm/s', false, Type.Sint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('VerticalSpeed', 32, 131, 1000, 0, 'm/s', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('Calories', 33, 132, 1, 0, 'kcal', false, Type.Uint16));
+        newMesg.setField(new Field('Calories', 33, 132, 1, 0, 'kcal', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('VerticalOscillation', 39, 132, 10, 0, 'mm', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('VerticalOscillation', 39, 132, 10, 0, 'mm', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('StanceTimePercent', 40, 132, 100, 0, 'percent', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('StanceTimePercent', 40, 132, 100, 0, 'percent', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('StanceTime', 41, 132, 10, 0, 'ms', false, Type.Uint16));
+        newMesg.setField(new Field('StanceTime', 41, 132, 10, 0, 'ms', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('ActivityType', 42, 0, 1, 0, '', false, Type.ActivityType));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ActivityType', 42, 0, 1, 0, '', false, ProfileType.ActivityType));
         fieldIndex++;
-        newMesg.setField(new Field('LeftTorqueEffectiveness', 43, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('LeftTorqueEffectiveness', 43, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('RightTorqueEffectiveness', 44, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('RightTorqueEffectiveness', 44, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('LeftPedalSmoothness', 45, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('LeftPedalSmoothness', 45, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('RightPedalSmoothness', 46, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('RightPedalSmoothness', 46, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('CombinedPedalSmoothness', 47, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('CombinedPedalSmoothness', 47, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('Time128', 48, 2, 128, 0, 's', false, Type.Uint8));
+        newMesg.setField(new Field('Time128', 48, 2, 128, 0, 's', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('StrokeType', 49, 0, 1, 0, '', false, Type.StrokeType));
+        newMesg.setField(new Field('StrokeType', 49, 0, 1, 0, '', false, ProfileType.StrokeType));
         fieldIndex++;
-        newMesg.setField(new Field('Zone', 50, 2, 1, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('Zone', 50, 2, 1, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('BallSpeed', 51, 132, 100, 0, 'm/s', false, Type.Uint16));
+        newMesg.setField(new Field('BallSpeed', 51, 132, 100, 0, 'm/s', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('Cadence256', 52, 132, 256, 0, 'rpm', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('Cadence256', 52, 132, 256, 0, 'rpm', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('FractionalCadence', 53, 2, 128, 0, 'rpm', false, Type.Uint8));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('FractionalCadence', 53, 2, 128, 0, 'rpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('TotalHemoglobinConc', 54, 132, 100, 0, 'g/dL', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('TotalHemoglobinConc', 54, 132, 100, 0, 'g/dL', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('TotalHemoglobinConcMin', 55, 132, 100, 0, 'g/dL', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('TotalHemoglobinConcMin', 55, 132, 100, 0, 'g/dL', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('TotalHemoglobinConcMax', 56, 132, 100, 0, 'g/dL', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('TotalHemoglobinConcMax', 56, 132, 100, 0, 'g/dL', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('SaturatedHemoglobinPercent', 57, 132, 10, 0, '%', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('SaturatedHemoglobinPercent', 57, 132, 10, 0, '%', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('SaturatedHemoglobinPercentMin', 58, 132, 10, 0, '%', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('SaturatedHemoglobinPercentMin', 58, 132, 10, 0, '%', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('SaturatedHemoglobinPercentMax', 59, 132, 10, 0, '%', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('SaturatedHemoglobinPercentMax', 59, 132, 10, 0, '%', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('DeviceIndex', 62, 2, 1, 0, '', false, Type.DeviceIndex));
+        newMesg.setField(new Field('DeviceIndex', 62, 2, 1, 0, '', false, ProfileType.DeviceIndex));
         fieldIndex++;
-        newMesg.setField(new Field('LeftPco', 67, 1, 1, 0, 'mm', false, Type.Sint8));
+        newMesg.setField(new Field('LeftPco', 67, 1, 1, 0, 'mm', false, ProfileType.Sint8));
         fieldIndex++;
-        newMesg.setField(new Field('RightPco', 68, 1, 1, 0, 'mm', false, Type.Sint8));
+        newMesg.setField(new Field('RightPco', 68, 1, 1, 0, 'mm', false, ProfileType.Sint8));
         fieldIndex++;
-        newMesg.setField(new Field('LeftPowerPhase', 69, 2, 0.7111111, 0, 'degrees', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('LeftPowerPhase', 69, 2, 0.7111111, 0, 'degrees', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('LeftPowerPhasePeak', 70, 2, 0.7111111, 0, 'degrees', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('LeftPowerPhasePeak', 70, 2, 0.7111111, 0, 'degrees', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('RightPowerPhase', 71, 2, 0.7111111, 0, 'degrees', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('RightPowerPhase', 71, 2, 0.7111111, 0, 'degrees', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('RightPowerPhasePeak', 72, 2, 0.7111111, 0, 'degrees', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('RightPowerPhasePeak', 72, 2, 0.7111111, 0, 'degrees', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('EnhancedSpeed', 73, 134, 1000, 0, 'm/s', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('EnhancedSpeed', 73, 134, 1000, 0, 'm/s', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('EnhancedAltitude', 78, 134, 5, 500, 'm', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('EnhancedAltitude', 78, 134, 5, 500, 'm', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('BatterySoc', 81, 2, 2, 0, 'percent', false, Type.Uint8));
+        newMesg.setField(new Field('BatterySoc', 81, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('MotorPower', 82, 132, 1, 0, 'watts', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MotorPower', 82, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('VerticalRatio', 83, 132, 100, 0, 'percent', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('VerticalRatio', 83, 132, 100, 0, 'percent', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('StanceTimeBalance', 84, 132, 100, 0, 'percent', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('StanceTimeBalance', 84, 132, 100, 0, 'percent', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('StepLength', 85, 132, 10, 0, 'mm', false, Type.Uint16));
+        newMesg.setField(new Field('StepLength', 85, 132, 10, 0, 'mm', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AbsolutePressure', 91, 134, 1, 0, 'Pa', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('AbsolutePressure', 91, 134, 1, 0, 'Pa', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('Depth', 92, 134, 1000, 0, 'm', false, Type.Uint32));
+        newMesg.setField(new Field('Depth', 92, 134, 1000, 0, 'm', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('NextStopDepth', 93, 134, 1000, 0, 'm', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('NextStopDepth', 93, 134, 1000, 0, 'm', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('NextStopTime', 94, 134, 1, 0, 's', false, Type.Uint32));
+        newMesg.setField(new Field('NextStopTime', 94, 134, 1, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('TimeToSurface', 95, 134, 1, 0, 's', false, Type.Uint32));
+        newMesg.setField(new Field('TimeToSurface', 95, 134, 1, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('NdlTime', 96, 134, 1, 0, 's', false, Type.Uint32));
+        newMesg.setField(new Field('NdlTime', 96, 134, 1, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('CnsLoad', 97, 2, 1, 0, 'percent', false, Type.Uint8));
+        newMesg.setField(new Field('CnsLoad', 97, 2, 1, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('N2Load', 98, 132, 1, 0, 'percent', false, Type.Uint16));
+        newMesg.setField(new Field('N2Load', 98, 132, 1, 0, 'percent', false, ProfileType.Uint16));
         fieldIndex++;
 
         return newMesg;
@@ -2087,28 +2095,32 @@ export class Profile {
     private static createEventMesg(): Mesg {
         let fieldIndex: number;
         let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('Event', MesgNum.Event);
+        const newMesg: Mesg = new Mesg('Event', MesgNum.event);
         fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
         fieldIndex++;
-        newMesg.setField(new Field('Event', 0, 0, 1, 0, '', false, Type.Event));
+        newMesg.setField(new Field('Event', 0, 0, 1, 0, '', false, ProfileType.Event));
         fieldIndex++;
-        newMesg.setField(new Field('EventType', 1, 0, 1, 0, '', false, Type.EventType));
+        newMesg.setField(new Field('EventType', 1, 0, 1, 0, '', false, ProfileType.EventType));
         fieldIndex++;
-        newMesg.setField(new Field('Data16', 2, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('Data16', 2, 132, 1, 0, '', false, ProfileType.Uint16));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(3, false, 16, 1, 0)); // data
         fieldIndex++;
-        newMesg.setField(new Field('Data', 3, 134, 1, 0, '', false, Type.Uint32));
+        newMesg.setField(new Field('Data', 3, 134, 1, 0, '', false, ProfileType.Uint32));
         subfieldIndex = 0;
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('TimerTrigger', 0, 1, 0, ''));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 0);
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('CoursePointIndex', 132, 1, 0, ''));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 10);
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('BatteryLevel', 132, 1000, 0, 'V'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 11);
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('VirtualPartnerSpeed', 132, 1000, 0, 'm/s'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 12);
         subfieldIndex++;
@@ -2124,9 +2136,11 @@ export class Profile {
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('SpeedLowAlert', 134, 1000, 0, 'm/s'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 16);
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('CadHighAlert', 132, 1, 0, 'rpm'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 17);
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('CadLowAlert', 132, 1, 0, 'rpm'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 18);
         subfieldIndex++;
@@ -2136,12 +2150,15 @@ export class Profile {
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('PowerLowAlert', 132, 1, 0, 'watts'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 20);
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('TimeDurationAlert', 134, 1000, 0, 's'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 23);
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('DistanceDurationAlert', 134, 100, 0, 'm'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 24);
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('CalorieDurationAlert', 134, 1, 0, 'calories'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 25);
         subfieldIndex++;
@@ -2150,15 +2167,22 @@ export class Profile {
         subfieldIndex++;
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('SportPoint', 134, 1, 0, ''));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 33);
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addComponent(new FieldComponent(7, false, 16, 1, 0)); // score
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addComponent(new FieldComponent(8, false, 16, 1, 0)); // opponent_score
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('GearChangeData', 134, 1, 0, ''));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 42);
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 43);
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addComponent(new FieldComponent(11, false, 8, 1, 0)); // rear_gear_num
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addComponent(new FieldComponent(12, false, 8, 1, 0)); // rear_gear
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addComponent(new FieldComponent(9, false, 8, 1, 0)); // front_gear_num
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addComponent(new FieldComponent(10, false, 8, 1, 0)); // front_gear
         subfieldIndex++;
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('RiderPosition', 0, 1, 0, ''));
@@ -2168,21 +2192,21 @@ export class Profile {
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 47);
         subfieldIndex++;
         fieldIndex++;
-        newMesg.setField(new Field('EventGroup', 4, 2, 1, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('EventGroup', 4, 2, 1, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('Score', 7, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('Score', 7, 132, 1, 0, '', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('OpponentScore', 8, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('OpponentScore', 8, 132, 1, 0, '', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('FrontGearNum', 9, 10, 1, 0, '', false, Type.Uint8z));
+        newMesg.setField(new Field('FrontGearNum', 9, 10, 1, 0, '', false, ProfileType.Uint8z));
         fieldIndex++;
-        newMesg.setField(new Field('FrontGear', 10, 10, 1, 0, '', false, Type.Uint8z));
+        newMesg.setField(new Field('FrontGear', 10, 10, 1, 0, '', false, ProfileType.Uint8z));
         fieldIndex++;
-        newMesg.setField(new Field('RearGearNum', 11, 10, 1, 0, '', false, Type.Uint8z));
+        newMesg.setField(new Field('RearGearNum', 11, 10, 1, 0, '', false, ProfileType.Uint8z));
         fieldIndex++;
-        newMesg.setField(new Field('RearGear', 12, 10, 1, 0, '', false, Type.Uint8z));
+        newMesg.setField(new Field('RearGear', 12, 10, 1, 0, '', false, ProfileType.Uint8z));
         fieldIndex++;
-        newMesg.setField(new Field('DeviceIndex', 13, 2, 1, 0, '', false, Type.DeviceIndex));
+        newMesg.setField(new Field('DeviceIndex', 13, 2, 1, 0, '', false, ProfileType.DeviceIndex));
         fieldIndex++;
 
         return newMesg;
@@ -2191,14 +2215,15 @@ export class Profile {
     private static createDeviceInfoMesg(): Mesg {
         let fieldIndex: number;
         let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('DeviceInfo', MesgNum.DeviceInfo);
+        const newMesg: Mesg = new Mesg('DeviceInfo', MesgNum.deviceInfo);
         fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
         fieldIndex++;
-        newMesg.setField(new Field('DeviceIndex', 0, 2, 1, 0, '', false, Type.DeviceIndex));
+        newMesg.setField(new Field('DeviceIndex', 0, 2, 1, 0, '', false, ProfileType.DeviceIndex));
         fieldIndex++;
-        newMesg.setField(new Field('DeviceType', 1, 2, 1, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('DeviceType', 1, 2, 1, 0, '', false, ProfileType.Uint8));
         subfieldIndex = 0;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('AntplusDeviceType', 2, 1, 0, ''));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(25, 1);
         subfieldIndex++;
@@ -2206,11 +2231,12 @@ export class Profile {
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(25, 0);
         subfieldIndex++;
         fieldIndex++;
-        newMesg.setField(new Field('Manufacturer', 2, 132, 1, 0, '', false, Type.Manufacturer));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('Manufacturer', 2, 132, 1, 0, '', false, ProfileType.Manufacturer));
         fieldIndex++;
-        newMesg.setField(new Field('SerialNumber', 3, 140, 1, 0, '', false, Type.Uint32z));
+        newMesg.setField(new Field('SerialNumber', 3, 140, 1, 0, '', false, ProfileType.Uint32z));
         fieldIndex++;
-        newMesg.setField(new Field('Product', 4, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('Product', 4, 132, 1, 0, '', false, ProfileType.Uint16));
         subfieldIndex = 0;
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('FaveroProduct', 132, 1, 0, ''));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(2, 263);
@@ -2221,29 +2247,36 @@ export class Profile {
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(2, 13);
         subfieldIndex++;
         fieldIndex++;
-        newMesg.setField(new Field('SoftwareVersion', 5, 132, 100, 0, '', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('SoftwareVersion', 5, 132, 100, 0, '', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('HardwareVersion', 6, 2, 1, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('HardwareVersion', 6, 2, 1, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('CumOperatingTime', 7, 134, 1, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('CumOperatingTime', 7, 134, 1, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('BatteryVoltage', 10, 132, 256, 0, 'V', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('BatteryVoltage', 10, 132, 256, 0, 'V', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('BatteryStatus', 11, 2, 1, 0, '', false, Type.BatteryStatus));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('BatteryStatus', 11, 2, 1, 0, '', false, ProfileType.BatteryStatus));
         fieldIndex++;
-        newMesg.setField(new Field('SensorPosition', 18, 0, 1, 0, '', false, Type.BodyLocation));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('SensorPosition', 18, 0, 1, 0, '', false, ProfileType.BodyLocation));
         fieldIndex++;
-        newMesg.setField(new Field('Descriptor', 19, 7, 1, 0, '', false, Type.String));
+        newMesg.setField(new Field('Descriptor', 19, 7, 1, 0, '', false, ProfileType.String));
         fieldIndex++;
-        newMesg.setField(new Field('AntTransmissionType', 20, 10, 1, 0, '', false, Type.Uint8z));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('AntTransmissionType', 20, 10, 1, 0, '', false, ProfileType.Uint8z));
         fieldIndex++;
-        newMesg.setField(new Field('AntDeviceNumber', 21, 139, 1, 0, '', false, Type.Uint16z));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('AntDeviceNumber', 21, 139, 1, 0, '', false, ProfileType.Uint16z));
         fieldIndex++;
-        newMesg.setField(new Field('AntNetwork', 22, 0, 1, 0, '', false, Type.AntNetwork));
+        newMesg.setField(new Field('AntNetwork', 22, 0, 1, 0, '', false, ProfileType.AntNetwork));
         fieldIndex++;
-        newMesg.setField(new Field('SourceType', 25, 0, 1, 0, '', false, Type.SourceType));
+        newMesg.setField(new Field('SourceType', 25, 0, 1, 0, '', false, ProfileType.SourceType));
         fieldIndex++;
-        newMesg.setField(new Field('ProductName', 27, 7, 1, 0, '', false, Type.String));
+        newMesg.setField(new Field('ProductName', 27, 7, 1, 0, '', false, ProfileType.String));
         fieldIndex++;
 
         return newMesg;
@@ -2252,15 +2285,16 @@ export class Profile {
     private static createTrainingFileMesg(): Mesg {
         let fieldIndex: number;
         let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('TrainingFile', MesgNum.TrainingFile);
+        const newMesg: Mesg = new Mesg('TrainingFile', MesgNum.trainingFile);
         fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, '', false, Type.DateTime));
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, '', false, ProfileType.DateTime));
         fieldIndex++;
-        newMesg.setField(new Field('Type', 0, 0, 1, 0, '', false, Type.File));
+        newMesg.setField(new Field('Type', 0, 0, 1, 0, '', false, ProfileType.File));
         fieldIndex++;
-        newMesg.setField(new Field('Manufacturer', 1, 132, 1, 0, '', false, Type.Manufacturer));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('Manufacturer', 1, 132, 1, 0, '', false, ProfileType.Manufacturer));
         fieldIndex++;
-        newMesg.setField(new Field('Product', 2, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('Product', 2, 132, 1, 0, '', false, ProfileType.Uint16));
         subfieldIndex = 0;
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('FaveroProduct', 132, 1, 0, ''));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(1, 263);
@@ -2271,233 +2305,165 @@ export class Profile {
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(1, 13);
         subfieldIndex++;
         fieldIndex++;
-        newMesg.setField(new Field('SerialNumber', 3, 140, 1, 0, '', false, Type.Uint32z));
+        newMesg.setField(new Field('SerialNumber', 3, 140, 1, 0, '', false, ProfileType.Uint32z));
         fieldIndex++;
-        newMesg.setField(new Field('TimeCreated', 4, 134, 1, 0, '', false, Type.DateTime));
+        newMesg.setField(new Field('TimeCreated', 4, 134, 1, 0, '', false, ProfileType.DateTime));
         fieldIndex++;
 
         return newMesg;
     }
 
     private static createHrvMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('Hrv', MesgNum.Hrv);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Time', 0, 132, 1000, 0, 's', false, Type.Uint16));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('Hrv', MesgNum.hrv);
+        newMesg.setField(new Field('Time', 0, 132, 1000, 0, 's', false, ProfileType.Uint16));
 
         return newMesg;
     }
 
     private static createWeatherConditionsMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('WeatherConditions', MesgNum.WeatherConditions);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, '', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('WeatherReport', 0, 0, 1, 0, '', false, Type.WeatherReport));
-        fieldIndex++;
-        newMesg.setField(new Field('Temperature', 1, 1, 1, 0, 'C', false, Type.Sint8));
-        fieldIndex++;
-        newMesg.setField(new Field('Condition', 2, 0, 1, 0, '', false, Type.WeatherStatus));
-        fieldIndex++;
-        newMesg.setField(new Field('WindDirection', 3, 132, 1, 0, 'degrees', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('WindSpeed', 4, 132, 1000, 0, 'm/s', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('PrecipitationProbability', 5, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('TemperatureFeelsLike', 6, 1, 1, 0, 'C', false, Type.Sint8));
-        fieldIndex++;
-        newMesg.setField(new Field('RelativeHumidity', 7, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('Location', 8, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('ObservedAtTime', 9, 134, 1, 0, '', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('ObservedLocationLat', 10, 133, 1, 0, 'semicircles', false, Type.Sint32));
-        fieldIndex++;
-        newMesg.setField(new Field('ObservedLocationLong', 11, 133, 1, 0, 'semicircles', false, Type.Sint32));
-        fieldIndex++;
-        newMesg.setField(new Field('DayOfWeek', 12, 0, 1, 0, '', false, Type.DayOfWeek));
-        fieldIndex++;
-        newMesg.setField(new Field('HighTemperature', 13, 1, 1, 0, 'C', false, Type.Sint8));
-        fieldIndex++;
-        newMesg.setField(new Field('LowTemperature', 14, 1, 1, 0, 'C', false, Type.Sint8));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('WeatherConditions', MesgNum.weatherConditions);
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, '', false, ProfileType.DateTime));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('WeatherReport', 0, 0, 1, 0, '', false, ProfileType.WeatherReport));
+        newMesg.setField(new Field('Temperature', 1, 1, 1, 0, 'C', false, ProfileType.Sint8));
+        newMesg.setField(new Field('Condition', 2, 0, 1, 0, '', false, ProfileType.WeatherStatus));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('WindDirection', 3, 132, 1, 0, 'degrees', false, ProfileType.Uint16));
+        newMesg.setField(new Field('WindSpeed', 4, 132, 1000, 0, 'm/s', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('PrecipitationProbability', 5, 2, 1, 0, '', false, ProfileType.Uint8));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TemperatureFeelsLike', 6, 1, 1, 0, 'C', false, ProfileType.Sint8));
+        newMesg.setField(new Field('RelativeHumidity', 7, 2, 1, 0, '', false, ProfileType.Uint8));
+        newMesg.setField(new Field('Location', 8, 7, 1, 0, '', false, ProfileType.String));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ObservedAtTime', 9, 134, 1, 0, '', false, ProfileType.DateTime));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('ObservedLocationLat', 10, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('ObservedLocationLong', 11, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
+        newMesg.setField(new Field('DayOfWeek', 12, 0, 1, 0, '', false, ProfileType.DayOfWeek));
+        newMesg.setField(new Field('HighTemperature', 13, 1, 1, 0, 'C', false, ProfileType.Sint8));
+        newMesg.setField(new Field('LowTemperature', 14, 1, 1, 0, 'C', false, ProfileType.Sint8));
 
         return newMesg;
     }
 
     private static createWeatherAlertMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('WeatherAlert', MesgNum.WeatherAlert);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, '', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('ReportId', 0, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('IssueTime', 1, 134, 1, 0, '', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('ExpireTime', 2, 134, 1, 0, '', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('Severity', 3, 0, 1, 0, '', false, Type.WeatherSeverity));
-        fieldIndex++;
-        newMesg.setField(new Field('Type', 4, 0, 1, 0, '', false, Type.WeatherSevereType));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('WeatherAlert', MesgNum.weatherAlert);
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, '', false, ProfileType.DateTime));
+        newMesg.setField(new Field('ReportId', 0, 7, 1, 0, '', false, ProfileType.String));
+        newMesg.setField(new Field('IssueTime', 1, 134, 1, 0, '', false, ProfileType.DateTime));
+        newMesg.setField(new Field('ExpireTime', 2, 134, 1, 0, '', false, ProfileType.DateTime));
+        newMesg.setField(new Field('Severity', 3, 0, 1, 0, '', false, ProfileType.WeatherSeverity));
+        newMesg.setField(new Field('Type', 4, 0, 1, 0, '', false, ProfileType.WeatherSevereType));
 
         return newMesg;
     }
 
     private static createGpsMetadataMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('GpsMetadata', MesgNum.GpsMetadata);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('TimestampMs', 0, 132, 1, 0, 'ms', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('PositionLat', 1, 133, 1, 0, 'semicircles', false, Type.Sint32));
-        fieldIndex++;
-        newMesg.setField(new Field('PositionLong', 2, 133, 1, 0, 'semicircles', false, Type.Sint32));
-        fieldIndex++;
-        newMesg.setField(new Field('EnhancedAltitude', 3, 134, 5, 500, 'm', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('EnhancedSpeed', 4, 134, 1000, 0, 'm/s', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('Heading', 5, 132, 100, 0, 'degrees', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('UtcTimestamp', 6, 134, 1, 0, 's', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('Velocity', 7, 131, 100, 0, 'm/s', false, Type.Sint16));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('GpsMetadata', MesgNum.gpsMetadata);
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
+        newMesg.setField(new Field('TimestampMs', 0, 132, 1, 0, 'ms', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('PositionLat', 1, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('PositionLong', 2, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('EnhancedAltitude', 3, 134, 5, 500, 'm', false, ProfileType.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('EnhancedSpeed', 4, 134, 1000, 0, 'm/s', false, ProfileType.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('Heading', 5, 132, 100, 0, 'degrees', false, ProfileType.Uint16));
+        newMesg.setField(new Field('UtcTimestamp', 6, 134, 1, 0, 's', false, ProfileType.DateTime));
+        newMesg.setField(new Field('Velocity', 7, 131, 100, 0, 'm/s', false, ProfileType.Sint16));
 
         return newMesg;
     }
 
     private static createCameraEventMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('CameraEvent', MesgNum.CameraEvent);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('TimestampMs', 0, 132, 1, 0, 'ms', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('CameraEventType', 1, 0, 1, 0, '', false, Type.CameraEventType));
-        fieldIndex++;
-        newMesg.setField(new Field('CameraFileUuid', 2, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('CameraOrientation', 3, 0, 1, 0, '', false, Type.CameraOrientationType));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('CameraEvent', MesgNum.cameraEvent);
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
+        newMesg.setField(new Field('TimestampMs', 0, 132, 1, 0, 'ms', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('CameraEventType', 1, 0, 1, 0, '', false, ProfileType.CameraEventType));
+        newMesg.setField(new Field('CameraFileUuid', 2, 7, 1, 0, '', false, ProfileType.String));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('CameraOrientation', 3, 0, 1, 0, '', false, ProfileType.CameraOrientationType));
 
         return newMesg;
     }
 
     private static createGyroscopeDataMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('GyroscopeData', MesgNum.GyroscopeData);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('TimestampMs', 0, 132, 1, 0, 'ms', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('SampleTimeOffset', 1, 132, 1, 0, 'ms', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('GyroX', 2, 132, 1, 0, 'counts', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('GyroY', 3, 132, 1, 0, 'counts', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('GyroZ', 4, 132, 1, 0, 'counts', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('CalibratedGyroX', 5, 136, 1, 0, 'deg/s', false, Type.Float32));
-        fieldIndex++;
-        newMesg.setField(new Field('CalibratedGyroY', 6, 136, 1, 0, 'deg/s', false, Type.Float32));
-        fieldIndex++;
-        newMesg.setField(new Field('CalibratedGyroZ', 7, 136, 1, 0, 'deg/s', false, Type.Float32));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('GyroscopeData', MesgNum.gyroscopeData);
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
+        newMesg.setField(new Field('TimestampMs', 0, 132, 1, 0, 'ms', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('SampleTimeOffset', 1, 132, 1, 0, 'ms', false, ProfileType.Uint16));
+        newMesg.setField(new Field('GyroX', 2, 132, 1, 0, 'counts', false, ProfileType.Uint16));
+        newMesg.setField(new Field('GyroY', 3, 132, 1, 0, 'counts', false, ProfileType.Uint16));
+        newMesg.setField(new Field('GyroZ', 4, 132, 1, 0, 'counts', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('CalibratedGyroX', 5, 136, 1, 0, 'deg/s', false, ProfileType.Float32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('CalibratedGyroY', 6, 136, 1, 0, 'deg/s', false, ProfileType.Float32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('CalibratedGyroZ', 7, 136, 1, 0, 'deg/s', false, ProfileType.Float32));
 
         return newMesg;
     }
 
     private static createAccelerometerDataMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('AccelerometerData', MesgNum.AccelerometerData);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('TimestampMs', 0, 132, 1, 0, 'ms', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('SampleTimeOffset', 1, 132, 1, 0, 'ms', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('AccelX', 2, 132, 1, 0, 'counts', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('AccelY', 3, 132, 1, 0, 'counts', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('AccelZ', 4, 132, 1, 0, 'counts', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('CalibratedAccelX', 5, 136, 1, 0, 'g', false, Type.Float32));
-        fieldIndex++;
-        newMesg.setField(new Field('CalibratedAccelY', 6, 136, 1, 0, 'g', false, Type.Float32));
-        fieldIndex++;
-        newMesg.setField(new Field('CalibratedAccelZ', 7, 136, 1, 0, 'g', false, Type.Float32));
-        fieldIndex++;
-        newMesg.setField(new Field('CompressedCalibratedAccelX', 8, 131, 1, 0, 'mG', false, Type.Sint16));
-        fieldIndex++;
-        newMesg.setField(new Field('CompressedCalibratedAccelY', 9, 131, 1, 0, 'mG', false, Type.Sint16));
-        fieldIndex++;
-        newMesg.setField(new Field('CompressedCalibratedAccelZ', 10, 131, 1, 0, 'mG', false, Type.Sint16));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('AccelerometerData', MesgNum.accelerometerData);
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
+        newMesg.setField(new Field('TimestampMs', 0, 132, 1, 0, 'ms', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('SampleTimeOffset', 1, 132, 1, 0, 'ms', false, ProfileType.Uint16));
+        newMesg.setField(new Field('AccelX', 2, 132, 1, 0, 'counts', false, ProfileType.Uint16));
+        newMesg.setField(new Field('AccelY', 3, 132, 1, 0, 'counts', false, ProfileType.Uint16));
+        newMesg.setField(new Field('AccelZ', 4, 132, 1, 0, 'counts', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('CalibratedAccelX', 5, 136, 1, 0, 'g', false, ProfileType.Float32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('CalibratedAccelY', 6, 136, 1, 0, 'g', false, ProfileType.Float32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('CalibratedAccelZ', 7, 136, 1, 0, 'g', false, ProfileType.Float32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('CompressedCalibratedAccelX', 8, 131, 1, 0, 'mG', false, ProfileType.Sint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('CompressedCalibratedAccelY', 9, 131, 1, 0, 'mG', false, ProfileType.Sint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('CompressedCalibratedAccelZ', 10, 131, 1, 0, 'mG', false, ProfileType.Sint16));
 
         return newMesg;
     }
 
     private static createMagnetometerDataMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('MagnetometerData', MesgNum.MagnetometerData);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('TimestampMs', 0, 132, 1, 0, 'ms', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('SampleTimeOffset', 1, 132, 1, 0, 'ms', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('MagX', 2, 132, 1, 0, 'counts', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('MagY', 3, 132, 1, 0, 'counts', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('MagZ', 4, 132, 1, 0, 'counts', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('CalibratedMagX', 5, 136, 1, 0, 'G', false, Type.Float32));
-        fieldIndex++;
-        newMesg.setField(new Field('CalibratedMagY', 6, 136, 1, 0, 'G', false, Type.Float32));
-        fieldIndex++;
-        newMesg.setField(new Field('CalibratedMagZ', 7, 136, 1, 0, 'G', false, Type.Float32));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('MagnetometerData', MesgNum.magnetometerData);
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
+        newMesg.setField(new Field('TimestampMs', 0, 132, 1, 0, 'ms', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('SampleTimeOffset', 1, 132, 1, 0, 'ms', false, ProfileType.Uint16));
+        newMesg.setField(new Field('MagX', 2, 132, 1, 0, 'counts', false, ProfileType.Uint16));
+        newMesg.setField(new Field('MagY', 3, 132, 1, 0, 'counts', false, ProfileType.Uint16));
+        newMesg.setField(new Field('MagZ', 4, 132, 1, 0, 'counts', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('CalibratedMagX', 5, 136, 1, 0, 'G', false, ProfileType.Float32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('CalibratedMagY', 6, 136, 1, 0, 'G', false, ProfileType.Float32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('CalibratedMagZ', 7, 136, 1, 0, 'G', false, ProfileType.Float32));
 
         return newMesg;
     }
 
     private static createBarometerDataMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('BarometerData', MesgNum.BarometerData);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('TimestampMs', 0, 132, 1, 0, 'ms', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('SampleTimeOffset', 1, 132, 1, 0, 'ms', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('BaroPres', 2, 134, 1, 0, 'Pa', false, Type.Uint32));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('BarometerData', MesgNum.barometerData);
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
+        newMesg.setField(new Field('TimestampMs', 0, 132, 1, 0, 'ms', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('SampleTimeOffset', 1, 132, 1, 0, 'ms', false, ProfileType.Uint16));
+        newMesg.setField(new Field('BaroPres', 2, 134, 1, 0, 'Pa', false, ProfileType.Uint32));
 
         return newMesg;
     }
@@ -2505,14 +2471,16 @@ export class Profile {
     private static createThreeDSensorCalibrationMesg(): Mesg {
         let fieldIndex: number;
         let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('ThreeDSensorCalibration', MesgNum.ThreeDSensorCalibration);
+        const newMesg: Mesg = new Mesg('ThreeDSensorCalibration', MesgNum.threeDSensorCalibration);
         fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
         fieldIndex++;
-        newMesg.setField(new Field('SensorType', 0, 0, 1, 0, '', false, Type.SensorType));
+        newMesg.setField(new Field('SensorType', 0, 0, 1, 0, '', false, ProfileType.SensorType));
         fieldIndex++;
-        newMesg.setField(new Field('CalibrationFactor', 1, 134, 1, 0, '', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('CalibrationFactor', 1, 134, 1, 0, '', false, ProfileType.Uint32));
         subfieldIndex = 0;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('AccelCalFactor', 134, 1, 0, 'g'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 0);
         subfieldIndex++;
@@ -2520,13 +2488,15 @@ export class Profile {
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 1);
         subfieldIndex++;
         fieldIndex++;
-        newMesg.setField(new Field('CalibrationDivisor', 2, 134, 1, 0, 'counts', false, Type.Uint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('CalibrationDivisor', 2, 134, 1, 0, 'counts', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('LevelShift', 3, 134, 1, 0, '', false, Type.Uint32));
+        newMesg.setField(new Field('LevelShift', 3, 134, 1, 0, '', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('OffsetCal', 4, 133, 1, 0, '', false, Type.Sint32));
+        newMesg.setField(new Field('OffsetCal', 4, 133, 1, 0, '', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('OrientationMatrix', 5, 133, 65535, 0, '', false, Type.Sint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('OrientationMatrix', 5, 133, 65535, 0, '', false, ProfileType.Sint32));
         fieldIndex++;
 
         return newMesg;
@@ -2535,326 +2505,229 @@ export class Profile {
     private static createOneDSensorCalibrationMesg(): Mesg {
         let fieldIndex: number;
         let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('OneDSensorCalibration', MesgNum.OneDSensorCalibration);
+        const newMesg: Mesg = new Mesg('OneDSensorCalibration', MesgNum.oneDSensorCalibration);
         fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
         fieldIndex++;
-        newMesg.setField(new Field('SensorType', 0, 0, 1, 0, '', false, Type.SensorType));
+        newMesg.setField(new Field('SensorType', 0, 0, 1, 0, '', false, ProfileType.SensorType));
         fieldIndex++;
-        newMesg.setField(new Field('CalibrationFactor', 1, 134, 1, 0, '', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('CalibrationFactor', 1, 134, 1, 0, '', false, ProfileType.Uint32));
         subfieldIndex = 0;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('BaroCalFactor', 134, 1, 0, 'Pa'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 3);
         subfieldIndex++;
         fieldIndex++;
-        newMesg.setField(new Field('CalibrationDivisor', 2, 134, 1, 0, 'counts', false, Type.Uint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('CalibrationDivisor', 2, 134, 1, 0, 'counts', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('LevelShift', 3, 134, 1, 0, '', false, Type.Uint32));
+        newMesg.setField(new Field('LevelShift', 3, 134, 1, 0, '', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('OffsetCal', 4, 133, 1, 0, '', false, Type.Sint32));
+        newMesg.setField(new Field('OffsetCal', 4, 133, 1, 0, '', false, ProfileType.Sint32));
         fieldIndex++;
 
         return newMesg;
     }
 
     private static createVideoFrameMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('VideoFrame', MesgNum.VideoFrame);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('TimestampMs', 0, 132, 1, 0, 'ms', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('FrameNumber', 1, 134, 1, 0, '', false, Type.Uint32));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('VideoFrame', MesgNum.videoFrame);
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
+        newMesg.setField(new Field('TimestampMs', 0, 132, 1, 0, 'ms', false, ProfileType.Uint16));
+        newMesg.setField(new Field('FrameNumber', 1, 134, 1, 0, '', false, ProfileType.Uint32));
 
         return newMesg;
     }
 
     private static createObdiiDataMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('ObdiiData', MesgNum.ObdiiData);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('TimestampMs', 0, 132, 1, 0, 'ms', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('TimeOffset', 1, 132, 1, 0, 'ms', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('Pid', 2, 13, 1, 0, '', false, Type.Byte));
-        fieldIndex++;
-        newMesg.setField(new Field('RawData', 3, 13, 1, 0, '', false, Type.Byte));
-        fieldIndex++;
-        newMesg.setField(new Field('PidDataSize', 4, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('SystemTime', 5, 134, 1, 0, '', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('StartTimestamp', 6, 134, 1, 0, '', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('StartTimestampMs', 7, 132, 1, 0, 'ms', false, Type.Uint16));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('ObdiiData', MesgNum.obdiiData);
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
+        newMesg.setField(new Field('TimestampMs', 0, 132, 1, 0, 'ms', false, ProfileType.Uint16));
+        newMesg.setField(new Field('TimeOffset', 1, 132, 1, 0, 'ms', false, ProfileType.Uint16));
+        newMesg.setField(new Field('Pid', 2, 13, 1, 0, '', false, ProfileType.Byte));
+        newMesg.setField(new Field('RawData', 3, 13, 1, 0, '', false, ProfileType.Byte));
+        newMesg.setField(new Field('PidDataSize', 4, 2, 1, 0, '', false, ProfileType.Uint8));
+        newMesg.setField(new Field('SystemTime', 5, 134, 1, 0, '', false, ProfileType.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('StartTimestamp', 6, 134, 1, 0, '', false, ProfileType.DateTime));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('StartTimestampMs', 7, 132, 1, 0, 'ms', false, ProfileType.Uint16));
 
         return newMesg;
     }
 
     private static createNmeaSentenceMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('NmeaSentence', MesgNum.NmeaSentence);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('TimestampMs', 0, 132, 1, 0, 'ms', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('Sentence', 1, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('NmeaSentence', MesgNum.nmeaSentence);
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
+        newMesg.setField(new Field('TimestampMs', 0, 132, 1, 0, 'ms', false, ProfileType.Uint16));
+        newMesg.setField(new Field('Sentence', 1, 7, 1, 0, '', false, ProfileType.String));
 
         return newMesg;
     }
 
     private static createAviationAttitudeMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('AviationAttitude', MesgNum.AviationAttitude);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('TimestampMs', 0, 132, 1, 0, 'ms', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('SystemTime', 1, 134, 1, 0, 'ms', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('Pitch', 2, 131, 10430.38, 0, 'radians', false, Type.Sint16));
-        fieldIndex++;
-        newMesg.setField(new Field('Roll', 3, 131, 10430.38, 0, 'radians', false, Type.Sint16));
-        fieldIndex++;
-        newMesg.setField(new Field('AccelLateral', 4, 131, 100, 0, 'm/s^2', false, Type.Sint16));
-        fieldIndex++;
-        newMesg.setField(new Field('AccelNormal', 5, 131, 100, 0, 'm/s^2', false, Type.Sint16));
-        fieldIndex++;
-        newMesg.setField(new Field('TurnRate', 6, 131, 1024, 0, 'radians/second', false, Type.Sint16));
-        fieldIndex++;
-        newMesg.setField(new Field('Stage', 7, 0, 1, 0, '', false, Type.AttitudeStage));
-        fieldIndex++;
-        newMesg.setField(new Field('AttitudeStageComplete', 8, 2, 1, 0, '%', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('Track', 9, 132, 10430.38, 0, 'radians', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('Validity', 10, 132, 1, 0, '', false, Type.AttitudeValidity));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('AviationAttitude', MesgNum.aviationAttitude);
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
+        newMesg.setField(new Field('TimestampMs', 0, 132, 1, 0, 'ms', false, ProfileType.Uint16));
+        newMesg.setField(new Field('SystemTime', 1, 134, 1, 0, 'ms', false, ProfileType.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('Pitch', 2, 131, 10430.38, 0, 'radians', false, ProfileType.Sint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('Roll', 3, 131, 10430.38, 0, 'radians', false, ProfileType.Sint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('AccelLateral', 4, 131, 100, 0, 'm/s^2', false, ProfileType.Sint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('AccelNormal', 5, 131, 100, 0, 'm/s^2', false, ProfileType.Sint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('TurnRate', 6, 131, 1024, 0, 'radians/second', false, ProfileType.Sint16));
+        newMesg.setField(new Field('Stage', 7, 0, 1, 0, '', false, ProfileType.AttitudeStage));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('AttitudeStageComplete', 8, 2, 1, 0, '%', false, ProfileType.Uint8));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('Track', 9, 132, 10430.38, 0, 'radians', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('Validity', 10, 132, 1, 0, '', false, ProfileType.AttitudeValidity));
 
         return newMesg;
     }
 
     private static createVideoMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('Video', MesgNum.Video);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Url', 0, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('HostingProvider', 1, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('Duration', 2, 134, 1, 0, 'ms', false, Type.Uint32));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('Video', MesgNum.video);
+        newMesg.setField(new Field('Url', 0, 7, 1, 0, '', false, ProfileType.String));
+        newMesg.setField(new Field('HostingProvider', 1, 7, 1, 0, '', false, ProfileType.String));
+        newMesg.setField(new Field('Duration', 2, 134, 1, 0, 'ms', false, ProfileType.Uint32));
 
         return newMesg;
     }
 
     private static createVideoTitleMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('VideoTitle', MesgNum.VideoTitle);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('MessageCount', 0, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('Text', 1, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('VideoTitle', MesgNum.videoTitle);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('MessageCount', 0, 132, 1, 0, '', false, ProfileType.Uint16));
+        newMesg.setField(new Field('Text', 1, 7, 1, 0, '', false, ProfileType.String));
 
         return newMesg;
     }
 
     private static createVideoDescriptionMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('VideoDescription', MesgNum.VideoDescription);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('MessageCount', 0, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('Text', 1, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('VideoDescription', MesgNum.videoDescription);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('MessageCount', 0, 132, 1, 0, '', false, ProfileType.Uint16));
+        newMesg.setField(new Field('Text', 1, 7, 1, 0, '', false, ProfileType.String));
 
         return newMesg;
     }
 
     private static createVideoClipMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('VideoClip', MesgNum.VideoClip);
-        fieldIndex = 0;
-        newMesg.setField(new Field('ClipNumber', 0, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('StartTimestamp', 1, 134, 1, 0, '', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('StartTimestampMs', 2, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('EndTimestamp', 3, 134, 1, 0, '', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('EndTimestampMs', 4, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('ClipStart', 6, 134, 1, 0, 'ms', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('ClipEnd', 7, 134, 1, 0, 'ms', false, Type.Uint32));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('VideoClip', MesgNum.videoClip);
+        newMesg.setField(new Field('ClipNumber', 0, 132, 1, 0, '', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('StartTimestamp', 1, 134, 1, 0, '', false, ProfileType.DateTime));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('StartTimestampMs', 2, 132, 1, 0, '', false, ProfileType.Uint16));
+        newMesg.setField(new Field('EndTimestamp', 3, 134, 1, 0, '', false, ProfileType.DateTime));
+        newMesg.setField(new Field('EndTimestampMs', 4, 132, 1, 0, '', false, ProfileType.Uint16));
+        newMesg.setField(new Field('ClipStart', 6, 134, 1, 0, 'ms', false, ProfileType.Uint32));
+        newMesg.setField(new Field('ClipEnd', 7, 134, 1, 0, 'ms', false, ProfileType.Uint32));
 
         return newMesg;
     }
 
     private static createSetMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('Set', MesgNum.Set);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 254, 134, 1, 0, '', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('Duration', 0, 134, 1000, 0, 's', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('Repetitions', 3, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('Weight', 4, 132, 16, 0, 'kg', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('SetType', 5, 2, 1, 0, '', false, Type.SetType));
-        fieldIndex++;
-        newMesg.setField(new Field('StartTime', 6, 134, 1, 0, '', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('Category', 7, 132, 1, 0, '', false, Type.ExerciseCategory));
-        fieldIndex++;
-        newMesg.setField(new Field('CategorySubtype', 8, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('WeightDisplayUnit', 9, 132, 1, 0, '', false, Type.FitBaseUnit));
-        fieldIndex++;
-        newMesg.setField(new Field('MessageIndex', 10, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('WktStepIndex', 11, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('Set', MesgNum.set);
+        newMesg.setField(new Field('Timestamp', 254, 134, 1, 0, '', false, ProfileType.DateTime));
+        newMesg.setField(new Field('Duration', 0, 134, 1000, 0, 's', false, ProfileType.Uint32));
+        newMesg.setField(new Field('Repetitions', 3, 132, 1, 0, '', false, ProfileType.Uint16));
+        newMesg.setField(new Field('Weight', 4, 132, 16, 0, 'kg', false, ProfileType.Uint16));
+        newMesg.setField(new Field('SetType', 5, 2, 1, 0, '', false, ProfileType.SetType));
+        newMesg.setField(new Field('StartTime', 6, 134, 1, 0, '', false, ProfileType.DateTime));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('Category', 7, 132, 1, 0, '', false, ProfileType.ExerciseCategory));
+        newMesg.setField(new Field('CategorySubtype', 8, 132, 1, 0, '', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('WeightDisplayUnit', 9, 132, 1, 0, '', false, ProfileType.FitBaseUnit));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 10, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('WktStepIndex', 11, 132, 1, 0, '', false, ProfileType.MessageIndex));
 
         return newMesg;
     }
 
     private static createCourseMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('Course', MesgNum.Course);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Sport', 4, 0, 1, 0, '', false, Type.Sport));
-        fieldIndex++;
-        newMesg.setField(new Field('Name', 5, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('Capabilities', 6, 140, 1, 0, '', false, Type.CourseCapabilities));
-        fieldIndex++;
-        newMesg.setField(new Field('SubSport', 7, 0, 1, 0, '', false, Type.SubSport));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('Course', MesgNum.course);
+        newMesg.setField(new Field('Sport', 4, 0, 1, 0, '', false, ProfileType.Sport));
+        newMesg.setField(new Field('Name', 5, 7, 1, 0, '', false, ProfileType.String));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('Capabilities', 6, 140, 1, 0, '', false, ProfileType.CourseCapabilities));
+        newMesg.setField(new Field('SubSport', 7, 0, 1, 0, '', false, ProfileType.SubSport));
 
         return newMesg;
     }
 
     private static createCoursePointMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('CoursePoint', MesgNum.CoursePoint);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('Timestamp', 1, 134, 1, 0, '', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('PositionLat', 2, 133, 1, 0, 'semicircles', false, Type.Sint32));
-        fieldIndex++;
-        newMesg.setField(new Field('PositionLong', 3, 133, 1, 0, 'semicircles', false, Type.Sint32));
-        fieldIndex++;
-        newMesg.setField(new Field('Distance', 4, 134, 100, 0, 'm', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('Type', 5, 0, 1, 0, '', false, Type.CoursePoint));
-        fieldIndex++;
-        newMesg.setField(new Field('Name', 6, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('Favorite', 8, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('CoursePoint', MesgNum.coursePoint);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('Timestamp', 1, 134, 1, 0, '', false, ProfileType.DateTime));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('PositionLat', 2, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('PositionLong', 3, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
+        newMesg.setField(new Field('Distance', 4, 134, 100, 0, 'm', false, ProfileType.Uint32));
+        newMesg.setField(new Field('Type', 5, 0, 1, 0, '', false, ProfileType.CoursePoint));
+        newMesg.setField(new Field('Name', 6, 7, 1, 0, '', false, ProfileType.String));
+        newMesg.setField(new Field('Favorite', 8, 0, 1, 0, '', false, ProfileType.Bool));
 
         return newMesg;
     }
 
     private static createSegmentIdMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('SegmentId', MesgNum.SegmentId);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Name', 0, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('Uuid', 1, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('Sport', 2, 0, 1, 0, '', false, Type.Sport));
-        fieldIndex++;
-        newMesg.setField(new Field('Enabled', 3, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('UserProfilePrimaryKey', 4, 134, 1, 0, '', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('DeviceId', 5, 134, 1, 0, '', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('DefaultRaceLeader', 6, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('DeleteStatus', 7, 0, 1, 0, '', false, Type.SegmentDeleteStatus));
-        fieldIndex++;
-        newMesg.setField(new Field('SelectionType', 8, 0, 1, 0, '', false, Type.SegmentSelectionType));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('SegmentId', MesgNum.segmentId);
+        newMesg.setField(new Field('Name', 0, 7, 1, 0, '', false, ProfileType.String));
+        newMesg.setField(new Field('Uuid', 1, 7, 1, 0, '', false, ProfileType.String));
+        newMesg.setField(new Field('Sport', 2, 0, 1, 0, '', false, ProfileType.Sport));
+        newMesg.setField(new Field('Enabled', 3, 0, 1, 0, '', false, ProfileType.Bool));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('UserProfilePrimaryKey', 4, 134, 1, 0, '', false, ProfileType.Uint32));
+        newMesg.setField(new Field('DeviceId', 5, 134, 1, 0, '', false, ProfileType.Uint32));
+        newMesg.setField(new Field('DefaultRaceLeader', 6, 2, 1, 0, '', false, ProfileType.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('DeleteStatus', 7, 0, 1, 0, '', false, ProfileType.SegmentDeleteStatus));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('SelectionType', 8, 0, 1, 0, '', false, ProfileType.SegmentSelectionType));
 
         return newMesg;
     }
 
     private static createSegmentLeaderboardEntryMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('SegmentLeaderboardEntry', MesgNum.SegmentLeaderboardEntry);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('Name', 0, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('Type', 1, 0, 1, 0, '', false, Type.SegmentLeaderboardType));
-        fieldIndex++;
-        newMesg.setField(new Field('GroupPrimaryKey', 2, 134, 1, 0, '', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('ActivityId', 3, 134, 1, 0, '', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('SegmentTime', 4, 134, 1000, 0, 's', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('ActivityIdString', 5, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('SegmentLeaderboardEntry', MesgNum.segmentLeaderboardEntry);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('Name', 0, 7, 1, 0, '', false, ProfileType.String));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('Type', 1, 0, 1, 0, '', false, ProfileType.SegmentLeaderboardType));
+        newMesg.setField(new Field('GroupPrimaryKey', 2, 134, 1, 0, '', false, ProfileType.Uint32));
+        newMesg.setField(new Field('ActivityId', 3, 134, 1, 0, '', false, ProfileType.Uint32));
+        newMesg.setField(new Field('SegmentTime', 4, 134, 1000, 0, 's', false, ProfileType.Uint32));
+        newMesg.setField(new Field('ActivityIdString', 5, 7, 1, 0, '', false, ProfileType.String));
 
         return newMesg;
     }
 
     private static createSegmentPointMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('SegmentPoint', MesgNum.SegmentPoint);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('PositionLat', 1, 133, 1, 0, 'semicircles', false, Type.Sint32));
-        fieldIndex++;
-        newMesg.setField(new Field('PositionLong', 2, 133, 1, 0, 'semicircles', false, Type.Sint32));
-        fieldIndex++;
-        newMesg.setField(new Field('Distance', 3, 134, 100, 0, 'm', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('Altitude', 4, 132, 5, 500, 'm', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('LeaderTime', 5, 134, 1000, 0, 's', false, Type.Uint32));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('SegmentPoint', MesgNum.segmentPoint);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('PositionLat', 1, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('PositionLong', 2, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
+        newMesg.setField(new Field('Distance', 3, 134, 100, 0, 'm', false, ProfileType.Uint32));
+        newMesg.setField(new Field('Altitude', 4, 132, 5, 500, 'm', false, ProfileType.Uint16));
+        newMesg.setField(new Field('LeaderTime', 5, 134, 1000, 0, 's', false, ProfileType.Uint32));
 
         return newMesg;
     }
@@ -2862,257 +2735,282 @@ export class Profile {
     private static createSegmentLapMesg(): Mesg {
         let fieldIndex: number;
         let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('SegmentLap', MesgNum.SegmentLap);
+        const newMesg: Mesg = new Mesg('SegmentLap', MesgNum.segmentLap);
         fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
         fieldIndex++;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
         fieldIndex++;
-        newMesg.setField(new Field('Event', 0, 0, 1, 0, '', false, Type.Event));
+        newMesg.setField(new Field('Event', 0, 0, 1, 0, '', false, ProfileType.Event));
         fieldIndex++;
-        newMesg.setField(new Field('EventType', 1, 0, 1, 0, '', false, Type.EventType));
+        newMesg.setField(new Field('EventType', 1, 0, 1, 0, '', false, ProfileType.EventType));
         fieldIndex++;
-        newMesg.setField(new Field('StartTime', 2, 134, 1, 0, '', false, Type.DateTime));
+        newMesg.setField(new Field('StartTime', 2, 134, 1, 0, '', false, ProfileType.DateTime));
         fieldIndex++;
-        newMesg.setField(new Field('StartPositionLat', 3, 133, 1, 0, 'semicircles', false, Type.Sint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('StartPositionLat', 3, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('StartPositionLong', 4, 133, 1, 0, 'semicircles', false, Type.Sint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('StartPositionLong', 4, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('EndPositionLat', 5, 133, 1, 0, 'semicircles', false, Type.Sint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('EndPositionLat', 5, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('EndPositionLong', 6, 133, 1, 0, 'semicircles', false, Type.Sint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('EndPositionLong', 6, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('TotalElapsedTime', 7, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalElapsedTime', 7, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('TotalTimerTime', 8, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalTimerTime', 8, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('TotalDistance', 9, 134, 100, 0, 'm', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalDistance', 9, 134, 100, 0, 'm', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('TotalCycles', 10, 134, 1, 0, 'cycles', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalCycles', 10, 134, 1, 0, 'cycles', false, ProfileType.Uint32));
         subfieldIndex = 0;
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('TotalStrokes', 134, 1, 0, 'strokes'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(23, 2);
         subfieldIndex++;
         fieldIndex++;
-        newMesg.setField(new Field('TotalCalories', 11, 132, 1, 0, 'kcal', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalCalories', 11, 132, 1, 0, 'kcal', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('TotalFatCalories', 12, 132, 1, 0, 'kcal', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalFatCalories', 12, 132, 1, 0, 'kcal', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgSpeed', 13, 132, 1000, 0, 'm/s', false, Type.Uint16));
+        newMesg.setField(new Field('AvgSpeed', 13, 132, 1000, 0, 'm/s', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxSpeed', 14, 132, 1000, 0, 'm/s', false, Type.Uint16));
+        newMesg.setField(new Field('MaxSpeed', 14, 132, 1000, 0, 'm/s', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgHeartRate', 15, 2, 1, 0, 'bpm', false, Type.Uint8));
+        newMesg.setField(new Field('AvgHeartRate', 15, 2, 1, 0, 'bpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('MaxHeartRate', 16, 2, 1, 0, 'bpm', false, Type.Uint8));
+        newMesg.setField(new Field('MaxHeartRate', 16, 2, 1, 0, 'bpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgCadence', 17, 2, 1, 0, 'rpm', false, Type.Uint8));
+        newMesg.setField(new Field('AvgCadence', 17, 2, 1, 0, 'rpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('MaxCadence', 18, 2, 1, 0, 'rpm', false, Type.Uint8));
+        newMesg.setField(new Field('MaxCadence', 18, 2, 1, 0, 'rpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgPower', 19, 132, 1, 0, 'watts', false, Type.Uint16));
+        newMesg.setField(new Field('AvgPower', 19, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxPower', 20, 132, 1, 0, 'watts', false, Type.Uint16));
+        newMesg.setField(new Field('MaxPower', 20, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('TotalAscent', 21, 132, 1, 0, 'm', false, Type.Uint16));
+        newMesg.setField(new Field('TotalAscent', 21, 132, 1, 0, 'm', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('TotalDescent', 22, 132, 1, 0, 'm', false, Type.Uint16));
+        newMesg.setField(new Field('TotalDescent', 22, 132, 1, 0, 'm', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('Sport', 23, 0, 1, 0, '', false, Type.Sport));
+        newMesg.setField(new Field('Sport', 23, 0, 1, 0, '', false, ProfileType.Sport));
         fieldIndex++;
-        newMesg.setField(new Field('EventGroup', 24, 2, 1, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('EventGroup', 24, 2, 1, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('NecLat', 25, 133, 1, 0, 'semicircles', false, Type.Sint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('NecLat', 25, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('NecLong', 26, 133, 1, 0, 'semicircles', false, Type.Sint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('NecLong', 26, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('SwcLat', 27, 133, 1, 0, 'semicircles', false, Type.Sint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('SwcLat', 27, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('SwcLong', 28, 133, 1, 0, 'semicircles', false, Type.Sint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('SwcLong', 28, 133, 1, 0, 'semicircles', false, ProfileType.Sint32));
         fieldIndex++;
-        newMesg.setField(new Field('Name', 29, 7, 1, 0, '', false, Type.String));
+        newMesg.setField(new Field('Name', 29, 7, 1, 0, '', false, ProfileType.String));
         fieldIndex++;
-        newMesg.setField(new Field('NormalizedPower', 30, 132, 1, 0, 'watts', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('NormalizedPower', 30, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('LeftRightBalance', 31, 132, 1, 0, '', false, Type.LeftRightBalance100));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('LeftRightBalance', 31, 132, 1, 0, '', false, ProfileType.LeftRightBalance100));
         fieldIndex++;
-        newMesg.setField(new Field('SubSport', 32, 0, 1, 0, '', false, Type.SubSport));
+        newMesg.setField(new Field('SubSport', 32, 0, 1, 0, '', false, ProfileType.SubSport));
         fieldIndex++;
-        newMesg.setField(new Field('TotalWork', 33, 134, 1, 0, 'J', false, Type.Uint32));
+        newMesg.setField(new Field('TotalWork', 33, 134, 1, 0, 'J', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('AvgAltitude', 34, 132, 5, 500, 'm', false, Type.Uint16));
+        newMesg.setField(new Field('AvgAltitude', 34, 132, 5, 500, 'm', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxAltitude', 35, 132, 5, 500, 'm', false, Type.Uint16));
+        newMesg.setField(new Field('MaxAltitude', 35, 132, 5, 500, 'm', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('GpsAccuracy', 36, 2, 1, 0, 'm', false, Type.Uint8));
+        newMesg.setField(new Field('GpsAccuracy', 36, 2, 1, 0, 'm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgGrade', 37, 131, 100, 0, '%', false, Type.Sint16));
+        newMesg.setField(new Field('AvgGrade', 37, 131, 100, 0, '%', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgPosGrade', 38, 131, 100, 0, '%', false, Type.Sint16));
+        newMesg.setField(new Field('AvgPosGrade', 38, 131, 100, 0, '%', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgNegGrade', 39, 131, 100, 0, '%', false, Type.Sint16));
+        newMesg.setField(new Field('AvgNegGrade', 39, 131, 100, 0, '%', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxPosGrade', 40, 131, 100, 0, '%', false, Type.Sint16));
+        newMesg.setField(new Field('MaxPosGrade', 40, 131, 100, 0, '%', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxNegGrade', 41, 131, 100, 0, '%', false, Type.Sint16));
+        newMesg.setField(new Field('MaxNegGrade', 41, 131, 100, 0, '%', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgTemperature', 42, 1, 1, 0, 'C', false, Type.Sint8));
+        newMesg.setField(new Field('AvgTemperature', 42, 1, 1, 0, 'C', false, ProfileType.Sint8));
         fieldIndex++;
-        newMesg.setField(new Field('MaxTemperature', 43, 1, 1, 0, 'C', false, Type.Sint8));
+        newMesg.setField(new Field('MaxTemperature', 43, 1, 1, 0, 'C', false, ProfileType.Sint8));
         fieldIndex++;
-        newMesg.setField(new Field('TotalMovingTime', 44, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TotalMovingTime', 44, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('AvgPosVerticalSpeed', 45, 131, 1000, 0, 'm/s', false, Type.Sint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgPosVerticalSpeed', 45, 131, 1000, 0, 'm/s', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgNegVerticalSpeed', 46, 131, 1000, 0, 'm/s', false, Type.Sint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgNegVerticalSpeed', 46, 131, 1000, 0, 'm/s', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxPosVerticalSpeed', 47, 131, 1000, 0, 'm/s', false, Type.Sint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MaxPosVerticalSpeed', 47, 131, 1000, 0, 'm/s', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxNegVerticalSpeed', 48, 131, 1000, 0, 'm/s', false, Type.Sint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MaxNegVerticalSpeed', 48, 131, 1000, 0, 'm/s', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('TimeInHrZone', 49, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TimeInHrZone', 49, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('TimeInSpeedZone', 50, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TimeInSpeedZone', 50, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('TimeInCadenceZone', 51, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TimeInCadenceZone', 51, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('TimeInPowerZone', 52, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TimeInPowerZone', 52, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('RepetitionNum', 53, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('RepetitionNum', 53, 132, 1, 0, '', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MinAltitude', 54, 132, 5, 500, 'm', false, Type.Uint16));
+        newMesg.setField(new Field('MinAltitude', 54, 132, 5, 500, 'm', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MinHeartRate', 55, 2, 1, 0, 'bpm', false, Type.Uint8));
+        newMesg.setField(new Field('MinHeartRate', 55, 2, 1, 0, 'bpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('ActiveTime', 56, 134, 1000, 0, 's', false, Type.Uint32));
+        newMesg.setField(new Field('ActiveTime', 56, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('WktStepIndex', 57, 132, 1, 0, '', false, Type.MessageIndex));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('WktStepIndex', 57, 132, 1, 0, '', false, ProfileType.MessageIndex));
         fieldIndex++;
-        newMesg.setField(new Field('SportEvent', 58, 0, 1, 0, '', false, Type.SportEvent));
+        newMesg.setField(new Field('SportEvent', 58, 0, 1, 0, '', false, ProfileType.SportEvent));
         fieldIndex++;
-        newMesg.setField(new Field('AvgLeftTorqueEffectiveness', 59, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgLeftTorqueEffectiveness', 59, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgRightTorqueEffectiveness', 60, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgRightTorqueEffectiveness', 60, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgLeftPedalSmoothness', 61, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgLeftPedalSmoothness', 61, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgRightPedalSmoothness', 62, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgRightPedalSmoothness', 62, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgCombinedPedalSmoothness', 63, 2, 2, 0, 'percent', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgCombinedPedalSmoothness', 63, 2, 2, 0, 'percent', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('Status', 64, 0, 1, 0, '', false, Type.SegmentLapStatus));
+        newMesg.setField(new Field('Status', 64, 0, 1, 0, '', false, ProfileType.SegmentLapStatus));
         fieldIndex++;
-        newMesg.setField(new Field('Uuid', 65, 7, 1, 0, '', false, Type.String));
+        newMesg.setField(new Field('Uuid', 65, 7, 1, 0, '', false, ProfileType.String));
         fieldIndex++;
-        newMesg.setField(new Field('AvgFractionalCadence', 66, 2, 128, 0, 'rpm', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgFractionalCadence', 66, 2, 128, 0, 'rpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('MaxFractionalCadence', 67, 2, 128, 0, 'rpm', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MaxFractionalCadence', 67, 2, 128, 0, 'rpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('TotalFractionalCycles', 68, 2, 128, 0, 'cycles', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('TotalFractionalCycles', 68, 2, 128, 0, 'cycles', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('FrontGearShiftCount', 69, 132, 1, 0, '', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('FrontGearShiftCount', 69, 132, 1, 0, '', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('RearGearShiftCount', 70, 132, 1, 0, '', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('RearGearShiftCount', 70, 132, 1, 0, '', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('TimeStanding', 71, 134, 1000, 0, 's', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TimeStanding', 71, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('StandCount', 72, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('StandCount', 72, 132, 1, 0, '', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgLeftPco', 73, 1, 1, 0, 'mm', false, Type.Sint8));
+        newMesg.setField(new Field('AvgLeftPco', 73, 1, 1, 0, 'mm', false, ProfileType.Sint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgRightPco', 74, 1, 1, 0, 'mm', false, Type.Sint8));
+        newMesg.setField(new Field('AvgRightPco', 74, 1, 1, 0, 'mm', false, ProfileType.Sint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgLeftPowerPhase', 75, 2, 0.7111111, 0, 'degrees', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgLeftPowerPhase', 75, 2, 0.7111111, 0, 'degrees', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgLeftPowerPhasePeak', 76, 2, 0.7111111, 0, 'degrees', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgLeftPowerPhasePeak', 76, 2, 0.7111111, 0, 'degrees', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgRightPowerPhase', 77, 2, 0.7111111, 0, 'degrees', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgRightPowerPhase', 77, 2, 0.7111111, 0, 'degrees', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgRightPowerPhasePeak', 78, 2, 0.7111111, 0, 'degrees', false, Type.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('AvgRightPowerPhasePeak', 78, 2, 0.7111111, 0, 'degrees', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('AvgPowerPosition', 79, 132, 1, 0, 'watts', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('AvgPowerPosition', 79, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MaxPowerPosition', 80, 132, 1, 0, 'watts', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MaxPowerPosition', 80, 132, 1, 0, 'watts', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('AvgCadencePosition', 81, 2, 1, 0, 'rpm', false, Type.Uint8));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('AvgCadencePosition', 81, 2, 1, 0, 'rpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('MaxCadencePosition', 82, 2, 1, 0, 'rpm', false, Type.Uint8));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MaxCadencePosition', 82, 2, 1, 0, 'rpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('Manufacturer', 83, 132, 1, 0, '', false, Type.Manufacturer));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('Manufacturer', 83, 132, 1, 0, '', false, ProfileType.Manufacturer));
         fieldIndex++;
 
         return newMesg;
     }
 
     private static createSegmentFileMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('SegmentFile', MesgNum.SegmentFile);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('FileUuid', 1, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('Enabled', 3, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
-        newMesg.setField(new Field('UserProfilePrimaryKey', 4, 134, 1, 0, '', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('LeaderType', 7, 0, 1, 0, '', false, Type.SegmentLeaderboardType));
-        fieldIndex++;
-        newMesg.setField(new Field('LeaderGroupPrimaryKey', 8, 134, 1, 0, '', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('LeaderActivityId', 9, 134, 1, 0, '', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('LeaderActivityIdString', 10, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('DefaultRaceLeader', 11, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('SegmentFile', MesgNum.segmentFile);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('FileUuid', 1, 7, 1, 0, '', false, ProfileType.String));
+        newMesg.setField(new Field('Enabled', 3, 0, 1, 0, '', false, ProfileType.Bool));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('UserProfilePrimaryKey', 4, 134, 1, 0, '', false, ProfileType.Uint32));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('LeaderType', 7, 0, 1, 0, '', false, ProfileType.SegmentLeaderboardType));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('LeaderGroupPrimaryKey', 8, 134, 1, 0, '', false, ProfileType.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('LeaderActivityId', 9, 134, 1, 0, '', false, ProfileType.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('LeaderActivityIdString', 10, 7, 1, 0, '', false, ProfileType.String));
+        newMesg.setField(new Field('DefaultRaceLeader', 11, 2, 1, 0, '', false, ProfileType.Uint8));
 
         return newMesg;
     }
 
     private static createWorkoutMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('Workout', MesgNum.Workout);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Sport', 4, 0, 1, 0, '', false, Type.Sport));
-        fieldIndex++;
-        newMesg.setField(new Field('Capabilities', 5, 140, 1, 0, '', false, Type.WorkoutCapabilities));
-        fieldIndex++;
-        newMesg.setField(new Field('NumValidSteps', 6, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('WktName', 8, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('SubSport', 11, 0, 1, 0, '', false, Type.SubSport));
-        fieldIndex++;
-        newMesg.setField(new Field('PoolLength', 14, 132, 100, 0, 'm', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('PoolLengthUnit', 15, 0, 1, 0, '', false, Type.DisplayMeasure));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('Workout', MesgNum.workout);
+        newMesg.setField(new Field('Sport', 4, 0, 1, 0, '', false, ProfileType.Sport));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('Capabilities', 5, 140, 1, 0, '', false, ProfileType.WorkoutCapabilities));
+        newMesg.setField(new Field('NumValidSteps', 6, 132, 1, 0, '', false, ProfileType.Uint16));
+        newMesg.setField(new Field('WktName', 8, 7, 1, 0, '', false, ProfileType.String));
+        newMesg.setField(new Field('SubSport', 11, 0, 1, 0, '', false, ProfileType.SubSport));
+        newMesg.setField(new Field('PoolLength', 14, 132, 100, 0, 'm', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('PoolLengthUnit', 15, 0, 1, 0, '', false, ProfileType.DisplayMeasure));
 
         return newMesg;
     }
 
     private static createWorkoutSessionMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('WorkoutSession', MesgNum.WorkoutSession);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('Sport', 0, 0, 1, 0, '', false, Type.Sport));
-        fieldIndex++;
-        newMesg.setField(new Field('SubSport', 1, 0, 1, 0, '', false, Type.SubSport));
-        fieldIndex++;
-        newMesg.setField(new Field('NumValidSteps', 2, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('FirstStepIndex', 3, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('PoolLength', 4, 132, 100, 0, 'm', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('PoolLengthUnit', 5, 0, 1, 0, '', false, Type.DisplayMeasure));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('WorkoutSession', MesgNum.workoutSession);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('Sport', 0, 0, 1, 0, '', false, ProfileType.Sport));
+        newMesg.setField(new Field('SubSport', 1, 0, 1, 0, '', false, ProfileType.SubSport));
+        newMesg.setField(new Field('NumValidSteps', 2, 132, 1, 0, '', false, ProfileType.Uint16));
+        newMesg.setField(new Field('FirstStepIndex', 3, 132, 1, 0, '', false, ProfileType.Uint16));
+        newMesg.setField(new Field('PoolLength', 4, 132, 100, 0, 'm', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('PoolLengthUnit', 5, 0, 1, 0, '', false, ProfileType.DisplayMeasure));
 
         return newMesg;
     }
@@ -3120,16 +3018,19 @@ export class Profile {
     private static createWorkoutStepMesg(): Mesg {
         let fieldIndex: number;
         let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('WorkoutStep', MesgNum.WorkoutStep);
+        const newMesg: Mesg = new Mesg('WorkoutStep', MesgNum.workoutStep);
         fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
         fieldIndex++;
-        newMesg.setField(new Field('WktStepName', 0, 7, 1, 0, '', false, Type.String));
+        newMesg.setField(new Field('WktStepName', 0, 7, 1, 0, '', false, ProfileType.String));
         fieldIndex++;
-        newMesg.setField(new Field('DurationType', 1, 0, 1, 0, '', false, Type.WktStepDuration));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('DurationType', 1, 0, 1, 0, '', false, ProfileType.WktStepDuration));
         fieldIndex++;
-        newMesg.setField(new Field('DurationValue', 2, 134, 1, 0, '', false, Type.Uint32));
+        newMesg.setField(new Field('DurationValue', 2, 134, 1, 0, '', false, ProfileType.Uint32));
         subfieldIndex = 0;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('DurationTime', 134, 1000, 0, 's'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(1, 0);
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(1, 28);
@@ -3162,10 +3063,11 @@ export class Profile {
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(1, 29);
         subfieldIndex++;
         fieldIndex++;
-        newMesg.setField(new Field('TargetType', 3, 0, 1, 0, '', false, Type.WktStepTarget));
+        newMesg.setField(new Field('TargetType', 3, 0, 1, 0, '', false, ProfileType.WktStepTarget));
         fieldIndex++;
-        newMesg.setField(new Field('TargetValue', 4, 134, 1, 0, '', false, Type.Uint32));
+        newMesg.setField(new Field('TargetValue', 4, 134, 1, 0, '', false, ProfileType.Uint32));
         subfieldIndex = 0;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('TargetSpeedZone', 134, 1, 0, ''));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(3, 0);
         subfieldIndex++;
@@ -3175,12 +3077,14 @@ export class Profile {
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('TargetCadenceZone', 134, 1, 0, ''));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(3, 3);
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('TargetPowerZone', 134, 1, 0, ''));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(3, 4);
         subfieldIndex++;
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('RepeatSteps', 134, 1, 0, ''));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(1, 6);
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('RepeatTime', 134, 1000, 0, 's'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(1, 7);
         subfieldIndex++;
@@ -3190,6 +3094,7 @@ export class Profile {
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('RepeatCalories', 134, 1, 0, 'calories'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(1, 9);
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('RepeatHr', 134, 1, 0, '% or bpm'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(1, 10);
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(1, 11);
@@ -3198,71 +3103,81 @@ export class Profile {
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(1, 12);
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(1, 13);
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('TargetStrokeType', 0, 1, 0, ''));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(3, 11);
         subfieldIndex++;
         fieldIndex++;
-        newMesg.setField(new Field('CustomTargetValueLow', 5, 134, 1, 0, '', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('CustomTargetValueLow', 5, 134, 1, 0, '', false, ProfileType.Uint32));
         subfieldIndex = 0;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('CustomTargetSpeedLow', 134, 1000, 0, 'm/s'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(3, 0);
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('CustomTargetHeartRateLow', 134, 1, 0, '% or bpm'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(3, 1);
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('CustomTargetCadenceLow', 134, 1, 0, 'rpm'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(3, 3);
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('CustomTargetPowerLow', 134, 1, 0, '% or watts'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(3, 4);
         subfieldIndex++;
         fieldIndex++;
-        newMesg.setField(new Field('CustomTargetValueHigh', 6, 134, 1, 0, '', false, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('CustomTargetValueHigh', 6, 134, 1, 0, '', false, ProfileType.Uint32));
         subfieldIndex = 0;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('CustomTargetSpeedHigh', 134, 1000, 0, 'm/s'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(3, 0);
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('CustomTargetHeartRateHigh', 134, 1, 0, '% or bpm'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(3, 1);
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('CustomTargetCadenceHigh', 134, 1, 0, 'rpm'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(3, 3);
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('CustomTargetPowerHigh', 134, 1, 0, '% or watts'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(3, 4);
         subfieldIndex++;
         fieldIndex++;
-        newMesg.setField(new Field('Intensity', 7, 0, 1, 0, '', false, Type.Intensity));
+        newMesg.setField(new Field('Intensity', 7, 0, 1, 0, '', false, ProfileType.Intensity));
         fieldIndex++;
-        newMesg.setField(new Field('Notes', 8, 7, 1, 0, '', false, Type.String));
+        newMesg.setField(new Field('Notes', 8, 7, 1, 0, '', false, ProfileType.String));
         fieldIndex++;
-        newMesg.setField(new Field('Equipment', 9, 0, 1, 0, '', false, Type.WorkoutEquipment));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('Equipment', 9, 0, 1, 0, '', false, ProfileType.WorkoutEquipment));
         fieldIndex++;
-        newMesg.setField(new Field('ExerciseCategory', 10, 132, 1, 0, '', false, Type.ExerciseCategory));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('ExerciseCategory', 10, 132, 1, 0, '', false, ProfileType.ExerciseCategory));
         fieldIndex++;
-        newMesg.setField(new Field('ExerciseName', 11, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('ExerciseName', 11, 132, 1, 0, '', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('ExerciseWeight', 12, 132, 100, 0, 'kg', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ExerciseWeight', 12, 132, 100, 0, 'kg', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('WeightDisplayUnit', 13, 132, 1, 0, '', false, Type.FitBaseUnit));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('WeightDisplayUnit', 13, 132, 1, 0, '', false, ProfileType.FitBaseUnit));
         fieldIndex++;
 
         return newMesg;
     }
 
     private static createExerciseTitleMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('ExerciseTitle', MesgNum.ExerciseTitle);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('ExerciseCategory', 0, 132, 1, 0, '', false, Type.ExerciseCategory));
-        fieldIndex++;
-        newMesg.setField(new Field('ExerciseName', 1, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('WktStepName', 2, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('ExerciseTitle', MesgNum.exerciseTitle);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('ExerciseCategory', 0, 132, 1, 0, '', false, ProfileType.ExerciseCategory));
+        newMesg.setField(new Field('ExerciseName', 1, 132, 1, 0, '', false, ProfileType.Uint16));
+        newMesg.setField(new Field('WktStepName', 2, 7, 1, 0, '', false, ProfileType.String));
 
         return newMesg;
     }
@@ -3270,11 +3185,12 @@ export class Profile {
     private static createScheduleMesg(): Mesg {
         let fieldIndex: number;
         let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('Schedule', MesgNum.Schedule);
+        const newMesg: Mesg = new Mesg('Schedule', MesgNum.schedule);
         fieldIndex = 0;
-        newMesg.setField(new Field('Manufacturer', 0, 132, 1, 0, '', false, Type.Manufacturer));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('Manufacturer', 0, 132, 1, 0, '', false, ProfileType.Manufacturer));
         fieldIndex++;
-        newMesg.setField(new Field('Product', 1, 132, 1, 0, '', false, Type.Uint16));
+        newMesg.setField(new Field('Product', 1, 132, 1, 0, '', false, ProfileType.Uint16));
         subfieldIndex = 0;
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('FaveroProduct', 132, 1, 0, ''));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 263);
@@ -3285,132 +3201,99 @@ export class Profile {
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(0, 13);
         subfieldIndex++;
         fieldIndex++;
-        newMesg.setField(new Field('SerialNumber', 2, 140, 1, 0, '', false, Type.Uint32z));
+        newMesg.setField(new Field('SerialNumber', 2, 140, 1, 0, '', false, ProfileType.Uint32z));
         fieldIndex++;
-        newMesg.setField(new Field('TimeCreated', 3, 134, 1, 0, '', false, Type.DateTime));
+        newMesg.setField(new Field('TimeCreated', 3, 134, 1, 0, '', false, ProfileType.DateTime));
         fieldIndex++;
-        newMesg.setField(new Field('Completed', 4, 0, 1, 0, '', false, Type.Bool));
+        newMesg.setField(new Field('Completed', 4, 0, 1, 0, '', false, ProfileType.Bool));
         fieldIndex++;
-        newMesg.setField(new Field('Type', 5, 0, 1, 0, '', false, Type.Schedule));
+        newMesg.setField(new Field('Type', 5, 0, 1, 0, '', false, ProfileType.Schedule));
         fieldIndex++;
-        newMesg.setField(new Field('ScheduledTime', 6, 134, 1, 0, '', false, Type.LocalDateTime));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ScheduledTime', 6, 134, 1, 0, '', false, ProfileType.LocalDateTime));
         fieldIndex++;
 
         return newMesg;
     }
 
     private static createTotalsMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('Totals', MesgNum.Totals);
-        fieldIndex = 0;
-        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('TimerTime', 0, 134, 1, 0, 's', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('Distance', 1, 134, 1, 0, 'm', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('Calories', 2, 134, 1, 0, 'kcal', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('Sport', 3, 0, 1, 0, '', false, Type.Sport));
-        fieldIndex++;
-        newMesg.setField(new Field('ElapsedTime', 4, 134, 1, 0, 's', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('Sessions', 5, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('ActiveTime', 6, 134, 1, 0, 's', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('SportIndex', 9, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('Totals', MesgNum.totals);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 254, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
+        newMesg.setField(new Field('TimerTime', 0, 134, 1, 0, 's', false, ProfileType.Uint32));
+        newMesg.setField(new Field('Distance', 1, 134, 1, 0, 'm', false, ProfileType.Uint32));
+        newMesg.setField(new Field('Calories', 2, 134, 1, 0, 'kcal', false, ProfileType.Uint32));
+        newMesg.setField(new Field('Sport', 3, 0, 1, 0, '', false, ProfileType.Sport));
+        newMesg.setField(new Field('ElapsedTime', 4, 134, 1, 0, 's', false, ProfileType.Uint32));
+        newMesg.setField(new Field('Sessions', 5, 132, 1, 0, '', false, ProfileType.Uint16));
+        newMesg.setField(new Field('ActiveTime', 6, 134, 1, 0, 's', false, ProfileType.Uint32));
+        newMesg.setField(new Field('SportIndex', 9, 2, 1, 0, '', false, ProfileType.Uint8));
 
         return newMesg;
     }
 
     private static createWeightScaleMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('WeightScale', MesgNum.WeightScale);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('Weight', 0, 132, 100, 0, 'kg', false, Type.Weight));
-        fieldIndex++;
-        newMesg.setField(new Field('PercentFat', 1, 132, 100, 0, '%', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('PercentHydration', 2, 132, 100, 0, '%', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('VisceralFatMass', 3, 132, 100, 0, 'kg', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('BoneMass', 4, 132, 100, 0, 'kg', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('MuscleMass', 5, 132, 100, 0, 'kg', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('BasalMet', 7, 132, 4, 0, 'kcal/day', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('PhysiqueRating', 8, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('ActiveMet', 9, 132, 4, 0, 'kcal/day', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('MetabolicAge', 10, 2, 1, 0, 'years', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('VisceralFatRating', 11, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('UserProfileIndex', 12, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('WeightScale', MesgNum.weightScale);
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
+        newMesg.setField(new Field('Weight', 0, 132, 100, 0, 'kg', false, ProfileType.Weight));
+        newMesg.setField(new Field('PercentFat', 1, 132, 100, 0, '%', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('PercentHydration', 2, 132, 100, 0, '%', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('VisceralFatMass', 3, 132, 100, 0, 'kg', false, ProfileType.Uint16));
+        newMesg.setField(new Field('BoneMass', 4, 132, 100, 0, 'kg', false, ProfileType.Uint16));
+        newMesg.setField(new Field('MuscleMass', 5, 132, 100, 0, 'kg', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('BasalMet', 7, 132, 4, 0, 'kcal/day', false, ProfileType.Uint16));
+        newMesg.setField(new Field('PhysiqueRating', 8, 2, 1, 0, '', false, ProfileType.Uint8));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ActiveMet', 9, 132, 4, 0, 'kcal/day', false, ProfileType.Uint16));
+        newMesg.setField(new Field('MetabolicAge', 10, 2, 1, 0, 'years', false, ProfileType.Uint8));
+        newMesg.setField(new Field('VisceralFatRating', 11, 2, 1, 0, '', false, ProfileType.Uint8));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('UserProfileIndex', 12, 132, 1, 0, '', false, ProfileType.MessageIndex));
 
         return newMesg;
     }
 
     private static createBloodPressureMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('BloodPressure', MesgNum.BloodPressure);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('SystolicPressure', 0, 132, 1, 0, 'mmHg', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('DiastolicPressure', 1, 132, 1, 0, 'mmHg', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('MeanArterialPressure', 2, 132, 1, 0, 'mmHg', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('Map3SampleMean', 3, 132, 1, 0, 'mmHg', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('MapMorningValues', 4, 132, 1, 0, 'mmHg', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('MapEveningValues', 5, 132, 1, 0, 'mmHg', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('HeartRate', 6, 2, 1, 0, 'bpm', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('HeartRateType', 7, 0, 1, 0, '', false, Type.HrType));
-        fieldIndex++;
-        newMesg.setField(new Field('Status', 8, 0, 1, 0, '', false, Type.BpStatus));
-        fieldIndex++;
-        newMesg.setField(new Field('UserProfileIndex', 9, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('BloodPressure', MesgNum.bloodPressure);
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('SystolicPressure', 0, 132, 1, 0, 'mmHg', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('DiastolicPressure', 1, 132, 1, 0, 'mmHg', false, ProfileType.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('MeanArterialPressure', 2, 132, 1, 0, 'mmHg', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('Map3SampleMean', 3, 132, 1, 0, 'mmHg', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MapMorningValues', 4, 132, 1, 0, 'mmHg', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MapEveningValues', 5, 132, 1, 0, 'mmHg', false, ProfileType.Uint16));
+        newMesg.setField(new Field('HeartRate', 6, 2, 1, 0, 'bpm', false, ProfileType.Uint8));
+        newMesg.setField(new Field('HeartRateType', 7, 0, 1, 0, '', false, ProfileType.HrType));
+        newMesg.setField(new Field('Status', 8, 0, 1, 0, '', false, ProfileType.BpStatus));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('UserProfileIndex', 9, 132, 1, 0, '', false, ProfileType.MessageIndex));
 
         return newMesg;
     }
 
     private static createMonitoringInfoMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('MonitoringInfo', MesgNum.MonitoringInfo);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('LocalTimestamp', 0, 134, 1, 0, 's', false, Type.LocalDateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('ActivityType', 1, 0, 1, 0, '', false, Type.ActivityType));
-        fieldIndex++;
-        newMesg.setField(new Field('CyclesToDistance', 3, 132, 5000, 0, 'm/cycle', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('CyclesToCalories', 4, 132, 5000, 0, 'kcal/cycle', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('RestingMetabolicRate', 5, 132, 1, 0, 'kcal / day', false, Type.Uint16));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('MonitoringInfo', MesgNum.monitoringInfo);
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('LocalTimestamp', 0, 134, 1, 0, 's', false, ProfileType.LocalDateTime));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ActivityType', 1, 0, 1, 0, '', false, ProfileType.ActivityType));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('CyclesToDistance', 3, 132, 5000, 0, 'm/cycle', false, ProfileType.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('CyclesToCalories', 4, 132, 5000, 0, 'kcal/cycle', false, ProfileType.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('RestingMetabolicRate', 5, 132, 1, 0, 'kcal / day', false, ProfileType.Uint16));
 
         return newMesg;
     }
@@ -3418,76 +3301,92 @@ export class Profile {
     private static createMonitoringMesg(): Mesg {
         let fieldIndex: number;
         let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('Monitoring', MesgNum.Monitoring);
+        const newMesg: Mesg = new Mesg('Monitoring', MesgNum.monitoring);
         fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
         fieldIndex++;
-        newMesg.setField(new Field('DeviceIndex', 0, 2, 1, 0, '', false, Type.DeviceIndex));
+        newMesg.setField(new Field('DeviceIndex', 0, 2, 1, 0, '', false, ProfileType.DeviceIndex));
         fieldIndex++;
-        newMesg.setField(new Field('Calories', 1, 132, 1, 0, 'kcal', false, Type.Uint16));
+        newMesg.setField(new Field('Calories', 1, 132, 1, 0, 'kcal', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('Distance', 2, 134, 100, 0, 'm', false, Type.Uint32));
+        newMesg.setField(new Field('Distance', 2, 134, 100, 0, 'm', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('Cycles', 3, 134, 2, 0, 'cycles', false, Type.Uint32));
+        newMesg.setField(new Field('Cycles', 3, 134, 2, 0, 'cycles', false, ProfileType.Uint32));
         subfieldIndex = 0;
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('Steps', 134, 1, 0, 'steps'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(5, 6);
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(5, 1);
         subfieldIndex++;
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].subfields.push(new Subfield('Strokes', 134, 2, 0, 'strokes'));
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(5, 2);
         newMesg.FieldsList[fieldIndex].subfields[subfieldIndex].addMap(5, 5);
         subfieldIndex++;
         fieldIndex++;
-        newMesg.setField(new Field('ActiveTime', 4, 134, 1000, 0, 's', false, Type.Uint32));
+        newMesg.setField(new Field('ActiveTime', 4, 134, 1000, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('ActivityType', 5, 0, 1, 0, '', false, Type.ActivityType));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ActivityType', 5, 0, 1, 0, '', false, ProfileType.ActivityType));
         fieldIndex++;
-        newMesg.setField(new Field('ActivitySubtype', 6, 0, 1, 0, '', false, Type.ActivitySubtype));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ActivitySubtype', 6, 0, 1, 0, '', false, ProfileType.ActivitySubtype));
         fieldIndex++;
-        newMesg.setField(new Field('ActivityLevel', 7, 0, 1, 0, '', false, Type.ActivityLevel));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ActivityLevel', 7, 0, 1, 0, '', false, ProfileType.ActivityLevel));
         fieldIndex++;
-        newMesg.setField(new Field('Distance16', 8, 132, 1, 0, '100 * m', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('Distance16', 8, 132, 1, 0, '100 * m', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('Cycles16', 9, 132, 1, 0, '2 * cycles (steps)', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('Cycles16', 9, 132, 1, 0, '2 * cycles (steps)', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('ActiveTime16', 10, 132, 1, 0, 's', false, Type.Uint16));
+        newMesg.setField(new Field('ActiveTime16', 10, 132, 1, 0, 's', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('LocalTimestamp', 11, 134, 1, 0, '', false, Type.LocalDateTime));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('LocalTimestamp', 11, 134, 1, 0, '', false, ProfileType.LocalDateTime));
         fieldIndex++;
-        newMesg.setField(new Field('Temperature', 12, 131, 100, 0, 'C', false, Type.Sint16));
+        newMesg.setField(new Field('Temperature', 12, 131, 100, 0, 'C', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('TemperatureMin', 14, 131, 100, 0, 'C', false, Type.Sint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TemperatureMin', 14, 131, 100, 0, 'C', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('TemperatureMax', 15, 131, 100, 0, 'C', false, Type.Sint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('TemperatureMax', 15, 131, 100, 0, 'C', false, ProfileType.Sint16));
         fieldIndex++;
-        newMesg.setField(new Field('ActivityTime', 16, 132, 1, 0, 'minutes', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ActivityTime', 16, 132, 1, 0, 'minutes', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('ActiveCalories', 19, 132, 1, 0, 'kcal', false, Type.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ActiveCalories', 19, 132, 1, 0, 'kcal', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('CurrentActivityTypeIntensity', 24, 13, 1, 0, '', false, Type.Byte));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('CurrentActivityTypeIntensity', 24, 13, 1, 0, '', false, ProfileType.Byte));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(5, false, 5, 1, 0)); // activity_type
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(28, false, 3, 1, 0)); // intensity
         fieldIndex++;
-        newMesg.setField(new Field('TimestampMin8', 25, 2, 1, 0, 'min', false, Type.Uint8));
+        newMesg.setField(new Field('TimestampMin8', 25, 2, 1, 0, 'min', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('Timestamp16', 26, 132, 1, 0, 's', false, Type.Uint16));
+        newMesg.setField(new Field('Timestamp16', 26, 132, 1, 0, 's', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('HeartRate', 27, 2, 1, 0, 'bpm', false, Type.Uint8));
+        newMesg.setField(new Field('HeartRate', 27, 2, 1, 0, 'bpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('Intensity', 28, 2, 10, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('Intensity', 28, 2, 10, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('DurationMin', 29, 132, 1, 0, 'min', false, Type.Uint16));
+        newMesg.setField(new Field('DurationMin', 29, 132, 1, 0, 'min', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('Duration', 30, 134, 1, 0, 's', false, Type.Uint32));
+        newMesg.setField(new Field('Duration', 30, 134, 1, 0, 's', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('Ascent', 31, 134, 1000, 0, 'm', false, Type.Uint32));
+        newMesg.setField(new Field('Ascent', 31, 134, 1000, 0, 'm', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('Descent', 32, 134, 1000, 0, 'm', false, Type.Uint32));
+        newMesg.setField(new Field('Descent', 32, 134, 1000, 0, 'm', false, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('ModerateActivityMinutes', 33, 132, 1, 0, 'minutes', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('ModerateActivityMinutes', 33, 132, 1, 0, 'minutes', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('VigorousActivityMinutes', 34, 132, 1, 0, 'minutes', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('VigorousActivityMinutes', 34, 132, 1, 0, 'minutes', false, ProfileType.Uint16));
         fieldIndex++;
 
         return newMesg;
@@ -3495,30 +3394,42 @@ export class Profile {
 
     private static createHrMesg(): Mesg {
         let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('Hr', MesgNum.Hr);
+        const newMesg: Mesg = new Mesg('Hr', MesgNum.hr);
         fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, '', false, Type.DateTime));
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, '', false, ProfileType.DateTime));
         fieldIndex++;
-        newMesg.setField(new Field('FractionalTimestamp', 0, 132, 32768, 0, 's', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('FractionalTimestamp', 0, 132, 32768, 0, 's', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('Time256', 1, 2, 256, 0, 's', false, Type.Uint8));
+        newMesg.setField(new Field('Time256', 1, 2, 256, 0, 's', false, ProfileType.Uint8));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(0, false, 8, 256, 0)); // fractional_timestamp
         fieldIndex++;
-        newMesg.setField(new Field('FilteredBpm', 6, 2, 1, 0, 'bpm', false, Type.Uint8));
+        newMesg.setField(new Field('FilteredBpm', 6, 2, 1, 0, 'bpm', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('EventTimestamp', 9, 134, 1024, 0, 's', true, Type.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('EventTimestamp', 9, 134, 1024, 0, 's', true, ProfileType.Uint32));
         fieldIndex++;
-        newMesg.setField(new Field('EventTimestamp12', 10, 13, 1, 0, '', false, Type.Byte));
+        newMesg.setField(new Field('EventTimestamp12', 10, 13, 1, 0, '', false, ProfileType.Byte));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(9, true, 12, 1024, 0)); // event_timestamp
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(9, true, 12, 1024, 0)); // event_timestamp
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(9, true, 12, 1024, 0)); // event_timestamp
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(9, true, 12, 1024, 0)); // event_timestamp
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(9, true, 12, 1024, 0)); // event_timestamp
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(9, true, 12, 1024, 0)); // event_timestamp
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(9, true, 12, 1024, 0)); // event_timestamp
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(9, true, 12, 1024, 0)); // event_timestamp
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(9, true, 12, 1024, 0)); // event_timestamp
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(9, true, 12, 1024, 0)); // event_timestamp
         fieldIndex++;
 
@@ -3526,79 +3437,71 @@ export class Profile {
     }
 
     private static createStressLevelMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('StressLevel', MesgNum.StressLevel);
-        fieldIndex = 0;
-        newMesg.setField(new Field('StressLevelValue', 0, 131, 1, 0, '', false, Type.Sint16));
-        fieldIndex++;
-        newMesg.setField(new Field('StressLevelTime', 1, 134, 1, 0, 's', false, Type.DateTime));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('StressLevel', MesgNum.stressLevel);
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('StressLevelValue', 0, 131, 1, 0, '', false, ProfileType.Sint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('StressLevelTime', 1, 134, 1, 0, 's', false, ProfileType.DateTime));
 
         return newMesg;
     }
 
     private static createMemoGlobMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('MemoGlob', MesgNum.MemoGlob);
-        fieldIndex = 0;
-        newMesg.setField(new Field('PartIndex', 250, 134, 1, 0, '', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('Memo', 0, 13, 1, 0, '', false, Type.Byte));
-        fieldIndex++;
-        newMesg.setField(new Field('MessageNumber', 1, 132, 1, 0, '', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('MessageIndex', 2, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('MemoGlob', MesgNum.memoGlob);
+        newMesg.setField(new Field('PartIndex', 250, 134, 1, 0, '', false, ProfileType.Uint32));
+        newMesg.setField(new Field('Memo', 0, 13, 1, 0, '', false, ProfileType.Byte));
+        newMesg.setField(new Field('MessageNumber', 1, 132, 1, 0, '', false, ProfileType.Uint16));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('MessageIndex', 2, 132, 1, 0, '', false, ProfileType.MessageIndex));
 
         return newMesg;
     }
 
     private static createAntChannelIdMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('AntChannelId', MesgNum.AntChannelId);
-        fieldIndex = 0;
-        newMesg.setField(new Field('ChannelNumber', 0, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('DeviceType', 1, 10, 1, 0, '', false, Type.Uint8z));
-        fieldIndex++;
-        newMesg.setField(new Field('DeviceNumber', 2, 139, 1, 0, '', false, Type.Uint16z));
-        fieldIndex++;
-        newMesg.setField(new Field('TransmissionType', 3, 10, 1, 0, '', false, Type.Uint8z));
-        fieldIndex++;
-        newMesg.setField(new Field('DeviceIndex', 4, 2, 1, 0, '', false, Type.DeviceIndex));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('AntChannelId', MesgNum.antChannelId);
+        newMesg.setField(new Field('ChannelNumber', 0, 2, 1, 0, '', false, ProfileType.Uint8));
+        newMesg.setField(new Field('DeviceType', 1, 10, 1, 0, '', false, ProfileType.Uint8z));
+        newMesg.setField(new Field('DeviceNumber', 2, 139, 1, 0, '', false, ProfileType.Uint16z));
+        newMesg.setField(new Field('TransmissionType', 3, 10, 1, 0, '', false, ProfileType.Uint8z));
+        newMesg.setField(new Field('DeviceIndex', 4, 2, 1, 0, '', false, ProfileType.DeviceIndex));
 
         return newMesg;
     }
 
     private static createAntRxMesg(): Mesg {
         let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('AntRx', MesgNum.AntRx);
+        const newMesg: Mesg = new Mesg('AntRx', MesgNum.antRx);
         fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
         fieldIndex++;
-        newMesg.setField(new Field('FractionalTimestamp', 0, 132, 32768, 0, 's', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('FractionalTimestamp', 0, 132, 32768, 0, 's', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MesgId', 1, 13, 1, 0, '', false, Type.Byte));
+        newMesg.setField(new Field('MesgId', 1, 13, 1, 0, '', false, ProfileType.Byte));
         fieldIndex++;
-        newMesg.setField(new Field('MesgData', 2, 13, 1, 0, '', false, Type.Byte));
+        newMesg.setField(new Field('MesgData', 2, 13, 1, 0, '', false, ProfileType.Byte));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(3, false, 8, 1, 0)); // channel_number
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(4, false, 8, 1, 0)); // data
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(4, false, 8, 1, 0)); // data
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(4, false, 8, 1, 0)); // data
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(4, false, 8, 1, 0)); // data
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(4, false, 8, 1, 0)); // data
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(4, false, 8, 1, 0)); // data
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(4, false, 8, 1, 0)); // data
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(4, false, 8, 1, 0)); // data
         fieldIndex++;
-        newMesg.setField(new Field('ChannelNumber', 3, 2, 1, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('ChannelNumber', 3, 2, 1, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('Data', 4, 13, 1, 0, '', false, Type.Byte));
+        newMesg.setField(new Field('Data', 4, 13, 1, 0, '', false, ProfileType.Byte));
         fieldIndex++;
 
         return newMesg;
@@ -3606,69 +3509,74 @@ export class Profile {
 
     private static createAntTxMesg(): Mesg {
         let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('AntTx', MesgNum.AntTx);
+        const newMesg: Mesg = new Mesg('AntTx', MesgNum.antTx);
         fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
         fieldIndex++;
-        newMesg.setField(new Field('FractionalTimestamp', 0, 132, 32768, 0, 's', false, Type.Uint16));
+        // tslint:disable-next-line: max-line-length
+        newMesg.setField(new Field('FractionalTimestamp', 0, 132, 32768, 0, 's', false, ProfileType.Uint16));
         fieldIndex++;
-        newMesg.setField(new Field('MesgId', 1, 13, 1, 0, '', false, Type.Byte));
+        newMesg.setField(new Field('MesgId', 1, 13, 1, 0, '', false, ProfileType.Byte));
         fieldIndex++;
-        newMesg.setField(new Field('MesgData', 2, 13, 1, 0, '', false, Type.Byte));
+        newMesg.setField(new Field('MesgData', 2, 13, 1, 0, '', false, ProfileType.Byte));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(3, false, 8, 1, 0)); // channel_number
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(4, false, 8, 1, 0)); // data
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(4, false, 8, 1, 0)); // data
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(4, false, 8, 1, 0)); // data
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(4, false, 8, 1, 0)); // data
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(4, false, 8, 1, 0)); // data
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(4, false, 8, 1, 0)); // data
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(4, false, 8, 1, 0)); // data
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(4, false, 8, 1, 0)); // data
         fieldIndex++;
-        newMesg.setField(new Field('ChannelNumber', 3, 2, 1, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('ChannelNumber', 3, 2, 1, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('Data', 4, 13, 1, 0, '', false, Type.Byte));
+        newMesg.setField(new Field('Data', 4, 13, 1, 0, '', false, ProfileType.Byte));
         fieldIndex++;
 
         return newMesg;
     }
 
     private static createExdScreenConfigurationMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('ExdScreenConfiguration', MesgNum.ExdScreenConfiguration);
-        fieldIndex = 0;
-        newMesg.setField(new Field('ScreenIndex', 0, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('FieldCount', 1, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('Layout', 2, 0, 1, 0, '', false, Type.ExdLayout));
-        fieldIndex++;
-        newMesg.setField(new Field('ScreenEnabled', 3, 0, 1, 0, '', false, Type.Bool));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('ExdScreenConfiguration', MesgNum.exdScreenConfiguration);
+        newMesg.setField(new Field('ScreenIndex', 0, 2, 1, 0, '', false, ProfileType.Uint8));
+        newMesg.setField(new Field('FieldCount', 1, 2, 1, 0, '', false, ProfileType.Uint8));
+        newMesg.setField(new Field('Layout', 2, 0, 1, 0, '', false, ProfileType.ExdLayout));
+        newMesg.setField(new Field('ScreenEnabled', 3, 0, 1, 0, '', false, ProfileType.Bool));
 
         return newMesg;
     }
 
     private static createExdDataFieldConfigurationMesg(): Mesg {
         let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('ExdDataFieldConfiguration', MesgNum.ExdDataFieldConfiguration);
+        const newMesg: Mesg =
+            new Mesg('ExdDataFieldConfiguration', MesgNum.exdDataFieldConfiguration);
         fieldIndex = 0;
-        newMesg.setField(new Field('ScreenIndex', 0, 2, 1, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('ScreenIndex', 0, 2, 1, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('ConceptField', 1, 13, 1, 0, '', false, Type.Byte));
+        newMesg.setField(new Field('ConceptField', 1, 13, 1, 0, '', false, ProfileType.Byte));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(2, false, 4, 1, 0)); // field_id
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(3, false, 4, 1, 0)); // concept_count
         fieldIndex++;
-        newMesg.setField(new Field('FieldId', 2, 2, 1, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('FieldId', 2, 2, 1, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('ConceptCount', 3, 2, 1, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('ConceptCount', 3, 2, 1, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('DisplayType', 4, 0, 1, 0, '', false, Type.ExdDisplayType));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('DisplayType', 4, 0, 1, 0, '', false, ProfileType.ExdDisplayType));
         fieldIndex++;
-        newMesg.setField(new Field('Title', 5, 7, 1, 0, '', false, Type.String));
+        newMesg.setField(new Field('Title', 5, 7, 1, 0, '', false, ProfileType.String));
         fieldIndex++;
 
         return newMesg;
@@ -3676,133 +3584,99 @@ export class Profile {
 
     private static createExdDataConceptConfigurationMesg(): Mesg {
         let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('ExdDataConceptConfiguration', MesgNum.ExdDataConceptConfiguration);
+        const newMesg: Mesg =
+            new Mesg('ExdDataConceptConfiguration', MesgNum.exdDataConceptConfiguration);
         fieldIndex = 0;
-        newMesg.setField(new Field('ScreenIndex', 0, 2, 1, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('ScreenIndex', 0, 2, 1, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('ConceptField', 1, 13, 1, 0, '', false, Type.Byte));
+        newMesg.setField(new Field('ConceptField', 1, 13, 1, 0, '', false, ProfileType.Byte));
+        // tslint:disable-next-line: max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(2, false, 4, 1, 0)); // field_id
+        // tslint:disable-next-line:max-line-length
         newMesg.FieldsList[fieldIndex].components.push(new FieldComponent(3, false, 4, 1, 0)); // concept_index
         fieldIndex++;
-        newMesg.setField(new Field('FieldId', 2, 2, 1, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('FieldId', 2, 2, 1, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('ConceptIndex', 3, 2, 1, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('ConceptIndex', 3, 2, 1, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('DataPage', 4, 2, 1, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('DataPage', 4, 2, 1, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('ConceptKey', 5, 2, 1, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('ConceptKey', 5, 2, 1, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('Scaling', 6, 2, 1, 0, '', false, Type.Uint8));
+        newMesg.setField(new Field('Scaling', 6, 2, 1, 0, '', false, ProfileType.Uint8));
         fieldIndex++;
-        newMesg.setField(new Field('DataUnits', 8, 0, 1, 0, '', false, Type.ExdDataUnits));
+        newMesg.setField(new Field('DataUnits', 8, 0, 1, 0, '', false, ProfileType.ExdDataUnits));
         fieldIndex++;
-        newMesg.setField(new Field('Qualifier', 9, 0, 1, 0, '', false, Type.ExdQualifiers));
+        newMesg.setField(new Field('Qualifier', 9, 0, 1, 0, '', false, ProfileType.ExdQualifiers));
         fieldIndex++;
-        newMesg.setField(new Field('Descriptor', 10, 0, 1, 0, '', false, Type.ExdDescriptors));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('Descriptor', 10, 0, 1, 0, '', false, ProfileType.ExdDescriptors));
         fieldIndex++;
-        newMesg.setField(new Field('IsSigned', 11, 0, 1, 0, '', false, Type.Bool));
+        newMesg.setField(new Field('IsSigned', 11, 0, 1, 0, '', false, ProfileType.Bool));
         fieldIndex++;
 
         return newMesg;
     }
 
     private static createFieldDescriptionMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('FieldDescription', MesgNum.FieldDescription);
-        fieldIndex = 0;
-        newMesg.setField(new Field('DeveloperDataIndex', 0, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('FieldDefinitionNumber', 1, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('FitBaseTypeId', 2, 2, 1, 0, '', false, Type.FitBaseType));
-        fieldIndex++;
-        newMesg.setField(new Field('FieldName', 3, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('Array', 4, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('Components', 5, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('Scale', 6, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('Offset', 7, 1, 1, 0, '', false, Type.Sint8));
-        fieldIndex++;
-        newMesg.setField(new Field('Units', 8, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('Bits', 9, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('Accumulate', 10, 7, 1, 0, '', false, Type.String));
-        fieldIndex++;
-        newMesg.setField(new Field('FitBaseUnitId', 13, 132, 1, 0, '', false, Type.FitBaseUnit));
-        fieldIndex++;
-        newMesg.setField(new Field('NativeMesgNum', 14, 132, 1, 0, '', false, Type.MesgNum));
-        fieldIndex++;
-        newMesg.setField(new Field('NativeFieldNum', 15, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('FieldDescription', MesgNum.fieldDescription);
+        newMesg.setField(new Field('DeveloperDataIndex', 0, 2, 1, 0, '', false, ProfileType.Uint8));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('FieldDefinitionNumber', 1, 2, 1, 0, '', false, ProfileType.Uint8));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('FitBaseTypeId', 2, 2, 1, 0, '', false, ProfileType.FitBaseType));
+        newMesg.setField(new Field('FieldName', 3, 7, 1, 0, '', false, ProfileType.String));
+        newMesg.setField(new Field('Array', 4, 2, 1, 0, '', false, ProfileType.Uint8));
+        newMesg.setField(new Field('Components', 5, 7, 1, 0, '', false, ProfileType.String));
+        newMesg.setField(new Field('Scale', 6, 2, 1, 0, '', false, ProfileType.Uint8));
+        newMesg.setField(new Field('Offset', 7, 1, 1, 0, '', false, ProfileType.Sint8));
+        newMesg.setField(new Field('Units', 8, 7, 1, 0, '', false, ProfileType.String));
+        newMesg.setField(new Field('Bits', 9, 7, 1, 0, '', false, ProfileType.String));
+        newMesg.setField(new Field('Accumulate', 10, 7, 1, 0, '', false, ProfileType.String));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('FitBaseUnitId', 13, 132, 1, 0, '', false, ProfileType.FitBaseUnit));
+        newMesg.setField(new Field('NativeMesgNum', 14, 132, 1, 0, '', false, ProfileType.MesgNum));
+        newMesg.setField(new Field('NativeFieldNum', 15, 2, 1, 0, '', false, ProfileType.Uint8));
 
         return newMesg;
     }
 
     private static createDeveloperDataIdMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('DeveloperDataId', MesgNum.DeveloperDataId);
-        fieldIndex = 0;
-        newMesg.setField(new Field('DeveloperId', 0, 13, 1, 0, '', false, Type.Byte));
-        fieldIndex++;
-        newMesg.setField(new Field('ApplicationId', 1, 13, 1, 0, '', false, Type.Byte));
-        fieldIndex++;
-        newMesg.setField(new Field('ManufacturerId', 2, 132, 1, 0, '', false, Type.Manufacturer));
-        fieldIndex++;
-        newMesg.setField(new Field('DeveloperDataIndex', 3, 2, 1, 0, '', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('ApplicationVersion', 4, 134, 1, 0, '', false, Type.Uint32));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('DeveloperDataId', MesgNum.developerDataId);
+        newMesg.setField(new Field('DeveloperId', 0, 13, 1, 0, '', false, ProfileType.Byte));
+        newMesg.setField(new Field('ApplicationId', 1, 13, 1, 0, '', false, ProfileType.Byte));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ManufacturerId', 2, 132, 1, 0, '', false, ProfileType.Manufacturer));
+        newMesg.setField(new Field('DeveloperDataIndex', 3, 2, 1, 0, '', false, ProfileType.Uint8));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ApplicationVersion', 4, 134, 1, 0, '', false, ProfileType.Uint32));
 
         return newMesg;
     }
 
     private static createDiveSummaryMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('DiveSummary', MesgNum.DiveSummary);
-        fieldIndex = 0;
-        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, Type.DateTime));
-        fieldIndex++;
-        newMesg.setField(new Field('ReferenceMesg', 0, 132, 1, 0, '', false, Type.MesgNum));
-        fieldIndex++;
-        newMesg.setField(new Field('ReferenceIndex', 1, 132, 1, 0, '', false, Type.MessageIndex));
-        fieldIndex++;
-        newMesg.setField(new Field('AvgDepth', 2, 134, 1000, 0, 'm', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('MaxDepth', 3, 134, 1000, 0, 'm', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('SurfaceInterval', 4, 134, 1, 0, 's', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('StartCns', 5, 2, 1, 0, 'percent', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('EndCns', 6, 2, 1, 0, 'percent', false, Type.Uint8));
-        fieldIndex++;
-        newMesg.setField(new Field('StartN2', 7, 132, 1, 0, 'percent', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('EndN2', 8, 132, 1, 0, 'percent', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('O2Toxicity', 9, 132, 1, 0, 'OTUs', false, Type.Uint16));
-        fieldIndex++;
-        newMesg.setField(new Field('DiveNumber', 10, 134, 1, 0, '', false, Type.Uint32));
-        fieldIndex++;
-        newMesg.setField(new Field('BottomTime', 11, 134, 1000, 0, 's', false, Type.Uint32));
-        fieldIndex++;
+        const newMesg: Mesg = new Mesg('DiveSummary', MesgNum.diveSummary);
+        newMesg.setField(new Field('Timestamp', 253, 134, 1, 0, 's', false, ProfileType.DateTime));
+        newMesg.setField(new Field('ReferenceMesg', 0, 132, 1, 0, '', false, ProfileType.MesgNum));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('ReferenceIndex', 1, 132, 1, 0, '', false, ProfileType.MessageIndex));
+        newMesg.setField(new Field('AvgDepth', 2, 134, 1000, 0, 'm', false, ProfileType.Uint32));
+        newMesg.setField(new Field('MaxDepth', 3, 134, 1000, 0, 'm', false, ProfileType.Uint32));
+        // tslint:disable-next-line:max-line-length
+        newMesg.setField(new Field('SurfaceInterval', 4, 134, 1, 0, 's', false, ProfileType.Uint32));
+        newMesg.setField(new Field('StartCns', 5, 2, 1, 0, 'percent', false, ProfileType.Uint8));
+        newMesg.setField(new Field('EndCns', 6, 2, 1, 0, 'percent', false, ProfileType.Uint8));
+        newMesg.setField(new Field('StartN2', 7, 132, 1, 0, 'percent', false, ProfileType.Uint16));
+        newMesg.setField(new Field('EndN2', 8, 132, 1, 0, 'percent', false, ProfileType.Uint16));
+        newMesg.setField(new Field('O2Toxicity', 9, 132, 1, 0, 'OTUs', false, ProfileType.Uint16));
+        newMesg.setField(new Field('DiveNumber', 10, 134, 1, 0, '', false, ProfileType.Uint32));
+        newMesg.setField(new Field('BottomTime', 11, 134, 1000, 0, 's', false, ProfileType.Uint32));
 
         return newMesg;
     }
 
     private static createPadMesg(): Mesg {
-        let fieldIndex: number;
-        let subfieldIndex: number;
-        const newMesg: Mesg = new Mesg('Pad', MesgNum.Pad);
-        fieldIndex = 0;
+        const newMesg: Mesg = new Mesg('Pad', MesgNum.pad);
 
         return newMesg;
     }

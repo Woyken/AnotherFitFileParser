@@ -12,6 +12,8 @@ import { Field } from './field';
 import { Profile } from './profile';
 import { FieldComponent } from './fieldComponent';
 import { MesgNum } from './Profile/Types/mesgNum';
+import { DeveloperDataIdMesg } from './Profile/Mesgs/developerDataIdMesg';
+import { FieldDescriptionMesg } from './Profile/Mesgs/fieldDescriptionMesg';
 
 export class Decode {
     private readonly CRCSIZE: number = 2;
@@ -144,6 +146,7 @@ export class Decode {
 
             // Get the file size from the header
             // When the data size is invalid set the file size to the fitstream length
+            // tslint:disable-next-line: prefer-conditional-expression
             if (!this.invalidDataSize) {
                 fileSize = this.fileHeader.size + this.fileHeader.dataSize + this.CRCSIZE;
             } else {
@@ -199,7 +202,7 @@ export class Decode {
             this.timestamp += ((timeOffset - this.lastTimeOffset) & Fit.compressedTimeMask);
             this.lastTimeOffset = timeOffset;
             const timestampField: Field = new Field(
-                Profile.getMesg(MesgNum.Record)!
+                Profile.getMesg(MesgNum.record)!
                     .getField('Timestamp'));
             timestampField.setValue1(this.timestamp);
 
@@ -319,8 +322,8 @@ export class Decode {
     }
 
     private raiseMesgEvent(newMesg: Mesg): void {
-        if ((newMesg.num === MesgNum.DeveloperDataId) ||
-            (newMesg.num === MesgNum.FieldDescription)) {
+        if ((newMesg.num === MesgNum.developerDataId) ||
+            (newMesg.num === MesgNum.fieldDescription)) {
             this.handleMetaData(newMesg);
         }
 
@@ -330,10 +333,10 @@ export class Decode {
     }
 
     private handleMetaData(newMesg: Mesg): void {
-        if (newMesg.num === MesgNum.DeveloperDataId) {
+        if (newMesg.num === MesgNum.developerDataId) {
             const mesg = new DeveloperDataIdMesg(newMesg);
             this.lookup.add(mesg);
-        } else if (newMesg.num === MesgNum.FieldDescription) {
+        } else if (newMesg.num === MesgNum.fieldDescription) {
             const mesg = new FieldDescriptionMesg(newMesg);
             const desc: DeveloperFieldDescription | undefined = this.lookup.add1(mesg);
             if (desc != null) {

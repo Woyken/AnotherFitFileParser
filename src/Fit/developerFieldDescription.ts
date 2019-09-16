@@ -1,17 +1,19 @@
 import { Guid } from '../Utility/guid';
+import { DeveloperDataIdMesg } from './Profile/Mesgs/developerDataIdMesg';
+import { FieldDescriptionMesg } from './Profile/Mesgs/fieldDescriptionMesg';
 
-export class DeveloperFieldDescription{
+export class DeveloperFieldDescription {
     private readonly developerDataId: DeveloperDataIdMesg;
     private readonly fieldDescription: FieldDescriptionMesg;
 
     /// <summary>
     /// Gets the Value of the Application Version for the Field Description
     /// </summary>
-    public get ApplicationVersion(): number {
-        if (this.developerDataId.GetApplicationVersion() === null) {
+    public get ApplicationVersion(): number | undefined {
+        if (this.developerDataId.getApplicationVersion() === null) {
             return 99999999999999999;
         }
-        return this.developerDataId.GetApplicationVersion();
+        return this.developerDataId.getApplicationVersion();
     }
 
     /**
@@ -26,13 +28,10 @@ export class DeveloperFieldDescription{
 
         // Read the App Id
         // tslint:disable-next-line: prefer-array-literal
-        const appId: number[] = new Array(this.developerDataId.GetNumApplicationId());
+        const appId: number[] = new Array(this.developerDataId.getNumApplicationId());
         for (let i = 0; i < appId.length; i++) {
-            if (this.developerDataId.getApplicationId(i) === undefined) {
-                appId[i] = 0xFF;
-            } else {
-                appId[i] = this.developerDataId.getApplicationId(i);
-            }
+            const id = this.developerDataId.getApplicationId(i);
+            appId[i] = id !== undefined ? id : 0xFF;
         }
 
         // The SDK Treats these UUIDs in Java format so we need to convert to
@@ -61,10 +60,11 @@ export class DeveloperFieldDescription{
     /// Gets the Value of the Field Definition Number for thbe Field Description
     /// </summary>
     public get FieldDefinitionNumber(): number {
-        if (this.fieldDescription.GetFieldDefinitionNumber() === undefined) {
+        const defNum = this.fieldDescription.getFieldDefinitionNumber();
+        if (defNum === undefined) {
             return 99999999999999999;
         }
-        return this.fieldDescription.GetFieldDefinitionNumber();
+        return defNum;
     }
 
     constructor(
