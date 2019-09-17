@@ -221,7 +221,7 @@ export class Decode {
             mesgBuffer.push(...read);
 
             const newMesg: Mesg = new Mesg(
-                new ByteStreamReader(Buffer.from(mesgBuffer)), this.localMesgDefs[localMesgNum]);
+                new ByteStreamReader(new Uint8Array(mesgBuffer)), this.localMesgDefs[localMesgNum]);
             newMesg.insertField(0, timestampField);
             this.raiseMesgEvent(newMesg);
         } else if ((nextByte & Fit.mesgDefinitionMask) === Fit.mesgDefinitionMask) {
@@ -258,7 +258,7 @@ export class Decode {
             }
 
             const newMesgDef: MesgDefinition = new MesgDefinition(
-                new ByteStreamReader(Buffer.from(mesgDefBuffer)), this.lookup);
+                new ByteStreamReader(new Uint8Array(mesgDefBuffer)), this.lookup);
             this.localMesgDefs[newMesgDef.localMesgNum] = newMesgDef;
             if (this.mesgDefinitionEvent) {
                 this.mesgDefinitionEvent(newMesgDef);
@@ -281,7 +281,7 @@ export class Decode {
             mesgBuffer.push(...read);
 
             const newMesg: Mesg = new Mesg(
-                new ByteStreamReader(Buffer.from(mesgBuffer)), this.localMesgDefs[localMesgNum]);
+                new ByteStreamReader(new Uint8Array(mesgBuffer)), this.localMesgDefs[localMesgNum]);
             // If the new message contains a timestamp field, record the value to use as
             // a reference for compressed timestamp headers
             const timestampField: Field | undefined = newMesg.getField('Timestamp');
@@ -296,17 +296,17 @@ export class Decode {
             newMesg.FieldsList.forEach((field: Field) => {
                 if (field.IsAccumulated) {
                     for (let i = 0; i < field.getNumValues(); i++) {
-                        let value = BigInt(field.getRawValue(i));
+                        let value = field.getRawValue(i);
 
                         newMesg.FieldsList.forEach((fieldIn: Field) => {
                             fieldIn.components.forEach((fc: FieldComponent) => {
                                 if ((fc.fieldNum === field.num) && (fc.accumulate)) {
                                     // tslint:disable-next-line: max-line-length
-                                    value = BigInt(((((Number(value) / field.scale) - field.offset) + fc.offset) * fc.scale));
+                                    value = ((((value / field.scale) - field.offset) + fc.offset) * fc.scale);
                                 }
                             });
                         });
-                        this.accumulator.set(newMesg.num, field.num, Number(value));
+                        this.accumulator.set(newMesg.num, field.num, value);
                     }
                 }
             });

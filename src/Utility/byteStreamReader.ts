@@ -19,15 +19,15 @@ export class ByteStreamReader {
             outputBuffer[offset + i] = this.readByte();
         }
     }
-    public buffer: Buffer;
+    public buffer: Uint8Array;
     private pposition: number = 0;
 
     public constructor(
-        bufferOrStream: Buffer | ByteStreamReader,
+        bufferOrStream: Uint8Array | ByteStreamReader,
         public isBigEndian: boolean = false,
     ) {
         if (ByteStreamReader.isOfType(bufferOrStream)) {
-            this.buffer = Buffer.from(bufferOrStream.buffer, bufferOrStream.position);
+            this.buffer = new Uint8Array(bufferOrStream.buffer, bufferOrStream.position);
             return;
         }
         this.buffer = bufferOrStream;
@@ -92,11 +92,11 @@ export class ByteStreamReader {
         return BitConverter.toInt32(this.readBytes(4), 0, this.isBigEndian);
     }
 
-    public readUInt64(): bigint {
+    public readUInt64(): number {
         return BitConverter.toUInt64(this.readBytes(8), 0, this.isBigEndian);
     }
 
-    public readInt64(): bigint {
+    public readInt64(): number {
         return BitConverter.toInt64(this.readBytes(8), 0, this.isBigEndian);
     }
 
