@@ -293,7 +293,7 @@ export abstract class FieldBase {
             case Fit.byte:
             case Fit.uInt8:
             case Fit.uInt8z:
-                value = value[index];
+                value = this.values[index];
                 if ((value === Fit.baseType[this.Type & Fit.baseTypeNumMask].invalidValue) &&
                        (scale !== 1.0)) {
                     castToFloat = true;
@@ -301,7 +301,7 @@ export abstract class FieldBase {
                 break;
 
             case Fit.sInt8:
-                value = value[index];
+                value = this.values[index];
                 if ((value === Fit.baseType[this.Type & Fit.baseTypeNumMask].invalidValue) &&
                        (scale !== 1.0)) {
                     castToFloat = true;
@@ -309,7 +309,7 @@ export abstract class FieldBase {
                 break;
 
             case Fit.sInt16:
-                value = value[index];
+                value = this.values[index];
                 if ((value === Fit.baseType[this.Type & Fit.baseTypeNumMask].invalidValue) &&
                        (scale !== 1.0)) {
                     castToFloat = true;
@@ -318,7 +318,7 @@ export abstract class FieldBase {
 
             case Fit.uInt16:
             case Fit.uInt16z:
-                value = value[index];
+                value = this.values[index];
                 if ((value === Fit.baseType[this.Type & Fit.baseTypeNumMask].invalidValue) &&
                        (scale !== 1.0)) {
                     castToFloat = true;
@@ -326,7 +326,7 @@ export abstract class FieldBase {
                 break;
 
             case Fit.sInt32:
-                value = value[index];
+                value = this.values[index];
                 if ((value === Fit.baseType[this.Type & Fit.baseTypeNumMask].invalidValue) &&
                        (scale !== 1.0)) {
                     castToFloat = true;
@@ -335,7 +335,7 @@ export abstract class FieldBase {
 
             case Fit.uInt32:
             case Fit.uInt32z:
-                value = value[index];
+                value = this.values[index];
                 if ((value === Fit.baseType[this.Type & Fit.baseTypeNumMask].invalidValue) &&
                        (scale !== 1.0)) {
                     castToFloat = true;
@@ -343,7 +343,7 @@ export abstract class FieldBase {
                 break;
 
             case Fit.sInt64:
-                value = value[index];
+                value = this.values[index];
                 if ((value === Fit.baseType[this.Type & Fit.baseTypeNumMask].invalidValue) &&
                        (scale !== 1.0)) {
                     castToFloat = true;
@@ -352,7 +352,7 @@ export abstract class FieldBase {
 
             case Fit.uInt64:
             case Fit.uInt64z:
-                value = value[index];
+                value = this.values[index];
                 if ((value === Fit.baseType[this.Type & Fit.baseTypeNumMask].invalidValue) &&
                        (scale !== 1.0)) {
                     castToFloat = true;
@@ -360,7 +360,7 @@ export abstract class FieldBase {
                 break;
 
             case Fit.float32:
-                value = value[index];
+                value = this.values[index];
                 if (isNaN(value) &&
                        (scale !== 1.0)) {
                     castToFloat = true;
@@ -368,7 +368,7 @@ export abstract class FieldBase {
                 break;
 
             case Fit.float64:
-                value = value[index];
+                value = this.values[index];
                 if (isNaN(value) &&
                        (scale !== 1.0)) {
                     castToFloat = true;
@@ -376,11 +376,11 @@ export abstract class FieldBase {
                 break;
 
             case Fit.string:
-                value = value[index];
+                value = this.values[index];
                 break;
 
             default:
-                value = null;
+                value = undefined;
                 break;
         }
 
