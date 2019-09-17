@@ -624,7 +624,7 @@ export abstract class FieldBase {
             // tslint:disable-next-line: no-parameter-reassignment
             value = Fit.baseType[this.Type & Fit.baseTypeNumMask].invalidValue;
         }
-        value[index] = value;
+        this.values[index] = value;
     }
 
     public setRawValue(index: number, value: any): void {
