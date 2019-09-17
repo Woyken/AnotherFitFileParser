@@ -47,9 +47,9 @@ export class Decode {
     //#endregion
 
     //#region Methods
-    public mesgEvent?: (mesg: Mesg) => {};
-    public mesgDefinitionEvent?: (mesgDef: MesgDefinition) => {};
-    public developerFieldDescriptionEvent?: (description: DeveloperFieldDescription) => {};
+    public mesgEvent?: (mesg: Mesg) => void;
+    public mesgDefinitionEvent?: (mesgDef: MesgDefinition) => void;
+    public developerFieldDescriptionEvent?: (description: DeveloperFieldDescription) => void;
 
     /**
      * Reads the file header to check if the file is FIT.
