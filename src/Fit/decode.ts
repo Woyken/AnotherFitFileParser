@@ -306,7 +306,7 @@ export class Decode {
                                 }
                             });
                         });
-                        this.accumulator.set(newMesg.num, field.num, value);
+                        this.accumulator.set(newMesg.profileMesssageNumber, field.num, value);
                     }
                 }
             });
@@ -322,8 +322,8 @@ export class Decode {
     }
 
     private raiseMesgEvent(newMesg: Mesg): void {
-        if ((newMesg.num === MesgNum.developerDataId) ||
-            (newMesg.num === MesgNum.fieldDescription)) {
+        if ((newMesg.profileMesssageNumber === MesgNum.developerDataId) ||
+            (newMesg.profileMesssageNumber === MesgNum.fieldDescription)) {
             this.handleMetaData(newMesg);
         }
 
@@ -333,10 +333,10 @@ export class Decode {
     }
 
     private handleMetaData(newMesg: Mesg): void {
-        if (newMesg.num === MesgNum.developerDataId) {
+        if (newMesg.profileMesssageNumber === MesgNum.developerDataId) {
             const mesg = new DeveloperDataIdMesg(newMesg);
             this.lookup.add(mesg);
-        } else if (newMesg.num === MesgNum.fieldDescription) {
+        } else if (newMesg.profileMesssageNumber === MesgNum.fieldDescription) {
             const mesg = new FieldDescriptionMesg(newMesg);
             const desc: DeveloperFieldDescription | undefined = this.lookup.add1(mesg);
             if (desc != null) {

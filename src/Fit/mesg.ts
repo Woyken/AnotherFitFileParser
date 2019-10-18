@@ -44,16 +44,22 @@ export class Mesg {
         return true;
     }
     //#region Fields
+    /** Not sure what this is */
     protected localNum: number = 0;
+    /** Haven't seen this other than 0 */
     protected systemTimeOffset: number = 0;
+    /** The actual data we care about */
     private fields: Field[] = [];
+    /** Some custom fields from and for 3rd party apps */
     private readonly developerFields: Map<DeveloperDataKey, DeveloperField> =
         new Map<DeveloperDataKey, DeveloperField>();
     //#endregion
 
     //#region Properties
+    /** Name for this message - from profile.ts */
     public name!: string;
-    public num!: number;
+    /** Message number - from profile.ts. Identifier for the message */
+    public profileMesssageNumber!: number;
     public get LocalNum(): number {
         return this.localNum;
     }
@@ -82,11 +88,11 @@ export class Mesg {
     public ctorFromMsg(mesg?: Mesg): void {
         if (mesg === undefined) {
             this.name = 'unknown';
-            this.num = MesgNum.invalid;
+            this.profileMesssageNumber = MesgNum.invalid;
             return;
         }
         this.name = mesg.name;
-        this.num = mesg.num;
+        this.profileMesssageNumber = mesg.profileMesssageNumber;
         this.localNum = mesg.localNum;
         this.systemTimeOffset = mesg.systemTimeOffset;
         mesg.FieldsList.forEach((field: Field) => {
@@ -106,7 +112,7 @@ export class Mesg {
 
     public ctorFromNameAndNum(name: string, num: number): void {
         this.name = name;
-        this.num = num;
+        this.profileMesssageNumber = num;
     }
 
     private ctorFromMesgNum(mesgNum: number): void {
@@ -166,7 +172,7 @@ export class Mesg {
                 // as we add values we need to add the fields too based on the mesg,field
                 // combo in the profile.  Must derive from the profile so the scale etc
                 // is correct
-                    field = new Field(Profile.getMesg(this.num)!
+                    field = new Field(Profile.getMesg(this.profileMesssageNumber)!
                         .getField(fieldDef.num));
                     if (field.num === Fit.fieldNumInvalid) {
                     // If there was no info in the profile the FieldNum will get set to invalid
@@ -409,7 +415,7 @@ export class Mesg {
     }
 
     public setFields(mesg: Mesg): void {
-        if (mesg.num !== this.num) {
+        if (mesg.profileMesssageNumber !== this.profileMesssageNumber) {
             return;
         }
         mesg.FieldsList.forEach((field: Field) => {
@@ -725,7 +731,7 @@ export class Mesg {
                 // We normally won't have fields attached to our skeleton message,
                 // as we add values we need to add the fields too based on the mesg,field
                 // combo in the profile.
-            field = new Field(Profile.getMesg(this.num)!
+            field = new Field(Profile.getMesg(this.profileMesssageNumber)!
                 .getField(fieldNum));
             if (field.num === Fit.fieldNumInvalid) {
                     // If there was no info in the profile our FieldNum will get set to invalid,
@@ -756,7 +762,7 @@ export class Mesg {
             // We normally won't have fields attached to our skeleton message,
             // as we add values we need to add the fields too based on the mesg,field
             // combo in the profile.
-            field = new Field(Profile.getMesg(this.num)!
+            field = new Field(Profile.getMesg(this.profileMesssageNumber)!
                 .getField(fieldNum));
             if (field!.num === Fit.fieldNumInvalid) {
                 // If there was no info in the profile our FieldNum will get set to invalid,
@@ -779,7 +785,7 @@ export class Mesg {
         let field = this.getField(name, false);
 
         if (field == null) {
-            field = new Field(Profile.getMesg(this.num)!
+            field = new Field(Profile.getMesg(this.profileMesssageNumber)!
                 .getField(name));
             this.setField(field);
         }
@@ -817,7 +823,7 @@ export class Mesg {
 
                 if (fC.fieldNum !== Fit.fieldNumInvalid) {
                     // Create a new field to expand into
-                    const newField = new Field(Profile.getMesg(this.num)!
+                    const newField = new Field(Profile.getMesg(this.profileMesssageNumber)!
                         .getField(fC.fieldNum));
 
                     // Mark that this field has been generated through expansion
@@ -837,7 +843,7 @@ export class Mesg {
 
                     if (fC.accumulate) {
                         // tslint:disable-next-line: max-line-length
-                        bitsValue = accumulator.accumulate(this.num, fC.fieldNum, bitsValue, fC.bits);
+                        bitsValue = accumulator.accumulate(this.profileMesssageNumber, fC.fieldNum, bitsValue, fC.bits);
                     }
 
                     if (newField.isNumeric()) {
