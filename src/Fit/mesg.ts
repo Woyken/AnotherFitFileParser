@@ -85,7 +85,7 @@ export class Mesg {
     //#endregion
 
     //#region Constructors
-    public ctorFromMsg(mesg?: Mesg): void {
+    private ctorFromMsg(mesg?: Mesg): void {
         if (mesg === undefined) {
             this.name = 'unknown';
             this.profileMesssageNumber = MesgNum.invalid;
@@ -110,7 +110,7 @@ export class Mesg {
             });
     }
 
-    public ctorFromNameAndNum(name: string, num: number): void {
+    private ctorFromNameAndNum(name: string, num: number): void {
         this.name = name;
         this.profileMesssageNumber = num;
     }
@@ -119,11 +119,15 @@ export class Mesg {
         this.ctorFromMsg(Profile.getMesg(mesgNum));
     }
 
-    public ctorFromStream(fitStream: ByteStreamReader, defnMesg: MesgDefinition): void {
+    private ctorFromStream(fitStream: ByteStreamReader, defnMesg: MesgDefinition): void {
         this.ctorFromMesgNum(defnMesg.globalMesgNum);
         this.read(fitStream, defnMesg);
     }
 
+    constructor(mesg?: Mesg);
+    constructor(name: string, num: number);
+    constructor(mesgNum: number);
+    constructor(fitStream: ByteStreamReader, defnMesg: MesgDefinition);
     constructor(
         fitStreamOrMesgNumOrNameOrMesg?: ByteStreamReader | Mesg | number | string,
         defnMesgOrNum?: MesgDefinition | number,
@@ -450,6 +454,8 @@ export class Mesg {
         return localFields;
     }
 
+    public getField(num: number): Field | undefined;
+    public getField(fieldName: string, checkMesgSupportForSubFields?: boolean): Field | undefined;
     public getField(
         fieldNameOrNum: string | number,
         checkMesgSupportForSubFields: boolean = true): Field | undefined {
@@ -462,7 +468,7 @@ export class Mesg {
         return undefined;
     }
 
-    public getFieldNum(fieldNum: number): Field | undefined {
+    private getFieldNum(fieldNum: number): Field | undefined {
         for (const field of this.FieldsList) {
             if (field.num === fieldNum) {
                 return field;
@@ -472,7 +478,7 @@ export class Mesg {
         return;
     }
 
-    public getFieldStr(
+    private getFieldStr(
         fieldName: string,
         checkMesgSupportForSubFields: boolean = true,
     ): Field | undefined {
@@ -525,6 +531,13 @@ export class Mesg {
     }
     //#endregion
 
+    public getNumFieldValues(fieldNum: number): number;
+    // tslint:disable-next-line: unified-signatures
+    public getNumFieldValues(fieldName: string): number;
+    // tslint:disable-next-line: unified-signatures
+    public getNumFieldValues(fieldNum: number, subfieldIndex: number): number;
+    // tslint:disable-next-line: unified-signatures
+    public getNumFieldValues(fieldNum: number, subfieldName: string): number;
     public getNumFieldValues(
         fieldNumOrName: number | string,
         subfieldIndexOrName?: number | string,
@@ -544,7 +557,7 @@ export class Mesg {
         return 0;
     }
 
-    public getNumFieldValuesFieldNum(fieldNum: number): number {
+    private getNumFieldValuesFieldNum(fieldNum: number): number {
         const field: Field | undefined = this.getField(fieldNum);
 
         if (field !== undefined) {
@@ -553,7 +566,7 @@ export class Mesg {
         return 0;
     }
 
-    public getNumFieldValuesFieldName(fieldName: string): number {
+    private getNumFieldValuesFieldName(fieldName: string): number {
         const field: Field | undefined = this.getField(fieldName);
 
         if (field !== undefined) {
@@ -562,7 +575,7 @@ export class Mesg {
         return 0;
     }
 
-    public getNumFieldValuesFieldNumAndSubIdx(fieldNum: number, subfieldIndex: number): number {
+    private getNumFieldValuesFieldNumAndSubIdx(fieldNum: number, subfieldIndex: number): number {
         const field: Field | undefined = this.getField(fieldNum);
 
         if (field === undefined) {
@@ -581,7 +594,7 @@ export class Mesg {
 
     }
 
-    public getNumFieldValuesFieldNumAndSubName(fieldNum: number, subfieldName: string): number {
+    private getNumFieldValuesFieldNumAndSubName(fieldNum: number, subfieldName: string): number {
         const field: Field | undefined = this.getField(fieldNum);
 
         if (field === undefined) {
@@ -595,6 +608,20 @@ export class Mesg {
         return 0;
     }
 
+    public getFieldValue(
+        fieldNum: number,
+        fieldArrayIndex?: number,
+        subFieldIndex?: number,
+    ): any;
+    public getFieldValue(
+        fieldNum: number,
+        fieldArrayIndex: number,
+        subfieldName: string,
+    ): any;
+    public getFieldValue(
+        fieldName: string,
+        fieldArrayIndex?: number,
+    ): any;
     public getFieldValue(
         fieldNumOrName: number | string,
         fieldArrayIndex?: number,
@@ -684,6 +711,23 @@ export class Mesg {
         return false;
     }
 
+    public setFieldValue(
+        fieldNum: number,
+        fieldArrayIndex: number,
+        value: any,
+        subfieldIndex?: number,
+    ): void;
+    public setFieldValue(
+        fieldNum: number,
+        fieldArrayIndex: number,
+        value: any,
+        subfieldName: string,
+    ): void;
+    public setFieldValue(
+        name: string,
+        fieldArrayIndex: number,
+        value: any,
+    ): void;
     public setFieldValue(
         fieldNumOrName: number | string,
         fieldArrayIndex: number,
