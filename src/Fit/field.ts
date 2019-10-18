@@ -80,6 +80,18 @@ export class Field extends FieldBase {
     //#endregion;
 
     //#region; Constructors;
+    public constructor(other?: Field);
+    public constructor(
+        name: string | undefined,
+        num: number,
+        type: number,
+        scale: number,
+        offset: number,
+        units: string,
+        accumulated: boolean,
+        profileType: ProfileType,
+        );
+    /** Implementation */
     public constructor(
         nameOrField?: string | Field,
         num?: number,
@@ -160,6 +172,9 @@ export class Field extends FieldBase {
         this.type = value;
     }
 
+    public getSubfield(index: number): Subfield | undefined;
+    // tslint:disable-next-line: unified-signatures
+    public getSubfield(subfieldName: string): Subfield | undefined;
     public getSubfield(subfieldNameOrIndex: string | number): Subfield | undefined {
         if (typeof subfieldNameOrIndex === 'string') {
             return this.subfields.find(subfield => subfield.Name === subfieldNameOrIndex);
