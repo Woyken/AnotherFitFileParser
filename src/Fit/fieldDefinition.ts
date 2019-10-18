@@ -48,7 +48,7 @@ export class FieldDefinition {
     }
 
     public ctorFromField(field: Field): void {
-        this.num = field.num;
+        this.num = field.fieldNumberInProfile;
         this.size = field.getSize();
         this.type = field.Type;
     }

@@ -178,10 +178,10 @@ export class Mesg {
                 // is correct
                     field = new Field(Profile.getMesg(this.profileMesssageNumber)!
                         .getField(fieldDef.num));
-                    if (field.num === Fit.fieldNumInvalid) {
+                    if (field.fieldNumberInProfile === Fit.fieldNumInvalid) {
                     // If there was no info in the profile the FieldNum will get set to invalid
                     // so preserve the unknown fields info while we know it
-                        field.num = fieldDef.num;
+                        field.fieldNumberInProfile = fieldDef.num;
                         field.setType(fieldDef.type);
                     }
                     this.setField(field);
@@ -369,7 +369,7 @@ export class Mesg {
     //#region FieldList Manipulation Functions
     public hasField(fieldNum: number): boolean {
         for (const field of this.FieldsList) {
-            if (field.num === fieldNum) {
+            if (field.fieldNumberInProfile === fieldNum) {
                 return true;
             }
         }
@@ -387,7 +387,7 @@ export class Mesg {
      */
     public setField(field: Field): void {
         for (let i = 0; i < this.FieldsList.length; i++) {
-            if (this.FieldsList[i].num === field.num) {
+            if (this.FieldsList[i].fieldNumberInProfile === field.fieldNumberInProfile) {
                 this.FieldsList[i] = field;
                 return;
             }
@@ -405,7 +405,7 @@ export class Mesg {
     public insertField(index: number, field: Field): void {
         // if message already contains this field, remove it
         for (let i = 0; i < this.FieldsList.length; i++) {
-            if (this.FieldsList[i].num === field.num) {
+            if (this.FieldsList[i].fieldNumberInProfile === field.fieldNumberInProfile) {
                 this.FieldsList.splice(i, 1);
             }
         }
@@ -470,7 +470,7 @@ export class Mesg {
 
     private getFieldNum(fieldNum: number): Field | undefined {
         for (const field of this.FieldsList) {
-            if (field.num === fieldNum) {
+            if (field.fieldNumberInProfile === fieldNum) {
                 return field;
             }
         }
@@ -777,10 +777,10 @@ export class Mesg {
                 // combo in the profile.
             field = new Field(Profile.getMesg(this.profileMesssageNumber)!
                 .getField(fieldNum));
-            if (field.num === Fit.fieldNumInvalid) {
+            if (field.fieldNumberInProfile === Fit.fieldNumInvalid) {
                     // If there was no info in the profile our FieldNum will get set to invalid,
                     // at least preserve FieldNum while we know it
-                field.num = fieldNum;
+                field.fieldNumberInProfile = fieldNum;
             }
             this.setField(field);
         }
@@ -808,10 +808,10 @@ export class Mesg {
             // combo in the profile.
             field = new Field(Profile.getMesg(this.profileMesssageNumber)!
                 .getField(fieldNum));
-            if (field!.num === Fit.fieldNumInvalid) {
+            if (field!.fieldNumberInProfile === Fit.fieldNumInvalid) {
                 // If there was no info in the profile our FieldNum will get set to invalid,
                 // at least preserve FieldNum while we know it
-                field!.num = fieldNum;
+                field!.fieldNumberInProfile = fieldNum;
             }
             this.setField(field!);
         }
@@ -874,7 +874,7 @@ export class Mesg {
                     newField.isExpandedField = true;
 
                     // cache a field that we use to set properties on
-                    const f = this.getField(newField.num);
+                    const f = this.getField(newField.fieldNumberInProfile);
 
                     // GetBitsValue will not return more bits than the componentField type can hold.
                     // This means strings are built one letter at a time when using components
@@ -894,7 +894,7 @@ export class Mesg {
                             // If the field is invalid, set the raw value so that
                             // the invalid value is not scaled or offset.
                         if (FitBaseType.isNumericInvalid(bitsValue, newField.getType())) {
-                            if (this.hasField(newField.num)) {
+                            if (this.hasField(newField.fieldNumberInProfile)) {
                                 f!.setRawValue(f!.getNumValues(), bitsValue);
                             } else {
                                 newField.setRawValue(0, bitsValue);
@@ -904,7 +904,7 @@ export class Mesg {
 
                             fbitsValue = (fbitsValue / fC.scale) - fC.offset;
 
-                            if (this.hasField(newField.num)) {
+                            if (this.hasField(newField.fieldNumberInProfile)) {
                                 f!.setValue(f!.getNumValues(), fbitsValue);
                             } else {
                                 newField.setValue1(fbitsValue);
@@ -920,7 +920,7 @@ export class Mesg {
                         } else {
                             nonNumericBitsValue = bitsValue;
                         }
-                        if (this.hasField(newField.num)) {
+                        if (this.hasField(newField.fieldNumberInProfile)) {
                             f!.setValue(f!.getNumValues(), nonNumericBitsValue);
                         } else {
                             newField.setValue1(nonNumericBitsValue);
@@ -943,7 +943,7 @@ export class Mesg {
         for (let i = 0; i < this.FieldsList.length; ++i) {
             let componentList: FieldComponent[];
             // Determine the active subfield
-            const activeSubfield = this.getActiveSubFieldIndex(this.FieldsList[i].num);
+            const activeSubfield = this.getActiveSubFieldIndex(this.FieldsList[i].fieldNumberInProfile);
 
             // tslint:disable-next-line: prefer-conditional-expression
             if (activeSubfield === Fit.subfieldIndexMainField) {

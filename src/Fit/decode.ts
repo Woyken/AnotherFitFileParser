@@ -300,13 +300,13 @@ export class Decode {
 
                         newMesg.FieldsList.forEach((fieldIn: Field) => {
                             fieldIn.components.forEach((fc: FieldComponent) => {
-                                if ((fc.fieldNum === field.num) && (fc.accumulate)) {
+                                if ((fc.fieldNum === field.fieldNumberInProfile) && (fc.accumulate)) {
                                     // tslint:disable-next-line: max-line-length
                                     value = ((((value / field.scale) - field.offset) + fc.offset) * fc.scale);
                                 }
                             });
                         });
-                        this.accumulator.set(newMesg.profileMesssageNumber, field.num, value);
+                        this.accumulator.set(newMesg.profileMesssageNumber, field.fieldNumberInProfile, value);
                     }
                 }
             });

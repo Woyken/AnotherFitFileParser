@@ -50,7 +50,7 @@ export class Field extends FieldBase {
         return this.name;
     }
 
-    public num!: number;
+    public fieldNumberInProfile!: number;
 
     public get Type(): number {
         return this.type;
@@ -83,7 +83,7 @@ export class Field extends FieldBase {
     public constructor(other?: Field);
     public constructor(
         name: string | undefined,
-        num: number,
+        fieldNumberInProfile: number,
         type: number,
         scale: number,
         offset: number,
@@ -94,7 +94,7 @@ export class Field extends FieldBase {
     /** Implementation */
     public constructor(
         nameOrField?: string | Field,
-        num?: number,
+        fieldNumberInProfile?: number,
         type?: number,
         scale?: number,
         offset?: number,
@@ -105,7 +105,15 @@ export class Field extends FieldBase {
         super(typeof nameOrField === 'string' ? undefined : nameOrField);
         if (typeof nameOrField === 'string') {
             this.ctorFromData(
-                nameOrField, num!, type!, scale, offset, units, accumulated, profileType);
+                nameOrField,
+                fieldNumberInProfile!,
+                type!,
+                scale,
+                offset,
+                units,
+                accumulated,
+                profileType,
+            );
             return;
         }
         this.ctorCopy(nameOrField);
@@ -114,7 +122,7 @@ export class Field extends FieldBase {
     public ctorCopy(other?: Field): void {
         if (other === undefined) {
             this.name = 'unknown';
-            this.num = Fit.fieldNumInvalid;
+            this.fieldNumberInProfile = Fit.fieldNumInvalid;
             this.type = 0;
             this.scale = 1;
             this.offset = 0;
@@ -126,7 +134,7 @@ export class Field extends FieldBase {
         }
 
         this.name = other.Name;
-        this.num = other.num;
+        this.fieldNumberInProfile = other.fieldNumberInProfile;
         this.type = other.Type;
         this.scale = other.Scale;
         this.offset = other.Offset;
@@ -155,7 +163,7 @@ export class Field extends FieldBase {
         profileType: ProfileType = ProfileType.NumTypes,
     ): void {
         this.name = name === undefined ? 'unknown' : name;
-        this.num = num;
+        this.fieldNumberInProfile = num;
         this.type = type;
         this.scale = scale;
         this.offset = offset;
