@@ -26,6 +26,10 @@ export class DateTime {
     //#endregion // Properties
 
     //#region Constructors
+    public constructor(date: Date);
+    public constructor(timeStamp: number, fractionalTimeStamp?: number);
+    // tslint:disable-next-line: unified-signatures
+    public constructor(dateTime: DateTime);
     public constructor(
         timeStampOrDateOrDateTime: number | Date | DateTime,
         fractionalTimeStamp?: number,
