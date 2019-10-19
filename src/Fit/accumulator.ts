@@ -1,9 +1,10 @@
 import { AccumulatedField } from './accumulatedField';
+import { MesgNum } from './Profile/Types/mesgNum';
 
 export class Accumulator {
     public accumulatedFields: AccumulatedField[] = [];
 
-    public set(mesgNum: number, destFieldNum: number, value: number): void {
+    public set(mesgNum: MesgNum, destFieldNum: number, value: number): void {
         let accumField: AccumulatedField | null = null;
         let i: number;
 
@@ -25,7 +26,7 @@ export class Accumulator {
         }
     }
 
-    public accumulate(mesgNum: number, destFieldNum: number, value: number, bits: number): number {
+    public accumulate(mesgNum: MesgNum, destFieldNum: number, value: number, bits: number): number {
         let accumField: AccumulatedField | null = null;
         let i: number;
         for (i = 0; i < this.accumulatedFields.length; i++) {

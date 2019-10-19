@@ -1,10 +1,12 @@
+import { MesgNum } from './Profile/Types/mesgNum';
+
 export class AccumulatedField {
-    public mesgNum: number;
+    public mesgNum: MesgNum;
     public destFieldNum: number;
     private lastValue: number;
     private accumulatedValue: number;
 
-    public constructor(mesgNum: number, destFieldNum: number) {
+    public constructor(mesgNum: MesgNum, destFieldNum: number) {
         this.mesgNum = mesgNum;
         this.destFieldNum = destFieldNum;
         this.lastValue = 0;

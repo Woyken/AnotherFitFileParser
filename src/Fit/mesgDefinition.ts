@@ -96,7 +96,7 @@ export class MesgDefinition {
 
     public ctorMesg(mesg: Mesg): void {
         this.localMesgNum = mesg.LocalNum;
-        this.globalMesgNum = mesg.profileMesssageNumber;
+        this.globalMesgNum = mesg.profileMessageNumber;
         this.architecture = Fit.littleEndian;
         this.numFields = mesg.FieldsList.length;
 
