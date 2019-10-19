@@ -23,6 +23,15 @@ export class ByteStreamReader {
     private pposition: number = 0;
 
     public constructor(
+        stream: ByteStreamReader,
+        isBigEndian?: boolean,
+    );
+    public constructor(
+        // tslint:disable-next-line: unified-signatures
+        buffer: Uint8Array,
+        isBigEndian?: boolean,
+    );
+    public constructor(
         bufferOrStream: Uint8Array | ByteStreamReader,
         public isBigEndian: boolean = false,
     ) {
