@@ -27,7 +27,7 @@ export class FitType {
         public endianAbility: boolean,
         public baseTypeField: number,
         public typeName: string,
-        public invalidValue: any,
+        public invalidValue: string | number,
         public size: number,
         public isSigned: boolean,
         public isInteger: boolean,

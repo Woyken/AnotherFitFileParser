@@ -502,7 +502,7 @@ export abstract class FieldBase {
         if (this.isNumeric()) {
                 // Cast to long as scale and offset only apply to integer based types
                 // and we want to make sure we have maximum precision.
-            invalidValue = Fit.baseType[this.Type & Fit.baseTypeNumMask].invalidValue;
+            invalidValue = Fit.baseType[this.Type & Fit.baseTypeNumMask].invalidValue as number;
             castedValue = value;
 
                 // If the field is numeric, check if the value is less than the base
