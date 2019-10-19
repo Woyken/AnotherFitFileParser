@@ -1,9 +1,12 @@
-function getTicks(date: Date): number {
-    return ((date.getTime() * 10000) + 621355968000000000);
+function getUTCMillisecondsTotal(date: Date): number {
+    const milliseconds = date.getTime() - (date.getTimezoneOffset() * 60000);
+    return milliseconds;
 }
 
-function ticksToMilis(ticks: number): number {
-    return (ticks - 621355968000000000) / 10000;
+function dateFromUTCMilliseconds(miliseconds: number): Date {
+    // Creating date from miliseconds treats it in local time, add offset to
+    const date = new Date(miliseconds + new Date(miliseconds).getTimezoneOffset() * 60 * 1000);
+    return date;
 }
 
 /// <summary>
@@ -12,13 +15,14 @@ function ticksToMilis(ticks: number): number {
 /// </summary>
 export class DateTime {
     //#region Fields
+    /** This field should be from 0 to 1 (excluding 1) */
     private fractionalTimeStamp!: number;
     private timeStamp!: number;
     // if date_time is < 0x10000000 then it is system time (seconds from device power on)
     // 0x10000000 => uptime of 8years => earliest date you can express ~1997
     private min: number = 0x10000000;
     // .NET datetime uses 100ns ticks starting 12:00:00 midnight, January 1, 0001
-    public offset: Date = new Date(1989, 12, 31, 0, 0, 0);
+    public offset: Date = new Date(Date.UTC(1989, 12, 31, 0, 0, 0));
     //#endregion // Fields
 
     //#region Properties
@@ -36,10 +40,12 @@ export class DateTime {
     ) {
         if (timeStampOrDateOrDateTime instanceof Date) {
             this.timeStamp =
-                ((getTicks(timeStampOrDateOrDateTime) - getTicks(this.offset)) / 10000000);
+                ((getUTCMillisecondsTotal(timeStampOrDateOrDateTime) -
+                    getUTCMillisecondsTotal(this.offset))
+                / 1000);
             this.fractionalTimeStamp =
-                (((getTicks(timeStampOrDateOrDateTime) -
-                    getTicks(this.offset)) % 10000000) / 10000000.0);
+                (((getUTCMillisecondsTotal(timeStampOrDateOrDateTime) -
+                getUTCMillisecondsTotal(this.offset)) % 1000) / 1000.0);
             return;
         }
         if (fractionalTimeStamp === undefined && typeof timeStampOrDateOrDateTime === 'number') {
@@ -87,7 +93,7 @@ export class DateTime {
 
     public getDateTime(): Date {
         // tslint:disable-next-line: max-line-length
-        return new Date(ticksToMilis(this.timeStamp * 10000000 + getTicks(this.offset) + (this.fractionalTimeStamp * 10000000)));
+        return dateFromUTCMilliseconds(this.timeStamp * 1000 + getUTCMillisecondsTotal(this.offset) + (this.fractionalTimeStamp * 1000));
     }
 
     public toString(): string {
