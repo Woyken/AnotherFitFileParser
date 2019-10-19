@@ -36,7 +36,8 @@ export class ByteStreamReader {
         public isBigEndian: boolean = false,
     ) {
         if (ByteStreamReader.isOfType(bufferOrStream)) {
-            this.buffer = new Uint8Array(bufferOrStream.buffer, bufferOrStream.position);
+            this.buffer = new Uint8Array(bufferOrStream.buffer);
+            this.position = bufferOrStream.position;
             return;
         }
         this.buffer = bufferOrStream;
