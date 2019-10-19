@@ -3,13 +3,11 @@ import { ProfileType } from './profile';
 import { Fit } from './fit';
 import { FieldBase } from './fieldBase';
 import { FieldComponent } from './fieldComponent';
+import { FitFieldType } from './Profile/Types/fitBaseType';
 
 export class Field extends FieldBase {
     public static isOfType(value: any): value is Field {
         if (typeof value.name !== 'string') {
-            return false;
-        }
-        if (typeof value.type !== 'number') {
             return false;
         }
         if (typeof value.scale !== 'number') {
@@ -34,7 +32,7 @@ export class Field extends FieldBase {
     }
     //#region; Fields;
     public name!: string;
-    public type!: number;
+    public type!: FitFieldType;
     public scale!: number;
     public offset!: number;
     public units!: string;
@@ -84,7 +82,7 @@ export class Field extends FieldBase {
     public constructor(
         name: string | undefined,
         fieldNumberInProfile: number,
-        type: number,
+        type: FitFieldType,
         scale: number,
         offset: number,
         units: string,
@@ -95,7 +93,7 @@ export class Field extends FieldBase {
     public constructor(
         nameOrField?: string | Field,
         fieldNumberInProfile?: number,
-        type?: number,
+        type?: FitFieldType,
         scale?: number,
         offset?: number,
         units?: string,
@@ -155,7 +153,7 @@ export class Field extends FieldBase {
     public ctorFromData(
         name: string | undefined,
         num: number,
-        type: number,
+        type: FitFieldType,
         scale: number = 1.0,
         offset: number = 0.0,
         units: string = '',
