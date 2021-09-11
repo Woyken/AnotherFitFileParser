@@ -13,7 +13,7 @@ import { DeveloperFieldDefinition } from './developerFieldDefinition';
 import { FieldBase } from './fieldBase';
 import { Subfield } from './subfield';
 import { FitBaseType } from './Profile/Types/fitBaseType';
-import { DateTime } from './Profile/Types/dateTime';
+import { createDateFromTimestamp } from './Profile/Types/dateTime';
 
 export class Mesg {
     public static isOfType(value: any): value is Mesg {
@@ -837,14 +837,14 @@ export class Mesg {
         field!.setValue6(fieldArrayIndex, value, name);
     }
 
-    public timestampToDateTime(timestamp: number | undefined): DateTime | undefined {
-        let dateTime: DateTime | undefined;
+    public timestampToDateTime(timestamp: number | undefined): Date | undefined {
+        // const GarminTimeOffset = 631065600000;
+        let date: Date | undefined;
         if (timestamp !== undefined) {
-            dateTime = new DateTime(timestamp);
-            dateTime.convertSystemTimeToUTC(this.systemTimeOffset);
+            date = createDateFromTimestamp(timestamp);
         }
 
-        return dateTime;
+        return date;
     }
 
     /**
