@@ -384,18 +384,18 @@ function formatMessageListToString(
   }
   function formatMessageToString(message: ParsedMessage) {
     return `${formatCommentToOptionalString("  ", message.comment, "\n")}\
-  ${message.num}: {
+  {
     id: ${message.num},
     name: '${message.name}',
     groupName: '${message.groupName}',
-    fields: {${message.fields
+    fields: [${message.fields
       .map(
         (field) => `${formatCommentToOptionalString(
           "\n      ",
           field.comment,
           ""
         )}
-      ${field.num}: {
+      {
         id: ${field.num},
         name: '${field.name}',
         scale: ${field.scale},
@@ -446,13 +446,13 @@ function formatMessageListToString(
       }`
       )
       .join(",")}
-    },
+    ],
   }`;
   }
   return `\
-const messageList = {
+const messageList = [
 ${messageList.map(formatMessageToString).join(",\n")}
-} as const`;
+] as const`;
 }
 
 async function main() {

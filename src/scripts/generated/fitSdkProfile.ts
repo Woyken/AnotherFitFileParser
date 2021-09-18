@@ -1,7 +1,7 @@
 // Some sort of header goes here
 // Parsed from
 // SDK version: 21.6
-// On Sat, 18 Sep 2021 09:56:17 GMT
+// On Sat, 18 Sep 2021 13:09:53 GMT
 // Parsed 164 types (3288 values), 87 messages (1092 fields)
 
 export const baseTypesList = {
@@ -4768,14 +4768,14 @@ export const profileTypeList = {
   }
 } as const
 
-export const messageList = {
+export const messageList = [
   /** Must be first message in file. */
-  0: {
+  {
     id: 0,
     name: 'file_id',
     groupName: 'COMMON MESSAGES',
-    fields: {
-      0: {
+    fields: [
+      {
         id: 0,
         name: 'type',
         scale: undefined,
@@ -4789,7 +4789,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'manufacturer',
         scale: undefined,
@@ -4803,7 +4803,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'product',
         scale: undefined,
@@ -4873,7 +4873,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'serial_number',
         scale: undefined,
@@ -4888,7 +4888,7 @@ export const messageList = {
         ],
       },
       /** Only set for files that are can be created/erased. */
-      4: {
+      {
         id: 4,
         name: 'time_created',
         scale: undefined,
@@ -4903,7 +4903,7 @@ export const messageList = {
         ],
       },
       /** Only set for files that are not created/erased. */
-      5: {
+      {
         id: 5,
         name: 'number',
         scale: undefined,
@@ -4918,7 +4918,7 @@ export const messageList = {
         ],
       },
       /** Optional free form string to indicate the devices name or model */
-      8: {
+      {
         id: 8,
         name: 'product_name',
         scale: undefined,
@@ -4932,14 +4932,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  49: {
+  {
     id: 49,
     name: 'file_creator',
     groupName: 'COMMON MESSAGES',
-    fields: {
-      0: {
+    fields: [
+      {
         id: 0,
         name: 'software_version',
         scale: undefined,
@@ -4953,7 +4953,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'hardware_version',
         scale: undefined,
@@ -4967,15 +4967,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  162: {
+  {
     id: 162,
     name: 'timestamp_correlation',
     groupName: 'COMMON MESSAGES',
-    fields: {
+    fields: [
       /** Whole second part of UTC timestamp at the time the system timestamp was recorded. */
-      253: {
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -4990,7 +4990,7 @@ export const messageList = {
         ],
       },
       /** Fractional part of the UTC timestamp at the time the system timestamp was recorded. */
-      0: {
+      {
         id: 0,
         name: 'fractional_timestamp',
         scale: 32768,
@@ -5005,7 +5005,7 @@ export const messageList = {
         ],
       },
       /** Whole second part of the system timestamp */
-      1: {
+      {
         id: 1,
         name: 'system_timestamp',
         scale: undefined,
@@ -5020,7 +5020,7 @@ export const messageList = {
         ],
       },
       /** Fractional part of the system timestamp */
-      2: {
+      {
         id: 2,
         name: 'fractional_system_timestamp',
         scale: 32768,
@@ -5035,7 +5035,7 @@ export const messageList = {
         ],
       },
       /** timestamp epoch expressed in local time used to convert timestamps to local time */
-      3: {
+      {
         id: 3,
         name: 'local_timestamp',
         scale: undefined,
@@ -5050,7 +5050,7 @@ export const messageList = {
         ],
       },
       /** Millisecond part of the UTC timestamp at the time the system timestamp was recorded. */
-      4: {
+      {
         id: 4,
         name: 'timestamp_ms',
         scale: undefined,
@@ -5065,7 +5065,7 @@ export const messageList = {
         ],
       },
       /** Millisecond part of the system timestamp */
-      5: {
+      {
         id: 5,
         name: 'system_timestamp_ms',
         scale: undefined,
@@ -5079,14 +5079,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  35: {
+  {
     id: 35,
     name: 'software',
     groupName: 'DEVICE FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -5100,7 +5100,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'version',
         scale: 100,
@@ -5114,7 +5114,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'part_number',
         scale: undefined,
@@ -5128,14 +5128,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  106: {
+  {
     id: 106,
     name: 'slave_device',
     groupName: 'DEVICE FILE MESSAGES',
-    fields: {
-      0: {
+    fields: [
+      {
         id: 0,
         name: 'manufacturer',
         scale: undefined,
@@ -5149,7 +5149,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'product',
         scale: undefined,
@@ -5219,15 +5219,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  1: {
+  {
     id: 1,
     name: 'capabilities',
     groupName: 'DEVICE FILE MESSAGES',
-    fields: {
+    fields: [
       /** Use language_bits_x types where x is index of array. */
-      0: {
+      {
         id: 0,
         name: 'languages',
         scale: undefined,
@@ -5242,7 +5242,7 @@ export const messageList = {
         ],
       },
       /** Use sport_bits_x types where x is index of array. */
-      1: {
+      {
         id: 1,
         name: 'sports',
         scale: undefined,
@@ -5256,7 +5256,7 @@ export const messageList = {
 
         ],
       },
-      21: {
+      {
         id: 21,
         name: 'workouts_supported',
         scale: undefined,
@@ -5270,7 +5270,7 @@ export const messageList = {
 
         ],
       },
-      23: {
+      {
         id: 23,
         name: 'connectivity_supported',
         scale: undefined,
@@ -5284,14 +5284,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  37: {
+  {
     id: 37,
     name: 'file_capabilities',
     groupName: 'DEVICE FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -5305,7 +5305,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'type',
         scale: undefined,
@@ -5319,7 +5319,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'flags',
         scale: undefined,
@@ -5333,7 +5333,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'directory',
         scale: undefined,
@@ -5347,7 +5347,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'max_count',
         scale: undefined,
@@ -5361,7 +5361,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'max_size',
         scale: undefined,
@@ -5375,14 +5375,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  38: {
+  {
     id: 38,
     name: 'mesg_capabilities',
     groupName: 'DEVICE FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -5396,7 +5396,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'file',
         scale: undefined,
@@ -5410,7 +5410,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'mesg_num',
         scale: undefined,
@@ -5424,7 +5424,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'count_type',
         scale: undefined,
@@ -5438,7 +5438,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'count',
         scale: undefined,
@@ -5509,14 +5509,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  39: {
+  {
     id: 39,
     name: 'field_capabilities',
     groupName: 'DEVICE FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -5530,7 +5530,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'file',
         scale: undefined,
@@ -5544,7 +5544,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'mesg_num',
         scale: undefined,
@@ -5558,7 +5558,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'field_num',
         scale: undefined,
@@ -5572,7 +5572,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'count',
         scale: undefined,
@@ -5586,15 +5586,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  2: {
+  {
     id: 2,
     name: 'device_settings',
     groupName: 'SETTINGS FILE MESSAGES',
-    fields: {
+    fields: [
       /** Index into time zone arrays. */
-      0: {
+      {
         id: 0,
         name: 'active_time_zone',
         scale: undefined,
@@ -5609,7 +5609,7 @@ export const messageList = {
         ],
       },
       /** Offset from system time. Required to convert timestamp from system time to UTC. */
-      1: {
+      {
         id: 1,
         name: 'utc_offset',
         scale: undefined,
@@ -5624,7 +5624,7 @@ export const messageList = {
         ],
       },
       /** Offset from system time. */
-      2: {
+      {
         id: 2,
         name: 'time_offset',
         scale: undefined,
@@ -5639,7 +5639,7 @@ export const messageList = {
         ],
       },
       /** Display mode for the time */
-      4: {
+      {
         id: 4,
         name: 'time_mode',
         scale: undefined,
@@ -5654,7 +5654,7 @@ export const messageList = {
         ],
       },
       /** timezone offset in 1/4 hour increments */
-      5: {
+      {
         id: 5,
         name: 'time_zone_offset',
         scale: 4,
@@ -5669,7 +5669,7 @@ export const messageList = {
         ],
       },
       /** Mode for backlight */
-      12: {
+      {
         id: 12,
         name: 'backlight_mode',
         scale: undefined,
@@ -5684,7 +5684,7 @@ export const messageList = {
         ],
       },
       /** Enabled state of the activity tracker functionality */
-      36: {
+      {
         id: 36,
         name: 'activity_tracker_enabled',
         scale: undefined,
@@ -5699,7 +5699,7 @@ export const messageList = {
         ],
       },
       /** UTC timestamp used to set the devices clock and date */
-      39: {
+      {
         id: 39,
         name: 'clock_time',
         scale: undefined,
@@ -5714,7 +5714,7 @@ export const messageList = {
         ],
       },
       /** Bitfield  to configure enabled screens for each supported loop */
-      40: {
+      {
         id: 40,
         name: 'pages_enabled',
         scale: undefined,
@@ -5729,7 +5729,7 @@ export const messageList = {
         ],
       },
       /** Enabled state of the move alert */
-      46: {
+      {
         id: 46,
         name: 'move_alert_enabled',
         scale: undefined,
@@ -5744,7 +5744,7 @@ export const messageList = {
         ],
       },
       /** Display mode for the date */
-      47: {
+      {
         id: 47,
         name: 'date_mode',
         scale: undefined,
@@ -5758,7 +5758,7 @@ export const messageList = {
 
         ],
       },
-      55: {
+      {
         id: 55,
         name: 'display_orientation',
         scale: undefined,
@@ -5772,7 +5772,7 @@ export const messageList = {
 
         ],
       },
-      56: {
+      {
         id: 56,
         name: 'mounting_side',
         scale: undefined,
@@ -5787,7 +5787,7 @@ export const messageList = {
         ],
       },
       /** Bitfield to indicate one page as default for each supported loop */
-      57: {
+      {
         id: 57,
         name: 'default_page',
         scale: undefined,
@@ -5802,7 +5802,7 @@ export const messageList = {
         ],
       },
       /** Minimum steps before an autosync can occur */
-      58: {
+      {
         id: 58,
         name: 'autosync_min_steps',
         scale: undefined,
@@ -5817,7 +5817,7 @@ export const messageList = {
         ],
       },
       /** Minimum minutes before an autosync can occur */
-      59: {
+      {
         id: 59,
         name: 'autosync_min_time',
         scale: undefined,
@@ -5832,7 +5832,7 @@ export const messageList = {
         ],
       },
       /** Enable auto-detect setting for the lactate threshold feature. */
-      80: {
+      {
         id: 80,
         name: 'lactate_threshold_autodetect_enabled',
         scale: undefined,
@@ -5847,7 +5847,7 @@ export const messageList = {
         ],
       },
       /** Automatically upload using BLE */
-      86: {
+      {
         id: 86,
         name: 'ble_auto_upload_enabled',
         scale: undefined,
@@ -5862,7 +5862,7 @@ export const messageList = {
         ],
       },
       /** Helps to conserve battery by changing modes */
-      89: {
+      {
         id: 89,
         name: 'auto_sync_frequency',
         scale: undefined,
@@ -5877,7 +5877,7 @@ export const messageList = {
         ],
       },
       /** Allows setting specific activities auto-activity detect enabled/disabled settings */
-      90: {
+      {
         id: 90,
         name: 'auto_activity_detect',
         scale: undefined,
@@ -5892,7 +5892,7 @@ export const messageList = {
         ],
       },
       /** Number of screens configured to display */
-      94: {
+      {
         id: 94,
         name: 'number_of_screens',
         scale: undefined,
@@ -5907,7 +5907,7 @@ export const messageList = {
         ],
       },
       /** Smart Notification display orientation */
-      95: {
+      {
         id: 95,
         name: 'smart_notification_display_orientation',
         scale: undefined,
@@ -5921,7 +5921,7 @@ export const messageList = {
 
         ],
       },
-      134: {
+      {
         id: 134,
         name: 'tap_interface',
         scale: undefined,
@@ -5936,7 +5936,7 @@ export const messageList = {
         ],
       },
       /** Used to hold the tap threshold setting */
-      174: {
+      {
         id: 174,
         name: 'tap_sensitivity',
         scale: undefined,
@@ -5950,14 +5950,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  3: {
+  {
     id: 3,
     name: 'user_profile',
     groupName: 'SETTINGS FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -5971,7 +5971,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'friendly_name',
         scale: undefined,
@@ -5985,7 +5985,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'gender',
         scale: undefined,
@@ -5999,7 +5999,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'age',
         scale: undefined,
@@ -6013,7 +6013,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'height',
         scale: 100,
@@ -6027,7 +6027,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'weight',
         scale: 10,
@@ -6041,7 +6041,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'language',
         scale: undefined,
@@ -6055,7 +6055,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'elev_setting',
         scale: undefined,
@@ -6069,7 +6069,7 @@ export const messageList = {
 
         ],
       },
-      7: {
+      {
         id: 7,
         name: 'weight_setting',
         scale: undefined,
@@ -6083,7 +6083,7 @@ export const messageList = {
 
         ],
       },
-      8: {
+      {
         id: 8,
         name: 'resting_heart_rate',
         scale: undefined,
@@ -6097,7 +6097,7 @@ export const messageList = {
 
         ],
       },
-      9: {
+      {
         id: 9,
         name: 'default_max_running_heart_rate',
         scale: undefined,
@@ -6111,7 +6111,7 @@ export const messageList = {
 
         ],
       },
-      10: {
+      {
         id: 10,
         name: 'default_max_biking_heart_rate',
         scale: undefined,
@@ -6125,7 +6125,7 @@ export const messageList = {
 
         ],
       },
-      11: {
+      {
         id: 11,
         name: 'default_max_heart_rate',
         scale: undefined,
@@ -6139,7 +6139,7 @@ export const messageList = {
 
         ],
       },
-      12: {
+      {
         id: 12,
         name: 'hr_setting',
         scale: undefined,
@@ -6153,7 +6153,7 @@ export const messageList = {
 
         ],
       },
-      13: {
+      {
         id: 13,
         name: 'speed_setting',
         scale: undefined,
@@ -6167,7 +6167,7 @@ export const messageList = {
 
         ],
       },
-      14: {
+      {
         id: 14,
         name: 'dist_setting',
         scale: undefined,
@@ -6181,7 +6181,7 @@ export const messageList = {
 
         ],
       },
-      16: {
+      {
         id: 16,
         name: 'power_setting',
         scale: undefined,
@@ -6195,7 +6195,7 @@ export const messageList = {
 
         ],
       },
-      17: {
+      {
         id: 17,
         name: 'activity_class',
         scale: undefined,
@@ -6209,7 +6209,7 @@ export const messageList = {
 
         ],
       },
-      18: {
+      {
         id: 18,
         name: 'position_setting',
         scale: undefined,
@@ -6223,7 +6223,7 @@ export const messageList = {
 
         ],
       },
-      21: {
+      {
         id: 21,
         name: 'temperature_setting',
         scale: undefined,
@@ -6237,7 +6237,7 @@ export const messageList = {
 
         ],
       },
-      22: {
+      {
         id: 22,
         name: 'local_id',
         scale: undefined,
@@ -6251,7 +6251,7 @@ export const messageList = {
 
         ],
       },
-      23: {
+      {
         id: 23,
         name: 'global_id',
         scale: undefined,
@@ -6266,7 +6266,7 @@ export const messageList = {
         ],
       },
       /** Typical wake time */
-      28: {
+      {
         id: 28,
         name: 'wake_time',
         scale: undefined,
@@ -6281,7 +6281,7 @@ export const messageList = {
         ],
       },
       /** Typical bed time */
-      29: {
+      {
         id: 29,
         name: 'sleep_time',
         scale: undefined,
@@ -6295,7 +6295,7 @@ export const messageList = {
 
         ],
       },
-      30: {
+      {
         id: 30,
         name: 'height_setting',
         scale: undefined,
@@ -6310,7 +6310,7 @@ export const messageList = {
         ],
       },
       /** User defined running step length set to 0 for auto length */
-      31: {
+      {
         id: 31,
         name: 'user_running_step_length',
         scale: 1000,
@@ -6325,7 +6325,7 @@ export const messageList = {
         ],
       },
       /** User defined walking step length set to 0 for auto length */
-      32: {
+      {
         id: 32,
         name: 'user_walking_step_length',
         scale: 1000,
@@ -6339,7 +6339,7 @@ export const messageList = {
 
         ],
       },
-      47: {
+      {
         id: 47,
         name: 'depth_setting',
         scale: undefined,
@@ -6353,7 +6353,7 @@ export const messageList = {
 
         ],
       },
-      49: {
+      {
         id: 49,
         name: 'dive_count',
         scale: undefined,
@@ -6367,14 +6367,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  4: {
+  {
     id: 4,
     name: 'hrm_profile',
     groupName: 'SETTINGS FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -6388,7 +6388,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'enabled',
         scale: undefined,
@@ -6402,7 +6402,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'hrm_ant_id',
         scale: undefined,
@@ -6416,7 +6416,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'log_hrv',
         scale: undefined,
@@ -6430,7 +6430,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'hrm_ant_id_trans_type',
         scale: undefined,
@@ -6444,14 +6444,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  5: {
+  {
     id: 5,
     name: 'sdm_profile',
     groupName: 'SETTINGS FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -6465,7 +6465,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'enabled',
         scale: undefined,
@@ -6479,7 +6479,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'sdm_ant_id',
         scale: undefined,
@@ -6493,7 +6493,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'sdm_cal_factor',
         scale: 10,
@@ -6507,7 +6507,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'odometer',
         scale: 100,
@@ -6522,7 +6522,7 @@ export const messageList = {
         ],
       },
       /** Use footpod for speed source instead of GPS */
-      4: {
+      {
         id: 4,
         name: 'speed_source',
         scale: undefined,
@@ -6536,7 +6536,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'sdm_ant_id_trans_type',
         scale: undefined,
@@ -6551,7 +6551,7 @@ export const messageList = {
         ],
       },
       /** Rollover counter that can be used to extend the odometer */
-      7: {
+      {
         id: 7,
         name: 'odometer_rollover',
         scale: undefined,
@@ -6565,14 +6565,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  6: {
+  {
     id: 6,
     name: 'bike_profile',
     groupName: 'SETTINGS FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -6586,7 +6586,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'name',
         scale: undefined,
@@ -6600,7 +6600,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'sport',
         scale: undefined,
@@ -6614,7 +6614,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'sub_sport',
         scale: undefined,
@@ -6628,7 +6628,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'odometer',
         scale: 100,
@@ -6642,7 +6642,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'bike_spd_ant_id',
         scale: undefined,
@@ -6656,7 +6656,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'bike_cad_ant_id',
         scale: undefined,
@@ -6670,7 +6670,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'bike_spdcad_ant_id',
         scale: undefined,
@@ -6684,7 +6684,7 @@ export const messageList = {
 
         ],
       },
-      7: {
+      {
         id: 7,
         name: 'bike_power_ant_id',
         scale: undefined,
@@ -6698,7 +6698,7 @@ export const messageList = {
 
         ],
       },
-      8: {
+      {
         id: 8,
         name: 'custom_wheelsize',
         scale: 1000,
@@ -6712,7 +6712,7 @@ export const messageList = {
 
         ],
       },
-      9: {
+      {
         id: 9,
         name: 'auto_wheelsize',
         scale: 1000,
@@ -6726,7 +6726,7 @@ export const messageList = {
 
         ],
       },
-      10: {
+      {
         id: 10,
         name: 'bike_weight',
         scale: 10,
@@ -6740,7 +6740,7 @@ export const messageList = {
 
         ],
       },
-      11: {
+      {
         id: 11,
         name: 'power_cal_factor',
         scale: 10,
@@ -6754,7 +6754,7 @@ export const messageList = {
 
         ],
       },
-      12: {
+      {
         id: 12,
         name: 'auto_wheel_cal',
         scale: undefined,
@@ -6768,7 +6768,7 @@ export const messageList = {
 
         ],
       },
-      13: {
+      {
         id: 13,
         name: 'auto_power_zero',
         scale: undefined,
@@ -6782,7 +6782,7 @@ export const messageList = {
 
         ],
       },
-      14: {
+      {
         id: 14,
         name: 'id',
         scale: undefined,
@@ -6796,7 +6796,7 @@ export const messageList = {
 
         ],
       },
-      15: {
+      {
         id: 15,
         name: 'spd_enabled',
         scale: undefined,
@@ -6810,7 +6810,7 @@ export const messageList = {
 
         ],
       },
-      16: {
+      {
         id: 16,
         name: 'cad_enabled',
         scale: undefined,
@@ -6824,7 +6824,7 @@ export const messageList = {
 
         ],
       },
-      17: {
+      {
         id: 17,
         name: 'spdcad_enabled',
         scale: undefined,
@@ -6838,7 +6838,7 @@ export const messageList = {
 
         ],
       },
-      18: {
+      {
         id: 18,
         name: 'power_enabled',
         scale: undefined,
@@ -6852,7 +6852,7 @@ export const messageList = {
 
         ],
       },
-      19: {
+      {
         id: 19,
         name: 'crank_length',
         scale: 2,
@@ -6866,7 +6866,7 @@ export const messageList = {
 
         ],
       },
-      20: {
+      {
         id: 20,
         name: 'enabled',
         scale: undefined,
@@ -6880,7 +6880,7 @@ export const messageList = {
 
         ],
       },
-      21: {
+      {
         id: 21,
         name: 'bike_spd_ant_id_trans_type',
         scale: undefined,
@@ -6894,7 +6894,7 @@ export const messageList = {
 
         ],
       },
-      22: {
+      {
         id: 22,
         name: 'bike_cad_ant_id_trans_type',
         scale: undefined,
@@ -6908,7 +6908,7 @@ export const messageList = {
 
         ],
       },
-      23: {
+      {
         id: 23,
         name: 'bike_spdcad_ant_id_trans_type',
         scale: undefined,
@@ -6922,7 +6922,7 @@ export const messageList = {
 
         ],
       },
-      24: {
+      {
         id: 24,
         name: 'bike_power_ant_id_trans_type',
         scale: undefined,
@@ -6937,7 +6937,7 @@ export const messageList = {
         ],
       },
       /** Rollover counter that can be used to extend the odometer */
-      37: {
+      {
         id: 37,
         name: 'odometer_rollover',
         scale: undefined,
@@ -6952,7 +6952,7 @@ export const messageList = {
         ],
       },
       /** Number of front gears */
-      38: {
+      {
         id: 38,
         name: 'front_gear_num',
         scale: undefined,
@@ -6967,7 +6967,7 @@ export const messageList = {
         ],
       },
       /** Number of teeth on each gear 0 is innermost */
-      39: {
+      {
         id: 39,
         name: 'front_gear',
         scale: undefined,
@@ -6982,7 +6982,7 @@ export const messageList = {
         ],
       },
       /** Number of rear gears */
-      40: {
+      {
         id: 40,
         name: 'rear_gear_num',
         scale: undefined,
@@ -6997,7 +6997,7 @@ export const messageList = {
         ],
       },
       /** Number of teeth on each gear 0 is innermost */
-      41: {
+      {
         id: 41,
         name: 'rear_gear',
         scale: undefined,
@@ -7011,7 +7011,7 @@ export const messageList = {
 
         ],
       },
-      44: {
+      {
         id: 44,
         name: 'shimano_di2_enabled',
         scale: undefined,
@@ -7025,15 +7025,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  127: {
+  {
     id: 127,
     name: 'connectivity',
     groupName: 'SETTINGS FILE MESSAGES',
-    fields: {
+    fields: [
       /** Use Bluetooth for connectivity features */
-      0: {
+      {
         id: 0,
         name: 'bluetooth_enabled',
         scale: undefined,
@@ -7048,7 +7048,7 @@ export const messageList = {
         ],
       },
       /** Use Bluetooth Low Energy for connectivity features */
-      1: {
+      {
         id: 1,
         name: 'bluetooth_le_enabled',
         scale: undefined,
@@ -7063,7 +7063,7 @@ export const messageList = {
         ],
       },
       /** Use ANT for connectivity features */
-      2: {
+      {
         id: 2,
         name: 'ant_enabled',
         scale: undefined,
@@ -7077,7 +7077,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'name',
         scale: undefined,
@@ -7091,7 +7091,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'live_tracking_enabled',
         scale: undefined,
@@ -7105,7 +7105,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'weather_conditions_enabled',
         scale: undefined,
@@ -7119,7 +7119,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'weather_alerts_enabled',
         scale: undefined,
@@ -7133,7 +7133,7 @@ export const messageList = {
 
         ],
       },
-      7: {
+      {
         id: 7,
         name: 'auto_activity_upload_enabled',
         scale: undefined,
@@ -7147,7 +7147,7 @@ export const messageList = {
 
         ],
       },
-      8: {
+      {
         id: 8,
         name: 'course_download_enabled',
         scale: undefined,
@@ -7161,7 +7161,7 @@ export const messageList = {
 
         ],
       },
-      9: {
+      {
         id: 9,
         name: 'workout_download_enabled',
         scale: undefined,
@@ -7175,7 +7175,7 @@ export const messageList = {
 
         ],
       },
-      10: {
+      {
         id: 10,
         name: 'gps_ephemeris_download_enabled',
         scale: undefined,
@@ -7189,7 +7189,7 @@ export const messageList = {
 
         ],
       },
-      11: {
+      {
         id: 11,
         name: 'incident_detection_enabled',
         scale: undefined,
@@ -7203,7 +7203,7 @@ export const messageList = {
 
         ],
       },
-      12: {
+      {
         id: 12,
         name: 'grouptrack_enabled',
         scale: undefined,
@@ -7217,14 +7217,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  159: {
+  {
     id: 159,
     name: 'watchface_settings',
     groupName: 'SETTINGS FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -7238,7 +7238,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'mode',
         scale: undefined,
@@ -7252,7 +7252,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'layout',
         scale: undefined,
@@ -7304,14 +7304,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  188: {
+  {
     id: 188,
     name: 'ohr_settings',
     groupName: 'SETTINGS FILE MESSAGES',
-    fields: {
-      253: {
+    fields: [
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -7325,7 +7325,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'enabled',
         scale: undefined,
@@ -7339,14 +7339,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  7: {
+  {
     id: 7,
     name: 'zones_target',
     groupName: 'SPORT SETTINGS FILE MESSAGES',
-    fields: {
-      1: {
+    fields: [
+      {
         id: 1,
         name: 'max_heart_rate',
         scale: undefined,
@@ -7360,7 +7360,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'threshold_heart_rate',
         scale: undefined,
@@ -7374,7 +7374,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'functional_threshold_power',
         scale: undefined,
@@ -7388,7 +7388,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'hr_calc_type',
         scale: undefined,
@@ -7402,7 +7402,7 @@ export const messageList = {
 
         ],
       },
-      7: {
+      {
         id: 7,
         name: 'pwr_calc_type',
         scale: undefined,
@@ -7416,14 +7416,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  12: {
+  {
     id: 12,
     name: 'sport',
     groupName: 'SPORT SETTINGS FILE MESSAGES',
-    fields: {
-      0: {
+    fields: [
+      {
         id: 0,
         name: 'sport',
         scale: undefined,
@@ -7437,7 +7437,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'sub_sport',
         scale: undefined,
@@ -7451,7 +7451,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'name',
         scale: undefined,
@@ -7465,14 +7465,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  8: {
+  {
     id: 8,
     name: 'hr_zone',
     groupName: 'SPORT SETTINGS FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -7486,7 +7486,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'high_bpm',
         scale: undefined,
@@ -7500,7 +7500,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'name',
         scale: undefined,
@@ -7514,14 +7514,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  53: {
+  {
     id: 53,
     name: 'speed_zone',
     groupName: 'SPORT SETTINGS FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -7535,7 +7535,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'high_value',
         scale: 1000,
@@ -7549,7 +7549,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'name',
         scale: undefined,
@@ -7563,14 +7563,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  131: {
+  {
     id: 131,
     name: 'cadence_zone',
     groupName: 'SPORT SETTINGS FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -7584,7 +7584,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'high_value',
         scale: undefined,
@@ -7598,7 +7598,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'name',
         scale: undefined,
@@ -7612,14 +7612,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  9: {
+  {
     id: 9,
     name: 'power_zone',
     groupName: 'SPORT SETTINGS FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -7633,7 +7633,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'high_value',
         scale: undefined,
@@ -7647,7 +7647,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'name',
         scale: undefined,
@@ -7661,14 +7661,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  10: {
+  {
     id: 10,
     name: 'met_zone',
     groupName: 'SPORT SETTINGS FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -7682,7 +7682,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'high_bpm',
         scale: undefined,
@@ -7696,7 +7696,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'calories',
         scale: 10,
@@ -7710,7 +7710,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'fat_calories',
         scale: 10,
@@ -7724,14 +7724,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  258: {
+  {
     id: 258,
     name: 'dive_settings',
     groupName: 'SPORT SETTINGS FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -7745,7 +7745,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'name',
         scale: undefined,
@@ -7759,7 +7759,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'model',
         scale: undefined,
@@ -7773,7 +7773,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'gf_low',
         scale: undefined,
@@ -7787,7 +7787,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'gf_high',
         scale: undefined,
@@ -7801,7 +7801,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'water_type',
         scale: undefined,
@@ -7816,7 +7816,7 @@ export const messageList = {
         ],
       },
       /** Fresh water is usually 1000; salt water is usually 1025 */
-      5: {
+      {
         id: 5,
         name: 'water_density',
         scale: undefined,
@@ -7831,7 +7831,7 @@ export const messageList = {
         ],
       },
       /** Typically 1.40 */
-      6: {
+      {
         id: 6,
         name: 'po2_warn',
         scale: 100,
@@ -7846,7 +7846,7 @@ export const messageList = {
         ],
       },
       /** Typically 1.60 */
-      7: {
+      {
         id: 7,
         name: 'po2_critical',
         scale: 100,
@@ -7860,7 +7860,7 @@ export const messageList = {
 
         ],
       },
-      8: {
+      {
         id: 8,
         name: 'po2_deco',
         scale: 100,
@@ -7874,7 +7874,7 @@ export const messageList = {
 
         ],
       },
-      9: {
+      {
         id: 9,
         name: 'safety_stop_enabled',
         scale: undefined,
@@ -7888,7 +7888,7 @@ export const messageList = {
 
         ],
       },
-      10: {
+      {
         id: 10,
         name: 'bottom_depth',
         scale: undefined,
@@ -7902,7 +7902,7 @@ export const messageList = {
 
         ],
       },
-      11: {
+      {
         id: 11,
         name: 'bottom_time',
         scale: undefined,
@@ -7916,7 +7916,7 @@ export const messageList = {
 
         ],
       },
-      12: {
+      {
         id: 12,
         name: 'apnea_countdown_enabled',
         scale: undefined,
@@ -7930,7 +7930,7 @@ export const messageList = {
 
         ],
       },
-      13: {
+      {
         id: 13,
         name: 'apnea_countdown_time',
         scale: undefined,
@@ -7944,7 +7944,7 @@ export const messageList = {
 
         ],
       },
-      14: {
+      {
         id: 14,
         name: 'backlight_mode',
         scale: undefined,
@@ -7958,7 +7958,7 @@ export const messageList = {
 
         ],
       },
-      15: {
+      {
         id: 15,
         name: 'backlight_brightness',
         scale: undefined,
@@ -7972,7 +7972,7 @@ export const messageList = {
 
         ],
       },
-      16: {
+      {
         id: 16,
         name: 'backlight_timeout',
         scale: undefined,
@@ -7987,7 +7987,7 @@ export const messageList = {
         ],
       },
       /** Time between surfacing and ending the activity */
-      17: {
+      {
         id: 17,
         name: 'repeat_dive_interval',
         scale: 1,
@@ -8002,7 +8002,7 @@ export const messageList = {
         ],
       },
       /** Time at safety stop (if enabled) */
-      18: {
+      {
         id: 18,
         name: 'safety_stop_time',
         scale: 1,
@@ -8016,7 +8016,7 @@ export const messageList = {
 
         ],
       },
-      19: {
+      {
         id: 19,
         name: 'heart_rate_source_type',
         scale: undefined,
@@ -8030,7 +8030,7 @@ export const messageList = {
 
         ],
       },
-      20: {
+      {
         id: 20,
         name: 'heart_rate_source',
         scale: undefined,
@@ -8082,15 +8082,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  262: {
+  {
     id: 262,
     name: 'dive_alarm',
     groupName: 'SPORT SETTINGS FILE MESSAGES',
-    fields: {
+    fields: [
       /** Index of the alarm */
-      254: {
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -8104,7 +8104,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'depth',
         scale: 1000,
@@ -8118,7 +8118,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'time',
         scale: 1,
@@ -8132,7 +8132,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'enabled',
         scale: undefined,
@@ -8146,7 +8146,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'alarm_type',
         scale: undefined,
@@ -8160,7 +8160,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'sound',
         scale: undefined,
@@ -8174,7 +8174,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'dive_types',
         scale: undefined,
@@ -8188,14 +8188,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  259: {
+  {
     id: 259,
     name: 'dive_gas',
     groupName: 'SPORT SETTINGS FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -8209,7 +8209,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'helium_content',
         scale: undefined,
@@ -8223,7 +8223,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'oxygen_content',
         scale: undefined,
@@ -8237,7 +8237,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'status',
         scale: undefined,
@@ -8251,14 +8251,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  15: {
+  {
     id: 15,
     name: 'goal',
     groupName: 'GOALS FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -8272,7 +8272,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'sport',
         scale: undefined,
@@ -8286,7 +8286,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'sub_sport',
         scale: undefined,
@@ -8300,7 +8300,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'start_date',
         scale: undefined,
@@ -8314,7 +8314,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'end_date',
         scale: undefined,
@@ -8328,7 +8328,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'type',
         scale: undefined,
@@ -8342,7 +8342,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'value',
         scale: undefined,
@@ -8356,7 +8356,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'repeat',
         scale: undefined,
@@ -8370,7 +8370,7 @@ export const messageList = {
 
         ],
       },
-      7: {
+      {
         id: 7,
         name: 'target_value',
         scale: undefined,
@@ -8384,7 +8384,7 @@ export const messageList = {
 
         ],
       },
-      8: {
+      {
         id: 8,
         name: 'recurrence',
         scale: undefined,
@@ -8398,7 +8398,7 @@ export const messageList = {
 
         ],
       },
-      9: {
+      {
         id: 9,
         name: 'recurrence_value',
         scale: undefined,
@@ -8412,7 +8412,7 @@ export const messageList = {
 
         ],
       },
-      10: {
+      {
         id: 10,
         name: 'enabled',
         scale: undefined,
@@ -8426,7 +8426,7 @@ export const messageList = {
 
         ],
       },
-      11: {
+      {
         id: 11,
         name: 'source',
         scale: undefined,
@@ -8440,14 +8440,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  34: {
+  {
     id: 34,
     name: 'activity',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
-      253: {
+    fields: [
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -8462,7 +8462,7 @@ export const messageList = {
         ],
       },
       /** Exclude pauses */
-      0: {
+      {
         id: 0,
         name: 'total_timer_time',
         scale: 1000,
@@ -8476,7 +8476,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'num_sessions',
         scale: undefined,
@@ -8490,7 +8490,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'type',
         scale: undefined,
@@ -8504,7 +8504,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'event',
         scale: undefined,
@@ -8518,7 +8518,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'event_type',
         scale: undefined,
@@ -8533,7 +8533,7 @@ export const messageList = {
         ],
       },
       /** timestamp epoch expressed in local time, used to convert activity timestamps to local time  */
-      5: {
+      {
         id: 5,
         name: 'local_timestamp',
         scale: undefined,
@@ -8547,7 +8547,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'event_group',
         scale: undefined,
@@ -8561,15 +8561,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  18: {
+  {
     id: 18,
     name: 'session',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
+    fields: [
       /** Selected bit is set for the current session. */
-      254: {
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -8584,7 +8584,7 @@ export const messageList = {
         ],
       },
       /** Sesson end time. */
-      253: {
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -8599,7 +8599,7 @@ export const messageList = {
         ],
       },
       /** session */
-      0: {
+      {
         id: 0,
         name: 'event',
         scale: undefined,
@@ -8614,7 +8614,7 @@ export const messageList = {
         ],
       },
       /** stop */
-      1: {
+      {
         id: 1,
         name: 'event_type',
         scale: undefined,
@@ -8628,7 +8628,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'start_time',
         scale: undefined,
@@ -8642,7 +8642,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'start_position_lat',
         scale: undefined,
@@ -8656,7 +8656,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'start_position_long',
         scale: undefined,
@@ -8670,7 +8670,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'sport',
         scale: undefined,
@@ -8684,7 +8684,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'sub_sport',
         scale: undefined,
@@ -8699,7 +8699,7 @@ export const messageList = {
         ],
       },
       /** Time (includes pauses) */
-      7: {
+      {
         id: 7,
         name: 'total_elapsed_time',
         scale: 1000,
@@ -8714,7 +8714,7 @@ export const messageList = {
         ],
       },
       /** Timer Time (excludes pauses) */
-      8: {
+      {
         id: 8,
         name: 'total_timer_time',
         scale: 1000,
@@ -8728,7 +8728,7 @@ export const messageList = {
 
         ],
       },
-      9: {
+      {
         id: 9,
         name: 'total_distance',
         scale: 100,
@@ -8742,7 +8742,7 @@ export const messageList = {
 
         ],
       },
-      10: {
+      {
         id: 10,
         name: 'total_cycles',
         scale: undefined,
@@ -8818,7 +8818,7 @@ export const messageList = {
 
         ],
       },
-      11: {
+      {
         id: 11,
         name: 'total_calories',
         scale: undefined,
@@ -8832,7 +8832,7 @@ export const messageList = {
 
         ],
       },
-      13: {
+      {
         id: 13,
         name: 'total_fat_calories',
         scale: undefined,
@@ -8847,7 +8847,7 @@ export const messageList = {
         ],
       },
       /** total_distance / total_timer_time */
-      14: {
+      {
         id: 14,
         name: 'avg_speed',
         scale: undefined,
@@ -8871,7 +8871,7 @@ export const messageList = {
 
         ],
       },
-      15: {
+      {
         id: 15,
         name: 'max_speed',
         scale: undefined,
@@ -8896,7 +8896,7 @@ export const messageList = {
         ],
       },
       /** average heart rate (excludes pause time) */
-      16: {
+      {
         id: 16,
         name: 'avg_heart_rate',
         scale: undefined,
@@ -8910,7 +8910,7 @@ export const messageList = {
 
         ],
       },
-      17: {
+      {
         id: 17,
         name: 'max_heart_rate',
         scale: undefined,
@@ -8925,7 +8925,7 @@ export const messageList = {
         ],
       },
       /** total_cycles / total_timer_time if non_zero_avg_cadence otherwise total_cycles / total_elapsed_time */
-      18: {
+      {
         id: 18,
         name: 'avg_cadence',
         scale: undefined,
@@ -8958,7 +8958,7 @@ export const messageList = {
 
         ],
       },
-      19: {
+      {
         id: 19,
         name: 'max_cadence',
         scale: undefined,
@@ -8992,7 +8992,7 @@ export const messageList = {
         ],
       },
       /** total_power / total_timer_time if non_zero_avg_power otherwise total_power / total_elapsed_time */
-      20: {
+      {
         id: 20,
         name: 'avg_power',
         scale: undefined,
@@ -9006,7 +9006,7 @@ export const messageList = {
 
         ],
       },
-      21: {
+      {
         id: 21,
         name: 'max_power',
         scale: undefined,
@@ -9020,7 +9020,7 @@ export const messageList = {
 
         ],
       },
-      22: {
+      {
         id: 22,
         name: 'total_ascent',
         scale: undefined,
@@ -9034,7 +9034,7 @@ export const messageList = {
 
         ],
       },
-      23: {
+      {
         id: 23,
         name: 'total_descent',
         scale: undefined,
@@ -9048,7 +9048,7 @@ export const messageList = {
 
         ],
       },
-      24: {
+      {
         id: 24,
         name: 'total_training_effect',
         scale: 10,
@@ -9062,7 +9062,7 @@ export const messageList = {
 
         ],
       },
-      25: {
+      {
         id: 25,
         name: 'first_lap_index',
         scale: undefined,
@@ -9076,7 +9076,7 @@ export const messageList = {
 
         ],
       },
-      26: {
+      {
         id: 26,
         name: 'num_laps',
         scale: undefined,
@@ -9090,7 +9090,7 @@ export const messageList = {
 
         ],
       },
-      27: {
+      {
         id: 27,
         name: 'event_group',
         scale: undefined,
@@ -9104,7 +9104,7 @@ export const messageList = {
 
         ],
       },
-      28: {
+      {
         id: 28,
         name: 'trigger',
         scale: undefined,
@@ -9119,7 +9119,7 @@ export const messageList = {
         ],
       },
       /** North east corner latitude */
-      29: {
+      {
         id: 29,
         name: 'nec_lat',
         scale: undefined,
@@ -9134,7 +9134,7 @@ export const messageList = {
         ],
       },
       /** North east corner longitude */
-      30: {
+      {
         id: 30,
         name: 'nec_long',
         scale: undefined,
@@ -9149,7 +9149,7 @@ export const messageList = {
         ],
       },
       /** South west corner latitude */
-      31: {
+      {
         id: 31,
         name: 'swc_lat',
         scale: undefined,
@@ -9164,7 +9164,7 @@ export const messageList = {
         ],
       },
       /** South west corner longitude */
-      32: {
+      {
         id: 32,
         name: 'swc_long',
         scale: undefined,
@@ -9179,7 +9179,7 @@ export const messageList = {
         ],
       },
       /** # of lengths of swim pool */
-      33: {
+      {
         id: 33,
         name: 'num_lengths',
         scale: undefined,
@@ -9193,7 +9193,7 @@ export const messageList = {
 
         ],
       },
-      34: {
+      {
         id: 34,
         name: 'normalized_power',
         scale: undefined,
@@ -9207,7 +9207,7 @@ export const messageList = {
 
         ],
       },
-      35: {
+      {
         id: 35,
         name: 'training_stress_score',
         scale: 10,
@@ -9221,7 +9221,7 @@ export const messageList = {
 
         ],
       },
-      36: {
+      {
         id: 36,
         name: 'intensity_factor',
         scale: 1000,
@@ -9235,7 +9235,7 @@ export const messageList = {
 
         ],
       },
-      37: {
+      {
         id: 37,
         name: 'left_right_balance',
         scale: undefined,
@@ -9249,7 +9249,7 @@ export const messageList = {
 
         ],
       },
-      41: {
+      {
         id: 41,
         name: 'avg_stroke_count',
         scale: 10,
@@ -9263,7 +9263,7 @@ export const messageList = {
 
         ],
       },
-      42: {
+      {
         id: 42,
         name: 'avg_stroke_distance',
         scale: 100,
@@ -9277,7 +9277,7 @@ export const messageList = {
 
         ],
       },
-      43: {
+      {
         id: 43,
         name: 'swim_stroke',
         scale: undefined,
@@ -9291,7 +9291,7 @@ export const messageList = {
 
         ],
       },
-      44: {
+      {
         id: 44,
         name: 'pool_length',
         scale: 100,
@@ -9305,7 +9305,7 @@ export const messageList = {
 
         ],
       },
-      45: {
+      {
         id: 45,
         name: 'threshold_power',
         scale: undefined,
@@ -9319,7 +9319,7 @@ export const messageList = {
 
         ],
       },
-      46: {
+      {
         id: 46,
         name: 'pool_length_unit',
         scale: undefined,
@@ -9334,7 +9334,7 @@ export const messageList = {
         ],
       },
       /** # of active lengths of swim pool */
-      47: {
+      {
         id: 47,
         name: 'num_active_lengths',
         scale: undefined,
@@ -9348,7 +9348,7 @@ export const messageList = {
 
         ],
       },
-      48: {
+      {
         id: 48,
         name: 'total_work',
         scale: undefined,
@@ -9362,7 +9362,7 @@ export const messageList = {
 
         ],
       },
-      49: {
+      {
         id: 49,
         name: 'avg_altitude',
         scale: undefined,
@@ -9386,7 +9386,7 @@ export const messageList = {
 
         ],
       },
-      50: {
+      {
         id: 50,
         name: 'max_altitude',
         scale: undefined,
@@ -9410,7 +9410,7 @@ export const messageList = {
 
         ],
       },
-      51: {
+      {
         id: 51,
         name: 'gps_accuracy',
         scale: undefined,
@@ -9424,7 +9424,7 @@ export const messageList = {
 
         ],
       },
-      52: {
+      {
         id: 52,
         name: 'avg_grade',
         scale: 100,
@@ -9438,7 +9438,7 @@ export const messageList = {
 
         ],
       },
-      53: {
+      {
         id: 53,
         name: 'avg_pos_grade',
         scale: 100,
@@ -9452,7 +9452,7 @@ export const messageList = {
 
         ],
       },
-      54: {
+      {
         id: 54,
         name: 'avg_neg_grade',
         scale: 100,
@@ -9466,7 +9466,7 @@ export const messageList = {
 
         ],
       },
-      55: {
+      {
         id: 55,
         name: 'max_pos_grade',
         scale: 100,
@@ -9480,7 +9480,7 @@ export const messageList = {
 
         ],
       },
-      56: {
+      {
         id: 56,
         name: 'max_neg_grade',
         scale: 100,
@@ -9494,7 +9494,7 @@ export const messageList = {
 
         ],
       },
-      57: {
+      {
         id: 57,
         name: 'avg_temperature',
         scale: undefined,
@@ -9508,7 +9508,7 @@ export const messageList = {
 
         ],
       },
-      58: {
+      {
         id: 58,
         name: 'max_temperature',
         scale: undefined,
@@ -9522,7 +9522,7 @@ export const messageList = {
 
         ],
       },
-      59: {
+      {
         id: 59,
         name: 'total_moving_time',
         scale: 1000,
@@ -9536,7 +9536,7 @@ export const messageList = {
 
         ],
       },
-      60: {
+      {
         id: 60,
         name: 'avg_pos_vertical_speed',
         scale: 1000,
@@ -9550,7 +9550,7 @@ export const messageList = {
 
         ],
       },
-      61: {
+      {
         id: 61,
         name: 'avg_neg_vertical_speed',
         scale: 1000,
@@ -9564,7 +9564,7 @@ export const messageList = {
 
         ],
       },
-      62: {
+      {
         id: 62,
         name: 'max_pos_vertical_speed',
         scale: 1000,
@@ -9578,7 +9578,7 @@ export const messageList = {
 
         ],
       },
-      63: {
+      {
         id: 63,
         name: 'max_neg_vertical_speed',
         scale: 1000,
@@ -9592,7 +9592,7 @@ export const messageList = {
 
         ],
       },
-      64: {
+      {
         id: 64,
         name: 'min_heart_rate',
         scale: undefined,
@@ -9606,7 +9606,7 @@ export const messageList = {
 
         ],
       },
-      65: {
+      {
         id: 65,
         name: 'time_in_hr_zone',
         scale: 1000,
@@ -9620,7 +9620,7 @@ export const messageList = {
 
         ],
       },
-      66: {
+      {
         id: 66,
         name: 'time_in_speed_zone',
         scale: 1000,
@@ -9634,7 +9634,7 @@ export const messageList = {
 
         ],
       },
-      67: {
+      {
         id: 67,
         name: 'time_in_cadence_zone',
         scale: 1000,
@@ -9648,7 +9648,7 @@ export const messageList = {
 
         ],
       },
-      68: {
+      {
         id: 68,
         name: 'time_in_power_zone',
         scale: 1000,
@@ -9662,7 +9662,7 @@ export const messageList = {
 
         ],
       },
-      69: {
+      {
         id: 69,
         name: 'avg_lap_time',
         scale: 1000,
@@ -9676,7 +9676,7 @@ export const messageList = {
 
         ],
       },
-      70: {
+      {
         id: 70,
         name: 'best_lap_index',
         scale: undefined,
@@ -9690,7 +9690,7 @@ export const messageList = {
 
         ],
       },
-      71: {
+      {
         id: 71,
         name: 'min_altitude',
         scale: undefined,
@@ -9714,7 +9714,7 @@ export const messageList = {
 
         ],
       },
-      82: {
+      {
         id: 82,
         name: 'player_score',
         scale: undefined,
@@ -9728,7 +9728,7 @@ export const messageList = {
 
         ],
       },
-      83: {
+      {
         id: 83,
         name: 'opponent_score',
         scale: undefined,
@@ -9742,7 +9742,7 @@ export const messageList = {
 
         ],
       },
-      84: {
+      {
         id: 84,
         name: 'opponent_name',
         scale: undefined,
@@ -9757,7 +9757,7 @@ export const messageList = {
         ],
       },
       /** stroke_type enum used as the index */
-      85: {
+      {
         id: 85,
         name: 'stroke_count',
         scale: undefined,
@@ -9772,7 +9772,7 @@ export const messageList = {
         ],
       },
       /** zone number used as the index */
-      86: {
+      {
         id: 86,
         name: 'zone_count',
         scale: undefined,
@@ -9786,7 +9786,7 @@ export const messageList = {
 
         ],
       },
-      87: {
+      {
         id: 87,
         name: 'max_ball_speed',
         scale: 100,
@@ -9800,7 +9800,7 @@ export const messageList = {
 
         ],
       },
-      88: {
+      {
         id: 88,
         name: 'avg_ball_speed',
         scale: 100,
@@ -9814,7 +9814,7 @@ export const messageList = {
 
         ],
       },
-      89: {
+      {
         id: 89,
         name: 'avg_vertical_oscillation',
         scale: 10,
@@ -9828,7 +9828,7 @@ export const messageList = {
 
         ],
       },
-      90: {
+      {
         id: 90,
         name: 'avg_stance_time_percent',
         scale: 100,
@@ -9842,7 +9842,7 @@ export const messageList = {
 
         ],
       },
-      91: {
+      {
         id: 91,
         name: 'avg_stance_time',
         scale: 10,
@@ -9857,7 +9857,7 @@ export const messageList = {
         ],
       },
       /** fractional part of the avg_cadence */
-      92: {
+      {
         id: 92,
         name: 'avg_fractional_cadence',
         scale: 128,
@@ -9872,7 +9872,7 @@ export const messageList = {
         ],
       },
       /** fractional part of the max_cadence */
-      93: {
+      {
         id: 93,
         name: 'max_fractional_cadence',
         scale: 128,
@@ -9887,7 +9887,7 @@ export const messageList = {
         ],
       },
       /** fractional part of the total_cycles */
-      94: {
+      {
         id: 94,
         name: 'total_fractional_cycles',
         scale: 128,
@@ -9902,7 +9902,7 @@ export const messageList = {
         ],
       },
       /** Avg saturated and unsaturated hemoglobin */
-      95: {
+      {
         id: 95,
         name: 'avg_total_hemoglobin_conc',
         scale: 100,
@@ -9917,7 +9917,7 @@ export const messageList = {
         ],
       },
       /** Min saturated and unsaturated hemoglobin */
-      96: {
+      {
         id: 96,
         name: 'min_total_hemoglobin_conc',
         scale: 100,
@@ -9932,7 +9932,7 @@ export const messageList = {
         ],
       },
       /** Max saturated and unsaturated hemoglobin */
-      97: {
+      {
         id: 97,
         name: 'max_total_hemoglobin_conc',
         scale: 100,
@@ -9947,7 +9947,7 @@ export const messageList = {
         ],
       },
       /** Avg percentage of hemoglobin saturated with oxygen */
-      98: {
+      {
         id: 98,
         name: 'avg_saturated_hemoglobin_percent',
         scale: 10,
@@ -9962,7 +9962,7 @@ export const messageList = {
         ],
       },
       /** Min percentage of hemoglobin saturated with oxygen */
-      99: {
+      {
         id: 99,
         name: 'min_saturated_hemoglobin_percent',
         scale: 10,
@@ -9977,7 +9977,7 @@ export const messageList = {
         ],
       },
       /** Max percentage of hemoglobin saturated with oxygen */
-      100: {
+      {
         id: 100,
         name: 'max_saturated_hemoglobin_percent',
         scale: 10,
@@ -9991,7 +9991,7 @@ export const messageList = {
 
         ],
       },
-      101: {
+      {
         id: 101,
         name: 'avg_left_torque_effectiveness',
         scale: 2,
@@ -10005,7 +10005,7 @@ export const messageList = {
 
         ],
       },
-      102: {
+      {
         id: 102,
         name: 'avg_right_torque_effectiveness',
         scale: 2,
@@ -10019,7 +10019,7 @@ export const messageList = {
 
         ],
       },
-      103: {
+      {
         id: 103,
         name: 'avg_left_pedal_smoothness',
         scale: 2,
@@ -10033,7 +10033,7 @@ export const messageList = {
 
         ],
       },
-      104: {
+      {
         id: 104,
         name: 'avg_right_pedal_smoothness',
         scale: 2,
@@ -10047,7 +10047,7 @@ export const messageList = {
 
         ],
       },
-      105: {
+      {
         id: 105,
         name: 'avg_combined_pedal_smoothness',
         scale: 2,
@@ -10061,7 +10061,7 @@ export const messageList = {
 
         ],
       },
-      111: {
+      {
         id: 111,
         name: 'sport_index',
         scale: undefined,
@@ -10076,7 +10076,7 @@ export const messageList = {
         ],
       },
       /** Total time spend in the standing position */
-      112: {
+      {
         id: 112,
         name: 'time_standing',
         scale: 1000,
@@ -10091,7 +10091,7 @@ export const messageList = {
         ],
       },
       /** Number of transitions to the standing state */
-      113: {
+      {
         id: 113,
         name: 'stand_count',
         scale: undefined,
@@ -10106,7 +10106,7 @@ export const messageList = {
         ],
       },
       /** Average platform center offset Left */
-      114: {
+      {
         id: 114,
         name: 'avg_left_pco',
         scale: undefined,
@@ -10121,7 +10121,7 @@ export const messageList = {
         ],
       },
       /** Average platform center offset Right */
-      115: {
+      {
         id: 115,
         name: 'avg_right_pco',
         scale: undefined,
@@ -10136,7 +10136,7 @@ export const messageList = {
         ],
       },
       /** Average left power phase angles. Indexes defined by power_phase_type. */
-      116: {
+      {
         id: 116,
         name: 'avg_left_power_phase',
         scale: 0.7111111,
@@ -10151,7 +10151,7 @@ export const messageList = {
         ],
       },
       /** Average left power phase peak angles. Data value indexes defined by power_phase_type. */
-      117: {
+      {
         id: 117,
         name: 'avg_left_power_phase_peak',
         scale: 0.7111111,
@@ -10166,7 +10166,7 @@ export const messageList = {
         ],
       },
       /** Average right power phase angles. Data value indexes defined by power_phase_type. */
-      118: {
+      {
         id: 118,
         name: 'avg_right_power_phase',
         scale: 0.7111111,
@@ -10181,7 +10181,7 @@ export const messageList = {
         ],
       },
       /** Average right power phase peak angles data value indexes  defined by power_phase_type. */
-      119: {
+      {
         id: 119,
         name: 'avg_right_power_phase_peak',
         scale: 0.7111111,
@@ -10196,7 +10196,7 @@ export const messageList = {
         ],
       },
       /** Average power by position. Data value indexes defined by rider_position_type. */
-      120: {
+      {
         id: 120,
         name: 'avg_power_position',
         scale: undefined,
@@ -10211,7 +10211,7 @@ export const messageList = {
         ],
       },
       /** Maximum power by position. Data value indexes defined by rider_position_type. */
-      121: {
+      {
         id: 121,
         name: 'max_power_position',
         scale: undefined,
@@ -10226,7 +10226,7 @@ export const messageList = {
         ],
       },
       /** Average cadence by position. Data value indexes defined by rider_position_type. */
-      122: {
+      {
         id: 122,
         name: 'avg_cadence_position',
         scale: undefined,
@@ -10241,7 +10241,7 @@ export const messageList = {
         ],
       },
       /** Maximum cadence by position. Data value indexes defined by rider_position_type. */
-      123: {
+      {
         id: 123,
         name: 'max_cadence_position',
         scale: undefined,
@@ -10256,7 +10256,7 @@ export const messageList = {
         ],
       },
       /** total_distance / total_timer_time */
-      124: {
+      {
         id: 124,
         name: 'enhanced_avg_speed',
         scale: 1000,
@@ -10270,7 +10270,7 @@ export const messageList = {
 
         ],
       },
-      125: {
+      {
         id: 125,
         name: 'enhanced_max_speed',
         scale: 1000,
@@ -10284,7 +10284,7 @@ export const messageList = {
 
         ],
       },
-      126: {
+      {
         id: 126,
         name: 'enhanced_avg_altitude',
         scale: 5,
@@ -10298,7 +10298,7 @@ export const messageList = {
 
         ],
       },
-      127: {
+      {
         id: 127,
         name: 'enhanced_min_altitude',
         scale: 5,
@@ -10312,7 +10312,7 @@ export const messageList = {
 
         ],
       },
-      128: {
+      {
         id: 128,
         name: 'enhanced_max_altitude',
         scale: 5,
@@ -10327,7 +10327,7 @@ export const messageList = {
         ],
       },
       /** lev average motor power during session */
-      129: {
+      {
         id: 129,
         name: 'avg_lev_motor_power',
         scale: undefined,
@@ -10342,7 +10342,7 @@ export const messageList = {
         ],
       },
       /** lev maximum motor power during session */
-      130: {
+      {
         id: 130,
         name: 'max_lev_motor_power',
         scale: undefined,
@@ -10357,7 +10357,7 @@ export const messageList = {
         ],
       },
       /** lev battery consumption during session */
-      131: {
+      {
         id: 131,
         name: 'lev_battery_consumption',
         scale: 2,
@@ -10371,7 +10371,7 @@ export const messageList = {
 
         ],
       },
-      132: {
+      {
         id: 132,
         name: 'avg_vertical_ratio',
         scale: 100,
@@ -10385,7 +10385,7 @@ export const messageList = {
 
         ],
       },
-      133: {
+      {
         id: 133,
         name: 'avg_stance_time_balance',
         scale: 100,
@@ -10399,7 +10399,7 @@ export const messageList = {
 
         ],
       },
-      134: {
+      {
         id: 134,
         name: 'avg_step_length',
         scale: 10,
@@ -10413,7 +10413,7 @@ export const messageList = {
 
         ],
       },
-      137: {
+      {
         id: 137,
         name: 'total_anaerobic_training_effect',
         scale: 10,
@@ -10427,7 +10427,7 @@ export const messageList = {
 
         ],
       },
-      139: {
+      {
         id: 139,
         name: 'avg_vam',
         scale: 1000,
@@ -10442,7 +10442,7 @@ export const messageList = {
         ],
       },
       /** The grit score estimates how challenging a route could be for a cyclist in terms of time spent going over sharp turns or large grade slopes. */
-      181: {
+      {
         id: 181,
         name: 'total_grit',
         scale: undefined,
@@ -10457,7 +10457,7 @@ export const messageList = {
         ],
       },
       /** The flow score estimates how long distance wise a cyclist deaccelerates over intervals where deacceleration is unnecessary such as smooth turns or small grade angle intervals. */
-      182: {
+      {
         id: 182,
         name: 'total_flow',
         scale: undefined,
@@ -10471,7 +10471,7 @@ export const messageList = {
 
         ],
       },
-      183: {
+      {
         id: 183,
         name: 'jump_count',
         scale: undefined,
@@ -10486,7 +10486,7 @@ export const messageList = {
         ],
       },
       /** The grit score estimates how challenging a route could be for a cyclist in terms of time spent going over sharp turns or large grade slopes. */
-      186: {
+      {
         id: 186,
         name: 'avg_grit',
         scale: undefined,
@@ -10501,7 +10501,7 @@ export const messageList = {
         ],
       },
       /** The flow score estimates how long distance wise a cyclist deaccelerates over intervals where deacceleration is unnecessary such as smooth turns or small grade angle intervals. */
-      187: {
+      {
         id: 187,
         name: 'avg_flow',
         scale: undefined,
@@ -10516,7 +10516,7 @@ export const messageList = {
         ],
       },
       /** fractional part of total_ascent */
-      199: {
+      {
         id: 199,
         name: 'total_fractional_ascent',
         scale: 100,
@@ -10531,7 +10531,7 @@ export const messageList = {
         ],
       },
       /** fractional part of total_descent */
-      200: {
+      {
         id: 200,
         name: 'total_fractional_descent',
         scale: 100,
@@ -10545,7 +10545,7 @@ export const messageList = {
 
         ],
       },
-      208: {
+      {
         id: 208,
         name: 'avg_core_temperature',
         scale: 100,
@@ -10559,7 +10559,7 @@ export const messageList = {
 
         ],
       },
-      209: {
+      {
         id: 209,
         name: 'min_core_temperature',
         scale: 100,
@@ -10573,7 +10573,7 @@ export const messageList = {
 
         ],
       },
-      210: {
+      {
         id: 210,
         name: 'max_core_temperature',
         scale: 100,
@@ -10587,14 +10587,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  19: {
+  {
     id: 19,
     name: 'lap',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -10609,7 +10609,7 @@ export const messageList = {
         ],
       },
       /** Lap end time. */
-      253: {
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -10623,7 +10623,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'event',
         scale: undefined,
@@ -10637,7 +10637,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'event_type',
         scale: undefined,
@@ -10651,7 +10651,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'start_time',
         scale: undefined,
@@ -10665,7 +10665,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'start_position_lat',
         scale: undefined,
@@ -10679,7 +10679,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'start_position_long',
         scale: undefined,
@@ -10693,7 +10693,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'end_position_lat',
         scale: undefined,
@@ -10707,7 +10707,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'end_position_long',
         scale: undefined,
@@ -10722,7 +10722,7 @@ export const messageList = {
         ],
       },
       /** Time (includes pauses) */
-      7: {
+      {
         id: 7,
         name: 'total_elapsed_time',
         scale: 1000,
@@ -10737,7 +10737,7 @@ export const messageList = {
         ],
       },
       /** Timer Time (excludes pauses) */
-      8: {
+      {
         id: 8,
         name: 'total_timer_time',
         scale: 1000,
@@ -10751,7 +10751,7 @@ export const messageList = {
 
         ],
       },
-      9: {
+      {
         id: 9,
         name: 'total_distance',
         scale: 100,
@@ -10765,7 +10765,7 @@ export const messageList = {
 
         ],
       },
-      10: {
+      {
         id: 10,
         name: 'total_cycles',
         scale: undefined,
@@ -10841,7 +10841,7 @@ export const messageList = {
 
         ],
       },
-      11: {
+      {
         id: 11,
         name: 'total_calories',
         scale: undefined,
@@ -10856,7 +10856,7 @@ export const messageList = {
         ],
       },
       /** If New Leaf */
-      12: {
+      {
         id: 12,
         name: 'total_fat_calories',
         scale: undefined,
@@ -10870,7 +10870,7 @@ export const messageList = {
 
         ],
       },
-      13: {
+      {
         id: 13,
         name: 'avg_speed',
         scale: undefined,
@@ -10894,7 +10894,7 @@ export const messageList = {
 
         ],
       },
-      14: {
+      {
         id: 14,
         name: 'max_speed',
         scale: undefined,
@@ -10918,7 +10918,7 @@ export const messageList = {
 
         ],
       },
-      15: {
+      {
         id: 15,
         name: 'avg_heart_rate',
         scale: undefined,
@@ -10932,7 +10932,7 @@ export const messageList = {
 
         ],
       },
-      16: {
+      {
         id: 16,
         name: 'max_heart_rate',
         scale: undefined,
@@ -10947,7 +10947,7 @@ export const messageList = {
         ],
       },
       /** total_cycles / total_timer_time if non_zero_avg_cadence otherwise total_cycles / total_elapsed_time */
-      17: {
+      {
         id: 17,
         name: 'avg_cadence',
         scale: undefined,
@@ -10980,7 +10980,7 @@ export const messageList = {
 
         ],
       },
-      18: {
+      {
         id: 18,
         name: 'max_cadence',
         scale: undefined,
@@ -11014,7 +11014,7 @@ export const messageList = {
         ],
       },
       /** total_power / total_timer_time if non_zero_avg_power otherwise total_power / total_elapsed_time */
-      19: {
+      {
         id: 19,
         name: 'avg_power',
         scale: undefined,
@@ -11028,7 +11028,7 @@ export const messageList = {
 
         ],
       },
-      20: {
+      {
         id: 20,
         name: 'max_power',
         scale: undefined,
@@ -11042,7 +11042,7 @@ export const messageList = {
 
         ],
       },
-      21: {
+      {
         id: 21,
         name: 'total_ascent',
         scale: undefined,
@@ -11056,7 +11056,7 @@ export const messageList = {
 
         ],
       },
-      22: {
+      {
         id: 22,
         name: 'total_descent',
         scale: undefined,
@@ -11070,7 +11070,7 @@ export const messageList = {
 
         ],
       },
-      23: {
+      {
         id: 23,
         name: 'intensity',
         scale: undefined,
@@ -11084,7 +11084,7 @@ export const messageList = {
 
         ],
       },
-      24: {
+      {
         id: 24,
         name: 'lap_trigger',
         scale: undefined,
@@ -11098,7 +11098,7 @@ export const messageList = {
 
         ],
       },
-      25: {
+      {
         id: 25,
         name: 'sport',
         scale: undefined,
@@ -11112,7 +11112,7 @@ export const messageList = {
 
         ],
       },
-      26: {
+      {
         id: 26,
         name: 'event_group',
         scale: undefined,
@@ -11127,7 +11127,7 @@ export const messageList = {
         ],
       },
       /** # of lengths of swim pool */
-      32: {
+      {
         id: 32,
         name: 'num_lengths',
         scale: undefined,
@@ -11141,7 +11141,7 @@ export const messageList = {
 
         ],
       },
-      33: {
+      {
         id: 33,
         name: 'normalized_power',
         scale: undefined,
@@ -11155,7 +11155,7 @@ export const messageList = {
 
         ],
       },
-      34: {
+      {
         id: 34,
         name: 'left_right_balance',
         scale: undefined,
@@ -11169,7 +11169,7 @@ export const messageList = {
 
         ],
       },
-      35: {
+      {
         id: 35,
         name: 'first_length_index',
         scale: undefined,
@@ -11183,7 +11183,7 @@ export const messageList = {
 
         ],
       },
-      37: {
+      {
         id: 37,
         name: 'avg_stroke_distance',
         scale: 100,
@@ -11197,7 +11197,7 @@ export const messageList = {
 
         ],
       },
-      38: {
+      {
         id: 38,
         name: 'swim_stroke',
         scale: undefined,
@@ -11211,7 +11211,7 @@ export const messageList = {
 
         ],
       },
-      39: {
+      {
         id: 39,
         name: 'sub_sport',
         scale: undefined,
@@ -11226,7 +11226,7 @@ export const messageList = {
         ],
       },
       /** # of active lengths of swim pool */
-      40: {
+      {
         id: 40,
         name: 'num_active_lengths',
         scale: undefined,
@@ -11240,7 +11240,7 @@ export const messageList = {
 
         ],
       },
-      41: {
+      {
         id: 41,
         name: 'total_work',
         scale: undefined,
@@ -11254,7 +11254,7 @@ export const messageList = {
 
         ],
       },
-      42: {
+      {
         id: 42,
         name: 'avg_altitude',
         scale: undefined,
@@ -11278,7 +11278,7 @@ export const messageList = {
 
         ],
       },
-      43: {
+      {
         id: 43,
         name: 'max_altitude',
         scale: undefined,
@@ -11302,7 +11302,7 @@ export const messageList = {
 
         ],
       },
-      44: {
+      {
         id: 44,
         name: 'gps_accuracy',
         scale: undefined,
@@ -11316,7 +11316,7 @@ export const messageList = {
 
         ],
       },
-      45: {
+      {
         id: 45,
         name: 'avg_grade',
         scale: 100,
@@ -11330,7 +11330,7 @@ export const messageList = {
 
         ],
       },
-      46: {
+      {
         id: 46,
         name: 'avg_pos_grade',
         scale: 100,
@@ -11344,7 +11344,7 @@ export const messageList = {
 
         ],
       },
-      47: {
+      {
         id: 47,
         name: 'avg_neg_grade',
         scale: 100,
@@ -11358,7 +11358,7 @@ export const messageList = {
 
         ],
       },
-      48: {
+      {
         id: 48,
         name: 'max_pos_grade',
         scale: 100,
@@ -11372,7 +11372,7 @@ export const messageList = {
 
         ],
       },
-      49: {
+      {
         id: 49,
         name: 'max_neg_grade',
         scale: 100,
@@ -11386,7 +11386,7 @@ export const messageList = {
 
         ],
       },
-      50: {
+      {
         id: 50,
         name: 'avg_temperature',
         scale: undefined,
@@ -11400,7 +11400,7 @@ export const messageList = {
 
         ],
       },
-      51: {
+      {
         id: 51,
         name: 'max_temperature',
         scale: undefined,
@@ -11414,7 +11414,7 @@ export const messageList = {
 
         ],
       },
-      52: {
+      {
         id: 52,
         name: 'total_moving_time',
         scale: 1000,
@@ -11428,7 +11428,7 @@ export const messageList = {
 
         ],
       },
-      53: {
+      {
         id: 53,
         name: 'avg_pos_vertical_speed',
         scale: 1000,
@@ -11442,7 +11442,7 @@ export const messageList = {
 
         ],
       },
-      54: {
+      {
         id: 54,
         name: 'avg_neg_vertical_speed',
         scale: 1000,
@@ -11456,7 +11456,7 @@ export const messageList = {
 
         ],
       },
-      55: {
+      {
         id: 55,
         name: 'max_pos_vertical_speed',
         scale: 1000,
@@ -11470,7 +11470,7 @@ export const messageList = {
 
         ],
       },
-      56: {
+      {
         id: 56,
         name: 'max_neg_vertical_speed',
         scale: 1000,
@@ -11484,7 +11484,7 @@ export const messageList = {
 
         ],
       },
-      57: {
+      {
         id: 57,
         name: 'time_in_hr_zone',
         scale: 1000,
@@ -11498,7 +11498,7 @@ export const messageList = {
 
         ],
       },
-      58: {
+      {
         id: 58,
         name: 'time_in_speed_zone',
         scale: 1000,
@@ -11512,7 +11512,7 @@ export const messageList = {
 
         ],
       },
-      59: {
+      {
         id: 59,
         name: 'time_in_cadence_zone',
         scale: 1000,
@@ -11526,7 +11526,7 @@ export const messageList = {
 
         ],
       },
-      60: {
+      {
         id: 60,
         name: 'time_in_power_zone',
         scale: 1000,
@@ -11540,7 +11540,7 @@ export const messageList = {
 
         ],
       },
-      61: {
+      {
         id: 61,
         name: 'repetition_num',
         scale: undefined,
@@ -11554,7 +11554,7 @@ export const messageList = {
 
         ],
       },
-      62: {
+      {
         id: 62,
         name: 'min_altitude',
         scale: undefined,
@@ -11578,7 +11578,7 @@ export const messageList = {
 
         ],
       },
-      63: {
+      {
         id: 63,
         name: 'min_heart_rate',
         scale: undefined,
@@ -11592,7 +11592,7 @@ export const messageList = {
 
         ],
       },
-      71: {
+      {
         id: 71,
         name: 'wkt_step_index',
         scale: undefined,
@@ -11606,7 +11606,7 @@ export const messageList = {
 
         ],
       },
-      74: {
+      {
         id: 74,
         name: 'opponent_score',
         scale: undefined,
@@ -11621,7 +11621,7 @@ export const messageList = {
         ],
       },
       /** stroke_type enum used as the index */
-      75: {
+      {
         id: 75,
         name: 'stroke_count',
         scale: undefined,
@@ -11636,7 +11636,7 @@ export const messageList = {
         ],
       },
       /** zone number used as the index */
-      76: {
+      {
         id: 76,
         name: 'zone_count',
         scale: undefined,
@@ -11650,7 +11650,7 @@ export const messageList = {
 
         ],
       },
-      77: {
+      {
         id: 77,
         name: 'avg_vertical_oscillation',
         scale: 10,
@@ -11664,7 +11664,7 @@ export const messageList = {
 
         ],
       },
-      78: {
+      {
         id: 78,
         name: 'avg_stance_time_percent',
         scale: 100,
@@ -11678,7 +11678,7 @@ export const messageList = {
 
         ],
       },
-      79: {
+      {
         id: 79,
         name: 'avg_stance_time',
         scale: 10,
@@ -11693,7 +11693,7 @@ export const messageList = {
         ],
       },
       /** fractional part of the avg_cadence */
-      80: {
+      {
         id: 80,
         name: 'avg_fractional_cadence',
         scale: 128,
@@ -11708,7 +11708,7 @@ export const messageList = {
         ],
       },
       /** fractional part of the max_cadence */
-      81: {
+      {
         id: 81,
         name: 'max_fractional_cadence',
         scale: 128,
@@ -11723,7 +11723,7 @@ export const messageList = {
         ],
       },
       /** fractional part of the total_cycles */
-      82: {
+      {
         id: 82,
         name: 'total_fractional_cycles',
         scale: 128,
@@ -11737,7 +11737,7 @@ export const messageList = {
 
         ],
       },
-      83: {
+      {
         id: 83,
         name: 'player_score',
         scale: undefined,
@@ -11752,7 +11752,7 @@ export const messageList = {
         ],
       },
       /** Avg saturated and unsaturated hemoglobin */
-      84: {
+      {
         id: 84,
         name: 'avg_total_hemoglobin_conc',
         scale: 100,
@@ -11767,7 +11767,7 @@ export const messageList = {
         ],
       },
       /** Min saturated and unsaturated hemoglobin */
-      85: {
+      {
         id: 85,
         name: 'min_total_hemoglobin_conc',
         scale: 100,
@@ -11782,7 +11782,7 @@ export const messageList = {
         ],
       },
       /** Max saturated and unsaturated hemoglobin */
-      86: {
+      {
         id: 86,
         name: 'max_total_hemoglobin_conc',
         scale: 100,
@@ -11797,7 +11797,7 @@ export const messageList = {
         ],
       },
       /** Avg percentage of hemoglobin saturated with oxygen */
-      87: {
+      {
         id: 87,
         name: 'avg_saturated_hemoglobin_percent',
         scale: 10,
@@ -11812,7 +11812,7 @@ export const messageList = {
         ],
       },
       /** Min percentage of hemoglobin saturated with oxygen */
-      88: {
+      {
         id: 88,
         name: 'min_saturated_hemoglobin_percent',
         scale: 10,
@@ -11827,7 +11827,7 @@ export const messageList = {
         ],
       },
       /** Max percentage of hemoglobin saturated with oxygen */
-      89: {
+      {
         id: 89,
         name: 'max_saturated_hemoglobin_percent',
         scale: 10,
@@ -11841,7 +11841,7 @@ export const messageList = {
 
         ],
       },
-      91: {
+      {
         id: 91,
         name: 'avg_left_torque_effectiveness',
         scale: 2,
@@ -11855,7 +11855,7 @@ export const messageList = {
 
         ],
       },
-      92: {
+      {
         id: 92,
         name: 'avg_right_torque_effectiveness',
         scale: 2,
@@ -11869,7 +11869,7 @@ export const messageList = {
 
         ],
       },
-      93: {
+      {
         id: 93,
         name: 'avg_left_pedal_smoothness',
         scale: 2,
@@ -11883,7 +11883,7 @@ export const messageList = {
 
         ],
       },
-      94: {
+      {
         id: 94,
         name: 'avg_right_pedal_smoothness',
         scale: 2,
@@ -11897,7 +11897,7 @@ export const messageList = {
 
         ],
       },
-      95: {
+      {
         id: 95,
         name: 'avg_combined_pedal_smoothness',
         scale: 2,
@@ -11912,7 +11912,7 @@ export const messageList = {
         ],
       },
       /** Total time spent in the standing position */
-      98: {
+      {
         id: 98,
         name: 'time_standing',
         scale: 1000,
@@ -11927,7 +11927,7 @@ export const messageList = {
         ],
       },
       /** Number of transitions to the standing state */
-      99: {
+      {
         id: 99,
         name: 'stand_count',
         scale: undefined,
@@ -11942,7 +11942,7 @@ export const messageList = {
         ],
       },
       /** Average left platform center offset */
-      100: {
+      {
         id: 100,
         name: 'avg_left_pco',
         scale: undefined,
@@ -11957,7 +11957,7 @@ export const messageList = {
         ],
       },
       /** Average right platform center offset */
-      101: {
+      {
         id: 101,
         name: 'avg_right_pco',
         scale: undefined,
@@ -11972,7 +11972,7 @@ export const messageList = {
         ],
       },
       /** Average left power phase angles. Data value indexes defined by power_phase_type. */
-      102: {
+      {
         id: 102,
         name: 'avg_left_power_phase',
         scale: 0.7111111,
@@ -11987,7 +11987,7 @@ export const messageList = {
         ],
       },
       /** Average left power phase peak angles. Data value indexes  defined by power_phase_type. */
-      103: {
+      {
         id: 103,
         name: 'avg_left_power_phase_peak',
         scale: 0.7111111,
@@ -12002,7 +12002,7 @@ export const messageList = {
         ],
       },
       /** Average right power phase angles. Data value indexes defined by power_phase_type. */
-      104: {
+      {
         id: 104,
         name: 'avg_right_power_phase',
         scale: 0.7111111,
@@ -12017,7 +12017,7 @@ export const messageList = {
         ],
       },
       /** Average right power phase peak angles. Data value indexes  defined by power_phase_type. */
-      105: {
+      {
         id: 105,
         name: 'avg_right_power_phase_peak',
         scale: 0.7111111,
@@ -12032,7 +12032,7 @@ export const messageList = {
         ],
       },
       /** Average power by position. Data value indexes defined by rider_position_type. */
-      106: {
+      {
         id: 106,
         name: 'avg_power_position',
         scale: undefined,
@@ -12047,7 +12047,7 @@ export const messageList = {
         ],
       },
       /** Maximum power by position. Data value indexes defined by rider_position_type. */
-      107: {
+      {
         id: 107,
         name: 'max_power_position',
         scale: undefined,
@@ -12062,7 +12062,7 @@ export const messageList = {
         ],
       },
       /** Average cadence by position. Data value indexes defined by rider_position_type. */
-      108: {
+      {
         id: 108,
         name: 'avg_cadence_position',
         scale: undefined,
@@ -12077,7 +12077,7 @@ export const messageList = {
         ],
       },
       /** Maximum cadence by position. Data value indexes defined by rider_position_type. */
-      109: {
+      {
         id: 109,
         name: 'max_cadence_position',
         scale: undefined,
@@ -12091,7 +12091,7 @@ export const messageList = {
 
         ],
       },
-      110: {
+      {
         id: 110,
         name: 'enhanced_avg_speed',
         scale: 1000,
@@ -12105,7 +12105,7 @@ export const messageList = {
 
         ],
       },
-      111: {
+      {
         id: 111,
         name: 'enhanced_max_speed',
         scale: 1000,
@@ -12119,7 +12119,7 @@ export const messageList = {
 
         ],
       },
-      112: {
+      {
         id: 112,
         name: 'enhanced_avg_altitude',
         scale: 5,
@@ -12133,7 +12133,7 @@ export const messageList = {
 
         ],
       },
-      113: {
+      {
         id: 113,
         name: 'enhanced_min_altitude',
         scale: 5,
@@ -12147,7 +12147,7 @@ export const messageList = {
 
         ],
       },
-      114: {
+      {
         id: 114,
         name: 'enhanced_max_altitude',
         scale: 5,
@@ -12162,7 +12162,7 @@ export const messageList = {
         ],
       },
       /** lev average motor power during lap */
-      115: {
+      {
         id: 115,
         name: 'avg_lev_motor_power',
         scale: undefined,
@@ -12177,7 +12177,7 @@ export const messageList = {
         ],
       },
       /** lev maximum motor power during lap */
-      116: {
+      {
         id: 116,
         name: 'max_lev_motor_power',
         scale: undefined,
@@ -12192,7 +12192,7 @@ export const messageList = {
         ],
       },
       /** lev battery consumption during lap */
-      117: {
+      {
         id: 117,
         name: 'lev_battery_consumption',
         scale: 2,
@@ -12206,7 +12206,7 @@ export const messageList = {
 
         ],
       },
-      118: {
+      {
         id: 118,
         name: 'avg_vertical_ratio',
         scale: 100,
@@ -12220,7 +12220,7 @@ export const messageList = {
 
         ],
       },
-      119: {
+      {
         id: 119,
         name: 'avg_stance_time_balance',
         scale: 100,
@@ -12234,7 +12234,7 @@ export const messageList = {
 
         ],
       },
-      120: {
+      {
         id: 120,
         name: 'avg_step_length',
         scale: 10,
@@ -12248,7 +12248,7 @@ export const messageList = {
 
         ],
       },
-      121: {
+      {
         id: 121,
         name: 'avg_vam',
         scale: 1000,
@@ -12263,7 +12263,7 @@ export const messageList = {
         ],
       },
       /** The grit score estimates how challenging a route could be for a cyclist in terms of time spent going over sharp turns or large grade slopes. */
-      149: {
+      {
         id: 149,
         name: 'total_grit',
         scale: undefined,
@@ -12278,7 +12278,7 @@ export const messageList = {
         ],
       },
       /** The flow score estimates how long distance wise a cyclist deaccelerates over intervals where deacceleration is unnecessary such as smooth turns or small grade angle intervals. */
-      150: {
+      {
         id: 150,
         name: 'total_flow',
         scale: undefined,
@@ -12292,7 +12292,7 @@ export const messageList = {
 
         ],
       },
-      151: {
+      {
         id: 151,
         name: 'jump_count',
         scale: undefined,
@@ -12307,7 +12307,7 @@ export const messageList = {
         ],
       },
       /** The grit score estimates how challenging a route could be for a cyclist in terms of time spent going over sharp turns or large grade slopes. */
-      153: {
+      {
         id: 153,
         name: 'avg_grit',
         scale: undefined,
@@ -12322,7 +12322,7 @@ export const messageList = {
         ],
       },
       /** The flow score estimates how long distance wise a cyclist deaccelerates over intervals where deacceleration is unnecessary such as smooth turns or small grade angle intervals. */
-      154: {
+      {
         id: 154,
         name: 'avg_flow',
         scale: undefined,
@@ -12337,7 +12337,7 @@ export const messageList = {
         ],
       },
       /** fractional part of total_ascent */
-      156: {
+      {
         id: 156,
         name: 'total_fractional_ascent',
         scale: 100,
@@ -12352,7 +12352,7 @@ export const messageList = {
         ],
       },
       /** fractional part of total_descent */
-      157: {
+      {
         id: 157,
         name: 'total_fractional_descent',
         scale: 100,
@@ -12366,7 +12366,7 @@ export const messageList = {
 
         ],
       },
-      158: {
+      {
         id: 158,
         name: 'avg_core_temperature',
         scale: 100,
@@ -12380,7 +12380,7 @@ export const messageList = {
 
         ],
       },
-      159: {
+      {
         id: 159,
         name: 'min_core_temperature',
         scale: 100,
@@ -12394,7 +12394,7 @@ export const messageList = {
 
         ],
       },
-      160: {
+      {
         id: 160,
         name: 'max_core_temperature',
         scale: 100,
@@ -12408,14 +12408,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  101: {
+  {
     id: 101,
     name: 'length',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -12429,7 +12429,7 @@ export const messageList = {
 
         ],
       },
-      253: {
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -12443,7 +12443,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'event',
         scale: undefined,
@@ -12457,7 +12457,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'event_type',
         scale: undefined,
@@ -12471,7 +12471,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'start_time',
         scale: undefined,
@@ -12485,7 +12485,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'total_elapsed_time',
         scale: 1000,
@@ -12499,7 +12499,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'total_timer_time',
         scale: 1000,
@@ -12513,7 +12513,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'total_strokes',
         scale: undefined,
@@ -12527,7 +12527,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'avg_speed',
         scale: 1000,
@@ -12541,7 +12541,7 @@ export const messageList = {
 
         ],
       },
-      7: {
+      {
         id: 7,
         name: 'swim_stroke',
         scale: undefined,
@@ -12555,7 +12555,7 @@ export const messageList = {
 
         ],
       },
-      9: {
+      {
         id: 9,
         name: 'avg_swimming_cadence',
         scale: undefined,
@@ -12569,7 +12569,7 @@ export const messageList = {
 
         ],
       },
-      10: {
+      {
         id: 10,
         name: 'event_group',
         scale: undefined,
@@ -12583,7 +12583,7 @@ export const messageList = {
 
         ],
       },
-      11: {
+      {
         id: 11,
         name: 'total_calories',
         scale: undefined,
@@ -12597,7 +12597,7 @@ export const messageList = {
 
         ],
       },
-      12: {
+      {
         id: 12,
         name: 'length_type',
         scale: undefined,
@@ -12611,7 +12611,7 @@ export const messageList = {
 
         ],
       },
-      18: {
+      {
         id: 18,
         name: 'player_score',
         scale: undefined,
@@ -12625,7 +12625,7 @@ export const messageList = {
 
         ],
       },
-      19: {
+      {
         id: 19,
         name: 'opponent_score',
         scale: undefined,
@@ -12640,7 +12640,7 @@ export const messageList = {
         ],
       },
       /** stroke_type enum used as the index */
-      20: {
+      {
         id: 20,
         name: 'stroke_count',
         scale: undefined,
@@ -12655,7 +12655,7 @@ export const messageList = {
         ],
       },
       /** zone number used as the index */
-      21: {
+      {
         id: 21,
         name: 'zone_count',
         scale: undefined,
@@ -12669,14 +12669,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  20: {
+  {
     id: 20,
     name: 'record',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
-      253: {
+    fields: [
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -12690,7 +12690,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'position_lat',
         scale: undefined,
@@ -12704,7 +12704,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'position_long',
         scale: undefined,
@@ -12718,7 +12718,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'altitude',
         scale: undefined,
@@ -12742,7 +12742,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'heart_rate',
         scale: undefined,
@@ -12756,7 +12756,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'cadence',
         scale: undefined,
@@ -12770,7 +12770,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'distance',
         scale: 100,
@@ -12784,7 +12784,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'speed',
         scale: undefined,
@@ -12808,7 +12808,7 @@ export const messageList = {
 
         ],
       },
-      7: {
+      {
         id: 7,
         name: 'power',
         scale: undefined,
@@ -12822,7 +12822,7 @@ export const messageList = {
 
         ],
       },
-      8: {
+      {
         id: 8,
         name: 'compressed_speed_distance',
         scale: undefined,
@@ -12856,7 +12856,7 @@ export const messageList = {
 
         ],
       },
-      9: {
+      {
         id: 9,
         name: 'grade',
         scale: 100,
@@ -12871,7 +12871,7 @@ export const messageList = {
         ],
       },
       /** Relative. 0 is none  254 is Max. */
-      10: {
+      {
         id: 10,
         name: 'resistance',
         scale: undefined,
@@ -12885,7 +12885,7 @@ export const messageList = {
 
         ],
       },
-      11: {
+      {
         id: 11,
         name: 'time_from_course',
         scale: 1000,
@@ -12899,7 +12899,7 @@ export const messageList = {
 
         ],
       },
-      12: {
+      {
         id: 12,
         name: 'cycle_length',
         scale: 100,
@@ -12913,7 +12913,7 @@ export const messageList = {
 
         ],
       },
-      13: {
+      {
         id: 13,
         name: 'temperature',
         scale: undefined,
@@ -12928,7 +12928,7 @@ export const messageList = {
         ],
       },
       /** Speed at 1s intervals.  Timestamp field indicates time of last array element. */
-      17: {
+      {
         id: 17,
         name: 'speed_1s',
         scale: 16,
@@ -12942,7 +12942,7 @@ export const messageList = {
 
         ],
       },
-      18: {
+      {
         id: 18,
         name: 'cycles',
         scale: undefined,
@@ -12966,7 +12966,7 @@ export const messageList = {
 
         ],
       },
-      19: {
+      {
         id: 19,
         name: 'total_cycles',
         scale: undefined,
@@ -12980,7 +12980,7 @@ export const messageList = {
 
         ],
       },
-      28: {
+      {
         id: 28,
         name: 'compressed_accumulated_power',
         scale: undefined,
@@ -13004,7 +13004,7 @@ export const messageList = {
 
         ],
       },
-      29: {
+      {
         id: 29,
         name: 'accumulated_power',
         scale: undefined,
@@ -13018,7 +13018,7 @@ export const messageList = {
 
         ],
       },
-      30: {
+      {
         id: 30,
         name: 'left_right_balance',
         scale: undefined,
@@ -13032,7 +13032,7 @@ export const messageList = {
 
         ],
       },
-      31: {
+      {
         id: 31,
         name: 'gps_accuracy',
         scale: undefined,
@@ -13046,7 +13046,7 @@ export const messageList = {
 
         ],
       },
-      32: {
+      {
         id: 32,
         name: 'vertical_speed',
         scale: 1000,
@@ -13060,7 +13060,7 @@ export const messageList = {
 
         ],
       },
-      33: {
+      {
         id: 33,
         name: 'calories',
         scale: undefined,
@@ -13074,7 +13074,7 @@ export const messageList = {
 
         ],
       },
-      39: {
+      {
         id: 39,
         name: 'vertical_oscillation',
         scale: 10,
@@ -13088,7 +13088,7 @@ export const messageList = {
 
         ],
       },
-      40: {
+      {
         id: 40,
         name: 'stance_time_percent',
         scale: 100,
@@ -13102,7 +13102,7 @@ export const messageList = {
 
         ],
       },
-      41: {
+      {
         id: 41,
         name: 'stance_time',
         scale: 10,
@@ -13116,7 +13116,7 @@ export const messageList = {
 
         ],
       },
-      42: {
+      {
         id: 42,
         name: 'activity_type',
         scale: undefined,
@@ -13130,7 +13130,7 @@ export const messageList = {
 
         ],
       },
-      43: {
+      {
         id: 43,
         name: 'left_torque_effectiveness',
         scale: 2,
@@ -13144,7 +13144,7 @@ export const messageList = {
 
         ],
       },
-      44: {
+      {
         id: 44,
         name: 'right_torque_effectiveness',
         scale: 2,
@@ -13158,7 +13158,7 @@ export const messageList = {
 
         ],
       },
-      45: {
+      {
         id: 45,
         name: 'left_pedal_smoothness',
         scale: 2,
@@ -13172,7 +13172,7 @@ export const messageList = {
 
         ],
       },
-      46: {
+      {
         id: 46,
         name: 'right_pedal_smoothness',
         scale: 2,
@@ -13186,7 +13186,7 @@ export const messageList = {
 
         ],
       },
-      47: {
+      {
         id: 47,
         name: 'combined_pedal_smoothness',
         scale: 2,
@@ -13200,7 +13200,7 @@ export const messageList = {
 
         ],
       },
-      48: {
+      {
         id: 48,
         name: 'time128',
         scale: 128,
@@ -13214,7 +13214,7 @@ export const messageList = {
 
         ],
       },
-      49: {
+      {
         id: 49,
         name: 'stroke_type',
         scale: undefined,
@@ -13228,7 +13228,7 @@ export const messageList = {
 
         ],
       },
-      50: {
+      {
         id: 50,
         name: 'zone',
         scale: undefined,
@@ -13242,7 +13242,7 @@ export const messageList = {
 
         ],
       },
-      51: {
+      {
         id: 51,
         name: 'ball_speed',
         scale: 100,
@@ -13257,7 +13257,7 @@ export const messageList = {
         ],
       },
       /** Log cadence and fractional cadence for backwards compatability */
-      52: {
+      {
         id: 52,
         name: 'cadence256',
         scale: 256,
@@ -13271,7 +13271,7 @@ export const messageList = {
 
         ],
       },
-      53: {
+      {
         id: 53,
         name: 'fractional_cadence',
         scale: 128,
@@ -13286,7 +13286,7 @@ export const messageList = {
         ],
       },
       /** Total saturated and unsaturated hemoglobin */
-      54: {
+      {
         id: 54,
         name: 'total_hemoglobin_conc',
         scale: 100,
@@ -13301,7 +13301,7 @@ export const messageList = {
         ],
       },
       /** Min saturated and unsaturated hemoglobin */
-      55: {
+      {
         id: 55,
         name: 'total_hemoglobin_conc_min',
         scale: 100,
@@ -13316,7 +13316,7 @@ export const messageList = {
         ],
       },
       /** Max saturated and unsaturated hemoglobin */
-      56: {
+      {
         id: 56,
         name: 'total_hemoglobin_conc_max',
         scale: 100,
@@ -13331,7 +13331,7 @@ export const messageList = {
         ],
       },
       /** Percentage of hemoglobin saturated with oxygen */
-      57: {
+      {
         id: 57,
         name: 'saturated_hemoglobin_percent',
         scale: 10,
@@ -13346,7 +13346,7 @@ export const messageList = {
         ],
       },
       /** Min percentage of hemoglobin saturated with oxygen */
-      58: {
+      {
         id: 58,
         name: 'saturated_hemoglobin_percent_min',
         scale: 10,
@@ -13361,7 +13361,7 @@ export const messageList = {
         ],
       },
       /** Max percentage of hemoglobin saturated with oxygen */
-      59: {
+      {
         id: 59,
         name: 'saturated_hemoglobin_percent_max',
         scale: 10,
@@ -13375,7 +13375,7 @@ export const messageList = {
 
         ],
       },
-      62: {
+      {
         id: 62,
         name: 'device_index',
         scale: undefined,
@@ -13390,7 +13390,7 @@ export const messageList = {
         ],
       },
       /** Left platform center offset */
-      67: {
+      {
         id: 67,
         name: 'left_pco',
         scale: undefined,
@@ -13405,7 +13405,7 @@ export const messageList = {
         ],
       },
       /** Right platform center offset */
-      68: {
+      {
         id: 68,
         name: 'right_pco',
         scale: undefined,
@@ -13420,7 +13420,7 @@ export const messageList = {
         ],
       },
       /** Left power phase angles. Data value indexes defined by power_phase_type. */
-      69: {
+      {
         id: 69,
         name: 'left_power_phase',
         scale: 0.7111111,
@@ -13435,7 +13435,7 @@ export const messageList = {
         ],
       },
       /** Left power phase peak angles. Data value indexes defined by power_phase_type. */
-      70: {
+      {
         id: 70,
         name: 'left_power_phase_peak',
         scale: 0.7111111,
@@ -13450,7 +13450,7 @@ export const messageList = {
         ],
       },
       /** Right power phase angles. Data value indexes defined by power_phase_type. */
-      71: {
+      {
         id: 71,
         name: 'right_power_phase',
         scale: 0.7111111,
@@ -13465,7 +13465,7 @@ export const messageList = {
         ],
       },
       /** Right power phase peak angles. Data value indexes defined by power_phase_type. */
-      72: {
+      {
         id: 72,
         name: 'right_power_phase_peak',
         scale: 0.7111111,
@@ -13479,7 +13479,7 @@ export const messageList = {
 
         ],
       },
-      73: {
+      {
         id: 73,
         name: 'enhanced_speed',
         scale: 1000,
@@ -13493,7 +13493,7 @@ export const messageList = {
 
         ],
       },
-      78: {
+      {
         id: 78,
         name: 'enhanced_altitude',
         scale: 5,
@@ -13508,7 +13508,7 @@ export const messageList = {
         ],
       },
       /** lev battery state of charge */
-      81: {
+      {
         id: 81,
         name: 'battery_soc',
         scale: 2,
@@ -13523,7 +13523,7 @@ export const messageList = {
         ],
       },
       /** lev motor power */
-      82: {
+      {
         id: 82,
         name: 'motor_power',
         scale: undefined,
@@ -13537,7 +13537,7 @@ export const messageList = {
 
         ],
       },
-      83: {
+      {
         id: 83,
         name: 'vertical_ratio',
         scale: 100,
@@ -13551,7 +13551,7 @@ export const messageList = {
 
         ],
       },
-      84: {
+      {
         id: 84,
         name: 'stance_time_balance',
         scale: 100,
@@ -13565,7 +13565,7 @@ export const messageList = {
 
         ],
       },
-      85: {
+      {
         id: 85,
         name: 'step_length',
         scale: 10,
@@ -13580,7 +13580,7 @@ export const messageList = {
         ],
       },
       /** Includes atmospheric pressure */
-      91: {
+      {
         id: 91,
         name: 'absolute_pressure',
         scale: undefined,
@@ -13595,7 +13595,7 @@ export const messageList = {
         ],
       },
       /** 0 if above water */
-      92: {
+      {
         id: 92,
         name: 'depth',
         scale: 1000,
@@ -13610,7 +13610,7 @@ export const messageList = {
         ],
       },
       /** 0 if above water */
-      93: {
+      {
         id: 93,
         name: 'next_stop_depth',
         scale: 1000,
@@ -13624,7 +13624,7 @@ export const messageList = {
 
         ],
       },
-      94: {
+      {
         id: 94,
         name: 'next_stop_time',
         scale: 1,
@@ -13638,7 +13638,7 @@ export const messageList = {
 
         ],
       },
-      95: {
+      {
         id: 95,
         name: 'time_to_surface',
         scale: 1,
@@ -13652,7 +13652,7 @@ export const messageList = {
 
         ],
       },
-      96: {
+      {
         id: 96,
         name: 'ndl_time',
         scale: 1,
@@ -13666,7 +13666,7 @@ export const messageList = {
 
         ],
       },
-      97: {
+      {
         id: 97,
         name: 'cns_load',
         scale: undefined,
@@ -13680,7 +13680,7 @@ export const messageList = {
 
         ],
       },
-      98: {
+      {
         id: 98,
         name: 'n2_load',
         scale: 1,
@@ -13695,7 +13695,7 @@ export const messageList = {
         ],
       },
       /** The grit score estimates how challenging a route could be for a cyclist in terms of time spent going over sharp turns or large grade slopes. */
-      114: {
+      {
         id: 114,
         name: 'grit',
         scale: undefined,
@@ -13710,7 +13710,7 @@ export const messageList = {
         ],
       },
       /** The flow score estimates how long distance wise a cyclist deaccelerates over intervals where deacceleration is unnecessary such as smooth turns or small grade angle intervals. */
-      115: {
+      {
         id: 115,
         name: 'flow',
         scale: undefined,
@@ -13724,7 +13724,7 @@ export const messageList = {
 
         ],
       },
-      117: {
+      {
         id: 117,
         name: 'ebike_travel_range',
         scale: undefined,
@@ -13738,7 +13738,7 @@ export const messageList = {
 
         ],
       },
-      118: {
+      {
         id: 118,
         name: 'ebike_battery_level',
         scale: undefined,
@@ -13752,7 +13752,7 @@ export const messageList = {
 
         ],
       },
-      119: {
+      {
         id: 119,
         name: 'ebike_assist_mode',
         scale: undefined,
@@ -13766,7 +13766,7 @@ export const messageList = {
 
         ],
       },
-      120: {
+      {
         id: 120,
         name: 'ebike_assist_level_percent',
         scale: undefined,
@@ -13780,7 +13780,7 @@ export const messageList = {
 
         ],
       },
-      139: {
+      {
         id: 139,
         name: 'core_temperature',
         scale: 100,
@@ -13794,14 +13794,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  21: {
+  {
     id: 21,
     name: 'event',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
-      253: {
+    fields: [
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -13815,7 +13815,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'event',
         scale: undefined,
@@ -13829,7 +13829,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'event_type',
         scale: undefined,
@@ -13843,7 +13843,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'data16',
         scale: undefined,
@@ -13867,7 +13867,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'data',
         scale: undefined,
@@ -14366,7 +14366,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'event_group',
         scale: undefined,
@@ -14381,7 +14381,7 @@ export const messageList = {
         ],
       },
       /** Do not populate directly. Autogenerated by decoder for sport_point subfield components */
-      7: {
+      {
         id: 7,
         name: 'score',
         scale: undefined,
@@ -14396,7 +14396,7 @@ export const messageList = {
         ],
       },
       /** Do not populate directly. Autogenerated by decoder for sport_point subfield components */
-      8: {
+      {
         id: 8,
         name: 'opponent_score',
         scale: undefined,
@@ -14411,7 +14411,7 @@ export const messageList = {
         ],
       },
       /** Do not populate directly. Autogenerated by decoder for gear_change subfield components.  Front gear number. 1 is innermost. */
-      9: {
+      {
         id: 9,
         name: 'front_gear_num',
         scale: undefined,
@@ -14426,7 +14426,7 @@ export const messageList = {
         ],
       },
       /** Do not populate directly. Autogenerated by decoder for gear_change subfield components.  Number of front teeth. */
-      10: {
+      {
         id: 10,
         name: 'front_gear',
         scale: undefined,
@@ -14441,7 +14441,7 @@ export const messageList = {
         ],
       },
       /** Do not populate directly. Autogenerated by decoder for gear_change subfield components.  Rear gear number. 1 is innermost. */
-      11: {
+      {
         id: 11,
         name: 'rear_gear_num',
         scale: undefined,
@@ -14456,7 +14456,7 @@ export const messageList = {
         ],
       },
       /** Do not populate directly. Autogenerated by decoder for gear_change subfield components.  Number of rear teeth. */
-      12: {
+      {
         id: 12,
         name: 'rear_gear',
         scale: undefined,
@@ -14470,7 +14470,7 @@ export const messageList = {
 
         ],
       },
-      13: {
+      {
         id: 13,
         name: 'device_index',
         scale: undefined,
@@ -14485,7 +14485,7 @@ export const messageList = {
         ],
       },
       /** Do not populate directly. Autogenerated by decoder for threat_alert subfield components. */
-      21: {
+      {
         id: 21,
         name: 'radar_threat_level_max',
         scale: undefined,
@@ -14500,7 +14500,7 @@ export const messageList = {
         ],
       },
       /** Do not populate directly. Autogenerated by decoder for threat_alert subfield components. */
-      22: {
+      {
         id: 22,
         name: 'radar_threat_count',
         scale: undefined,
@@ -14514,14 +14514,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  23: {
+  {
     id: 23,
     name: 'device_info',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
-      253: {
+    fields: [
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -14535,7 +14535,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'device_index',
         scale: undefined,
@@ -14549,7 +14549,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'device_type',
         scale: undefined,
@@ -14601,7 +14601,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'manufacturer',
         scale: undefined,
@@ -14615,7 +14615,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'serial_number',
         scale: undefined,
@@ -14629,7 +14629,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'product',
         scale: undefined,
@@ -14699,7 +14699,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'software_version',
         scale: 100,
@@ -14713,7 +14713,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'hardware_version',
         scale: undefined,
@@ -14728,7 +14728,7 @@ export const messageList = {
         ],
       },
       /** Reset by new battery or charge. */
-      7: {
+      {
         id: 7,
         name: 'cum_operating_time',
         scale: undefined,
@@ -14742,7 +14742,7 @@ export const messageList = {
 
         ],
       },
-      10: {
+      {
         id: 10,
         name: 'battery_voltage',
         scale: 256,
@@ -14756,7 +14756,7 @@ export const messageList = {
 
         ],
       },
-      11: {
+      {
         id: 11,
         name: 'battery_status',
         scale: undefined,
@@ -14771,7 +14771,7 @@ export const messageList = {
         ],
       },
       /** Indicates the location of the sensor */
-      18: {
+      {
         id: 18,
         name: 'sensor_position',
         scale: undefined,
@@ -14786,7 +14786,7 @@ export const messageList = {
         ],
       },
       /** Used to describe the sensor or location */
-      19: {
+      {
         id: 19,
         name: 'descriptor',
         scale: undefined,
@@ -14800,7 +14800,7 @@ export const messageList = {
 
         ],
       },
-      20: {
+      {
         id: 20,
         name: 'ant_transmission_type',
         scale: undefined,
@@ -14814,7 +14814,7 @@ export const messageList = {
 
         ],
       },
-      21: {
+      {
         id: 21,
         name: 'ant_device_number',
         scale: undefined,
@@ -14828,7 +14828,7 @@ export const messageList = {
 
         ],
       },
-      22: {
+      {
         id: 22,
         name: 'ant_network',
         scale: undefined,
@@ -14842,7 +14842,7 @@ export const messageList = {
 
         ],
       },
-      25: {
+      {
         id: 25,
         name: 'source_type',
         scale: undefined,
@@ -14857,7 +14857,7 @@ export const messageList = {
         ],
       },
       /** Optional free form string to indicate the devices name or model */
-      27: {
+      {
         id: 27,
         name: 'product_name',
         scale: undefined,
@@ -14871,15 +14871,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
   /** Corresponds to file_id of workout or course. */
-  72: {
+  {
     id: 72,
     name: 'training_file',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
-      253: {
+    fields: [
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -14893,7 +14893,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'type',
         scale: undefined,
@@ -14907,7 +14907,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'manufacturer',
         scale: undefined,
@@ -14921,7 +14921,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'product',
         scale: undefined,
@@ -14991,7 +14991,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'serial_number',
         scale: undefined,
@@ -15005,7 +15005,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'time_created',
         scale: undefined,
@@ -15019,16 +15019,16 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
   /** Heart rate variability */
-  78: {
+  {
     id: 78,
     name: 'hrv',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
+    fields: [
       /** Time between beats */
-      0: {
+      {
         id: 0,
         name: 'time',
         scale: 1000,
@@ -15042,15 +15042,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  128: {
+  {
     id: 128,
     name: 'weather_conditions',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
+    fields: [
       /** time of update for current conditions, else forecast time */
-      253: {
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -15065,7 +15065,7 @@ export const messageList = {
         ],
       },
       /** Current or forecast */
-      0: {
+      {
         id: 0,
         name: 'weather_report',
         scale: undefined,
@@ -15079,7 +15079,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'temperature',
         scale: undefined,
@@ -15094,7 +15094,7 @@ export const messageList = {
         ],
       },
       /** Corresponds to GSC Response weatherIcon field */
-      2: {
+      {
         id: 2,
         name: 'condition',
         scale: undefined,
@@ -15108,7 +15108,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'wind_direction',
         scale: undefined,
@@ -15122,7 +15122,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'wind_speed',
         scale: 1000,
@@ -15137,7 +15137,7 @@ export const messageList = {
         ],
       },
       /** range 0-100 */
-      5: {
+      {
         id: 5,
         name: 'precipitation_probability',
         scale: undefined,
@@ -15152,7 +15152,7 @@ export const messageList = {
         ],
       },
       /** Heat Index if  GCS heatIdx above or equal to 90F or wind chill if GCS windChill below or equal to 32F */
-      6: {
+      {
         id: 6,
         name: 'temperature_feels_like',
         scale: undefined,
@@ -15166,7 +15166,7 @@ export const messageList = {
 
         ],
       },
-      7: {
+      {
         id: 7,
         name: 'relative_humidity',
         scale: undefined,
@@ -15181,7 +15181,7 @@ export const messageList = {
         ],
       },
       /** string corresponding to GCS response location string */
-      8: {
+      {
         id: 8,
         name: 'location',
         scale: undefined,
@@ -15195,7 +15195,7 @@ export const messageList = {
 
         ],
       },
-      9: {
+      {
         id: 9,
         name: 'observed_at_time',
         scale: undefined,
@@ -15209,7 +15209,7 @@ export const messageList = {
 
         ],
       },
-      10: {
+      {
         id: 10,
         name: 'observed_location_lat',
         scale: undefined,
@@ -15223,7 +15223,7 @@ export const messageList = {
 
         ],
       },
-      11: {
+      {
         id: 11,
         name: 'observed_location_long',
         scale: undefined,
@@ -15237,7 +15237,7 @@ export const messageList = {
 
         ],
       },
-      12: {
+      {
         id: 12,
         name: 'day_of_week',
         scale: undefined,
@@ -15251,7 +15251,7 @@ export const messageList = {
 
         ],
       },
-      13: {
+      {
         id: 13,
         name: 'high_temperature',
         scale: undefined,
@@ -15265,7 +15265,7 @@ export const messageList = {
 
         ],
       },
-      14: {
+      {
         id: 14,
         name: 'low_temperature',
         scale: undefined,
@@ -15279,14 +15279,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  129: {
+  {
     id: 129,
     name: 'weather_alert',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
-      253: {
+    fields: [
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -15301,7 +15301,7 @@ export const messageList = {
         ],
       },
       /** Unique identifier from GCS report ID string, length is 12 */
-      0: {
+      {
         id: 0,
         name: 'report_id',
         scale: undefined,
@@ -15316,7 +15316,7 @@ export const messageList = {
         ],
       },
       /** Time alert was issued */
-      1: {
+      {
         id: 1,
         name: 'issue_time',
         scale: undefined,
@@ -15331,7 +15331,7 @@ export const messageList = {
         ],
       },
       /** Time alert expires */
-      2: {
+      {
         id: 2,
         name: 'expire_time',
         scale: undefined,
@@ -15346,7 +15346,7 @@ export const messageList = {
         ],
       },
       /** Warning, Watch, Advisory, Statement */
-      3: {
+      {
         id: 3,
         name: 'severity',
         scale: undefined,
@@ -15361,7 +15361,7 @@ export const messageList = {
         ],
       },
       /** Tornado, Severe Thunderstorm, etc. */
-      4: {
+      {
         id: 4,
         name: 'type',
         scale: undefined,
@@ -15375,15 +15375,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  160: {
+  {
     id: 160,
     name: 'gps_metadata',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
+    fields: [
       /** Whole second part of the timestamp. */
-      253: {
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -15398,7 +15398,7 @@ export const messageList = {
         ],
       },
       /** Millisecond part of the timestamp. */
-      0: {
+      {
         id: 0,
         name: 'timestamp_ms',
         scale: undefined,
@@ -15412,7 +15412,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'position_lat',
         scale: undefined,
@@ -15426,7 +15426,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'position_long',
         scale: undefined,
@@ -15440,7 +15440,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'enhanced_altitude',
         scale: 5,
@@ -15454,7 +15454,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'enhanced_speed',
         scale: 1000,
@@ -15468,7 +15468,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'heading',
         scale: 100,
@@ -15483,7 +15483,7 @@ export const messageList = {
         ],
       },
       /** Used to correlate UTC to system time if the timestamp of the message is in system time.  This UTC time is derived from the GPS data. */
-      6: {
+      {
         id: 6,
         name: 'utc_timestamp',
         scale: undefined,
@@ -15498,7 +15498,7 @@ export const messageList = {
         ],
       },
       /** velocity[0] is lon velocity.  Velocity[1] is lat velocity.  Velocity[2] is altitude velocity. */
-      7: {
+      {
         id: 7,
         name: 'velocity',
         scale: 100,
@@ -15512,15 +15512,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  161: {
+  {
     id: 161,
     name: 'camera_event',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
+    fields: [
       /** Whole second part of the timestamp. */
-      253: {
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -15535,7 +15535,7 @@ export const messageList = {
         ],
       },
       /** Millisecond part of the timestamp. */
-      0: {
+      {
         id: 0,
         name: 'timestamp_ms',
         scale: undefined,
@@ -15549,7 +15549,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'camera_event_type',
         scale: undefined,
@@ -15563,7 +15563,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'camera_file_uuid',
         scale: undefined,
@@ -15577,7 +15577,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'camera_orientation',
         scale: undefined,
@@ -15591,15 +15591,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  164: {
+  {
     id: 164,
     name: 'gyroscope_data',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
+    fields: [
       /** Whole second part of the timestamp */
-      253: {
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -15614,7 +15614,7 @@ export const messageList = {
         ],
       },
       /** Millisecond part of the timestamp. */
-      0: {
+      {
         id: 0,
         name: 'timestamp_ms',
         scale: undefined,
@@ -15629,7 +15629,7 @@ export const messageList = {
         ],
       },
       /** Each time in the array describes the time at which the gyro sample with the corrosponding index was taken. Limited to 30 samples in each message. The samples may span across seconds. Array size must match the number of samples in gyro_x and gyro_y and gyro_z */
-      1: {
+      {
         id: 1,
         name: 'sample_time_offset',
         scale: undefined,
@@ -15644,7 +15644,7 @@ export const messageList = {
         ],
       },
       /** These are the raw ADC reading. Maximum number of samples is 30 in each message. The samples may span across seconds. A conversion will need to be done on this data once read. */
-      2: {
+      {
         id: 2,
         name: 'gyro_x',
         scale: undefined,
@@ -15659,7 +15659,7 @@ export const messageList = {
         ],
       },
       /** These are the raw ADC reading. Maximum number of samples is 30 in each message. The samples may span across seconds. A conversion will need to be done on this data once read. */
-      3: {
+      {
         id: 3,
         name: 'gyro_y',
         scale: undefined,
@@ -15674,7 +15674,7 @@ export const messageList = {
         ],
       },
       /** These are the raw ADC reading. Maximum number of samples is 30 in each message. The samples may span across seconds. A conversion will need to be done on this data once read. */
-      4: {
+      {
         id: 4,
         name: 'gyro_z',
         scale: undefined,
@@ -15689,7 +15689,7 @@ export const messageList = {
         ],
       },
       /** Calibrated gyro reading */
-      5: {
+      {
         id: 5,
         name: 'calibrated_gyro_x',
         scale: undefined,
@@ -15704,7 +15704,7 @@ export const messageList = {
         ],
       },
       /** Calibrated gyro reading */
-      6: {
+      {
         id: 6,
         name: 'calibrated_gyro_y',
         scale: undefined,
@@ -15719,7 +15719,7 @@ export const messageList = {
         ],
       },
       /** Calibrated gyro reading */
-      7: {
+      {
         id: 7,
         name: 'calibrated_gyro_z',
         scale: undefined,
@@ -15733,15 +15733,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  165: {
+  {
     id: 165,
     name: 'accelerometer_data',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
+    fields: [
       /** Whole second part of the timestamp */
-      253: {
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -15756,7 +15756,7 @@ export const messageList = {
         ],
       },
       /** Millisecond part of the timestamp. */
-      0: {
+      {
         id: 0,
         name: 'timestamp_ms',
         scale: undefined,
@@ -15771,7 +15771,7 @@ export const messageList = {
         ],
       },
       /** Each time in the array describes the time at which the accelerometer sample with the corrosponding index was taken. Limited to 30 samples in each message. The samples may span across seconds. Array size must match the number of samples in accel_x and accel_y and accel_z */
-      1: {
+      {
         id: 1,
         name: 'sample_time_offset',
         scale: undefined,
@@ -15786,7 +15786,7 @@ export const messageList = {
         ],
       },
       /** These are the raw ADC reading. Maximum number of samples is 30 in each message. The samples may span across seconds. A conversion will need to be done on this data once read. */
-      2: {
+      {
         id: 2,
         name: 'accel_x',
         scale: undefined,
@@ -15801,7 +15801,7 @@ export const messageList = {
         ],
       },
       /** These are the raw ADC reading. Maximum number of samples is 30 in each message. The samples may span across seconds. A conversion will need to be done on this data once read. */
-      3: {
+      {
         id: 3,
         name: 'accel_y',
         scale: undefined,
@@ -15816,7 +15816,7 @@ export const messageList = {
         ],
       },
       /** These are the raw ADC reading. Maximum number of samples is 30 in each message. The samples may span across seconds. A conversion will need to be done on this data once read. */
-      4: {
+      {
         id: 4,
         name: 'accel_z',
         scale: undefined,
@@ -15831,7 +15831,7 @@ export const messageList = {
         ],
       },
       /** Calibrated accel reading */
-      5: {
+      {
         id: 5,
         name: 'calibrated_accel_x',
         scale: undefined,
@@ -15846,7 +15846,7 @@ export const messageList = {
         ],
       },
       /** Calibrated accel reading */
-      6: {
+      {
         id: 6,
         name: 'calibrated_accel_y',
         scale: undefined,
@@ -15861,7 +15861,7 @@ export const messageList = {
         ],
       },
       /** Calibrated accel reading */
-      7: {
+      {
         id: 7,
         name: 'calibrated_accel_z',
         scale: undefined,
@@ -15876,7 +15876,7 @@ export const messageList = {
         ],
       },
       /** Calibrated accel reading */
-      8: {
+      {
         id: 8,
         name: 'compressed_calibrated_accel_x',
         scale: undefined,
@@ -15891,7 +15891,7 @@ export const messageList = {
         ],
       },
       /** Calibrated accel reading */
-      9: {
+      {
         id: 9,
         name: 'compressed_calibrated_accel_y',
         scale: undefined,
@@ -15906,7 +15906,7 @@ export const messageList = {
         ],
       },
       /** Calibrated accel reading */
-      10: {
+      {
         id: 10,
         name: 'compressed_calibrated_accel_z',
         scale: undefined,
@@ -15920,15 +15920,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  208: {
+  {
     id: 208,
     name: 'magnetometer_data',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
+    fields: [
       /** Whole second part of the timestamp */
-      253: {
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -15943,7 +15943,7 @@ export const messageList = {
         ],
       },
       /** Millisecond part of the timestamp. */
-      0: {
+      {
         id: 0,
         name: 'timestamp_ms',
         scale: undefined,
@@ -15958,7 +15958,7 @@ export const messageList = {
         ],
       },
       /** Each time in the array describes the time at which the compass sample with the corrosponding index was taken. Limited to 30 samples in each message. The samples may span across seconds. Array size must match the number of samples in cmps_x and cmps_y and cmps_z */
-      1: {
+      {
         id: 1,
         name: 'sample_time_offset',
         scale: undefined,
@@ -15973,7 +15973,7 @@ export const messageList = {
         ],
       },
       /** These are the raw ADC reading. Maximum number of samples is 30 in each message. The samples may span across seconds. A conversion will need to be done on this data once read. */
-      2: {
+      {
         id: 2,
         name: 'mag_x',
         scale: undefined,
@@ -15988,7 +15988,7 @@ export const messageList = {
         ],
       },
       /** These are the raw ADC reading. Maximum number of samples is 30 in each message. The samples may span across seconds. A conversion will need to be done on this data once read. */
-      3: {
+      {
         id: 3,
         name: 'mag_y',
         scale: undefined,
@@ -16003,7 +16003,7 @@ export const messageList = {
         ],
       },
       /** These are the raw ADC reading. Maximum number of samples is 30 in each message. The samples may span across seconds. A conversion will need to be done on this data once read. */
-      4: {
+      {
         id: 4,
         name: 'mag_z',
         scale: undefined,
@@ -16018,7 +16018,7 @@ export const messageList = {
         ],
       },
       /** Calibrated Magnetometer reading */
-      5: {
+      {
         id: 5,
         name: 'calibrated_mag_x',
         scale: undefined,
@@ -16033,7 +16033,7 @@ export const messageList = {
         ],
       },
       /** Calibrated Magnetometer reading */
-      6: {
+      {
         id: 6,
         name: 'calibrated_mag_y',
         scale: undefined,
@@ -16048,7 +16048,7 @@ export const messageList = {
         ],
       },
       /** Calibrated Magnetometer reading */
-      7: {
+      {
         id: 7,
         name: 'calibrated_mag_z',
         scale: undefined,
@@ -16062,15 +16062,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  209: {
+  {
     id: 209,
     name: 'barometer_data',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
+    fields: [
       /** Whole second part of the timestamp */
-      253: {
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -16085,7 +16085,7 @@ export const messageList = {
         ],
       },
       /** Millisecond part of the timestamp. */
-      0: {
+      {
         id: 0,
         name: 'timestamp_ms',
         scale: undefined,
@@ -16100,7 +16100,7 @@ export const messageList = {
         ],
       },
       /** Each time in the array describes the time at which the barometer sample with the corrosponding index was taken. The samples may span across seconds. Array size must match the number of samples in baro_cal */
-      1: {
+      {
         id: 1,
         name: 'sample_time_offset',
         scale: undefined,
@@ -16115,7 +16115,7 @@ export const messageList = {
         ],
       },
       /** These are the raw ADC reading. The samples may span across seconds. A conversion will need to be done on this data once read. */
-      2: {
+      {
         id: 2,
         name: 'baro_pres',
         scale: undefined,
@@ -16129,15 +16129,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  167: {
+  {
     id: 167,
     name: 'three_d_sensor_calibration',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
+    fields: [
       /** Whole second part of the timestamp */
-      253: {
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -16152,7 +16152,7 @@ export const messageList = {
         ],
       },
       /** Indicates which sensor the calibration is for */
-      0: {
+      {
         id: 0,
         name: 'sensor_type',
         scale: undefined,
@@ -16167,7 +16167,7 @@ export const messageList = {
         ],
       },
       /** Calibration factor used to convert from raw ADC value to degrees, g,  etc. */
-      1: {
+      {
         id: 1,
         name: 'calibration_factor',
         scale: undefined,
@@ -16220,7 +16220,7 @@ export const messageList = {
         ],
       },
       /** Calibration factor divisor */
-      2: {
+      {
         id: 2,
         name: 'calibration_divisor',
         scale: undefined,
@@ -16235,7 +16235,7 @@ export const messageList = {
         ],
       },
       /** Level shift value used to shift the ADC value back into range */
-      3: {
+      {
         id: 3,
         name: 'level_shift',
         scale: undefined,
@@ -16250,7 +16250,7 @@ export const messageList = {
         ],
       },
       /** Internal calibration factors, one for each: xy, yx, zx */
-      4: {
+      {
         id: 4,
         name: 'offset_cal',
         scale: undefined,
@@ -16265,7 +16265,7 @@ export const messageList = {
         ],
       },
       /** 3 x 3 rotation matrix (row major) */
-      5: {
+      {
         id: 5,
         name: 'orientation_matrix',
         scale: 65535,
@@ -16279,15 +16279,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  210: {
+  {
     id: 210,
     name: 'one_d_sensor_calibration',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
+    fields: [
       /** Whole second part of the timestamp */
-      253: {
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -16302,7 +16302,7 @@ export const messageList = {
         ],
       },
       /** Indicates which sensor the calibration is for */
-      0: {
+      {
         id: 0,
         name: 'sensor_type',
         scale: undefined,
@@ -16317,7 +16317,7 @@ export const messageList = {
         ],
       },
       /** Calibration factor used to convert from raw ADC value to degrees, g,  etc. */
-      1: {
+      {
         id: 1,
         name: 'calibration_factor',
         scale: undefined,
@@ -16351,7 +16351,7 @@ export const messageList = {
         ],
       },
       /** Calibration factor divisor */
-      2: {
+      {
         id: 2,
         name: 'calibration_divisor',
         scale: undefined,
@@ -16366,7 +16366,7 @@ export const messageList = {
         ],
       },
       /** Level shift value used to shift the ADC value back into range */
-      3: {
+      {
         id: 3,
         name: 'level_shift',
         scale: undefined,
@@ -16381,7 +16381,7 @@ export const messageList = {
         ],
       },
       /** Internal Calibration factor */
-      4: {
+      {
         id: 4,
         name: 'offset_cal',
         scale: undefined,
@@ -16395,15 +16395,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  169: {
+  {
     id: 169,
     name: 'video_frame',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
+    fields: [
       /** Whole second part of the timestamp */
-      253: {
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -16418,7 +16418,7 @@ export const messageList = {
         ],
       },
       /** Millisecond part of the timestamp. */
-      0: {
+      {
         id: 0,
         name: 'timestamp_ms',
         scale: undefined,
@@ -16433,7 +16433,7 @@ export const messageList = {
         ],
       },
       /** Number of the frame that the timestamp and timestamp_ms correlate to */
-      1: {
+      {
         id: 1,
         name: 'frame_number',
         scale: undefined,
@@ -16447,15 +16447,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  174: {
+  {
     id: 174,
     name: 'obdii_data',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
+    fields: [
       /** Timestamp message was output */
-      253: {
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -16470,7 +16470,7 @@ export const messageList = {
         ],
       },
       /** Fractional part of timestamp, added to timestamp */
-      0: {
+      {
         id: 0,
         name: 'timestamp_ms',
         scale: undefined,
@@ -16485,7 +16485,7 @@ export const messageList = {
         ],
       },
       /** Offset of PID reading [i] from start_timestamp+start_timestamp_ms. Readings may span accross seconds. */
-      1: {
+      {
         id: 1,
         name: 'time_offset',
         scale: undefined,
@@ -16500,7 +16500,7 @@ export const messageList = {
         ],
       },
       /** Parameter ID */
-      2: {
+      {
         id: 2,
         name: 'pid',
         scale: undefined,
@@ -16515,7 +16515,7 @@ export const messageList = {
         ],
       },
       /** Raw parameter data */
-      3: {
+      {
         id: 3,
         name: 'raw_data',
         scale: undefined,
@@ -16530,7 +16530,7 @@ export const messageList = {
         ],
       },
       /** Optional, data size of PID[i].  If not specified refer to SAE J1979. */
-      4: {
+      {
         id: 4,
         name: 'pid_data_size',
         scale: undefined,
@@ -16545,7 +16545,7 @@ export const messageList = {
         ],
       },
       /** System time associated with sample expressed in ms, can be used instead of time_offset.  There will be a system_time value for each raw_data element.  For multibyte pids the system_time is repeated. */
-      5: {
+      {
         id: 5,
         name: 'system_time',
         scale: undefined,
@@ -16560,7 +16560,7 @@ export const messageList = {
         ],
       },
       /** Timestamp of first sample recorded in the message.  Used with time_offset to generate time of each sample */
-      6: {
+      {
         id: 6,
         name: 'start_timestamp',
         scale: undefined,
@@ -16575,7 +16575,7 @@ export const messageList = {
         ],
       },
       /** Fractional part of start_timestamp */
-      7: {
+      {
         id: 7,
         name: 'start_timestamp_ms',
         scale: undefined,
@@ -16589,15 +16589,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  177: {
+  {
     id: 177,
     name: 'nmea_sentence',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
+    fields: [
       /** Timestamp message was output */
-      253: {
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -16612,7 +16612,7 @@ export const messageList = {
         ],
       },
       /** Fractional part of timestamp, added to timestamp */
-      0: {
+      {
         id: 0,
         name: 'timestamp_ms',
         scale: undefined,
@@ -16627,7 +16627,7 @@ export const messageList = {
         ],
       },
       /** NMEA sentence */
-      1: {
+      {
         id: 1,
         name: 'sentence',
         scale: undefined,
@@ -16641,15 +16641,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  178: {
+  {
     id: 178,
     name: 'aviation_attitude',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
+    fields: [
       /** Timestamp message was output */
-      253: {
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -16664,7 +16664,7 @@ export const messageList = {
         ],
       },
       /** Fractional part of timestamp, added to timestamp */
-      0: {
+      {
         id: 0,
         name: 'timestamp_ms',
         scale: undefined,
@@ -16679,7 +16679,7 @@ export const messageList = {
         ],
       },
       /** System time associated with sample expressed in ms. */
-      1: {
+      {
         id: 1,
         name: 'system_time',
         scale: undefined,
@@ -16694,7 +16694,7 @@ export const messageList = {
         ],
       },
       /** Range -PI/2 to +PI/2 */
-      2: {
+      {
         id: 2,
         name: 'pitch',
         scale: 10430.38,
@@ -16709,7 +16709,7 @@ export const messageList = {
         ],
       },
       /** Range -PI to +PI */
-      3: {
+      {
         id: 3,
         name: 'roll',
         scale: 10430.38,
@@ -16724,7 +16724,7 @@ export const messageList = {
         ],
       },
       /** Range -78.4 to +78.4 (-8 Gs to 8 Gs) */
-      4: {
+      {
         id: 4,
         name: 'accel_lateral',
         scale: 100,
@@ -16739,7 +16739,7 @@ export const messageList = {
         ],
       },
       /** Range -78.4 to +78.4 (-8 Gs to 8 Gs) */
-      5: {
+      {
         id: 5,
         name: 'accel_normal',
         scale: 100,
@@ -16754,7 +16754,7 @@ export const messageList = {
         ],
       },
       /** Range -8.727 to +8.727 (-500 degs/sec to +500 degs/sec) */
-      6: {
+      {
         id: 6,
         name: 'turn_rate',
         scale: 1024,
@@ -16768,7 +16768,7 @@ export const messageList = {
 
         ],
       },
-      7: {
+      {
         id: 7,
         name: 'stage',
         scale: undefined,
@@ -16783,7 +16783,7 @@ export const messageList = {
         ],
       },
       /** The percent complete of the current attitude stage.  Set to 0 for attitude stages 0, 1 and 2 and to 100 for attitude stage 3 by AHRS modules that do not support it.  Range - 100 */
-      8: {
+      {
         id: 8,
         name: 'attitude_stage_complete',
         scale: undefined,
@@ -16798,7 +16798,7 @@ export const messageList = {
         ],
       },
       /** Track Angle/Heading Range 0 - 2pi */
-      9: {
+      {
         id: 9,
         name: 'track',
         scale: 10430.38,
@@ -16812,7 +16812,7 @@ export const messageList = {
 
         ],
       },
-      10: {
+      {
         id: 10,
         name: 'validity',
         scale: undefined,
@@ -16826,14 +16826,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  184: {
+  {
     id: 184,
     name: 'video',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
-      0: {
+    fields: [
+      {
         id: 0,
         name: 'url',
         scale: undefined,
@@ -16847,7 +16847,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'hosting_provider',
         scale: undefined,
@@ -16862,7 +16862,7 @@ export const messageList = {
         ],
       },
       /** Playback time of video */
-      2: {
+      {
         id: 2,
         name: 'duration',
         scale: undefined,
@@ -16876,15 +16876,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  185: {
+  {
     id: 185,
     name: 'video_title',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
+    fields: [
       /** Long titles will be split into multiple parts */
-      254: {
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -16899,7 +16899,7 @@ export const messageList = {
         ],
       },
       /** Total number of title parts */
-      0: {
+      {
         id: 0,
         name: 'message_count',
         scale: undefined,
@@ -16913,7 +16913,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'text',
         scale: undefined,
@@ -16927,15 +16927,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  186: {
+  {
     id: 186,
     name: 'video_description',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
+    fields: [
       /** Long descriptions will be split into multiple parts */
-      254: {
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -16950,7 +16950,7 @@ export const messageList = {
         ],
       },
       /** Total number of description parts */
-      0: {
+      {
         id: 0,
         name: 'message_count',
         scale: undefined,
@@ -16964,7 +16964,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'text',
         scale: undefined,
@@ -16978,14 +16978,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  187: {
+  {
     id: 187,
     name: 'video_clip',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
-      0: {
+    fields: [
+      {
         id: 0,
         name: 'clip_number',
         scale: undefined,
@@ -16999,7 +16999,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'start_timestamp',
         scale: undefined,
@@ -17013,7 +17013,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'start_timestamp_ms',
         scale: undefined,
@@ -17027,7 +17027,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'end_timestamp',
         scale: undefined,
@@ -17041,7 +17041,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'end_timestamp_ms',
         scale: undefined,
@@ -17056,7 +17056,7 @@ export const messageList = {
         ],
       },
       /** Start of clip in video time */
-      6: {
+      {
         id: 6,
         name: 'clip_start',
         scale: undefined,
@@ -17071,7 +17071,7 @@ export const messageList = {
         ],
       },
       /** End of clip in video time */
-      7: {
+      {
         id: 7,
         name: 'clip_end',
         scale: undefined,
@@ -17085,15 +17085,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  225: {
+  {
     id: 225,
     name: 'set',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
+    fields: [
       /** Timestamp of the set */
-      254: {
+      {
         id: 254,
         name: 'timestamp',
         scale: undefined,
@@ -17107,7 +17107,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'duration',
         scale: 1000,
@@ -17122,7 +17122,7 @@ export const messageList = {
         ],
       },
       /** # of repitions of the movement */
-      3: {
+      {
         id: 3,
         name: 'repetitions',
         scale: undefined,
@@ -17137,7 +17137,7 @@ export const messageList = {
         ],
       },
       /** Amount of weight applied for the set */
-      4: {
+      {
         id: 4,
         name: 'weight',
         scale: 16,
@@ -17151,7 +17151,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'set_type',
         scale: undefined,
@@ -17166,7 +17166,7 @@ export const messageList = {
         ],
       },
       /** Start time of the set */
-      6: {
+      {
         id: 6,
         name: 'start_time',
         scale: undefined,
@@ -17180,7 +17180,7 @@ export const messageList = {
 
         ],
       },
-      7: {
+      {
         id: 7,
         name: 'category',
         scale: undefined,
@@ -17195,7 +17195,7 @@ export const messageList = {
         ],
       },
       /** Based on the associated category, see [category]_exercise_names */
-      8: {
+      {
         id: 8,
         name: 'category_subtype',
         scale: undefined,
@@ -17209,7 +17209,7 @@ export const messageList = {
 
         ],
       },
-      9: {
+      {
         id: 9,
         name: 'weight_display_unit',
         scale: undefined,
@@ -17223,7 +17223,7 @@ export const messageList = {
 
         ],
       },
-      10: {
+      {
         id: 10,
         name: 'message_index',
         scale: undefined,
@@ -17237,7 +17237,7 @@ export const messageList = {
 
         ],
       },
-      11: {
+      {
         id: 11,
         name: 'wkt_step_index',
         scale: undefined,
@@ -17251,14 +17251,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  285: {
+  {
     id: 285,
     name: 'jump',
     groupName: 'ACTIVITY FILE MESSAGES',
-    fields: {
-      253: {
+    fields: [
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -17272,7 +17272,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'distance',
         scale: undefined,
@@ -17286,7 +17286,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'height',
         scale: undefined,
@@ -17300,7 +17300,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'rotations',
         scale: undefined,
@@ -17314,7 +17314,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'hang_time',
         scale: undefined,
@@ -17329,7 +17329,7 @@ export const messageList = {
         ],
       },
       /** A score for a jump calculated based on hang time, rotations, and distance. */
-      4: {
+      {
         id: 4,
         name: 'score',
         scale: undefined,
@@ -17343,7 +17343,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'position_lat',
         scale: undefined,
@@ -17357,7 +17357,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'position_long',
         scale: undefined,
@@ -17371,7 +17371,7 @@ export const messageList = {
 
         ],
       },
-      7: {
+      {
         id: 7,
         name: 'speed',
         scale: undefined,
@@ -17395,7 +17395,7 @@ export const messageList = {
 
         ],
       },
-      8: {
+      {
         id: 8,
         name: 'enhanced_speed',
         scale: 1000,
@@ -17409,14 +17409,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  31: {
+  {
     id: 31,
     name: 'course',
     groupName: 'COURSE FILE MESSAGES',
-    fields: {
-      4: {
+    fields: [
+      {
         id: 4,
         name: 'sport',
         scale: undefined,
@@ -17430,7 +17430,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'name',
         scale: undefined,
@@ -17444,7 +17444,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'capabilities',
         scale: undefined,
@@ -17458,7 +17458,7 @@ export const messageList = {
 
         ],
       },
-      7: {
+      {
         id: 7,
         name: 'sub_sport',
         scale: undefined,
@@ -17472,14 +17472,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  32: {
+  {
     id: 32,
     name: 'course_point',
     groupName: 'COURSE FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -17493,7 +17493,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'timestamp',
         scale: undefined,
@@ -17507,7 +17507,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'position_lat',
         scale: undefined,
@@ -17521,7 +17521,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'position_long',
         scale: undefined,
@@ -17535,7 +17535,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'distance',
         scale: 100,
@@ -17549,7 +17549,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'type',
         scale: undefined,
@@ -17563,7 +17563,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'name',
         scale: undefined,
@@ -17577,7 +17577,7 @@ export const messageList = {
 
         ],
       },
-      8: {
+      {
         id: 8,
         name: 'favorite',
         scale: undefined,
@@ -17591,16 +17591,16 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
   /** Unique Identification data for a segment file */
-  148: {
+  {
     id: 148,
     name: 'segment_id',
     groupName: 'SEGMENT FILE MESSAGES',
-    fields: {
+    fields: [
       /** Friendly name assigned to segment */
-      0: {
+      {
         id: 0,
         name: 'name',
         scale: undefined,
@@ -17615,7 +17615,7 @@ export const messageList = {
         ],
       },
       /** UUID of the segment */
-      1: {
+      {
         id: 1,
         name: 'uuid',
         scale: undefined,
@@ -17630,7 +17630,7 @@ export const messageList = {
         ],
       },
       /** Sport associated with the segment */
-      2: {
+      {
         id: 2,
         name: 'sport',
         scale: undefined,
@@ -17645,7 +17645,7 @@ export const messageList = {
         ],
       },
       /** Segment enabled for evaluation */
-      3: {
+      {
         id: 3,
         name: 'enabled',
         scale: undefined,
@@ -17660,7 +17660,7 @@ export const messageList = {
         ],
       },
       /** Primary key of the user that created the segment */
-      4: {
+      {
         id: 4,
         name: 'user_profile_primary_key',
         scale: undefined,
@@ -17675,7 +17675,7 @@ export const messageList = {
         ],
       },
       /** ID of the device that created the segment */
-      5: {
+      {
         id: 5,
         name: 'device_id',
         scale: undefined,
@@ -17690,7 +17690,7 @@ export const messageList = {
         ],
       },
       /** Index for the Leader Board entry selected as the default race participant */
-      6: {
+      {
         id: 6,
         name: 'default_race_leader',
         scale: undefined,
@@ -17705,7 +17705,7 @@ export const messageList = {
         ],
       },
       /** Indicates if any segments should be deleted */
-      7: {
+      {
         id: 7,
         name: 'delete_status',
         scale: undefined,
@@ -17720,7 +17720,7 @@ export const messageList = {
         ],
       },
       /** Indicates how the segment was selected to be sent to the device */
-      8: {
+      {
         id: 8,
         name: 'selection_type',
         scale: undefined,
@@ -17734,15 +17734,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
   /** Unique Identification data for an individual segment leader within a segment file */
-  149: {
+  {
     id: 149,
     name: 'segment_leaderboard_entry',
     groupName: 'SEGMENT FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -17757,7 +17757,7 @@ export const messageList = {
         ],
       },
       /** Friendly name assigned to leader */
-      0: {
+      {
         id: 0,
         name: 'name',
         scale: undefined,
@@ -17772,7 +17772,7 @@ export const messageList = {
         ],
       },
       /** Leader classification */
-      1: {
+      {
         id: 1,
         name: 'type',
         scale: undefined,
@@ -17787,7 +17787,7 @@ export const messageList = {
         ],
       },
       /** Primary user ID of this leader */
-      2: {
+      {
         id: 2,
         name: 'group_primary_key',
         scale: undefined,
@@ -17802,7 +17802,7 @@ export const messageList = {
         ],
       },
       /** ID of the activity associated with this leader time */
-      3: {
+      {
         id: 3,
         name: 'activity_id',
         scale: undefined,
@@ -17817,7 +17817,7 @@ export const messageList = {
         ],
       },
       /** Segment Time (includes pauses) */
-      4: {
+      {
         id: 4,
         name: 'segment_time',
         scale: 1000,
@@ -17832,7 +17832,7 @@ export const messageList = {
         ],
       },
       /** String version of the activity_id. 21 characters long, express in decimal */
-      5: {
+      {
         id: 5,
         name: 'activity_id_string',
         scale: undefined,
@@ -17846,15 +17846,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
   /** Navigation and race evaluation point for a segment decribing a point along the segment path and time it took each segment leader to reach that point */
-  150: {
+  {
     id: 150,
     name: 'segment_point',
     groupName: 'SEGMENT FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -17868,7 +17868,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'position_lat',
         scale: undefined,
@@ -17882,7 +17882,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'position_long',
         scale: undefined,
@@ -17897,7 +17897,7 @@ export const messageList = {
         ],
       },
       /** Accumulated distance along the segment at the described point */
-      3: {
+      {
         id: 3,
         name: 'distance',
         scale: 100,
@@ -17912,7 +17912,7 @@ export const messageList = {
         ],
       },
       /** Accumulated altitude along the segment at the described point */
-      4: {
+      {
         id: 4,
         name: 'altitude',
         scale: 5,
@@ -17927,7 +17927,7 @@ export const messageList = {
         ],
       },
       /** Accumualted time each leader board member required to reach the described point. This value is zero for all leader board members at the starting point of the segment. */
-      5: {
+      {
         id: 5,
         name: 'leader_time',
         scale: 1000,
@@ -17941,14 +17941,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  142: {
+  {
     id: 142,
     name: 'segment_lap',
     groupName: 'SEGMENT FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -17963,7 +17963,7 @@ export const messageList = {
         ],
       },
       /** Lap end time. */
-      253: {
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -17977,7 +17977,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'event',
         scale: undefined,
@@ -17991,7 +17991,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'event_type',
         scale: undefined,
@@ -18005,7 +18005,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'start_time',
         scale: undefined,
@@ -18019,7 +18019,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'start_position_lat',
         scale: undefined,
@@ -18033,7 +18033,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'start_position_long',
         scale: undefined,
@@ -18047,7 +18047,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'end_position_lat',
         scale: undefined,
@@ -18061,7 +18061,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'end_position_long',
         scale: undefined,
@@ -18076,7 +18076,7 @@ export const messageList = {
         ],
       },
       /** Time (includes pauses) */
-      7: {
+      {
         id: 7,
         name: 'total_elapsed_time',
         scale: 1000,
@@ -18091,7 +18091,7 @@ export const messageList = {
         ],
       },
       /** Timer Time (excludes pauses) */
-      8: {
+      {
         id: 8,
         name: 'total_timer_time',
         scale: 1000,
@@ -18105,7 +18105,7 @@ export const messageList = {
 
         ],
       },
-      9: {
+      {
         id: 9,
         name: 'total_distance',
         scale: 100,
@@ -18119,7 +18119,7 @@ export const messageList = {
 
         ],
       },
-      10: {
+      {
         id: 10,
         name: 'total_cycles',
         scale: undefined,
@@ -18152,7 +18152,7 @@ export const messageList = {
 
         ],
       },
-      11: {
+      {
         id: 11,
         name: 'total_calories',
         scale: undefined,
@@ -18167,7 +18167,7 @@ export const messageList = {
         ],
       },
       /** If New Leaf */
-      12: {
+      {
         id: 12,
         name: 'total_fat_calories',
         scale: undefined,
@@ -18181,7 +18181,7 @@ export const messageList = {
 
         ],
       },
-      13: {
+      {
         id: 13,
         name: 'avg_speed',
         scale: 1000,
@@ -18195,7 +18195,7 @@ export const messageList = {
 
         ],
       },
-      14: {
+      {
         id: 14,
         name: 'max_speed',
         scale: 1000,
@@ -18209,7 +18209,7 @@ export const messageList = {
 
         ],
       },
-      15: {
+      {
         id: 15,
         name: 'avg_heart_rate',
         scale: undefined,
@@ -18223,7 +18223,7 @@ export const messageList = {
 
         ],
       },
-      16: {
+      {
         id: 16,
         name: 'max_heart_rate',
         scale: undefined,
@@ -18238,7 +18238,7 @@ export const messageList = {
         ],
       },
       /** total_cycles / total_timer_time if non_zero_avg_cadence otherwise total_cycles / total_elapsed_time */
-      17: {
+      {
         id: 17,
         name: 'avg_cadence',
         scale: undefined,
@@ -18252,7 +18252,7 @@ export const messageList = {
 
         ],
       },
-      18: {
+      {
         id: 18,
         name: 'max_cadence',
         scale: undefined,
@@ -18267,7 +18267,7 @@ export const messageList = {
         ],
       },
       /** total_power / total_timer_time if non_zero_avg_power otherwise total_power / total_elapsed_time */
-      19: {
+      {
         id: 19,
         name: 'avg_power',
         scale: undefined,
@@ -18281,7 +18281,7 @@ export const messageList = {
 
         ],
       },
-      20: {
+      {
         id: 20,
         name: 'max_power',
         scale: undefined,
@@ -18295,7 +18295,7 @@ export const messageList = {
 
         ],
       },
-      21: {
+      {
         id: 21,
         name: 'total_ascent',
         scale: undefined,
@@ -18309,7 +18309,7 @@ export const messageList = {
 
         ],
       },
-      22: {
+      {
         id: 22,
         name: 'total_descent',
         scale: undefined,
@@ -18323,7 +18323,7 @@ export const messageList = {
 
         ],
       },
-      23: {
+      {
         id: 23,
         name: 'sport',
         scale: undefined,
@@ -18337,7 +18337,7 @@ export const messageList = {
 
         ],
       },
-      24: {
+      {
         id: 24,
         name: 'event_group',
         scale: undefined,
@@ -18352,7 +18352,7 @@ export const messageList = {
         ],
       },
       /** North east corner latitude. */
-      25: {
+      {
         id: 25,
         name: 'nec_lat',
         scale: undefined,
@@ -18367,7 +18367,7 @@ export const messageList = {
         ],
       },
       /** North east corner longitude. */
-      26: {
+      {
         id: 26,
         name: 'nec_long',
         scale: undefined,
@@ -18382,7 +18382,7 @@ export const messageList = {
         ],
       },
       /** South west corner latitude. */
-      27: {
+      {
         id: 27,
         name: 'swc_lat',
         scale: undefined,
@@ -18397,7 +18397,7 @@ export const messageList = {
         ],
       },
       /** South west corner latitude. */
-      28: {
+      {
         id: 28,
         name: 'swc_long',
         scale: undefined,
@@ -18411,7 +18411,7 @@ export const messageList = {
 
         ],
       },
-      29: {
+      {
         id: 29,
         name: 'name',
         scale: undefined,
@@ -18425,7 +18425,7 @@ export const messageList = {
 
         ],
       },
-      30: {
+      {
         id: 30,
         name: 'normalized_power',
         scale: undefined,
@@ -18439,7 +18439,7 @@ export const messageList = {
 
         ],
       },
-      31: {
+      {
         id: 31,
         name: 'left_right_balance',
         scale: undefined,
@@ -18453,7 +18453,7 @@ export const messageList = {
 
         ],
       },
-      32: {
+      {
         id: 32,
         name: 'sub_sport',
         scale: undefined,
@@ -18467,7 +18467,7 @@ export const messageList = {
 
         ],
       },
-      33: {
+      {
         id: 33,
         name: 'total_work',
         scale: undefined,
@@ -18481,7 +18481,7 @@ export const messageList = {
 
         ],
       },
-      34: {
+      {
         id: 34,
         name: 'avg_altitude',
         scale: 5,
@@ -18495,7 +18495,7 @@ export const messageList = {
 
         ],
       },
-      35: {
+      {
         id: 35,
         name: 'max_altitude',
         scale: 5,
@@ -18509,7 +18509,7 @@ export const messageList = {
 
         ],
       },
-      36: {
+      {
         id: 36,
         name: 'gps_accuracy',
         scale: undefined,
@@ -18523,7 +18523,7 @@ export const messageList = {
 
         ],
       },
-      37: {
+      {
         id: 37,
         name: 'avg_grade',
         scale: 100,
@@ -18537,7 +18537,7 @@ export const messageList = {
 
         ],
       },
-      38: {
+      {
         id: 38,
         name: 'avg_pos_grade',
         scale: 100,
@@ -18551,7 +18551,7 @@ export const messageList = {
 
         ],
       },
-      39: {
+      {
         id: 39,
         name: 'avg_neg_grade',
         scale: 100,
@@ -18565,7 +18565,7 @@ export const messageList = {
 
         ],
       },
-      40: {
+      {
         id: 40,
         name: 'max_pos_grade',
         scale: 100,
@@ -18579,7 +18579,7 @@ export const messageList = {
 
         ],
       },
-      41: {
+      {
         id: 41,
         name: 'max_neg_grade',
         scale: 100,
@@ -18593,7 +18593,7 @@ export const messageList = {
 
         ],
       },
-      42: {
+      {
         id: 42,
         name: 'avg_temperature',
         scale: undefined,
@@ -18607,7 +18607,7 @@ export const messageList = {
 
         ],
       },
-      43: {
+      {
         id: 43,
         name: 'max_temperature',
         scale: undefined,
@@ -18621,7 +18621,7 @@ export const messageList = {
 
         ],
       },
-      44: {
+      {
         id: 44,
         name: 'total_moving_time',
         scale: 1000,
@@ -18635,7 +18635,7 @@ export const messageList = {
 
         ],
       },
-      45: {
+      {
         id: 45,
         name: 'avg_pos_vertical_speed',
         scale: 1000,
@@ -18649,7 +18649,7 @@ export const messageList = {
 
         ],
       },
-      46: {
+      {
         id: 46,
         name: 'avg_neg_vertical_speed',
         scale: 1000,
@@ -18663,7 +18663,7 @@ export const messageList = {
 
         ],
       },
-      47: {
+      {
         id: 47,
         name: 'max_pos_vertical_speed',
         scale: 1000,
@@ -18677,7 +18677,7 @@ export const messageList = {
 
         ],
       },
-      48: {
+      {
         id: 48,
         name: 'max_neg_vertical_speed',
         scale: 1000,
@@ -18691,7 +18691,7 @@ export const messageList = {
 
         ],
       },
-      49: {
+      {
         id: 49,
         name: 'time_in_hr_zone',
         scale: 1000,
@@ -18705,7 +18705,7 @@ export const messageList = {
 
         ],
       },
-      50: {
+      {
         id: 50,
         name: 'time_in_speed_zone',
         scale: 1000,
@@ -18719,7 +18719,7 @@ export const messageList = {
 
         ],
       },
-      51: {
+      {
         id: 51,
         name: 'time_in_cadence_zone',
         scale: 1000,
@@ -18733,7 +18733,7 @@ export const messageList = {
 
         ],
       },
-      52: {
+      {
         id: 52,
         name: 'time_in_power_zone',
         scale: 1000,
@@ -18747,7 +18747,7 @@ export const messageList = {
 
         ],
       },
-      53: {
+      {
         id: 53,
         name: 'repetition_num',
         scale: undefined,
@@ -18761,7 +18761,7 @@ export const messageList = {
 
         ],
       },
-      54: {
+      {
         id: 54,
         name: 'min_altitude',
         scale: 5,
@@ -18775,7 +18775,7 @@ export const messageList = {
 
         ],
       },
-      55: {
+      {
         id: 55,
         name: 'min_heart_rate',
         scale: undefined,
@@ -18789,7 +18789,7 @@ export const messageList = {
 
         ],
       },
-      56: {
+      {
         id: 56,
         name: 'active_time',
         scale: 1000,
@@ -18803,7 +18803,7 @@ export const messageList = {
 
         ],
       },
-      57: {
+      {
         id: 57,
         name: 'wkt_step_index',
         scale: undefined,
@@ -18817,7 +18817,7 @@ export const messageList = {
 
         ],
       },
-      58: {
+      {
         id: 58,
         name: 'sport_event',
         scale: undefined,
@@ -18831,7 +18831,7 @@ export const messageList = {
 
         ],
       },
-      59: {
+      {
         id: 59,
         name: 'avg_left_torque_effectiveness',
         scale: 2,
@@ -18845,7 +18845,7 @@ export const messageList = {
 
         ],
       },
-      60: {
+      {
         id: 60,
         name: 'avg_right_torque_effectiveness',
         scale: 2,
@@ -18859,7 +18859,7 @@ export const messageList = {
 
         ],
       },
-      61: {
+      {
         id: 61,
         name: 'avg_left_pedal_smoothness',
         scale: 2,
@@ -18873,7 +18873,7 @@ export const messageList = {
 
         ],
       },
-      62: {
+      {
         id: 62,
         name: 'avg_right_pedal_smoothness',
         scale: 2,
@@ -18887,7 +18887,7 @@ export const messageList = {
 
         ],
       },
-      63: {
+      {
         id: 63,
         name: 'avg_combined_pedal_smoothness',
         scale: 2,
@@ -18901,7 +18901,7 @@ export const messageList = {
 
         ],
       },
-      64: {
+      {
         id: 64,
         name: 'status',
         scale: undefined,
@@ -18915,7 +18915,7 @@ export const messageList = {
 
         ],
       },
-      65: {
+      {
         id: 65,
         name: 'uuid',
         scale: undefined,
@@ -18930,7 +18930,7 @@ export const messageList = {
         ],
       },
       /** fractional part of the avg_cadence */
-      66: {
+      {
         id: 66,
         name: 'avg_fractional_cadence',
         scale: 128,
@@ -18945,7 +18945,7 @@ export const messageList = {
         ],
       },
       /** fractional part of the max_cadence */
-      67: {
+      {
         id: 67,
         name: 'max_fractional_cadence',
         scale: 128,
@@ -18960,7 +18960,7 @@ export const messageList = {
         ],
       },
       /** fractional part of the total_cycles */
-      68: {
+      {
         id: 68,
         name: 'total_fractional_cycles',
         scale: 128,
@@ -18974,7 +18974,7 @@ export const messageList = {
 
         ],
       },
-      69: {
+      {
         id: 69,
         name: 'front_gear_shift_count',
         scale: undefined,
@@ -18988,7 +18988,7 @@ export const messageList = {
 
         ],
       },
-      70: {
+      {
         id: 70,
         name: 'rear_gear_shift_count',
         scale: undefined,
@@ -19003,7 +19003,7 @@ export const messageList = {
         ],
       },
       /** Total time spent in the standing position */
-      71: {
+      {
         id: 71,
         name: 'time_standing',
         scale: 1000,
@@ -19018,7 +19018,7 @@ export const messageList = {
         ],
       },
       /** Number of transitions to the standing state */
-      72: {
+      {
         id: 72,
         name: 'stand_count',
         scale: undefined,
@@ -19033,7 +19033,7 @@ export const messageList = {
         ],
       },
       /** Average left platform center offset */
-      73: {
+      {
         id: 73,
         name: 'avg_left_pco',
         scale: undefined,
@@ -19048,7 +19048,7 @@ export const messageList = {
         ],
       },
       /** Average right platform center offset */
-      74: {
+      {
         id: 74,
         name: 'avg_right_pco',
         scale: undefined,
@@ -19063,7 +19063,7 @@ export const messageList = {
         ],
       },
       /** Average left power phase angles. Data value indexes defined by power_phase_type. */
-      75: {
+      {
         id: 75,
         name: 'avg_left_power_phase',
         scale: 0.7111111,
@@ -19078,7 +19078,7 @@ export const messageList = {
         ],
       },
       /** Average left power phase peak angles. Data value indexes defined by power_phase_type. */
-      76: {
+      {
         id: 76,
         name: 'avg_left_power_phase_peak',
         scale: 0.7111111,
@@ -19093,7 +19093,7 @@ export const messageList = {
         ],
       },
       /** Average right power phase angles. Data value indexes defined by power_phase_type. */
-      77: {
+      {
         id: 77,
         name: 'avg_right_power_phase',
         scale: 0.7111111,
@@ -19108,7 +19108,7 @@ export const messageList = {
         ],
       },
       /** Average right power phase peak angles. Data value indexes defined by power_phase_type. */
-      78: {
+      {
         id: 78,
         name: 'avg_right_power_phase_peak',
         scale: 0.7111111,
@@ -19123,7 +19123,7 @@ export const messageList = {
         ],
       },
       /** Average power by position. Data value indexes defined by rider_position_type. */
-      79: {
+      {
         id: 79,
         name: 'avg_power_position',
         scale: undefined,
@@ -19138,7 +19138,7 @@ export const messageList = {
         ],
       },
       /** Maximum power by position. Data value indexes defined by rider_position_type. */
-      80: {
+      {
         id: 80,
         name: 'max_power_position',
         scale: undefined,
@@ -19153,7 +19153,7 @@ export const messageList = {
         ],
       },
       /** Average cadence by position. Data value indexes defined by rider_position_type. */
-      81: {
+      {
         id: 81,
         name: 'avg_cadence_position',
         scale: undefined,
@@ -19168,7 +19168,7 @@ export const messageList = {
         ],
       },
       /** Maximum cadence by position. Data value indexes defined by rider_position_type. */
-      82: {
+      {
         id: 82,
         name: 'max_cadence_position',
         scale: undefined,
@@ -19183,7 +19183,7 @@ export const messageList = {
         ],
       },
       /** Manufacturer that produced the segment */
-      83: {
+      {
         id: 83,
         name: 'manufacturer',
         scale: undefined,
@@ -19198,7 +19198,7 @@ export const messageList = {
         ],
       },
       /** The grit score estimates how challenging a route could be for a cyclist in terms of time spent going over sharp turns or large grade slopes. */
-      84: {
+      {
         id: 84,
         name: 'total_grit',
         scale: undefined,
@@ -19213,7 +19213,7 @@ export const messageList = {
         ],
       },
       /** The flow score estimates how long distance wise a cyclist deaccelerates over intervals where deacceleration is unnecessary such as smooth turns or small grade angle intervals. */
-      85: {
+      {
         id: 85,
         name: 'total_flow',
         scale: undefined,
@@ -19228,7 +19228,7 @@ export const messageList = {
         ],
       },
       /** The grit score estimates how challenging a route could be for a cyclist in terms of time spent going over sharp turns or large grade slopes. */
-      86: {
+      {
         id: 86,
         name: 'avg_grit',
         scale: undefined,
@@ -19243,7 +19243,7 @@ export const messageList = {
         ],
       },
       /** The flow score estimates how long distance wise a cyclist deaccelerates over intervals where deacceleration is unnecessary such as smooth turns or small grade angle intervals. */
-      87: {
+      {
         id: 87,
         name: 'avg_flow',
         scale: undefined,
@@ -19258,7 +19258,7 @@ export const messageList = {
         ],
       },
       /** fractional part of total_ascent */
-      89: {
+      {
         id: 89,
         name: 'total_fractional_ascent',
         scale: 100,
@@ -19273,7 +19273,7 @@ export const messageList = {
         ],
       },
       /** fractional part of total_descent */
-      90: {
+      {
         id: 90,
         name: 'total_fractional_descent',
         scale: 100,
@@ -19287,15 +19287,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
   /** Summary of the unique segment and leaderboard information associated with a segment file. This message is used to compile a segment list file describing all segment files on a device. The segment list file is used when refreshing the contents of a segment file with the latest available leaderboard information. */
-  151: {
+  {
     id: 151,
     name: 'segment_file',
     groupName: 'SEGMENT FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -19310,7 +19310,7 @@ export const messageList = {
         ],
       },
       /** UUID of the segment file */
-      1: {
+      {
         id: 1,
         name: 'file_uuid',
         scale: undefined,
@@ -19325,7 +19325,7 @@ export const messageList = {
         ],
       },
       /** Enabled state of the segment file */
-      3: {
+      {
         id: 3,
         name: 'enabled',
         scale: undefined,
@@ -19340,7 +19340,7 @@ export const messageList = {
         ],
       },
       /** Primary key of the user that created the segment file */
-      4: {
+      {
         id: 4,
         name: 'user_profile_primary_key',
         scale: undefined,
@@ -19355,7 +19355,7 @@ export const messageList = {
         ],
       },
       /** Leader type of each leader in the segment file */
-      7: {
+      {
         id: 7,
         name: 'leader_type',
         scale: undefined,
@@ -19370,7 +19370,7 @@ export const messageList = {
         ],
       },
       /** Group primary key of each leader in the segment file */
-      8: {
+      {
         id: 8,
         name: 'leader_group_primary_key',
         scale: undefined,
@@ -19385,7 +19385,7 @@ export const messageList = {
         ],
       },
       /** Activity ID of each leader in the segment file */
-      9: {
+      {
         id: 9,
         name: 'leader_activity_id',
         scale: undefined,
@@ -19400,7 +19400,7 @@ export const messageList = {
         ],
       },
       /** String version of the activity ID of each leader in the segment file. 21 characters long for each ID, express in decimal */
-      10: {
+      {
         id: 10,
         name: 'leader_activity_id_string',
         scale: undefined,
@@ -19415,7 +19415,7 @@ export const messageList = {
         ],
       },
       /** Index for the Leader Board entry selected as the default race participant */
-      11: {
+      {
         id: 11,
         name: 'default_race_leader',
         scale: undefined,
@@ -19429,14 +19429,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  26: {
+  {
     id: 26,
     name: 'workout',
     groupName: 'WORKOUT FILE MESSAGES',
-    fields: {
-      4: {
+    fields: [
+      {
         id: 4,
         name: 'sport',
         scale: undefined,
@@ -19450,7 +19450,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'capabilities',
         scale: undefined,
@@ -19465,7 +19465,7 @@ export const messageList = {
         ],
       },
       /** number of valid steps */
-      6: {
+      {
         id: 6,
         name: 'num_valid_steps',
         scale: undefined,
@@ -19479,7 +19479,7 @@ export const messageList = {
 
         ],
       },
-      8: {
+      {
         id: 8,
         name: 'wkt_name',
         scale: undefined,
@@ -19493,7 +19493,7 @@ export const messageList = {
 
         ],
       },
-      11: {
+      {
         id: 11,
         name: 'sub_sport',
         scale: undefined,
@@ -19507,7 +19507,7 @@ export const messageList = {
 
         ],
       },
-      14: {
+      {
         id: 14,
         name: 'pool_length',
         scale: 100,
@@ -19521,7 +19521,7 @@ export const messageList = {
 
         ],
       },
-      15: {
+      {
         id: 15,
         name: 'pool_length_unit',
         scale: undefined,
@@ -19535,14 +19535,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  158: {
+  {
     id: 158,
     name: 'workout_session',
     groupName: 'WORKOUT FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -19556,7 +19556,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'sport',
         scale: undefined,
@@ -19570,7 +19570,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'sub_sport',
         scale: undefined,
@@ -19584,7 +19584,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'num_valid_steps',
         scale: undefined,
@@ -19598,7 +19598,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'first_step_index',
         scale: undefined,
@@ -19612,7 +19612,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'pool_length',
         scale: 100,
@@ -19626,7 +19626,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'pool_length_unit',
         scale: undefined,
@@ -19640,14 +19640,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  27: {
+  {
     id: 27,
     name: 'workout_step',
     groupName: 'WORKOUT FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -19661,7 +19661,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'wkt_step_name',
         scale: undefined,
@@ -19675,7 +19675,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'duration_type',
         scale: undefined,
@@ -19689,7 +19689,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'duration_value',
         scale: undefined,
@@ -19896,7 +19896,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'target_type',
         scale: undefined,
@@ -19910,7 +19910,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'target_value',
         scale: undefined,
@@ -20145,7 +20145,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'custom_target_value_low',
         scale: undefined,
@@ -20235,7 +20235,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'custom_target_value_high',
         scale: undefined,
@@ -20325,7 +20325,7 @@ export const messageList = {
 
         ],
       },
-      7: {
+      {
         id: 7,
         name: 'intensity',
         scale: undefined,
@@ -20339,7 +20339,7 @@ export const messageList = {
 
         ],
       },
-      8: {
+      {
         id: 8,
         name: 'notes',
         scale: undefined,
@@ -20353,7 +20353,7 @@ export const messageList = {
 
         ],
       },
-      9: {
+      {
         id: 9,
         name: 'equipment',
         scale: undefined,
@@ -20367,7 +20367,7 @@ export const messageList = {
 
         ],
       },
-      10: {
+      {
         id: 10,
         name: 'exercise_category',
         scale: undefined,
@@ -20381,7 +20381,7 @@ export const messageList = {
 
         ],
       },
-      11: {
+      {
         id: 11,
         name: 'exercise_name',
         scale: undefined,
@@ -20395,7 +20395,7 @@ export const messageList = {
 
         ],
       },
-      12: {
+      {
         id: 12,
         name: 'exercise_weight',
         scale: 100,
@@ -20409,7 +20409,7 @@ export const messageList = {
 
         ],
       },
-      13: {
+      {
         id: 13,
         name: 'weight_display_unit',
         scale: undefined,
@@ -20423,14 +20423,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  264: {
+  {
     id: 264,
     name: 'exercise_title',
     groupName: 'WORKOUT FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -20444,7 +20444,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'exercise_category',
         scale: undefined,
@@ -20458,7 +20458,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'exercise_name',
         scale: undefined,
@@ -20472,7 +20472,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'wkt_step_name',
         scale: undefined,
@@ -20486,15 +20486,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  28: {
+  {
     id: 28,
     name: 'schedule',
     groupName: 'SCHEDULE FILE MESSAGES',
-    fields: {
+    fields: [
       /** Corresponds to file_id of scheduled workout / course. */
-      0: {
+      {
         id: 0,
         name: 'manufacturer',
         scale: undefined,
@@ -20509,7 +20509,7 @@ export const messageList = {
         ],
       },
       /** Corresponds to file_id of scheduled workout / course. */
-      1: {
+      {
         id: 1,
         name: 'product',
         scale: undefined,
@@ -20580,7 +20580,7 @@ export const messageList = {
         ],
       },
       /** Corresponds to file_id of scheduled workout / course. */
-      2: {
+      {
         id: 2,
         name: 'serial_number',
         scale: undefined,
@@ -20595,7 +20595,7 @@ export const messageList = {
         ],
       },
       /** Corresponds to file_id of scheduled workout / course. */
-      3: {
+      {
         id: 3,
         name: 'time_created',
         scale: undefined,
@@ -20610,7 +20610,7 @@ export const messageList = {
         ],
       },
       /** TRUE if this activity has been started */
-      4: {
+      {
         id: 4,
         name: 'completed',
         scale: undefined,
@@ -20624,7 +20624,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'type',
         scale: undefined,
@@ -20638,7 +20638,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'scheduled_time',
         scale: undefined,
@@ -20652,14 +20652,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  33: {
+  {
     id: 33,
     name: 'totals',
     groupName: 'TOTALS FILE MESSAGES',
-    fields: {
-      254: {
+    fields: [
+      {
         id: 254,
         name: 'message_index',
         scale: undefined,
@@ -20673,7 +20673,7 @@ export const messageList = {
 
         ],
       },
-      253: {
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -20688,7 +20688,7 @@ export const messageList = {
         ],
       },
       /** Excludes pauses */
-      0: {
+      {
         id: 0,
         name: 'timer_time',
         scale: undefined,
@@ -20702,7 +20702,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'distance',
         scale: undefined,
@@ -20716,7 +20716,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'calories',
         scale: undefined,
@@ -20730,7 +20730,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'sport',
         scale: undefined,
@@ -20745,7 +20745,7 @@ export const messageList = {
         ],
       },
       /** Includes pauses */
-      4: {
+      {
         id: 4,
         name: 'elapsed_time',
         scale: undefined,
@@ -20759,7 +20759,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'sessions',
         scale: undefined,
@@ -20773,7 +20773,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'active_time',
         scale: undefined,
@@ -20787,7 +20787,7 @@ export const messageList = {
 
         ],
       },
-      9: {
+      {
         id: 9,
         name: 'sport_index',
         scale: undefined,
@@ -20801,14 +20801,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  30: {
+  {
     id: 30,
     name: 'weight_scale',
     groupName: 'WEIGHT SCALE FILE MESSAGES',
-    fields: {
-      253: {
+    fields: [
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -20822,7 +20822,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'weight',
         scale: 100,
@@ -20836,7 +20836,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'percent_fat',
         scale: 100,
@@ -20850,7 +20850,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'percent_hydration',
         scale: 100,
@@ -20864,7 +20864,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'visceral_fat_mass',
         scale: 100,
@@ -20878,7 +20878,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'bone_mass',
         scale: 100,
@@ -20892,7 +20892,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'muscle_mass',
         scale: 100,
@@ -20906,7 +20906,7 @@ export const messageList = {
 
         ],
       },
-      7: {
+      {
         id: 7,
         name: 'basal_met',
         scale: 4,
@@ -20920,7 +20920,7 @@ export const messageList = {
 
         ],
       },
-      8: {
+      {
         id: 8,
         name: 'physique_rating',
         scale: undefined,
@@ -20935,7 +20935,7 @@ export const messageList = {
         ],
       },
       /** ~4kJ per kcal, 0.25 allows max 16384 kcal */
-      9: {
+      {
         id: 9,
         name: 'active_met',
         scale: 4,
@@ -20949,7 +20949,7 @@ export const messageList = {
 
         ],
       },
-      10: {
+      {
         id: 10,
         name: 'metabolic_age',
         scale: undefined,
@@ -20963,7 +20963,7 @@ export const messageList = {
 
         ],
       },
-      11: {
+      {
         id: 11,
         name: 'visceral_fat_rating',
         scale: undefined,
@@ -20978,7 +20978,7 @@ export const messageList = {
         ],
       },
       /** Associates this weight scale message to a user.  This corresponds to the index of the user profile message in the weight scale file. */
-      12: {
+      {
         id: 12,
         name: 'user_profile_index',
         scale: undefined,
@@ -20992,14 +20992,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  51: {
+  {
     id: 51,
     name: 'blood_pressure',
     groupName: 'BLOOD PRESSURE FILE MESSAGES',
-    fields: {
-      253: {
+    fields: [
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -21013,7 +21013,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'systolic_pressure',
         scale: undefined,
@@ -21027,7 +21027,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'diastolic_pressure',
         scale: undefined,
@@ -21041,7 +21041,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'mean_arterial_pressure',
         scale: undefined,
@@ -21055,7 +21055,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'map_3_sample_mean',
         scale: undefined,
@@ -21069,7 +21069,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'map_morning_values',
         scale: undefined,
@@ -21083,7 +21083,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'map_evening_values',
         scale: undefined,
@@ -21097,7 +21097,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'heart_rate',
         scale: undefined,
@@ -21111,7 +21111,7 @@ export const messageList = {
 
         ],
       },
-      7: {
+      {
         id: 7,
         name: 'heart_rate_type',
         scale: undefined,
@@ -21125,7 +21125,7 @@ export const messageList = {
 
         ],
       },
-      8: {
+      {
         id: 8,
         name: 'status',
         scale: undefined,
@@ -21140,7 +21140,7 @@ export const messageList = {
         ],
       },
       /** Associates this blood pressure message to a user.  This corresponds to the index of the user profile message in the blood pressure file. */
-      9: {
+      {
         id: 9,
         name: 'user_profile_index',
         scale: undefined,
@@ -21154,14 +21154,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  103: {
+  {
     id: 103,
     name: 'monitoring_info',
     groupName: 'MONITORING FILE MESSAGES',
-    fields: {
-      253: {
+    fields: [
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -21176,7 +21176,7 @@ export const messageList = {
         ],
       },
       /** Use to convert activity timestamps to local time if device does not support time zone and daylight savings time correction. */
-      0: {
+      {
         id: 0,
         name: 'local_timestamp',
         scale: undefined,
@@ -21190,7 +21190,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'activity_type',
         scale: undefined,
@@ -21205,7 +21205,7 @@ export const messageList = {
         ],
       },
       /** Indexed by activity_type */
-      3: {
+      {
         id: 3,
         name: 'cycles_to_distance',
         scale: 5000,
@@ -21220,7 +21220,7 @@ export const messageList = {
         ],
       },
       /** Indexed by activity_type */
-      4: {
+      {
         id: 4,
         name: 'cycles_to_calories',
         scale: 5000,
@@ -21234,7 +21234,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'resting_metabolic_rate',
         scale: undefined,
@@ -21248,15 +21248,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  55: {
+  {
     id: 55,
     name: 'monitoring',
     groupName: 'MONITORING FILE MESSAGES',
-    fields: {
+    fields: [
       /** Must align to logging interval, for example, time must be 00:00:00 for daily log. */
-      253: {
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -21271,7 +21271,7 @@ export const messageList = {
         ],
       },
       /** Associates this data to device_info message.  Not required for file with single device (sensor). */
-      0: {
+      {
         id: 0,
         name: 'device_index',
         scale: undefined,
@@ -21286,7 +21286,7 @@ export const messageList = {
         ],
       },
       /** Accumulated total calories.  Maintained by MonitoringReader for each activity_type.  See SDK documentation */
-      1: {
+      {
         id: 1,
         name: 'calories',
         scale: undefined,
@@ -21301,7 +21301,7 @@ export const messageList = {
         ],
       },
       /** Accumulated distance.  Maintained by MonitoringReader for each activity_type.  See SDK documentation. */
-      2: {
+      {
         id: 2,
         name: 'distance',
         scale: 100,
@@ -21316,7 +21316,7 @@ export const messageList = {
         ],
       },
       /** Accumulated cycles.  Maintained by MonitoringReader for each activity_type.  See SDK documentation. */
-      3: {
+      {
         id: 3,
         name: 'cycles',
         scale: 2,
@@ -21380,7 +21380,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'active_time',
         scale: 1000,
@@ -21394,7 +21394,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'activity_type',
         scale: undefined,
@@ -21408,7 +21408,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'activity_subtype',
         scale: undefined,
@@ -21422,7 +21422,7 @@ export const messageList = {
 
         ],
       },
-      7: {
+      {
         id: 7,
         name: 'activity_level',
         scale: undefined,
@@ -21436,7 +21436,7 @@ export const messageList = {
 
         ],
       },
-      8: {
+      {
         id: 8,
         name: 'distance_16',
         scale: undefined,
@@ -21450,7 +21450,7 @@ export const messageList = {
 
         ],
       },
-      9: {
+      {
         id: 9,
         name: 'cycles_16',
         scale: undefined,
@@ -21464,7 +21464,7 @@ export const messageList = {
 
         ],
       },
-      10: {
+      {
         id: 10,
         name: 'active_time_16',
         scale: undefined,
@@ -21479,7 +21479,7 @@ export const messageList = {
         ],
       },
       /** Must align to logging interval, for example, time must be 00:00:00 for daily log. */
-      11: {
+      {
         id: 11,
         name: 'local_timestamp',
         scale: undefined,
@@ -21494,7 +21494,7 @@ export const messageList = {
         ],
       },
       /** Avg temperature during the logging interval ended at timestamp */
-      12: {
+      {
         id: 12,
         name: 'temperature',
         scale: 100,
@@ -21509,7 +21509,7 @@ export const messageList = {
         ],
       },
       /** Min temperature during the logging interval ended at timestamp */
-      14: {
+      {
         id: 14,
         name: 'temperature_min',
         scale: 100,
@@ -21524,7 +21524,7 @@ export const messageList = {
         ],
       },
       /** Max temperature during the logging interval ended at timestamp */
-      15: {
+      {
         id: 15,
         name: 'temperature_max',
         scale: 100,
@@ -21539,7 +21539,7 @@ export const messageList = {
         ],
       },
       /** Indexed using minute_activity_level enum */
-      16: {
+      {
         id: 16,
         name: 'activity_time',
         scale: undefined,
@@ -21553,7 +21553,7 @@ export const messageList = {
 
         ],
       },
-      19: {
+      {
         id: 19,
         name: 'active_calories',
         scale: undefined,
@@ -21568,7 +21568,7 @@ export const messageList = {
         ],
       },
       /** Indicates single type / intensity for duration since last monitoring message. */
-      24: {
+      {
         id: 24,
         name: 'current_activity_type_intensity',
         scale: undefined,
@@ -21602,7 +21602,7 @@ export const messageList = {
 
         ],
       },
-      25: {
+      {
         id: 25,
         name: 'timestamp_min_8',
         scale: undefined,
@@ -21616,7 +21616,7 @@ export const messageList = {
 
         ],
       },
-      26: {
+      {
         id: 26,
         name: 'timestamp_16',
         scale: undefined,
@@ -21630,7 +21630,7 @@ export const messageList = {
 
         ],
       },
-      27: {
+      {
         id: 27,
         name: 'heart_rate',
         scale: undefined,
@@ -21644,7 +21644,7 @@ export const messageList = {
 
         ],
       },
-      28: {
+      {
         id: 28,
         name: 'intensity',
         scale: 10,
@@ -21658,7 +21658,7 @@ export const messageList = {
 
         ],
       },
-      29: {
+      {
         id: 29,
         name: 'duration_min',
         scale: undefined,
@@ -21672,7 +21672,7 @@ export const messageList = {
 
         ],
       },
-      30: {
+      {
         id: 30,
         name: 'duration',
         scale: undefined,
@@ -21686,7 +21686,7 @@ export const messageList = {
 
         ],
       },
-      31: {
+      {
         id: 31,
         name: 'ascent',
         scale: 1000,
@@ -21700,7 +21700,7 @@ export const messageList = {
 
         ],
       },
-      32: {
+      {
         id: 32,
         name: 'descent',
         scale: 1000,
@@ -21714,7 +21714,7 @@ export const messageList = {
 
         ],
       },
-      33: {
+      {
         id: 33,
         name: 'moderate_activity_minutes',
         scale: undefined,
@@ -21728,7 +21728,7 @@ export const messageList = {
 
         ],
       },
-      34: {
+      {
         id: 34,
         name: 'vigorous_activity_minutes',
         scale: undefined,
@@ -21742,14 +21742,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  132: {
+  {
     id: 132,
     name: 'hr',
     groupName: 'MONITORING FILE MESSAGES',
-    fields: {
-      253: {
+    fields: [
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -21763,7 +21763,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'fractional_timestamp',
         scale: 32768,
@@ -21777,7 +21777,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'time256',
         scale: undefined,
@@ -21801,7 +21801,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'filtered_bpm',
         scale: undefined,
@@ -21815,7 +21815,7 @@ export const messageList = {
 
         ],
       },
-      9: {
+      {
         id: 9,
         name: 'event_timestamp',
         scale: 1024,
@@ -21829,7 +21829,7 @@ export const messageList = {
 
         ],
       },
-      10: {
+      {
         id: 10,
         name: 'event_timestamp_12',
         scale: undefined,
@@ -21943,15 +21943,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
   /** Value from 1 to 100 calculated by FirstBeat */
-  227: {
+  {
     id: 227,
     name: 'stress_level',
     groupName: 'MONITORING FILE MESSAGES',
-    fields: {
-      0: {
+    fields: [
+      {
         id: 0,
         name: 'stress_level_value',
         scale: undefined,
@@ -21966,7 +21966,7 @@ export const messageList = {
         ],
       },
       /** Time stress score was calculated */
-      1: {
+      {
         id: 1,
         name: 'stress_level_time',
         scale: undefined,
@@ -21980,15 +21980,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  145: {
+  {
     id: 145,
     name: 'memo_glob',
     groupName: 'OTHER MESSAGES',
-    fields: {
+    fields: [
       /** Sequence number of memo blocks */
-      250: {
+      {
         id: 250,
         name: 'part_index',
         scale: undefined,
@@ -22003,7 +22003,7 @@ export const messageList = {
         ],
       },
       /** Block of utf8 bytes */
-      0: {
+      {
         id: 0,
         name: 'memo',
         scale: undefined,
@@ -22018,7 +22018,7 @@ export const messageList = {
         ],
       },
       /** Allows relating glob to another mesg  If used only required for first part of each memo_glob */
-      1: {
+      {
         id: 1,
         name: 'message_number',
         scale: undefined,
@@ -22033,7 +22033,7 @@ export const messageList = {
         ],
       },
       /** Index of external mesg */
-      2: {
+      {
         id: 2,
         name: 'message_index',
         scale: undefined,
@@ -22047,14 +22047,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  82: {
+  {
     id: 82,
     name: 'ant_channel_id',
     groupName: 'OTHER MESSAGES',
-    fields: {
-      0: {
+    fields: [
+      {
         id: 0,
         name: 'channel_number',
         scale: undefined,
@@ -22068,7 +22068,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'device_type',
         scale: undefined,
@@ -22082,7 +22082,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'device_number',
         scale: undefined,
@@ -22096,7 +22096,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'transmission_type',
         scale: undefined,
@@ -22110,7 +22110,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'device_index',
         scale: undefined,
@@ -22124,14 +22124,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  80: {
+  {
     id: 80,
     name: 'ant_rx',
     groupName: 'OTHER MESSAGES',
-    fields: {
-      253: {
+    fields: [
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -22145,7 +22145,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'fractional_timestamp',
         scale: 32768,
@@ -22159,7 +22159,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'mesg_id',
         scale: undefined,
@@ -22173,7 +22173,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'mesg_data',
         scale: undefined,
@@ -22277,7 +22277,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'channel_number',
         scale: undefined,
@@ -22291,7 +22291,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'data',
         scale: undefined,
@@ -22305,14 +22305,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  81: {
+  {
     id: 81,
     name: 'ant_tx',
     groupName: 'OTHER MESSAGES',
-    fields: {
-      253: {
+    fields: [
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -22326,7 +22326,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'fractional_timestamp',
         scale: 32768,
@@ -22340,7 +22340,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'mesg_id',
         scale: undefined,
@@ -22354,7 +22354,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'mesg_data',
         scale: undefined,
@@ -22458,7 +22458,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'channel_number',
         scale: undefined,
@@ -22472,7 +22472,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'data',
         scale: undefined,
@@ -22486,14 +22486,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  200: {
+  {
     id: 200,
     name: 'exd_screen_configuration',
     groupName: 'OTHER MESSAGES',
-    fields: {
-      0: {
+    fields: [
+      {
         id: 0,
         name: 'screen_index',
         scale: undefined,
@@ -22508,7 +22508,7 @@ export const messageList = {
         ],
       },
       /** number of fields in screen */
-      1: {
+      {
         id: 1,
         name: 'field_count',
         scale: undefined,
@@ -22522,7 +22522,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'layout',
         scale: undefined,
@@ -22536,7 +22536,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'screen_enabled',
         scale: undefined,
@@ -22550,14 +22550,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  201: {
+  {
     id: 201,
     name: 'exd_data_field_configuration',
     groupName: 'OTHER MESSAGES',
-    fields: {
-      0: {
+    fields: [
+      {
         id: 0,
         name: 'screen_index',
         scale: undefined,
@@ -22571,7 +22571,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'concept_field',
         scale: undefined,
@@ -22605,7 +22605,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'field_id',
         scale: undefined,
@@ -22619,7 +22619,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'concept_count',
         scale: undefined,
@@ -22633,7 +22633,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'display_type',
         scale: undefined,
@@ -22647,7 +22647,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'title',
         scale: undefined,
@@ -22661,14 +22661,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  202: {
+  {
     id: 202,
     name: 'exd_data_concept_configuration',
     groupName: 'OTHER MESSAGES',
-    fields: {
-      0: {
+    fields: [
+      {
         id: 0,
         name: 'screen_index',
         scale: undefined,
@@ -22682,7 +22682,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'concept_field',
         scale: undefined,
@@ -22716,7 +22716,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'field_id',
         scale: undefined,
@@ -22730,7 +22730,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'concept_index',
         scale: undefined,
@@ -22744,7 +22744,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'data_page',
         scale: undefined,
@@ -22758,7 +22758,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'concept_key',
         scale: undefined,
@@ -22772,7 +22772,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'scaling',
         scale: undefined,
@@ -22786,7 +22786,7 @@ export const messageList = {
 
         ],
       },
-      8: {
+      {
         id: 8,
         name: 'data_units',
         scale: undefined,
@@ -22800,7 +22800,7 @@ export const messageList = {
 
         ],
       },
-      9: {
+      {
         id: 9,
         name: 'qualifier',
         scale: undefined,
@@ -22814,7 +22814,7 @@ export const messageList = {
 
         ],
       },
-      10: {
+      {
         id: 10,
         name: 'descriptor',
         scale: undefined,
@@ -22828,7 +22828,7 @@ export const messageList = {
 
         ],
       },
-      11: {
+      {
         id: 11,
         name: 'is_signed',
         scale: undefined,
@@ -22842,15 +22842,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
   /** Must be logged before developer field is used */
-  206: {
+  {
     id: 206,
     name: 'field_description',
     groupName: 'OTHER MESSAGES',
-    fields: {
-      0: {
+    fields: [
+      {
         id: 0,
         name: 'developer_data_index',
         scale: undefined,
@@ -22864,7 +22864,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'field_definition_number',
         scale: undefined,
@@ -22878,7 +22878,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'fit_base_type_id',
         scale: undefined,
@@ -22892,7 +22892,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'field_name',
         scale: undefined,
@@ -22906,7 +22906,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'array',
         scale: undefined,
@@ -22920,7 +22920,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'components',
         scale: undefined,
@@ -22934,7 +22934,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'scale',
         scale: undefined,
@@ -22948,7 +22948,7 @@ export const messageList = {
 
         ],
       },
-      7: {
+      {
         id: 7,
         name: 'offset',
         scale: undefined,
@@ -22962,7 +22962,7 @@ export const messageList = {
 
         ],
       },
-      8: {
+      {
         id: 8,
         name: 'units',
         scale: undefined,
@@ -22976,7 +22976,7 @@ export const messageList = {
 
         ],
       },
-      9: {
+      {
         id: 9,
         name: 'bits',
         scale: undefined,
@@ -22990,7 +22990,7 @@ export const messageList = {
 
         ],
       },
-      10: {
+      {
         id: 10,
         name: 'accumulate',
         scale: undefined,
@@ -23004,7 +23004,7 @@ export const messageList = {
 
         ],
       },
-      13: {
+      {
         id: 13,
         name: 'fit_base_unit_id',
         scale: undefined,
@@ -23018,7 +23018,7 @@ export const messageList = {
 
         ],
       },
-      14: {
+      {
         id: 14,
         name: 'native_mesg_num',
         scale: undefined,
@@ -23032,7 +23032,7 @@ export const messageList = {
 
         ],
       },
-      15: {
+      {
         id: 15,
         name: 'native_field_num',
         scale: undefined,
@@ -23046,15 +23046,15 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
   /** Must be logged before field description */
-  207: {
+  {
     id: 207,
     name: 'developer_data_id',
     groupName: 'OTHER MESSAGES',
-    fields: {
-      0: {
+    fields: [
+      {
         id: 0,
         name: 'developer_id',
         scale: undefined,
@@ -23068,7 +23068,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'application_id',
         scale: undefined,
@@ -23082,7 +23082,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'manufacturer_id',
         scale: undefined,
@@ -23096,7 +23096,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'developer_data_index',
         scale: undefined,
@@ -23110,7 +23110,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'application_version',
         scale: undefined,
@@ -23124,14 +23124,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  268: {
+  {
     id: 268,
     name: 'dive_summary',
     groupName: 'OTHER MESSAGES',
-    fields: {
-      253: {
+    fields: [
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -23145,7 +23145,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'reference_mesg',
         scale: undefined,
@@ -23159,7 +23159,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'reference_index',
         scale: undefined,
@@ -23174,7 +23174,7 @@ export const messageList = {
         ],
       },
       /** 0 if above water */
-      2: {
+      {
         id: 2,
         name: 'avg_depth',
         scale: 1000,
@@ -23189,7 +23189,7 @@ export const messageList = {
         ],
       },
       /** 0 if above water */
-      3: {
+      {
         id: 3,
         name: 'max_depth',
         scale: 1000,
@@ -23204,7 +23204,7 @@ export const messageList = {
         ],
       },
       /** Time since end of last dive */
-      4: {
+      {
         id: 4,
         name: 'surface_interval',
         scale: 1,
@@ -23218,7 +23218,7 @@ export const messageList = {
 
         ],
       },
-      5: {
+      {
         id: 5,
         name: 'start_cns',
         scale: 1,
@@ -23232,7 +23232,7 @@ export const messageList = {
 
         ],
       },
-      6: {
+      {
         id: 6,
         name: 'end_cns',
         scale: 1,
@@ -23246,7 +23246,7 @@ export const messageList = {
 
         ],
       },
-      7: {
+      {
         id: 7,
         name: 'start_n2',
         scale: 1,
@@ -23260,7 +23260,7 @@ export const messageList = {
 
         ],
       },
-      8: {
+      {
         id: 8,
         name: 'end_n2',
         scale: 1,
@@ -23274,7 +23274,7 @@ export const messageList = {
 
         ],
       },
-      9: {
+      {
         id: 9,
         name: 'o2_toxicity',
         scale: undefined,
@@ -23288,7 +23288,7 @@ export const messageList = {
 
         ],
       },
-      10: {
+      {
         id: 10,
         name: 'dive_number',
         scale: undefined,
@@ -23302,7 +23302,7 @@ export const messageList = {
 
         ],
       },
-      11: {
+      {
         id: 11,
         name: 'bottom_time',
         scale: 1000,
@@ -23316,14 +23316,14 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   },
-  317: {
+  {
     id: 317,
     name: 'climb_pro',
     groupName: 'OTHER MESSAGES',
-    fields: {
-      253: {
+    fields: [
+      {
         id: 253,
         name: 'timestamp',
         scale: undefined,
@@ -23337,7 +23337,7 @@ export const messageList = {
 
         ],
       },
-      0: {
+      {
         id: 0,
         name: 'position_lat',
         scale: undefined,
@@ -23351,7 +23351,7 @@ export const messageList = {
 
         ],
       },
-      1: {
+      {
         id: 1,
         name: 'position_long',
         scale: undefined,
@@ -23365,7 +23365,7 @@ export const messageList = {
 
         ],
       },
-      2: {
+      {
         id: 2,
         name: 'climb_pro_event',
         scale: undefined,
@@ -23379,7 +23379,7 @@ export const messageList = {
 
         ],
       },
-      3: {
+      {
         id: 3,
         name: 'climb_number',
         scale: undefined,
@@ -23393,7 +23393,7 @@ export const messageList = {
 
         ],
       },
-      4: {
+      {
         id: 4,
         name: 'climb_category',
         scale: undefined,
@@ -23407,6 +23407,6 @@ export const messageList = {
 
         ],
       }
-    },
+    ],
   }
-} as const
+] as const
