@@ -482,11 +482,11 @@ async function main() {
   );
   const { messageList, typeList } = parseSpreadsheet(profileXlsxFileData);
 
-  const res = formatTypeListToString(typeList);
+  const typeListStr = formatTypeListToString(typeList);
 
-  // await fs.writeFile('./temp.js', res)
+  const messageListStr = formatMessageListToString(messageList, typeList);
 
-  const res2 = formatMessageListToString(messageList, typeList);
+  const messageListMapByName = `const messageListMapByName = { ${messageList.map(m => `${m.name}: messageList[${messageList.findIndex(me => me.name === m.name)}]`).join(',\n')} } as const`
 
   const output = `\
 // Some sort of header goes here
@@ -501,9 +501,11 @@ async function main() {
 
 export ${baseTypesListStr}
 
-export ${res}
+export ${typeListStr}
 
-export ${res2}
+export ${messageListStr}
+
+export ${messageListMapByName}
 `;
 
   try {
