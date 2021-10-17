@@ -1,72 +1,39 @@
-import { Field } from './field';
+import { MessageListMessageFieldType, BaseTypesListItem, baseTypesList } from '../profile';
+import { Fit } from './fit';
 
-export class FieldDefinition {
-    public static isOfType(value: any): value is FieldDefinition {
-        if (typeof value.num !== 'number') {
-            return false;
-        }
-        if (typeof value.size !== 'number') {
-            return false;
-        }
-        if (typeof value.type !== 'number') {
-            return false;
-        }
-        if (typeof value.ctorFromField === 'function') {
-            return false;
-        }
-        return true;
-    }
-    //#region Fields
+export const invalidField = {
+    id: Fit.fieldNumInvalid,
+    name: 'unknown',
+    offset: 0,
+    scale: 1,
+    typeId: 'byte',
+    units: '',
+    type: baseTypesList[0x00],
+    baseType: baseTypesList[0x00],
+    profileType: undefined,
+    subfields: [],
+    components: [],
+} as const;
 
-    //#endregion
+export type ProfileFieldTypeWithInvalid = MessageListMessageFieldType | typeof invalidField;
 
-    //#region Properties
-    // Opt for the simpler form until we need a backing field
-    public num!: number;
-    public size!: number;
-    public type!: number;
-    //#endregion
+export class FieldDefinition<T extends ProfileFieldTypeWithInvalid> {
+    /** Defined in the Global FIT profile for the specified FIT message */
+    public profileField: T;
+    /** Size (in bytes) of the specified FIT message’s field */
+    public size: number;
+    /** Base type of the specified FIT message’s field */
+    public baseType: BaseTypesListItem;
 
-    //#region Constructors
     public constructor(
-            newNumOrFieldOrFieldDef?: number | Field | FieldDefinition,
-            newSize?: number,
-            newType?: number,
+            profileField: T | undefined,
+            size: number,
+            baseTypeId: BaseTypesListItem,
         ) {
-        if (typeof newNumOrFieldOrFieldDef === 'number') {
-            this.ctorFromData(newNumOrFieldOrFieldDef, newSize!, newType!);
-            return;
-        }
-        if (Field.isOfType(newNumOrFieldOrFieldDef)) {
-            this.ctorFromField(newNumOrFieldOrFieldDef);
-            return;
-        }
-        if (FieldDefinition.isOfType(newNumOrFieldOrFieldDef)) {
-            this.ctorCopy(newNumOrFieldOrFieldDef);
-            return;
-        }
+            this.profileField = profileField ?? (invalidField as T);
+            this.size = size;
+            this.baseType = baseTypeId;
     }
-
-    public ctorFromField(field: Field): void {
-        this.num = field.fieldNumberInProfile;
-        this.size = field.getSize();
-        this.type = field.Type;
-    }
-
-    public ctorFromData(newNum: number, newSize: number, newType: number): void {
-        this.num = newNum;
-        this.size = newSize;
-        this.type = newType;
-    }
-
-    public ctorCopy(fieldDef: FieldDefinition): void {
-        this.num = fieldDef.num;
-        this.size = fieldDef.size;
-        this.type = fieldDef.type;
-    }
-        //#endregion
-
-        //#region Methods
-
-        //#endregion
 }
+
+export type FieldDefinitionAny = FieldDefinition<ProfileFieldTypeWithInvalid>;

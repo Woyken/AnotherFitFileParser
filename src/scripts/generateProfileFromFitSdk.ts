@@ -180,7 +180,7 @@ function parseMessages(sheet: xlsx.WorkSheet, typeList: ParsedType[]) {
         const componentAccumulate = trimWhitespaceForArray(
           consumeCellStringValue(sheet, 10, r)?.w?.split(",")!
         )?.map((x) => x == "1")!;
-        parsedComponents = componentNames.map((x, index) => ({
+        parsedComponents = componentNames.map((_, index) => ({
           name: componentNames[index],
           scale: componentScales?.[index],
           offset: componentOffsets?.[index],
@@ -365,6 +365,19 @@ function baseTypeOrTypeAsString(type: string, typeList: ParsedType[]) {
     : `baseTypesList[${BASE_TYPES_MAP[type as keyof typeof BASE_TYPES_MAP]}]`;
 }
 
+function baseTypeAsString(type: string, typeList: ParsedType[]) {
+  const parsedType = typeList.find((t) => t.name == type);
+  if (!parsedType)
+    return `baseTypesList[${BASE_TYPES_MAP[type as keyof typeof BASE_TYPES_MAP]}]`;
+  return `baseTypesList[${BASE_TYPES_MAP[parsedType.baseType as keyof typeof BASE_TYPES_MAP]}]`
+}
+
+function profileTypeAsString(type: string, typeList: ParsedType[]) {
+  return typeList.find((t) => t.name == type)
+    ? `profileTypeList['${type}']`
+    : `undefined`;
+}
+
 function formatMessageListToString(
   messageList: ParsedMessage[],
   typeList: ParsedType[]
@@ -372,14 +385,14 @@ function formatMessageListToString(
   function formatComponentToString(component: ParsedMessageFieldComponent) {
     return `
 {
-  id: '${component.num}',
+  id: ${component.num},
   name: '${component.name}',
-  scale: '${component.scale}',
-  offset: '${component.offset}',
+  scale: ${component.scale},
+  offset: ${component.offset},
   units: '${component.units}',
-  accumulate: '${component.accumulate}',
-  bits: '${component.bits}',
-  bitOffset: '${component.bitOffset}',
+  accumulate: ${component.accumulate},
+  bits: ${component.bits},
+  bitOffset: ${component.bitOffset},
 }`;
   }
   function formatMessageToString(message: ParsedMessage) {
@@ -403,6 +416,8 @@ function formatMessageListToString(
         units: '${field.units}',
         typeId: '${field.type}',
         type: ${baseTypeOrTypeAsString(field.type, typeList)},
+        baseType: ${baseTypeAsString(field.type, typeList)},
+        profileType: ${profileTypeAsString(field.type, typeList)},
         components: [${field.components
           .map(formatComponentToString)
           .join(",")
@@ -417,6 +432,8 @@ function formatMessageListToString(
             name: '${subfield.name}',
             typeId: '${subfield.type}',
             type: ${baseTypeOrTypeAsString(subfield.type, typeList)},
+            baseType: ${baseTypeAsString(subfield.type, typeList)},
+            profileType: ${profileTypeAsString(subfield.type, typeList)},
             scale: ${subfield.scale},
             offset: ${subfield.offset},
             units: '${subfield.units}',
@@ -441,7 +458,6 @@ function formatMessageListToString(
           }`
           )
           .join(",")}
-
         ],
       }`
       )
@@ -488,6 +504,8 @@ async function main() {
 
   const messageListMapByName = `const messageListMapByName = { ${messageList.map(m => `${m.name}: messageList[${messageList.findIndex(me => me.name === m.name)}]`).join(',\n')} } as const`
 
+  const messageFieldsMapByName = `const messageFieldsMapByName = { ${messageList.map(m => m.fields.map(f => ({field: f, message: m}))).flat().map(m => `${m.message.name}_${m.field.name}: { message: messageList[${messageList.findIndex(me => me.name === m.message.name)}], field: messageList[${messageList.findIndex(me => me.name === m.message.name)}].fields[${messageList.find(me => me.name === m.message.name)?.fields.findIndex(f => f.name === m.field.name)}] }`).join(',\n')} } as const`
+
   const output = `\
 // Some sort of header goes here
 // Parsed from
@@ -506,6 +524,8 @@ export ${typeListStr}
 export ${messageListStr}
 
 export ${messageListMapByName}
+
+export ${messageFieldsMapByName}
 `;
 
   try {
@@ -521,21 +541,21 @@ main();
 
 const baseTypesListStr = `\
 const baseTypesList = {
-  0x00: { name: "enum", id: 0x00, fmt: "B", invalidValue: 0xff },
-  0x01: { name: "sint8", id: 0x01, fmt: "b", invalidValue: 0x7f },
-  0x02: { name: "uint8", id: 0x02, fmt: "B", invalidValue: 0xff },
-  0x83: { name: "sint16", id: 0x83, fmt: "h", invalidValue: 0x7fff },
-  0x84: { name: "uint16", id: 0x84, fmt: "H", invalidValue: 0xffff },
-  0x85: { name: "sint32", id: 0x85, fmt: "i", invalidValue: 0x7fffffff },
-  0x86: { name: "uint32", id: 0x86, fmt: "I", invalidValue: 0xffffffff },
-  0x07: { name: "string", id: 0x07, fmt: "s", invalidValue: 0x00 },
-  0x88: { name: "float32", id: 0x88, fmt: "f", invalidValue: NaN },
-  0x89: { name: "float64", id: 0x89, fmt: "d", invalidValue: NaN },
-  0x0a: { name: "uint8z", id: 0x0a, fmt: "B", invalidValue: 0x0 },
-  0x8b: { name: "uint16z", id: 0x8b, fmt: "H", invalidValue: 0x0 },
-  0x8c: { name: "uint32z", id: 0x8c, fmt: "I", invalidValue: 0x0 },
-  0x0d: { name: "byte", id: 0x0d, fmt: "B", invalidValue: 0xff },
-  0x8e: { name: "sint64", id: 0x8e, fmt: "q", invalidValue: 0x7fffffffffffffff },
-  0x8f: { name: "uint64", id: 0x8f, fmt: "Q", invalidValue: 0xffffffffffffffff },
-  0x90: { name: "uint64z", id: 0x90, fmt: "Q", invalidValue: 0 },
+  0x00: { baseType: "enum", baseTypeid: 0x00, fmt: "B", invalidValue: 0xff, isSigned: false, size: 1, endianAbility: 0 },
+  0x01: { baseType: "sint8", baseTypeid: 0x01, fmt: "b", invalidValue: 0x7f, isSigned: true, size: 1, endianAbility: 0 },
+  0x02: { baseType: "uint8", baseTypeid: 0x02, fmt: "B", invalidValue: 0xff, isSigned: false, size: 1, endianAbility: 0 },
+  0x83: { baseType: "sint16", baseTypeid: 0x83, fmt: "h", invalidValue: 0x7fff, isSigned: true, size: 2, endianAbility: 1 },
+  0x84: { baseType: "uint16", baseTypeid: 0x84, fmt: "H", invalidValue: 0xffff, isSigned: false, size: 2, endianAbility: 1 },
+  0x85: { baseType: "sint32", baseTypeid: 0x85, fmt: "i", invalidValue: 0x7fffffff, isSigned: true, size: 4, endianAbility: 1 },
+  0x86: { baseType: "uint32", baseTypeid: 0x86, fmt: "I", invalidValue: 0xffffffff, isSigned: false, size: 4, endianAbility: 1 },
+  0x07: { baseType: "string", baseTypeid: 0x07, fmt: "s", invalidValue: 0x00, isSigned: false, size: 1, endianAbility: 0 },
+  0x88: { baseType: "float32", baseTypeid: 0x88, fmt: "f", invalidValue: NaN, isSigned: true, size: 4, endianAbility: 1 },
+  0x89: { baseType: "float64", baseTypeid: 0x89, fmt: "d", invalidValue: NaN, isSigned: true, size: 8, endianAbility: 1 },
+  0x0a: { baseType: "uint8z", baseTypeid: 0x0a, fmt: "B", invalidValue: 0x0, isSigned: false, size: 1, endianAbility: 0 },
+  0x8b: { baseType: "uint16z", baseTypeid: 0x8b, fmt: "H", invalidValue: 0x0, isSigned: false, size: 2, endianAbility: 1 },
+  0x8c: { baseType: "uint32z", baseTypeid: 0x8c, fmt: "I", invalidValue: 0x0, isSigned: false, size: 4, endianAbility: 1 },
+  0x0d: { baseType: "byte", baseTypeid: 0x0d, fmt: "B", invalidValue: 0xff, isSigned: false, size: 1, endianAbility: 0 },
+  0x8e: { baseType: "sint64", baseTypeid: 0x8e, fmt: "q", invalidValue: 0x7fffffffffffffff, isSigned: true, size: 8, endianAbility: 1 },
+  0x8f: { baseType: "uint64", baseTypeid: 0x8f, fmt: "Q", invalidValue: 0xffffffffffffffff, isSigned: false, size: 8, endianAbility: 1 },
+  0x90: { baseType: "uint64z", baseTypeid: 0x90, fmt: "Q", invalidValue: 0, isSigned: false, size: 8, endianAbility: 1 },
 } as const;`;

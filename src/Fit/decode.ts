@@ -2,18 +2,17 @@ import { Header } from '../InternalTypes/header';
 import { ByteStreamReader } from '../Utility/byteStreamReader';
 import { DecodeMode } from './decodeMode';
 import { Fit } from './fit';
-import { DeveloperFieldDescription } from './developerFieldDescription';
-import { MesgDefinition } from './mesgDefinition';
-import { Mesg } from './mesg';
+import { MesgDefinition, MesgDefinitionAny, MessageListMessageTypeWithInvalid } from './mesgDefinition';
+import { Mesg, MesgAny } from './mesg';
 import { Accumulator } from './accumulator';
-import { DeveloperDataLookup } from './developerDataLookup';
 import { CRC } from './crc';
-import { Field } from './field';
-import { Profile } from './profile';
+import { Field, FieldAny } from './field';
 import { FieldComponent } from './fieldComponent';
 import { MesgNum } from './Profile/Types/mesgNum';
-import { DeveloperDataIdMesg } from './Profile/Mesgs/developerDataIdMesg';
-import { FieldDescriptionMesg } from './Profile/Mesgs/fieldDescriptionMesg';
+import { DeveloperDataIdMesg, DeveloperDataIdMessage } from './Profile/Mesgs/developerDataIdMesg';
+import { FieldDescriptionMesg, FieldDescriptionMessage } from './Profile/Mesgs/fieldDescriptionMesg';
+import { ArrayElement, messageFieldsMapByName } from '../profile/index';
+import { FieldDefinition } from './fieldDefinition';
 
 export class Decode {
     private readonly CRCSIZE: number = 2;
@@ -21,14 +20,15 @@ export class Decode {
 
     //#region Fields
     // tslint:disable-next-line: prefer-array-literal
-    private localMesgDefs: MesgDefinition[] = new Array<MesgDefinition>(Fit.maxLocalMesgs);
+    /** Message definitions in current FIT file */
+    private localMesgDefs: MesgDefinitionAny[] = new Array<MesgDefinitionAny>(Fit.maxLocalMesgs);
     private fileHeader?: Header;
     private timestamp: number = 0;
-    private lastTimeOffset: number = 0;
     private invalidDataSize: boolean = false;
     private accumulator: Accumulator = new Accumulator();
 
-    private readonly lookup: DeveloperDataLookup = new DeveloperDataLookup();
+    private readonly developerFieldLookup: FieldDescriptionMesg[] = [];
+    private readonly developerDataLookup: DeveloperDataIdMesg[] = [];
     //#endregion
 
     //#region Properties
@@ -47,9 +47,7 @@ export class Decode {
     //#endregion
 
     //#region Methods
-    public mesgEvent?: (mesg: Mesg) => void;
-    public mesgDefinitionEvent?: (mesgDef: MesgDefinition) => void;
-    public developerFieldDescriptionEvent?: (description: DeveloperFieldDescription) => void;
+    public mesgEvent?: (mesg: MesgAny) => void;
 
     /**
      * Reads the file header to check if the file is FIT.
@@ -193,20 +191,26 @@ export class Decode {
     }
 
     public decodeNextMessage(fitStream: ByteStreamReader): void {
-        const nextByte = fitStream.readByte();
+        const messageHeaderByte = fitStream.readByte();
 
         // Is it a compressed timestamp mesg?
-        if ((nextByte & Fit.compressedHeaderMask) === Fit.compressedHeaderMask) {
+        if ((messageHeaderByte & Fit.compressedHeaderMask) === Fit.compressedHeaderMask) {
             const mesgBuffer: number[] = [];
-            const timeOffset = nextByte & Fit.compressedTimeMask;
-            this.timestamp += ((timeOffset - this.lastTimeOffset) & Fit.compressedTimeMask);
-            this.lastTimeOffset = timeOffset;
-            const timestampField: Field = new Field(
-                Profile.getMesg(MesgNum.record)!
-                    .getField('Timestamp'));
-            timestampField.setValue1(this.timestamp);
+            const timeOffset = messageHeaderByte & Fit.compressedTimeMask;
+            if (timeOffset >= (this.timestamp & Fit.compressedTimeMask)) {
+                // If Time Offset >= (Previous Timestamp)&0x0000001F (i.e. offset value is greater than least significant 5 bits of previous timestamp):
+                // Timestamp = (Previous timestamp) & 0xFFFFFFE0 + Time Offset
+                this.timestamp = (this.timestamp & Fit.compressedTimeOffsetMask) + timeOffset;
+            }
+            else {
+                // If Time Offset < (Previous Timestamp) & 0x0000001F (i.e. offset is less than least significant 5 bits of previous timestamp):
+                // Timestamp = (Previous timestamp) & 0xFFFFFFE0 + Time Offset + 0x20
+                // The addition of 0x20 accounts for the rollover event
+                this.timestamp = (this.timestamp & Fit.compressedTimeOffsetMask) + timeOffset + 0x20;
+            }
 
-            const localMesgNum: number = ((nextByte & Fit.compressedLocalMesgNumMask) >> 5);
+            // Local message is limited to 2 bits here, needs to be defined in the beginning of the file
+            const localMesgNum: number = ((messageHeaderByte & Fit.compressedLocalMesgNumMask) >> 5);
             mesgBuffer.push(localMesgNum);
             if (this.localMesgDefs[localMesgNum] == null) {
                 throw new Error(`Decode:DecodeNextMessage - FIT decode error: Missing message definition for local message number ${localMesgNum} at stream position ${fitStream.position}`);
@@ -220,16 +224,22 @@ export class Decode {
             }
             mesgBuffer.push(...read);
 
-            const newMesg: Mesg = new Mesg(
-                new ByteStreamReader(new Uint8Array(mesgBuffer)), this.localMesgDefs[localMesgNum]);
-            newMesg.insertField(0, timestampField);
-            this.raiseMesgEvent(newMesg);
-        } else if ((nextByte & Fit.mesgDefinitionMask) === Fit.mesgDefinitionMask) {
+            const timestampFieldType = messageFieldsMapByName.record_timestamp.field;
+            const timestampFieldDef = new FieldDefinition(timestampFieldType, 1, messageFieldsMapByName.record_timestamp.field.baseType)
+            const timestampField = new Field(timestampFieldDef);
+            timestampField.setValue1(this.timestamp);
+
+            const newMesg = Mesg.readAndCreate(new ByteStreamReader(new Uint8Array(mesgBuffer)), this.localMesgDefs[localMesgNum]);
+            // Somehow it doesn't like the types... Manual cast it is..
+            newMesg.insertField(0, timestampField as Field<ArrayElement<typeof newMesg.messageDefinition.profileMessage.fields>>);
+            if (!this.handleMetaData(newMesg))
+                this.raiseMesgEvent(newMesg);
+        } else if ((messageHeaderByte & Fit.mesgDefinitionMask) === Fit.mesgDefinitionMask) {
             // Is it a mesg def?
             const mesgDefBuffer: number[] = [];
 
             // Figure out number of fields (length) of our defn and build buffer
-            mesgDefBuffer.push(nextByte);
+            mesgDefBuffer.push(messageHeaderByte);
             mesgDefBuffer.push(...fitStream.readBytes(4));
             const numFields: number = fitStream.readByte();
             mesgDefBuffer.push(numFields);
@@ -242,7 +252,7 @@ export class Decode {
             }
             mesgDefBuffer.push(...read);
 
-            if ((nextByte & Fit.devDataMask) === Fit.devDataMask) {
+            if ((messageHeaderByte & Fit.devDataMask) === Fit.devDataMask) {
                 // Definition Contains Dev Data
                 const numDevFields: number = fitStream.readByte();
                 mesgDefBuffer.push(numDevFields);
@@ -257,17 +267,14 @@ export class Decode {
                 mesgDefBuffer.push(...read);
             }
 
-            const newMesgDef: MesgDefinition = new MesgDefinition(
-                new ByteStreamReader(new Uint8Array(mesgDefBuffer)), this.lookup);
+            const newMesgDef = MesgDefinition.createMesgDef(new ByteStreamReader(new Uint8Array(mesgDefBuffer)), this.developerDataLookup);
+            // Set message def by local id, can override previous message defs if needed
             this.localMesgDefs[newMesgDef.localMesgNum] = newMesgDef;
-            if (this.mesgDefinitionEvent) {
-                this.mesgDefinitionEvent(newMesgDef);
-            }
-        } else if ((nextByte & Fit.mesgDefinitionMask) === Fit.mesgHeaderMask) {
+        } else if ((messageHeaderByte & Fit.mesgDefinitionMask) === Fit.mesgHeaderType) {
             // Is it a data mesg?
             const mesgBuffer: number[] = [];
 
-            const localMesgNum: number = (nextByte & Fit.localMesgNumMask);
+            const localMesgNum: number = (messageHeaderByte & Fit.localMesgNumMask);
             mesgBuffer.push(localMesgNum);
             if (this.localMesgDefs[localMesgNum] == null) {
                 throw new Error(`Decode:DecodeNextMessage - FIT decode error: Missing message definition for local message number ${localMesgNum} at stream position ${fitStream.position}`);
@@ -280,74 +287,83 @@ export class Decode {
             }
             mesgBuffer.push(...read);
 
-            const newMesg: Mesg = new Mesg(
-                new ByteStreamReader(new Uint8Array(mesgBuffer)), this.localMesgDefs[localMesgNum]);
+            const newMesg = Mesg.readAndCreate(new ByteStreamReader(new Uint8Array(mesgBuffer)), this.localMesgDefs[localMesgNum]);
             // If the new message contains a timestamp field, record the value to use as
             // a reference for compressed timestamp headers
-            const timestampField: Field | undefined = newMesg.getField('Timestamp');
-            if (timestampField != null) {
-                const tsValue: any = timestampField.getValue();
-                if (tsValue != null) {
+            const timestampField = newMesg.getField('Timestamp');
+            if (timestampField !== undefined) {
+                const tsValue = timestampField.getValue();
+                if (tsValue !== undefined) {
+                    if (typeof tsValue !== 'number')
+                        throw new Error("invalid timestamp value");
                     this.timestamp = tsValue;
-                    this.lastTimeOffset = this.timestamp & Fit.compressedTimeMask;
                 }
             }
 
-            newMesg.FieldsList.forEach((field: Field) => {
+            newMesg.fields.forEach((field: FieldAny) => {
                 if (field.IsAccumulated) {
                     for (let i = 0; i < field.getNumValues(); i++) {
                         let value = field.getRawValue(i);
 
-                        newMesg.FieldsList.forEach((fieldIn: Field) => {
+                        if (typeof value !== 'number')
+                            throw new Error("TODO need to investigate how to tread undefined and string types with components");
+
+                        newMesg.fields.forEach((fieldIn) => {
                             fieldIn.components.forEach((fc: FieldComponent) => {
+                                if (field.fieldDefinition.profileField.scale === undefined || field.fieldDefinition.profileField.offset === undefined)
+                                    return; // Not much use if they are undefined, maybe should treat as 0?
+                                if (typeof value !== 'number')
+                                    throw new Error("TODO need to investigate how to tread undefined and string types with components");
+
                                 if (
-                                    (fc.fieldNum === field.fieldNumberInProfile) && (fc.accumulate)
+                                    (fc.fieldNum === field.fieldDefinition.profileField.id) && (fc.accumulate)
                                 ) {
-                                    // tslint:disable-next-line: max-line-length
-                                    value = ((((value / field.scale) - field.offset) + fc.offset) * fc.scale);
+                                    value = ((((value / field.fieldDefinition.profileField.scale) - field.fieldDefinition.profileField.offset) + fc.offset) * fc.scale);
                                 }
                             });
                         });
-                        this.accumulator.set(
-                            newMesg.profileMessageNumber, field.fieldNumberInProfile, value);
+                        this.accumulator.set(newMesg.messageDefinition.profileMessage.id, field.fieldDefinition.profileField.id, value);
                     }
                 }
             });
 
-            // tslint:disable-next-line: max-line-length
             // Now that the entire message is decoded we can evaluate subfields and expand any components
             newMesg.expandComponents(this.accumulator);
-
-            this.raiseMesgEvent(newMesg);
+            if (!this.handleMetaData(newMesg))
+                this.raiseMesgEvent(newMesg);
         } else {
-            throw new Error(`Decode:Read - FIT decode error: Unexpected Record Header Byte 0x${nextByte} at stream position: ${fitStream.position}`);
+            throw new Error(`Decode:Read - FIT decode error: Unexpected Record Header Byte 0x${messageHeaderByte} at stream position: ${fitStream.position}`);
         }
     }
 
-    private raiseMesgEvent(newMesg: Mesg): void {
-        if ((newMesg.profileMessageNumber === MesgNum.developerDataId) ||
-            (newMesg.profileMessageNumber === MesgNum.fieldDescription)) {
-            this.handleMetaData(newMesg);
-        }
-
+    private raiseMesgEvent(newMesg: MesgAny): void {
         if (this.mesgEvent) {
             this.mesgEvent(newMesg);
         }
     }
 
-    private handleMetaData(newMesg: Mesg): void {
-        if (newMesg.profileMessageNumber === MesgNum.developerDataId) {
-            const mesg = new DeveloperDataIdMesg(newMesg);
-            this.lookup.add(mesg);
-        } else if (newMesg.profileMessageNumber === MesgNum.fieldDescription) {
-            const mesg = new FieldDescriptionMesg(newMesg);
-            const desc: DeveloperFieldDescription | undefined = this.lookup.add1(mesg);
-            if (desc != null) {
-                if (this.developerFieldDescriptionEvent) {
-                    this.developerFieldDescriptionEvent(desc);
-                }
-            }
+    private handleMetaData<T extends MessageListMessageTypeWithInvalid>(newMesg: Mesg<T>): boolean {
+        const profileMessage = newMesg.messageDefinition.profileMessage;
+        if (profileMessage.id === MesgNum.developerDataId) {
+            // Typescript can't narrow this type, manual cast it is
+            const mesg = newMesg as unknown as Mesg<DeveloperDataIdMessage>;
+            const developerDataIdMesg = new DeveloperDataIdMesg(mesg);
+            this.developerDataLookup.push(developerDataIdMesg);
+            return true;
+        } else if (profileMessage.id === MesgNum.fieldDescription) {
+            // Typescript can't narrow this type, manual cast it is
+            const mesg = newMesg as unknown as Mesg<FieldDescriptionMessage>;
+            const developerDataIndex = mesg.getFieldValue(0, 0, Fit.subfieldIndexMainField);
+            const developerDataIdMesg = this.developerDataLookup.find(x => x.developerDataIndex === developerDataIndex);
+            if (!developerDataIdMesg)
+                throw new Error(`can't be undefined`);
+            const fieldDescriptionMesg = new FieldDescriptionMesg(mesg, developerDataIdMesg);
+            developerDataIdMesg.addFieldDescription(fieldDescriptionMesg);
+
+            this.developerFieldLookup.push(fieldDescriptionMesg);
+            return true;
         }
+        return false
     }
     //#endregion
 } // class

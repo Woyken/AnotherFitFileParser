@@ -15,8 +15,8 @@
     },
     "author": "Woyken",
     "license": "MIT",
-    "dependencies": {},
     "devDependencies": {
+        "@types/node": "^16.7.10",
         "tslint": "^5.19.0",
         "tslint-config-airbnb": "^5.11.1",
         "typescript": "^4.4.4"

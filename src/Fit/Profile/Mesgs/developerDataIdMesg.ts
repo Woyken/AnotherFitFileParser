@@ -1,151 +1,82 @@
+import { messageFieldsMapByName } from '../../../profile';
+import { Guid } from '../../../Utility/guid';
 import { Fit } from '../../fit';
 import { Mesg } from '../../mesg';
-import { Profile } from '../../profile';
-import { MesgNum } from '../Types/mesgNum';
+import { FieldDescriptionMesg } from './fieldDescriptionMesg';
 
 /// <summary>
 /// Field Numbers for <see cref="DeveloperDataIdMesg"/>
 /// </summary>
-export class FieldDefNum {
-    public static readonly developerId: number = 0;
-    public static readonly applicationId: number = 1;
-    public static readonly manufacturerId: number = 2;
-    public static readonly developerDataIndex: number = 3;
-    public static readonly applicationVersion: number = 4;
-    public static readonly invalid: number = Fit.fieldNumInvalid;
-}
+// export class FieldDefNum {
+//     public static readonly developerId: number = 0;
+//     public static readonly applicationId: number = 1;
+//     public static readonly manufacturerId: number = 2;
+//     public static readonly developerDataIndex: number = 3;
+//     public static readonly applicationVersion: number = 4;
+//     public static readonly invalid: number = Fit.fieldNumInvalid;
+// }
 
-// tslint:disable-next-line: max-classes-per-file
-export class DeveloperDataIdMesg extends Mesg {
-    //#region Fields
-        //#endregion
+export type DeveloperDataIdMessage = typeof messageFieldsMapByName.developer_data_id_developer_id.message;
+export class DeveloperDataIdMesg {
+    applicationId: Guid;
+    developerDataIndex: number;
+    applicationVersion: number;
 
-        //#region Constructors
-    public constructor(mesg: Mesg | undefined = Profile.getMesg(MesgNum.developerDataId)) {
-        super(mesg);
+    public readonly fieldDescriptions: FieldDescriptionMesg[] = [];
+
+    public constructor(message: Mesg<DeveloperDataIdMessage>) {
+        const applicationId = this.parseApplicationId(message);
+        if (!applicationId)
+            throw new Error(`ApplicationId could not be parsed for developer data`);
+        this.applicationId = applicationId;
+        const developerDataIndex = message.getFieldValue(3, 0, Fit.subfieldIndexMainField); // throw if not found?
+        if (typeof developerDataIndex !== 'number')
+            throw new Error(`DeveloperDataIndex could not be parsed for developer data`);
+        this.developerDataIndex = developerDataIndex;
+        const applicationVersion = message.getFieldValue(4, 0, Fit.subfieldIndexMainField); // not throw if not found? it may not be required
+        if (typeof applicationVersion !== 'number')
+            throw new Error(`ApplicationVersion could not be parsed for developer data`);
+        this.applicationVersion = applicationVersion;
     }
-        //#endregion // Constructors
 
-        //#region Methods
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <returns>returns number of elements in field DeveloperId</returns>
-    public getNumDeveloperId(): number {
-        return this.getFieldValue(0, Fit.subfieldIndexMainField);
+    public addFieldDescription(fieldDescription: FieldDescriptionMesg) {
+        this.fieldDescriptions.push(fieldDescription);
     }
 
-        /// <summary>
-        /// Retrieves the DeveloperId field</summary>
-        /// <param name="index">0 based index of DeveloperId element to retrieve</param>
-        /// <returns>Returns nullable byte representing the DeveloperId field</returns>
-    public getDeveloperId(index: number): number | undefined {
-        const val: any = this.getFieldValue(0, index, Fit.subfieldIndexMainField);
-        if (val === undefined) {
-            return undefined;
+    private parseApplicationId(message: Mesg<DeveloperDataIdMessage>): Guid | undefined {
+        // If the Application Id is not exactly 16 bytes
+        // (see size of UUID) return Empty
+        const applicationIdCount = message.getNumFieldValues(1, Fit.subfieldIndexMainField);
+        if (applicationIdCount !== 16)
+            return;
+
+        // Read the App Id
+        const appId = new Array<number>(applicationIdCount);
+        for (let i = 0; i < appId.length; i++) {
+            const id = message.getFieldValue(1, i, Fit.subfieldIndexMainField);
+            if (typeof id !== 'number')
+                throw new Error("invalid type");
+            appId[i] = id !== undefined ? id : 0xFF;
         }
 
-        return (val);
-    }
-
-        /// <summary>
-        /// Set DeveloperId field</summary>
-        /// <param name="index">0 based index of developer_id</param>
-        /// <param name="developerId_">Nullable field value to be set</param>
-    public setDeveloperId(index: number, developerId: number | undefined): void {
-        this.setFieldValue(0, index, developerId, Fit.subfieldIndexMainField);
-    }
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <returns>returns number of elements in field ApplicationId</returns>
-    public getNumApplicationId(): number {
-        return this.getNumFieldValues(1, Fit.subfieldIndexMainField);
-    }
-
-        /// <summary>
-        /// Retrieves the ApplicationId field</summary>
-        /// <param name="index">0 based index of ApplicationId element to retrieve</param>
-        /// <returns>Returns nullable byte representing the ApplicationId field</returns>
-    public getApplicationId(index: number): number | undefined {
-        const val: any = this.getFieldValue(1, index, Fit.subfieldIndexMainField);
-        if (val === undefined) {
-            return undefined;
+        // The SDK Treats these UUIDs in Java format so we need to convert to
+        // a CLS Compliant Array where the array is in the form
+        // u32, u16, u16, u8, u8, u8, u8, u8, u8, u8, u8 and flipping from big endian to
+        // little endian
+        const net = new Array<number>(appId.length);
+        for (let i = 8; i < 16; i++) {
+            net[i] = appId[i];
         }
 
-        return (val);
-
+        // Flip The endianness of the u32 and u16 values
+        net[3] = appId[0];
+        net[2] = appId[1];
+        net[1] = appId[2];
+        net[0] = appId[3];
+        net[5] = appId[4];
+        net[4] = appId[5];
+        net[7] = appId[6];
+        net[6] = appId[7];
+        return new Guid(net);
     }
-
-        /// <summary>
-        /// Set ApplicationId field</summary>
-        /// <param name="index">0 based index of application_id</param>
-        /// <param name="applicationId_">Nullable field value to be set</param>
-    public setApplicationId(index: number, applicationId: number | undefined): void {
-        this.setFieldValue(1, index, applicationId, Fit .subfieldIndexMainField);
-    }
-
-        /// <summary>
-        /// Retrieves the ManufacturerId field</summary>
-        /// <returns>Returns nullable ushort representing the ManufacturerId field</returns>
-    public getManufacturerId(): number | undefined {
-        const val: any = this.getFieldValue(2, 0, Fit.subfieldIndexMainField);
-        if (val === undefined) {
-            return undefined;
-        }
-
-        return (val);
-
-    }
-
-        /// <summary>
-        /// Set ManufacturerId field</summary>
-        /// <param name="manufacturerId_">Nullable field value to be set</param>
-    public setManufacturerId(manufacturerId: number | undefined): void {
-        this.setFieldValue(2, 0, manufacturerId, Fit.subfieldIndexMainField);
-    }
-
-        /// <summary>
-        /// Retrieves the DeveloperDataIndex field</summary>
-        /// <returns>Returns nullable byte representing the DeveloperDataIndex field</returns>
-    public getDeveloperDataIndex(): number | undefined {
-        const val: any = this.getFieldValue(3, 0, Fit.subfieldIndexMainField);
-        if (val === undefined) {
-            return undefined;
-        }
-
-        return (val);
-
-    }
-
-        /// <summary>
-        /// Set DeveloperDataIndex field</summary>
-        /// <param name="developerDataIndex_">Nullable field value to be set</param>
-    public setDeveloperDataIndex(developerDataIndex: number | undefined): void {
-        this.setFieldValue(3, 0, developerDataIndex, Fit.subfieldIndexMainField);
-    }
-
-        /// <summary>
-        /// Retrieves the ApplicationVersion field</summary>
-        /// <returns>Returns nullable uint representing the ApplicationVersion field</returns>
-    public getApplicationVersion(): number | undefined {
-        const val: any = this.getFieldValue(4, 0, Fit.subfieldIndexMainField);
-        if (val === undefined) {
-            return undefined;
-        }
-
-        return (val);
-
-    }
-
-        /// <summary>
-        /// Set ApplicationVersion field</summary>
-        /// <param name="applicationVersion_">Nullable field value to be set</param>
-    public setApplicationVersion(applicationVersion: number | undefined): void {
-        this.setFieldValue(4, 0, applicationVersion, Fit.subfieldIndexMainField);
-    }
-
-        //#endregion // Methods
 }

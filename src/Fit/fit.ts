@@ -49,15 +49,16 @@ export class Fit {
     // tslint:disable-next-line: max-line-length
     public static readonly profileVersion = ((Fit.profileMajorVersion * 100) + Fit.profileMinorVersion);
 
-    public static readonly headerTypeMask = 0xF0;
-    public static readonly compressedHeaderMask = 0x80;
-    public static readonly compressedTimeMask = 0x1F;
-    public static readonly compressedLocalMesgNumMask = 0x60;
+    // public static readonly headerTypeMask = 0b11110000;//240;
+    public static readonly compressedHeaderMask = 0b10000000;
+    public static readonly compressedTimeMask = 0b00011111; // 0x0000001F
+    public static readonly compressedTimeOffsetMask = 0b11111111111111111111111111100000; //0xFFFFFFE0
+    public static readonly compressedLocalMesgNumMask = 0b01100000;
 
-    public static readonly mesgDefinitionMask = 0x40;
-    public static readonly devDataMask = 0x20;
-    public static readonly mesgHeaderMask = 0x00;
-    public static readonly localMesgNumMask = 0x0F;
+    public static readonly mesgDefinitionMask = 0b01000000;
+    public static readonly mesgHeaderType = 0b0;
+    public static readonly devDataMask = 0b00100000;
+    public static readonly localMesgNumMask = 0b00001111 as const;
     public static readonly maxLocalMesgs = Fit.localMesgNumMask + 1;
 
     public static readonly mesgDefinitionReserved = 0x00;
@@ -74,7 +75,7 @@ export class Fit {
     public static readonly fieldNumTimeStamp = 253;
 
     public static readonly subfieldIndexActiveSubfield = 0xFFFE;
-    public static readonly subfieldIndexMainField = Fit.subfieldIndexActiveSubfield + 1;
+    public static readonly subfieldIndexMainField = 0xFFFF;
     public static readonly subfieldNameMainField = '';
 
     public static baseType: FitType[] = [

@@ -13,7 +13,7 @@ export class Guid {
         return new Guid('00000000-0000-0000-0000-000000000000');
     }
 
-    public static fromBytes(bytes: number[]): Guid {
+    private static fromBytes(bytes: number[]): Guid {
         // tslint:disable-next-line: max-line-length
         // reverse first four bytes, and join with following two reversed, joined with following two reversed, joined with rest of the bytes
         // tslint:disable-next-line: max-line-length

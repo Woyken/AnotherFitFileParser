@@ -1,244 +1,68 @@
 import { ByteStreamReader } from '../Utility/byteStreamReader';
 import { Accumulator } from './accumulator';
-import { Field } from './field';
+import { Field, FieldAny } from './field';
 import { Fit } from './fit';
-import { MesgDefinition } from './mesgDefinition';
-import { DeveloperDataKey } from './developerDataKey';
+import { MesgDefinition, MesgDefinitionAny, MessageListMessageTypeWithInvalid } from './mesgDefinition';
 import { DeveloperField } from './developerField';
 import { FieldComponent } from './fieldComponent';
-import { FieldDefinition } from './fieldDefinition';
-import { MesgNum } from './Profile/Types/mesgNum';
-import { Profile } from './profile';
+import { FieldDefinition, ProfileFieldTypeWithInvalid } from './fieldDefinition';
 import { DeveloperFieldDefinition } from './developerFieldDefinition';
-import { FieldBase } from './fieldBase';
-import { Subfield } from './subfield';
 import { FitBaseType } from './Profile/Types/fitBaseType';
 import { createDateFromTimestamp } from './Profile/Types/dateTime';
+import { ArrayElement, BaseTypesListIndex, BaseTypesListType, isBaseTypeNumeric } from '../profile';
 
-export class Mesg {
-    public static isOfType(value: any): value is Mesg {
-        if (!value) {
-            return false;
-        }
-        if (typeof value.localNum !== 'number') {
-            return false;
-        }
-        if (typeof value.systemTimeOffset !== 'number') {
-            return false;
-        }
-        if (typeof value.fields.length !== 'number') {
-            return false;
-        }
-        if (typeof value.systemTimeOffset !== 'number') {
-            return false;
-        }
-        if (typeof value.developerFields !== 'object') {
-            return false;
-        }
-        if (typeof value.name !== 'string') {
-            return false;
-        }
-        if (typeof value.num !== 'number') {
-            return false;
-        }
-        return true;
-    }
-    //#region Fields
-    /** Not sure what this is */
-    protected localNum: number = 0;
-    /** Haven't seen this other than 0 */
-    protected systemTimeOffset: number = 0;
-    /** The actual data we care about */
-    private fields: Field[] = [];
-    /** Some custom fields from and for 3rd party apps */
-    private readonly developerFields: Map<DeveloperDataKey, DeveloperField> =
-        new Map<DeveloperDataKey, DeveloperField>();
-    //#endregion
-
-    //#region Properties
-    /** Name for this message - from profile.ts */
-    public name!: string;
-    /** Message number - from profile.ts. Identifier for the message */
-    public profileMessageNumber!: MesgNum;
-    public get LocalNum(): number {
-        return this.localNum;
-    }
-    public set LocalNum(value: number) {
-        if (value > Fit.localMesgNumMask) {
-            throw new Error(`Mesg:LocalNum - Invalid Local message number ${value}. Local message number must be < ${Fit.localMesgNumMask}`);
-        } else {
-            this.localNum = value;
-        }
-    }
-
-    public get Fields(): Field[] {
-        return this.fields;
-    }
-
-    public get FieldsList(): Field[] {
-        return this.fields;
-    }
-
-    public get DeveloperFields(): IterableIterator<DeveloperField> {
-        return this.developerFields.values();
-    }
-    //#endregion
-
-    //#region Constructors
-    private ctorFromMsg(mesg?: Mesg): void {
-        if (mesg === undefined) {
-            this.name = 'unknown';
-            this.profileMessageNumber = MesgNum.invalid;
-            return;
-        }
-        this.name = mesg.name;
-        this.profileMessageNumber = mesg.profileMessageNumber;
-        this.localNum = mesg.localNum;
-        this.systemTimeOffset = mesg.systemTimeOffset;
-        mesg.FieldsList.forEach((field: Field) => {
-            if (field.getNumValues() > 0) {
-                this.FieldsList.push(new Field(field));
-            }
-        });
-
-        Array.from(mesg.DeveloperFields)
-            .forEach((fld: DeveloperField) => {
-                if (fld.getNumValues() > 0) {
-                    const key = new DeveloperDataKey(fld.DeveloperDataIndex, fld.Num);
-                    this.developerFields.set(key, new DeveloperField(fld));
-                }
-            });
-    }
-
-    private ctorFromNameAndNum(name: string, num: number): void {
-        this.name = name;
-        this.profileMessageNumber = num;
-    }
-
-    private ctorFromMesgNum(mesgNum: number): void {
-        this.ctorFromMsg(Profile.getMesg(mesgNum));
-    }
-
-    private ctorFromStream(fitStream: ByteStreamReader, defnMesg: MesgDefinition): void {
-        this.ctorFromMesgNum(defnMesg.globalMesgNum);
-        this.read(fitStream, defnMesg);
-    }
-
-    constructor(mesg?: Mesg);
-    constructor(name: string, num: number);
-    constructor(mesgNum: number);
-    constructor(fitStream: ByteStreamReader, defnMesg: MesgDefinition);
+export class Mesg<T extends MessageListMessageTypeWithInvalid> {
     constructor(
-        fitStreamOrMesgNumOrNameOrMesg?: ByteStreamReader | Mesg | number | string,
-        defnMesgOrNum?: MesgDefinition | number,
-    ) {
-        if (typeof fitStreamOrMesgNumOrNameOrMesg === 'number') {
-            this.ctorFromMesgNum(fitStreamOrMesgNumOrNameOrMesg);
-            return;
-        }
-        if (typeof fitStreamOrMesgNumOrNameOrMesg === 'string' &&
-            typeof defnMesgOrNum === 'number'
-        ) {
-            this.ctorFromNameAndNum(fitStreamOrMesgNumOrNameOrMesg, defnMesgOrNum);
-            return;
-        }
-        if (Mesg.isOfType(fitStreamOrMesgNumOrNameOrMesg)) {
-            this.ctorFromMsg(fitStreamOrMesgNumOrNameOrMesg);
-            return;
-        }
-        if (ByteStreamReader.isOfType(fitStreamOrMesgNumOrNameOrMesg) &&
-            MesgDefinition.isOfType(defnMesgOrNum)) {
-
-            this.ctorFromStream(fitStreamOrMesgNumOrNameOrMesg, defnMesgOrNum);
-            return;
-        }
+        public messageDefinition: MesgDefinition<T>,
+        public localNum: number,
+        /** The actual data we care about */
+        public readonly fields: Field<ArrayElement<T['fields']>>[],
+        /** Some custom fields from and for 3rd party apps */
+        public readonly developerFields: DeveloperField[]){
     }
-    //#endregion
 
-    //#region Methods
-    public read(inStream: ByteStreamReader, defnMesg: MesgDefinition): void {
+    public static readAndCreate(inStream: ByteStreamReader, defnMesg: MesgDefinitionAny): MesgAny {
         inStream.position = 1;
-        // tslint:disable-next-line: max-line-length
         const mesgReader: ByteStreamReader = new ByteStreamReader(inStream, defnMesg.isBigEndian);
 
-        this.localNum = defnMesg.localMesgNum;
+        const localNum = defnMesg.localMesgNum;
+        if (localNum > Fit.localMesgNumMask)
+            throw new Error(`Mesg:LocalNum - Invalid Local message number ${localNum}. Local message number must be < ${Fit.localMesgNumMask}`);
 
-        defnMesg.getFields()
-            .forEach((fieldDef: FieldDefinition) => {
-                let read: boolean = true;
+        const fields: FieldAny[] = [];
+        defnMesg.fieldDefinitions.forEach((fieldDef) => {
 
-            // It's possible the field type found in the field definition may
-            // not agree with the type defined in the profile.  The profile
-            // type will be preferred for decode.
-                let field: Field | undefined = this.getField(fieldDef.num);
-                if (field == null) {
-                // We normally won't have fields attached to our skeleton message,
-                // as we add values we need to add the fields too based on the mesg,field
-                // combo in the profile.  Must derive from the profile so the scale etc
-                // is correct
-                    field = new Field(Profile.getMesg(this.profileMessageNumber)!
-                        .getField(fieldDef.num));
-                    if (field.fieldNumberInProfile === Fit.fieldNumInvalid) {
-                    // If there was no info in the profile the FieldNum will get set to invalid
-                    // so preserve the unknown fields info while we know it
-                        field.fieldNumberInProfile = fieldDef.num;
-                        field.setType(fieldDef.type);
-                    }
-                    this.setField(field);
-                }
+            const field = Mesg.readFieldValue(fieldDef, mesgReader);
 
-                if (field.type !== fieldDef.type) {
-                    const fieldSize: number = Fit.baseType[field.type & Fit.baseTypeNumMask].size;
-                    const defSize: number = Fit.baseType[fieldDef.type & Fit.baseTypeNumMask].size;
-
-                    if (defSize < fieldSize) {
-                        field.setType(fieldDef.type);
-                    } else if (defSize !== fieldSize) {
-                    // Demotion is hard. Don't read the field if the
-                    // sizes are different. Use the profile type if the
-                    // signedness of the field has changed.
-                        read = false;
-                    }
-                }
-
-                if (read) {
-                    Mesg.readFieldValue(field, fieldDef.size, mesgReader);
-                } else {
-                // Skip the bytes for the field if we aren't going to bother reading them
-                    mesgReader.readBytes(fieldDef.size);
-                }
-            });
-
-        defnMesg.developerFieldDefinitions.forEach((fldDef: DeveloperFieldDefinition) => {
-            let fld: DeveloperField | undefined = this.getDeveloperField(
-                fldDef.fieldNum,
-                fldDef.developerDataIndex);
-            if (fld == null) {
-                fld = DeveloperField.ctorFromDeveloperFieldDefinition(fldDef);
-                this.setDeveloperField(fld);
-            }
-
-            Mesg.readFieldValue(fld, fldDef.size, mesgReader);
+            fields.push(field);
         });
+
+        const devFields: DeveloperField[] = [];
+        defnMesg.developerFieldDefinitions.forEach((developerFieldDefinition) => {
+             const field = Mesg.readDevFieldValue(developerFieldDefinition, mesgReader);
+             devFields.push(field);
+        });
+
+        return new Mesg(defnMesg, localNum, fields, devFields);
     }
 
-    private static readFieldValue(
-        field: FieldBase,
-        size: number,
+    private static readFieldValue<T extends ProfileFieldTypeWithInvalid>(
+        fieldDef: FieldDefinition<T>,
         mesgReader: ByteStreamReader,
-    ): void {
-        const baseType: number = field.Type & Fit.baseTypeNumMask;
+    ): Field<T> {
+        const field = new Field(fieldDef);
+        const baseType = fieldDef.baseType;
         // strings may be an array and are of variable length
-        if (baseType === Fit.string) {
-            const bytes: number[] = mesgReader.readBytes(size);
+        if (baseType.baseType === 'string') {
+            const bytes: number[] = mesgReader.readBytes(fieldDef.size);
             let utf8Bytes: number[] = [];
 
             if (bytes.findIndex(x => x !== 0) === -1) {
                 // Array has no non zero values, don't add any strings
-                return;
+                return field;
             }
 
-            for (let i = 0; i < size; i++) {
+            for (let i = 0; i < fieldDef.size; i++) {
                 const b: number = bytes[i];
                 utf8Bytes.push(b);
 
@@ -255,99 +79,147 @@ export class Mesg {
                 utf8Bytes = [];
             }
         } else {
-            const numElements: number = size / Fit.baseType[baseType].size;
+            const numElements: number = fieldDef.size / baseType.size;
             for (let i: number = 0; i < numElements; i++) {
-                const { invalid, value }: { invalid: boolean, value: any } = Mesg.tryReadValue(
-                    field.Type,
+                const { invalid, value } = Mesg.tryReadValue(
+                    fieldDef.baseType,
                     mesgReader,
-                    size);
+                    fieldDef.size);
 
                 if (!invalid || numElements > 1) {
                     field.setRawValue(i, value);
                 }
             }
         }
+        return field;
+    }
+
+    private static readDevFieldValue(
+        fieldDef: DeveloperFieldDefinition,
+        mesgReader: ByteStreamReader,
+    ): DeveloperField {
+        const field = new DeveloperField(fieldDef);
+        const baseType = fieldDef.descriptionMesg.baseType;
+        // strings may be an array and are of variable length
+        if (baseType.baseType === 'string') {
+            const bytes: number[] = mesgReader.readBytes(fieldDef.size);
+            let utf8Bytes: number[] = [];
+
+            if (bytes.findIndex(x => x !== 0) === -1) {
+                // Array has no non zero values, don't add any strings
+                return field;
+            }
+
+            for (let i = 0; i < fieldDef.size; i++) {
+                const b: number = bytes[i];
+                utf8Bytes.push(b);
+
+                if (b === 0x00) {
+                    field.addValue(utf8Bytes);
+                    utf8Bytes = [];
+                }
+            }
+
+            if (utf8Bytes.length !== 0) {
+                // Add a Null Terminator
+                utf8Bytes.push(0);
+                field.addValue(utf8Bytes);
+                utf8Bytes = [];
+            }
+        } else {
+            const numElements: number = fieldDef.size / baseType.size;
+            for (let i: number = 0; i < numElements; i++) {
+                const { invalid, value } = Mesg.tryReadValue(
+                    fieldDef.descriptionMesg.baseType,
+                    mesgReader,
+                    fieldDef.size);
+
+                if (!invalid || numElements > 1) {
+                    field.setRawValue(i, value);
+                }
+            }
+        }
+        return field;
     }
 
     private static tryReadValue(
-        type: number,
+        baseType: BaseTypesListType[BaseTypesListIndex],
         mesgReader: ByteStreamReader,
         size: number,
-    ): {invalid: boolean, value: any} {
+    ): {invalid: boolean, value: number | number[]} {
         let invalid: boolean = true;
-        let value: any;
-        const baseTypeNum: number = type & Fit.baseTypeNumMask;
-        switch (baseTypeNum) {
-            case Fit.enum:
-            case Fit.byte:
-            case Fit.uInt8:
-            case Fit.uInt8z:
+        let value: number | number[];
+        switch (baseType.baseType) {
+            case 'enum':
+            case 'byte':
+            case 'uint8':
+            case 'uint8z':
                 value = mesgReader.readByte();
-                if (value !== Fit.baseType[baseTypeNum].invalidValue) {
+                if (value !== baseType.invalidValue) {
                     invalid = false;
                 }
                 break;
 
-            case Fit.sInt8:
+            case 'sint8':
                 value = mesgReader.readSByte();
-                if (value !== Fit.baseType[baseTypeNum].invalidValue) {
+                if (value !== baseType.invalidValue) {
                     invalid = false;
                 }
                 break;
 
-            case Fit.sInt16:
+            case 'sint16':
                 value = mesgReader.readInt16();
-                if (value !== Fit.baseType[baseTypeNum].invalidValue) {
+                if (value !== baseType.invalidValue) {
                     invalid = false;
                 }
                 break;
 
-            case Fit.uInt16:
-            case Fit.uInt16z:
+            case 'uint16':
+            case 'uint16z':
                 value = mesgReader.readUInt16();
-                if (value !== Fit.baseType[baseTypeNum].invalidValue) {
+                if (value !== baseType.invalidValue) {
                     invalid = false;
                 }
                 break;
 
-            case Fit.sInt32:
+            case 'sint32':
                 value = mesgReader.readInt32();
-                if (value !== Fit.baseType[baseTypeNum].invalidValue) {
+                if (value !== baseType.invalidValue) {
                     invalid = false;
                 }
                 break;
 
-            case Fit.uInt32:
-            case Fit.uInt32z:
+            case 'uint32':
+            case 'uint32z':
                 value = mesgReader.readUInt32();
-                if (value !== Fit.baseType[baseTypeNum].invalidValue) {
+                if (value !== baseType.invalidValue) {
                     invalid = false;
                 }
                 break;
 
-            case Fit.sInt64:
+            case 'sint64':
                 value = mesgReader.readInt64();
-                if (value !== Fit.baseType[baseTypeNum].invalidValue) {
+                if (value !== baseType.invalidValue) {
                     invalid = false;
                 }
                 break;
 
-            case Fit.uInt64:
-            case Fit.uInt64z:
+            case 'uint64':
+            case 'uint64z':
                 value = mesgReader.readUInt64();
-                if (value !== Fit.baseType[baseTypeNum].invalidValue) {
+                if (value !== baseType.invalidValue) {
                     invalid = false;
                 }
                 break;
 
-            case Fit.float32:
+            case 'float32':
                 value = mesgReader.readSingle();
                 if (!isNaN(value)) {
                     invalid = false;
                 }
                 break;
 
-            case Fit.float64:
+            case 'float64':
                 value = mesgReader.readDouble();
                 if (!isNaN(value)) {
                     invalid = false;
@@ -362,37 +234,27 @@ export class Mesg {
         return { invalid, value };
     }
 
-    // TODO output stream
-    // public void Write(Stream outStream, MesgDefinition mesgDef)
-    // private static void WriteField(FieldBase field, byte size, BinaryWriter bw)
-
-    //#region FieldList Manipulation Functions
-    public hasField(fieldNum: number): boolean {
-        for (const field of this.FieldsList) {
-            if (field.fieldNumberInProfile === fieldNum) {
+    private hasField(fieldNum: number): boolean {
+        for (const field of this.fields) {
+            if (field.fieldDefinition.profileField.id === fieldNum) {
                 return true;
             }
         }
         return false;
     }
 
-    public setDeveloperField(field: DeveloperField): void {
-        const devKey = new DeveloperDataKey(field.DeveloperDataIndex, field.Num);
-        this.developerFields.set(devKey, field);
-    }
-
     /**
      * Replace an existing field, otherwise add a reference to fields list
      * @param field Caller allocated field
      */
-    public setField(field: Field): void {
-        for (let i = 0; i < this.FieldsList.length; i++) {
-            if (this.FieldsList[i].fieldNumberInProfile === field.fieldNumberInProfile) {
-                this.FieldsList[i] = field;
+    public setField(field: Field<ArrayElement<T['fields']>>): void {
+        for (let i = 0; i < this.fields.length; i++) {
+            if (this.fields[i].fieldDefinition.profileField.id === field.fieldDefinition.profileField.id) {
+                this.fields[i] = field;
                 return;
             }
         }
-        this.FieldsList.push(field);
+        this.fields.push(field);
     }
 
     /**
@@ -402,94 +264,57 @@ export class Mesg {
      * if index is out of range, the field is added to the end of the list
      * @param field Caller allocated field
      */
-    public insertField(index: number, field: Field): void {
+    public insertField(index: number, field: Field<ArrayElement<T['fields']>>): void {
         // if message already contains this field, remove it
-        for (let i = 0; i < this.FieldsList.length; i++) {
-            if (this.FieldsList[i].fieldNumberInProfile === field.fieldNumberInProfile) {
-                this.FieldsList.splice(i, 1);
+        for (let i = 0; i < this.fields.length; i++) {
+            if (this.fields[i].fieldDefinition.profileField.id === field.fieldDefinition.profileField.id) {
+                this.fields.splice(i, 1);
             }
         }
-        if (index < 0 || index > this.FieldsList.length) {
+        if (index < 0 || index > this.fields.length) {
             // if the index is out of range, add to the end
-            this.FieldsList.push(field);
+            this.fields.push(field);
         } else {
             // insert the new field at desired index
-            this.FieldsList.splice(index, 0, field);
+            this.fields.splice(index, 0, field);
         }
     }
 
-    public setFields(mesg: Mesg): void {
-        if (mesg.profileMessageNumber !== this.profileMessageNumber) {
-            return;
-        }
-        mesg.FieldsList.forEach((field: Field) => {
-            this.setField(new Field(field));
-        });
-    }
-
-    public getNumFields(): number {
-        return this.FieldsList.length;
-    }
-
-    private getDeveloperField(
-        fieldNum: number, developerIndex: number): DeveloperField | undefined {
-        const devKey = new DeveloperDataKey(developerIndex, fieldNum);
-        return this.developerFields.has(devKey) ? this.developerFields.get(devKey)! : undefined;
-    }
-
-    public getOverrideField(fieldNum: number): FieldBase[] {
-        const localFields: FieldBase[] = [];
-
-        const nativeField: Field | undefined = this.getField(fieldNum);
-        if (null != nativeField) {
-            localFields.push(nativeField);
-        }
-
-        Array.from(this.DeveloperFields)
-            .filter(x => x.NativeOverride === fieldNum)
-            .forEach((field: DeveloperField) => {
-                localFields.push(field);
-            });
-
-        return localFields;
-    }
-
-    public getField(num: number): Field | undefined;
-    public getField(fieldName: string, checkMesgSupportForSubFields?: boolean): Field | undefined;
+    public getField(fieldId: number): Field<ArrayElement<T['fields']>> | undefined;
+    public getField(fieldName: string, checkMesgSupportForSubFields?: boolean): Field<ArrayElement<T['fields']>> | undefined;
     public getField(
-        fieldNameOrNum: string | number,
-        checkMesgSupportForSubFields: boolean = true): Field | undefined {
-        if (typeof fieldNameOrNum === 'number') {
-            return this.getFieldNum(fieldNameOrNum);
+        fieldNameOrId: string | number,
+        checkMesgSupportForSubFields: boolean = true): Field<ArrayElement<T['fields']>> | undefined {
+        if (typeof fieldNameOrId === 'number') {
+            return this.getFieldNum(fieldNameOrId);
         }
-        if (typeof fieldNameOrNum === 'string') {
-            return this.getFieldStr(fieldNameOrNum, checkMesgSupportForSubFields);
+        if (typeof fieldNameOrId === 'string') {
+            return this.getFieldStr(fieldNameOrId, checkMesgSupportForSubFields);
         }
         return undefined;
     }
 
-    private getFieldNum(fieldNum: number): Field | undefined {
-        for (const field of this.FieldsList) {
-            if (field.fieldNumberInProfile === fieldNum) {
+    private getFieldNum(fieldId: number): Field<ArrayElement<T['fields']>> | undefined {
+        for (const field of this.fields) {
+            if (field.fieldDefinition.profileField.id === fieldId) {
                 return field;
             }
         }
-
         return;
     }
 
     private getFieldStr(
         fieldName: string,
         checkMesgSupportForSubFields: boolean = true,
-    ): Field | undefined {
-        for (const field of this.FieldsList) {
-            if (field.name === fieldName) {
+    ): Field<ArrayElement<T['fields']>> | undefined {
+        for (const field of this.fields) {
+            if (field.fieldDefinition.profileField.name === fieldName) {
                 return field;
             }
 
             for (const subfield of field.subfields) {
-                if ((subfield.Name === fieldName) &&
-                    (!checkMesgSupportForSubFields || (subfield.canMesgSupport(this)))) {
+                if ((subfield.name === fieldName) &&
+                    (!checkMesgSupportForSubFields || (canSubfieldSupportMesg(subfield, this)))) {
                     return field;
                 }
             }
@@ -497,77 +322,36 @@ export class Mesg {
         return;
     }
 
-    public getActiveSubFieldIndex(fieldNum: number): number {
-        const testField: Field = new Field(this.getField(fieldNum));
+    private getActiveSubFieldIndex(fieldNum: number): keyof ArrayElement<T['fields']>['subfields'] & number {
+        const testField = this.fields.find(f => f.fieldDefinition.profileField.id === fieldNum);
+        if (!testField)
+            return Fit.subfieldIndexMainField;
 
+        // TODO simplify with filter?
         for (let i = 0; i < testField.subfields.length; i++) {
-            if (testField.subfields[i].canMesgSupport(this)) {
+            if (canSubfieldSupportMesg(testField.subfields[i], this))
                 return i;
-            }
         }
         return Fit.subfieldIndexMainField;
     }
 
-    public getActiveSubFieldName(fieldNum: number): string {
-        const testField: Field = new Field(this.getField(fieldNum));
-
-        for (const subfield of testField.subfields) {
-            if (subfield.canMesgSupport(this)) {
-                return subfield.Name;
-            }
-        }
-        return Fit.subfieldNameMainField;
-    }
-
-    /**
-     * Removes the specified field from this message.
-     * @param field The Field to be removed from this message.
-     */
-    public removeField(field: Field): void {
-        const idxOf = this.FieldsList.indexOf(field);
-        if (idxOf > -1) {
-            this.fields = this.fields.splice(idxOf, 1);
-        }
-    }
-    //#endregion
-
     public getNumFieldValues(fieldNum: number): number;
-    // tslint:disable-next-line: unified-signatures
-    public getNumFieldValues(fieldName: string): number;
-    // tslint:disable-next-line: unified-signatures
     public getNumFieldValues(fieldNum: number, subfieldIndex: number): number;
-    // tslint:disable-next-line: unified-signatures
-    public getNumFieldValues(fieldNum: number, subfieldName: string): number;
     public getNumFieldValues(
-        fieldNumOrName: number | string,
-        subfieldIndexOrName?: number | string,
+        fieldNum: number,
+        subfieldIndex?: number,
     ): number {
-        if (typeof fieldNumOrName === 'number' && subfieldIndexOrName === undefined) {
-            return this.getNumFieldValuesFieldNum(fieldNumOrName);
+        if (typeof fieldNum === 'number' && subfieldIndex === undefined) {
+            return this.getNumFieldValuesFieldNum(fieldNum);
         }
-        if (typeof fieldNumOrName === 'string' && subfieldIndexOrName === undefined) {
-            return this.getNumFieldValuesFieldName(fieldNumOrName);
-        }
-        if (typeof fieldNumOrName === 'number' && typeof subfieldIndexOrName === 'number') {
-            return this.getNumFieldValuesFieldNumAndSubIdx(fieldNumOrName, subfieldIndexOrName);
-        }
-        if (typeof fieldNumOrName === 'number' && typeof subfieldIndexOrName === 'string') {
-            return this.getNumFieldValuesFieldNumAndSubName(fieldNumOrName, subfieldIndexOrName);
+        if (typeof fieldNum === 'number' && typeof subfieldIndex === 'number') {
+            return this.getNumFieldValuesFieldNumAndSubIdx(fieldNum, subfieldIndex);
         }
         return 0;
     }
 
     private getNumFieldValuesFieldNum(fieldNum: number): number {
-        const field: Field | undefined = this.getField(fieldNum);
-
-        if (field !== undefined) {
-            return field.getNumValues();
-        }
-        return 0;
-    }
-
-    private getNumFieldValuesFieldName(fieldName: string): number {
-        const field: Field | undefined = this.getField(fieldName);
+        const field = this.getField(fieldNum);
 
         if (field !== undefined) {
             return field.getNumValues();
@@ -576,7 +360,7 @@ export class Mesg {
     }
 
     private getNumFieldValuesFieldNumAndSubIdx(fieldNum: number, subfieldIndex: number): number {
-        const field: Field | undefined = this.getField(fieldNum);
+        const field = this.getFieldNum(fieldNum);
 
         if (field === undefined) {
             return 0;
@@ -586,85 +370,63 @@ export class Mesg {
             return field.getNumValues();
         }
 
-        const subfield: Subfield | undefined = field.getSubfield(subfieldIndex);
-        if ((subfield === undefined) || (subfield.canMesgSupport(this))) {
+        const subfield = field.getSubfield(subfieldIndex);
+        if ((subfield === undefined) || (canSubfieldSupportMesg(subfield, this))) {
             return field.getNumValues();
         }
         return 0;
 
-    }
-
-    private getNumFieldValuesFieldNumAndSubName(fieldNum: number, subfieldName: string): number {
-        const field: Field | undefined = this.getField(fieldNum);
-
-        if (field === undefined) {
-            return 0;
-        }
-
-        const subfield: Subfield | undefined = field.getSubfield(subfieldName);
-        if ((subfield === undefined) || (subfield.canMesgSupport(this))) {
-            return field.getNumValues();
-        }
-        return 0;
     }
 
     public getFieldValue(
-        fieldNum: number,
+        fieldId: ArrayElement<T['fields']>['id'],
         fieldArrayIndex?: number,
         subFieldIndex?: number,
-    ): any;
+    ): number | number[] | undefined;
     public getFieldValue(
-        fieldNum: number,
+        fieldId: ArrayElement<T['fields']>['id'],
         fieldArrayIndex: number,
         subfieldName: string,
-    ): any;
+    ): number | number[] | undefined;
     public getFieldValue(
-        fieldName: string,
+        fieldName: ArrayElement<T['fields']>['name'],
         fieldArrayIndex?: number,
-    ): any;
+    ): number | number[] | undefined;
     public getFieldValue(
-        fieldNumOrName: number | string,
+        fieldNumOrName: ArrayElement<T['fields']>['id'] | ArrayElement<T['fields']>['name'],
         fieldArrayIndex?: number,
         subFieldIndexOrName?: number | string,
-    ): any {
-        if (typeof fieldNumOrName === 'number' &&
-            (typeof subFieldIndexOrName === 'number' || subFieldIndexOrName === undefined)) {
-
-            return this.getFieldValueFieldNumSubIdx(
-                fieldNumOrName, fieldArrayIndex, subFieldIndexOrName);
+    ): number | number[] | undefined {
+        if (typeof fieldNumOrName === 'number' && (typeof subFieldIndexOrName === 'number' || subFieldIndexOrName === undefined)) {
+            return this.getFieldValueFieldNumSubIdx(fieldNumOrName, fieldArrayIndex, subFieldIndexOrName);
         }
-        if (typeof fieldNumOrName === 'number' &&
-            typeof fieldArrayIndex === 'number' &&
-            typeof subFieldIndexOrName === 'string') {
-
-            return this.getFieldValueFieldNumSubName(
-                fieldNumOrName, fieldArrayIndex, subFieldIndexOrName);
+        if (typeof fieldNumOrName === 'number' && typeof fieldArrayIndex === 'number' && typeof subFieldIndexOrName === 'string') {
+            return this.getFieldValueFieldNumSubName(fieldNumOrName, fieldArrayIndex, subFieldIndexOrName);
         }
         if (typeof fieldNumOrName === 'string') {
             return this.getFieldValueFieldName(fieldNumOrName, fieldArrayIndex);
         }
+        throw new Error("invalid arguments");
     }
 
     private getFieldValueFieldNumSubIdx(
-        fieldNum: number,
+        fieldId: ArrayElement<T['fields']>['id'], // todo also pass subfield? probably better to just have another method
         fieldArrayIndex: number = 0,
         subFieldIndex: number = Fit.subfieldIndexActiveSubfield,
-    ): any {
-        const field: Field | undefined = this.getField(fieldNum);
-
-        if (field === undefined) {
+    ): number | number[] | undefined {
+        const field = this.getFieldNum(fieldId);
+        if (!field)
             return;
-        }
 
         if (subFieldIndex === Fit.subfieldIndexActiveSubfield) {
-            return field.getValue(fieldArrayIndex, this.getActiveSubFieldIndex(fieldNum));
-        }  {
-            const subfield: Subfield | undefined = field.getSubfield(subFieldIndex);
+            return field.getValue1(fieldArrayIndex, this.getActiveSubFieldIndex(fieldId));
+        } else {
+            const subfield = field.getSubfield(subFieldIndex);
 
-            if ((subfield === undefined) || (subfield.canMesgSupport(this))) {
+            if ((subfield === undefined) || (canSubfieldSupportMesg(subfield, this))) {
                 return field.getValue(fieldArrayIndex, subFieldIndex);
             }
-            return null;
+            return;
         }
     }
 
@@ -672,169 +434,36 @@ export class Mesg {
         fieldNum: number,
         fieldArrayIndex: number,
         subfieldName: string,
-    ): any {
-        const field: Field | undefined = this.getField(fieldNum);
+    ): number | number[] | undefined {
+        const field = this.getFieldNum(fieldNum);
 
         if (field === undefined) {
-            return null;
+            return undefined;
         }
 
-        const subfield: Subfield | undefined = field.getSubfield(subfieldName);
+        const subfield = field.getSubfieldByName(subfieldName);
 
-        if ((subfield === undefined) || (subfield.canMesgSupport(this))) {
-            return field.getValue(fieldArrayIndex, subfieldName);
+        if ((subfield === undefined) || (canSubfieldSupportMesg(subfield, this))) {
+            const subfield = field.getSubfieldByName(subfieldName);
+            return field.getValue(fieldArrayIndex, subfield);
         }
-        return null;
+        return undefined;
     }
 
-    private getFieldValueFieldName(fieldName: string, fieldArrayIndex: number = 0): any {
-        const field: Field | undefined = this.getField(fieldName, false);
+    private getFieldValueFieldName(fieldName: string, fieldArrayIndex: number = 0): number | number[] | undefined {
+        const field = this.getFieldStr(fieldName, false);
 
         if (field === undefined) {
-            return null;
+            return undefined;
         }
 
-        const subfield: Subfield | undefined = field.getSubfield(fieldName);
+        const subfield = field.getSubfieldByName(fieldName);
 
-        if ((subfield == null) || (subfield.canMesgSupport(this))) {
-            return field.getValue(fieldArrayIndex, fieldName);
+        if ((subfield == null) || (canSubfieldSupportMesg(subfield, this))) {
+            return field.getValue(fieldArrayIndex, subfield);
         }
 
-        return null;
-    }
-
-    public getIsFieldAccumulated(num: number): boolean {
-        const field: Field | undefined = this.getField(num);
-        if (field !== undefined) {
-            return field.IsAccumulated;
-        }
-        return false;
-    }
-
-    public setFieldValue(
-        fieldNum: number,
-        fieldArrayIndex: number,
-        value: any,
-        subfieldIndex?: number,
-    ): void;
-    public setFieldValue(
-        fieldNum: number,
-        fieldArrayIndex: number,
-        value: any,
-        subfieldName: string,
-    ): void;
-    public setFieldValue(
-        name: string,
-        fieldArrayIndex: number,
-        value: any,
-    ): void;
-    public setFieldValue(
-        fieldNumOrName: number | string,
-        fieldArrayIndex: number,
-        value: any,
-        subfieldIndexOrName?: number | string,
-    ): void {
-        if (typeof fieldNumOrName === 'number' &&
-            (typeof subfieldIndexOrName === 'number' ||
-            subfieldIndexOrName === undefined)) {
-            return this.setFieldValue_FieldNumSubIdx(
-                fieldNumOrName, fieldArrayIndex, value, subfieldIndexOrName);
-        }
-        if (typeof fieldNumOrName === 'number' &&
-            typeof subfieldIndexOrName === 'string') {
-            return this.setFieldValue_FieldNumSubName(
-                fieldNumOrName, fieldArrayIndex, value, subfieldIndexOrName);
-        }
-        if (typeof fieldNumOrName === 'string') {
-            return this.setFieldValue_FieldName(fieldNumOrName, fieldArrayIndex, value);
-        }
         return;
-    }
-
-    private setFieldValue_FieldNumSubIdx(
-        fieldNum: number,
-        fieldArrayIndex: number,
-        value: any,
-        subfieldIndex: number = Fit.subfieldIndexActiveSubfield,
-    ): void {
-        let localSubfieldIndex = subfieldIndex;
-        if (localSubfieldIndex === Fit.subfieldIndexActiveSubfield) {
-            localSubfieldIndex = this.getActiveSubFieldIndex(fieldNum);
-        } else {
-            const testField: Field = new Field(this.getField(fieldNum));
-            const subfield: Subfield | undefined = testField.getSubfield(localSubfieldIndex);
-
-            if ((subfield !== undefined) && !(subfield.canMesgSupport(this))) {
-                return;
-            }
-        }
-
-        let field: Field | undefined = this.getField(fieldNum);
-
-        if (field === undefined) {
-                // We normally won't have fields attached to our skeleton message,
-                // as we add values we need to add the fields too based on the mesg,field
-                // combo in the profile.
-            field = new Field(Profile.getMesg(this.profileMessageNumber)!
-                .getField(fieldNum));
-            if (field.fieldNumberInProfile === Fit.fieldNumInvalid) {
-                    // If there was no info in the profile our FieldNum will get set to invalid,
-                    // at least preserve FieldNum while we know it
-                field.fieldNumberInProfile = fieldNum;
-            }
-            this.setField(field);
-        }
-        field!.setValue5(fieldArrayIndex, value, localSubfieldIndex);
-    }
-
-    private setFieldValue_FieldNumSubName(
-        fieldNum: number,
-        fieldArrayIndex: number,
-        value: any,
-        subfieldName: string,
-    ): void {
-        const testField: Field = new Field(this.getField(fieldNum));
-        const subfield: Subfield | undefined = testField.getSubfield(subfieldName);
-
-        if ((subfield != null) && !(subfield.canMesgSupport(this))) {
-            return;
-        }
-
-        let field: Field | undefined = this.getField(fieldNum);
-
-        if (field === undefined) {
-            // We normally won't have fields attached to our skeleton message,
-            // as we add values we need to add the fields too based on the mesg,field
-            // combo in the profile.
-            field = new Field(Profile.getMesg(this.profileMessageNumber)!
-                .getField(fieldNum));
-            if (field!.fieldNumberInProfile === Fit.fieldNumInvalid) {
-                // If there was no info in the profile our FieldNum will get set to invalid,
-                // at least preserve FieldNum while we know it
-                field!.fieldNumberInProfile = fieldNum;
-            }
-            this.setField(field!);
-        }
-        field!.setValue6(fieldArrayIndex, value, subfieldName);
-    }
-
-    private setFieldValue_FieldName(name: string, fieldArrayIndex: number, value: any): void {
-        const testField = new Field(this.getField(name));
-        const subfield = testField.getSubfield(name);
-
-        if ((subfield !== undefined) && !(subfield.canMesgSupport(this))) {
-            return;
-        }
-
-        let field = this.getField(name, false);
-
-        if (field == null) {
-            field = new Field(Profile.getMesg(this.profileMessageNumber)!
-                .getField(name));
-            this.setField(field);
-        }
-
-        field!.setValue6(fieldArrayIndex, value, name);
     }
 
     public timestampToDateTime(timestamp: number | undefined): Date | undefined {
@@ -847,55 +476,45 @@ export class Mesg {
         return date;
     }
 
-    /**
-     * Removes all fields from this message that have been generated through
-     * component expansion while decoding the source .FIT file.
-     */
-    public removeExpandedFields(): void {
-        this.fields = this.fields.filter(x => !x.isExpandedField);
-    }
-
     private* expandComponentsInList(
         componentList: FieldComponent[],
-        currentField: Field,
+        currentField: Field<ArrayElement<T['fields']>>,
         offset: number,
         accumulator: Accumulator,
-    ): Generator<FieldComponentExpansion, void, unknown> {
+    ): Generator<FieldComponentExpansion<ArrayElement<T['fields']>>, void, unknown> {
         // When components.Count > 0 a field will be created and appended to the field list
         if ((componentList != null) && (componentList.length > 0)) {
             for (const fC of componentList) {
 
                 if (fC.fieldNum !== Fit.fieldNumInvalid) {
                     // Create a new field to expand into
-                    const newField = new Field(Profile.getMesg(this.profileMessageNumber)!
-                        .getField(fC.fieldNum));
+                    const matchingField = this.getFieldNum(fC.fieldNum);
+                    if (!matchingField)
+                        throw new Error("field not found for component expansion");
+
+                    const newField = new Field(matchingField.fieldDefinition);
 
                     // Mark that this field has been generated through expansion
                     newField.isExpandedField = true;
 
-                    // cache a field that we use to set properties on
-                    const f = this.getField(newField.fieldNumberInProfile);
-
                     // GetBitsValue will not return more bits than the componentField type can hold.
                     // This means strings are built one letter at a time when using components
                     // which is a bad idea to start with)
-                    let bitsValue: number | undefined =
-                            currentField.getBitsValue(offset, fC.bits, newField.Type);
+                    let bitsValue: number | undefined = currentField.getBitsValue(offset, fC.bits, newField.fieldDefinition.baseType);
                     if (bitsValue === undefined) {
                         break;
                     }
 
                     if (fC.accumulate) {
-                        // tslint:disable-next-line: max-line-length
-                        bitsValue = accumulator.accumulate(this.profileMessageNumber, fC.fieldNum, bitsValue, fC.bits);
+                        bitsValue = accumulator.accumulate(this.messageDefinition.profileMessage.id, fC.fieldNum, bitsValue, fC.bits);
                     }
 
-                    if (newField.isNumeric()) {
-                            // If the field is invalid, set the raw value so that
-                            // the invalid value is not scaled or offset.
-                        if (FitBaseType.isNumericInvalid(bitsValue, newField.getType())) {
-                            if (this.hasField(newField.fieldNumberInProfile)) {
-                                f!.setRawValue(f!.getNumValues(), bitsValue);
+                    if (isBaseTypeNumeric(newField.fieldDefinition.baseType.baseTypeid)) {
+                        // If the field is invalid, set the raw value so that
+                        // the invalid value is not scaled or offset.
+                        if (FitBaseType.isNumericInvalid(bitsValue, newField.fieldDefinition.baseType)) {
+                            if (this.hasField(newField.fieldDefinition.profileField.id)) {
+                                matchingField.setRawValue(matchingField.getNumValues(), bitsValue);
                             } else {
                                 newField.setRawValue(0, bitsValue);
                             }
@@ -904,8 +523,8 @@ export class Mesg {
 
                             fbitsValue = (fbitsValue / fC.scale) - fC.offset;
 
-                            if (this.hasField(newField.fieldNumberInProfile)) {
-                                f!.setValue(f!.getNumValues(), fbitsValue);
+                            if (this.hasField(newField.fieldDefinition.profileField.id)) {
+                                matchingField.setValue(matchingField.getNumValues(), fbitsValue);
                             } else {
                                 newField.setValue1(fbitsValue);
                             }
@@ -914,14 +533,14 @@ export class Mesg {
                             // Shouldn't apply scale/offset to string or enum
                         let nonNumericBitsValue: any;
                             // Ensure strings are added as byte[]
-                        if ((newField.type & Fit.baseTypeNumMask) === Fit.string) {
+                        if (newField.fieldDefinition.profileField.baseType.baseType === 'string') {
                             nonNumericBitsValue = [];
                             nonNumericBitsValue.push(bitsValue);
                         } else {
                             nonNumericBitsValue = bitsValue;
                         }
-                        if (this.hasField(newField.fieldNumberInProfile)) {
-                            f!.setValue(f!.getNumValues(), nonNumericBitsValue);
+                        if (this.hasField(newField.fieldDefinition.profileField.id)) {
+                            matchingField.setValue(matchingField.getNumValues(), nonNumericBitsValue);
                         } else {
                             newField.setValue1(nonNumericBitsValue);
                         }
@@ -940,48 +559,56 @@ export class Mesg {
         // Traverse the field list
         // Change to for loop so we can add items as we iterate
         // tslint:disable-next-line: prefer-for-of
-        for (let i = 0; i < this.FieldsList.length; ++i) {
+        for (let i = 0; i < this.fields.length; ++i) {
             let componentList: FieldComponent[];
             // Determine the active subfield
-            const activeSubfield =
-                this.getActiveSubFieldIndex(this.FieldsList[i].fieldNumberInProfile);
+            const activeSubfield = this.getActiveSubFieldIndex(this.fields[i].fieldDefinition.profileField.id);
 
             // tslint:disable-next-line: prefer-conditional-expression
             if (activeSubfield === Fit.subfieldIndexMainField) {
-                componentList = this.FieldsList[i].components;
+                componentList = this.fields[i].components;
             } else {
-                componentList = this.FieldsList[i].getSubfield(activeSubfield)!.Components;
+                const subfield = this.fields[i].getSubfield(activeSubfield);
+                if (!subfield)
+                    throw new Error("subfield not found");
+
+                componentList = subfield.components.map(x => new FieldComponent(x.id, x.accumulate, x.bits, x.scale, x.offset));
             }
 
             // Traverse the component list
             let offset = 0;
-            for (const f of this.expandComponentsInList(
-                                componentList, this.FieldsList[i], offset, accumulator)) {
+            for (const f of this.expandComponentsInList(componentList, this.fields[i], offset, accumulator)) {
                 // Add the new field
-                this.FieldsList.push(f.getField());
+                this.fields.push(f.field);
                 // update offset
-                offset = f.getOffset();
+                offset = f.offset;
             }
         }
     }
     //#endregion
 }
 
-// tslint:disable-next-line: max-classes-per-file
-class FieldComponentExpansion {
-    private offset: number;
-    private field: Field;
+export type MesgAny = Mesg<MessageListMessageTypeWithInvalid>;
 
-    public constructor(f: Field, offset: number) {
+class FieldComponentExpansion<T extends ProfileFieldTypeWithInvalid> {
+    public offset: number;
+    public field: Field<T>;
+
+    public constructor(f: Field<T>, offset: number) {
         this.field = f;
         this.offset = offset;
     }
+}
 
-    public getOffset(): number {
-        return this.offset;
+function canSubfieldSupportMesg<T extends MessageListMessageTypeWithInvalid>(subfield: ArrayElement<ArrayElement<T['fields']>['subfields']>, mesg: Mesg<T>) {
+    for (const refField of subfield.refFields) {
+        const referencedField = mesg.fields.find(f => f.fieldDefinition.profileField.id === refField.id);
+        if (!referencedField)
+            continue;
+        //
+        if (referencedField.getValue1(0, Fit.subfieldIndexMainField) === refField.rawValue)
+            // this subfield can support this message
+            return true;
     }
-
-    public getField(): Field {
-        return this.field;
-    }
+    return false;
 }

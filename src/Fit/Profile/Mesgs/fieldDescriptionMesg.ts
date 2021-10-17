@@ -1,38 +1,38 @@
 import { Mesg } from '../../../Fit/mesg';
 import { Fit } from '../../../Fit/fit';
-import { Profile } from '../../../Fit/profile';
-import { MesgNum } from '../Types/mesgNum';
+import { BaseTypesListItem, findBaseTypeById, messageFieldsMapByName } from '../../../profile';
+import { DeveloperDataIdMesg } from './developerDataIdMesg';
 
 /// <summary>
 /// Field Numbers for <see cref="FieldDescriptionMesg"/>
 /// </summary>
-export class FieldDefNum {
-    public static readonly developerDataIndex: number = 0;
-    public static readonly fieldDefinitionNumber: number = 1;
-    public static readonly fitBaseTypeId: number = 2;
-    public static readonly fieldName: number = 3;
-    public static readonly array: number = 4;
-    public static readonly components: number = 5;
-    public static readonly scale: number = 6;
-    public static readonly offset: number = 7;
-    public static readonly units: number = 8;
-    public static readonly bits: number = 9;
-    public static readonly accumulate: number = 10;
-    public static readonly fitBaseUnitId: number = 13;
-    public static readonly nativeMesgNum: number = 14;
-    public static readonly nativeFieldNum: number = 15;
-    public static readonly invalid: number = Fit.fieldNumInvalid;
+export const enum FieldDefNum {
+    developerDataIndex = 0,
+    fieldDefinitionNumber = 1,
+    fitBaseTypeId = 2,
+    fieldName = 3,
+    array = 4,
+    components = 5,
+    scale = 6,
+    offset = 7,
+    units = 8,
+    bits = 9,
+    accumulate = 10,
+    fitBaseUnitId = 13,
+    nativeMesgNum = 14,
+    nativeFieldNum = 15,
+    invalid = 255, // Fit.fieldNumInvalid,
 }
 
-function stringToBytesUTF8(str: string): number[] {
-    const utf8 = unescape(encodeURIComponent(str));
+// function stringToBytesUTF8(str: string): number[] {
+//     const utf8 = unescape(encodeURIComponent(str));
 
-    const arr = [];
-    for (let i = 0; i < utf8.length; i++) {
-        arr.push(utf8.charCodeAt(i));
-    }
-    return arr;
-}
+//     const arr = [];
+//     for (let i = 0; i < utf8.length; i++) {
+//         arr.push(utf8.charCodeAt(i));
+//     }
+//     return arr;
+// }
 
 function bytesToStringUTF8(uintArray: number[]): string {
     const encodedString = String.fromCharCode.apply(null, uintArray);
@@ -40,141 +40,76 @@ function bytesToStringUTF8(uintArray: number[]): string {
     return decodedString;
 }
 
-// tslint:disable-next-line: max-classes-per-file
-export class FieldDescriptionMesg extends Mesg {
-    //#region Fields
-    //#endregion
+export type FieldDescriptionMessage = typeof messageFieldsMapByName.field_description_field_name.message;
+export class FieldDescriptionMesg {
+    private mesg: Mesg<FieldDescriptionMessage>;
 
-    //#region Constructors
-    public constructor(mesg: Mesg | undefined = Profile.getMesg(MesgNum.fieldDescription)) {
-        super(mesg);
-    }
-    //#endregion // Constructors
+    public developerDataId: DeveloperDataIdMesg;
+    public fieldDefinitionNumber: number;
+    public baseType: BaseTypesListItem;
 
-    //#region Methods
-    /// <summary>
-    /// Retrieves the DeveloperDataIndex field</summary>
-    /// <returns>Returns nullable byte representing the DeveloperDataIndex field</returns>
-    public getDeveloperDataIndex(): number | undefined {
-        const val: any = this.getFieldValue(0, 0, Fit.subfieldIndexMainField);
-        if (val === undefined) {
-            return undefined;
-        }
+    public constructor(mesg: Mesg<FieldDescriptionMessage>, developerDataId: DeveloperDataIdMesg) {
+        this.mesg = mesg;
+        this.developerDataId = developerDataId;
 
-        return (val);
+        const developerDataIndex = mesg.getFieldValue(messageFieldsMapByName.field_description_developer_data_index.field.id, 0, Fit.subfieldIndexMainField);
+        if (developerDataIndex === undefined)
+            throw new Error(`can't be undefined`);
 
-    }
+        const fieldDefinitionNumber = mesg.getFieldValue(messageFieldsMapByName.field_description_field_definition_number.field.id, 0, Fit.subfieldIndexMainField);
+        if (fieldDefinitionNumber === undefined)
+            throw new Error(`can't be undefined`);
+        if (typeof fieldDefinitionNumber !== 'number')
+            throw new Error(`invalid type`);
+        this.fieldDefinitionNumber = fieldDefinitionNumber;
 
-    /// <summary>
-    /// Set DeveloperDataIndex field</summary>
-    /// <param name="developerDataIndex_">Nullable field value to be set</param>
-    public setDeveloperDataIndex(developerDataIndex: number | undefined): void {
-        this.setFieldValue(0, 0, developerDataIndex, Fit.subfieldIndexMainField);
-    }
-
-    /// <summary>
-    /// Retrieves the FieldDefinitionNumber field</summary>
-    /// <returns>Returns nullable byte representing the FieldDefinitionNumber field</returns>
-    public getFieldDefinitionNumber(): number | undefined {
-        const val: any = this.getFieldValue(1, 0, Fit.subfieldIndexMainField);
-        if (val === undefined) {
-            return undefined;
-        }
-
-        return (val);
-
+        const baseTypeId = mesg.getFieldValue(messageFieldsMapByName.field_description_fit_base_type_id.field.id, 0, Fit.subfieldIndexMainField);
+        if (baseTypeId === undefined)
+            throw new Error(`can't be undefined`);
+        if (typeof baseTypeId !== 'number')
+            throw new Error(`invalid type`);
+        const baseType = findBaseTypeById(baseTypeId);
+        if (!baseType)
+            throw new Error(`can't be undefined`);
+        this.baseType = baseType;
     }
 
-    /// <summary>
-    /// Set FieldDefinitionNumber field</summary>
-    /// <param name="fieldDefinitionNumber_">Nullable field value to be set</param>
-    public setFieldDefinitionNumber(fieldDefinitionNumber: number | undefined): void {
-        this.setFieldValue(1, 0, fieldDefinitionNumber, Fit.subfieldIndexMainField);
-    }
-
-    /// <summary>
-    /// Retrieves the FitBaseTypeId field</summary>
-    /// <returns>Returns nullable byte representing the FitBaseTypeId field</returns>
-    public getFitBaseTypeId(): number | undefined {
-        const val: any = this.getFieldValue(2, 0, Fit.subfieldIndexMainField);
-        if (val === undefined) {
-            return undefined;
-        }
-
-        return (val);
-
-    }
-
-    /// <summary>
-    /// Set FitBaseTypeId field</summary>
-    /// <param name="fitBaseTypeId_">Nullable field value to be set</param>
-    public setFitBaseTypeId(fitBaseTypeId: number | undefined): void {
-        this.setFieldValue(2, 0, fitBaseTypeId, Fit.subfieldIndexMainField);
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <returns>returns number of elements in field FieldName</returns>
-    public getNumFieldName(): number {
-        return this.getNumFieldValues(3, Fit.subfieldIndexMainField);
-    }
-
-    /// <summary>
-    /// Retrieves the FieldName field</summary>
-    /// <param name="index">0 based index of FieldName element to retrieve</param>
-    /// <returns>Returns byte[] representing the FieldName field</returns>
-    public getFieldName(index: number): number[] {
-        const data: number[] = this.getFieldValue(3, index, Fit.subfieldIndexMainField);
-        return data.slice(0, data.length - 1);
-    }
-
-    /// <summary>
-    /// Retrieves the FieldName field</summary>
-    /// <param name="index">0 based index of FieldName element to retrieve</param>
-    /// <returns>Returns string representing the FieldName field</returns>
-    public getFieldNameAsString(index: number): string | undefined {
-        const data: number[] | undefined = this.getFieldValue(3, index, Fit.subfieldIndexMainField);
-        return data !== undefined ? bytesToStringUTF8(data.slice(0, data.length - 1)) : undefined;
-    }
-
-    /// <summary>
-    /// Set FieldName field</summary>
-    /// <param name="index">0 based index of field_name</param>
-    /// <param name="fieldName">field value to be set</param>
-    public setFieldName(index: number, fieldName: number[] | string): void {
-        if (typeof fieldName === 'string') {
-            const data: number[] = stringToBytesUTF8(fieldName);
-            return this.setFieldValue(3, index, data, Fit.subfieldIndexMainField);
-        }
-        return this.setFieldValue(3, index, fieldName, Fit.subfieldIndexMainField);
-    }
+    // private parseFieldName(mesg: Mesg<FieldDescriptionMessage>): string | undefined {
+    //     const fieldNameCount = mesg.getNumFieldValues(messageFieldsMapByName.field_description_field_name.field.id, Fit.subfieldIndexMainField);
+    //     if (fieldNameCount === undefined)
+    //         return;
+    //     if (typeof fieldNameCount !== 'number')
+    //         throw new Error(`invalid type`);
+    //     const nameBytes: number[] = []
+    //     for (let i = 0; i < fieldNameCount; i++) {
+    //         const value = mesg.getFieldValue(messageFieldsMapByName.field_description_field_name.field.id, i, Fit.subfieldIndexMainField);
+    //         if (typeof value === 'number')
+    //             throw new Error("invalid type");
+    //         nameBytes.push();
+    //     }
+    //     return bytesToStringUTF8(nameBytes);
+    // }
 
     /// <summary>
     /// Retrieves the Array field</summary>
     /// <returns>Returns nullable byte representing the Array field</returns>
     public getArray(): number | undefined {
-        const val: any = this.getFieldValue(4, 0, Fit.subfieldIndexMainField);
+        const val: any = this.mesg.getFieldValue(messageFieldsMapByName.field_description_array.field.id, 0, Fit.subfieldIndexMainField);
         if (val === undefined) {
             return undefined;
         }
 
         return (val);
-
-    }
-
-    /// <summary>
-    /// Set Array field</summary>
-    /// <param name="array_">Nullable field value to be set</param>
-    public setArray(array: number | undefined): void {
-        this.setFieldValue(4, 0, array, Fit.subfieldIndexMainField);
     }
 
     /// <summary>
     /// Retrieves the Components field</summary>
     /// <returns>Returns byte[] representing the Components field</returns>
     public getComponents(): number[] {
-        const data: number[] = this.getFieldValue(5, 0, Fit.subfieldIndexMainField);
+        const data = this.mesg.getFieldValue(messageFieldsMapByName.field_description_components.field.id, 0, Fit.subfieldIndexMainField);
+        if (!data || typeof data === 'number')
+            throw new Error("invalid type");
+
         return data.slice(0, data.length - 1);
     }
 
@@ -182,59 +117,35 @@ export class FieldDescriptionMesg extends Mesg {
     /// Retrieves the Components field</summary>
     /// <returns>Returns string representing the Components field</returns>
     public getComponentsAsstring(): string | undefined {
-        const data: number[] | undefined = this.getFieldValue(5, 0, Fit.subfieldIndexMainField);
+        const data = this.mesg.getFieldValue(messageFieldsMapByName.field_description_components.field.id, 0, Fit.subfieldIndexMainField);
+        if (typeof data === 'number')
+            throw new Error("invalid type");
         return data !== undefined ? bytesToStringUTF8(data.slice(0, data.length - 1)) : undefined;
-    }
-
-    /// <summary>
-    /// Set Components field</summary>
-    /// <param name="components_">field value to be set</param>
-    public setComponents(components: number[] | string): void {
-        if (typeof components === 'string') {
-            const data: number[] = stringToBytesUTF8(components);
-            return this.setFieldValue(5, 0, data, Fit.subfieldIndexMainField);
-        }
-        return this.setFieldValue(5, 0, components, Fit.subfieldIndexMainField);
     }
 
     /// <summary>
     /// Retrieves the Scale field</summary>
     /// <returns>Returns nullable byte representing the Scale field</returns>
     public getScale(): number | undefined {
-        const val: any = this.getFieldValue(6, 0, Fit.subfieldIndexMainField);
-        if (val === undefined) {
+        const val = this.mesg.getFieldValue(messageFieldsMapByName.field_description_scale.field.id, 0, Fit.subfieldIndexMainField);
+        if (val === undefined)
             return undefined;
-        }
-
-        return (val);
-
-    }
-
-    /// <summary>
-    /// Set Scale field</summary>
-    /// <param name="scale_">Nullable field value to be set</param>
-    public setScale(scale: number | undefined): void {
-        this.setFieldValue(6, 0, scale, Fit.subfieldIndexMainField);
+        if (typeof val !== 'number')
+            throw new Error("invalid type");
+        return val;
     }
 
     /// <summary>
     /// Retrieves the Offset field</summary>
     /// <returns>Returns nullable sbyte representing the Offset field</returns>
     public getOffset(): number | undefined {
-        const val: any = this.getFieldValue(7, 0, Fit.subfieldIndexMainField);
-        if (val === undefined) {
+        const val = this.mesg.getFieldValue(messageFieldsMapByName.field_description_offset.field.id, 0, Fit.subfieldIndexMainField);
+        if (val === undefined)
             return undefined;
-        }
+        if (typeof val !== 'number')
+            throw new Error("invalid type");
 
-        return (val);
-
-    }
-
-    /// <summary>
-    /// Set Offset field</summary>
-    /// <param name="offset_">Nullable field value to be set</param>
-    public setOffset(offset: number | undefined): void {
-        this.setFieldValue(7, 0, offset, Fit.subfieldIndexMainField);
+        return val;
     }
 
     /// <summary>
@@ -242,7 +153,7 @@ export class FieldDescriptionMesg extends Mesg {
     /// </summary>
     /// <returns>returns number of elements in field Units</returns>
     public getNumUnits(): number {
-        return this.getNumFieldValues(8, Fit.subfieldIndexMainField);
+        return this.mesg.getNumFieldValues(messageFieldsMapByName.field_description_units.field.id, Fit.subfieldIndexMainField);
     }
 
     /// <summary>
@@ -250,7 +161,10 @@ export class FieldDescriptionMesg extends Mesg {
     /// <param name="index">0 based index of Units element to retrieve</param>
     /// <returns>Returns byte[] representing the Units field</returns>
     public getUnits(index: number): number[] {
-        const data: number[] = this.getFieldValue(8, index, Fit.subfieldIndexMainField);
+        const data = this.mesg.getFieldValue(messageFieldsMapByName.field_description_units.field.id, index, Fit.subfieldIndexMainField);
+        if (!data || typeof data === 'number')
+            throw new Error("invalid type");
+
         return data.slice(0, data.length - 1);
     }
 
@@ -259,27 +173,19 @@ export class FieldDescriptionMesg extends Mesg {
     /// <param name="index">0 based index of Units element to retrieve</param>
     /// <returns>Returns string representing the Units field</returns>
     public getUnitsAsString(index: number): string | undefined {
-        const data: number[] | undefined = this.getFieldValue(8, index, Fit.subfieldIndexMainField);
+        const data = this.mesg.getFieldValue(messageFieldsMapByName.field_description_units.field.id, index, Fit.subfieldIndexMainField);
+        if (typeof data === 'number')
+            throw new Error("invalid type");
         return data !== undefined ? bytesToStringUTF8(data.slice(0, data.length - 1)) : undefined;
-    }
-
-    /// <summary>
-    /// Set Units field</summary>
-    /// <param name="index">0 based index of units</param>
-    /// <param name="units_">field value to be set</param>
-    public setUnits(index: number, units: number[] | string): void {
-        if (typeof units === 'string') {
-            const data: number[] = stringToBytesUTF8(units);
-            return this.setFieldValue(8, index, data, Fit.subfieldIndexMainField);
-        }
-        return this.setFieldValue(8, index, units, Fit.subfieldIndexMainField);
     }
 
     /// <summary>
     /// Retrieves the Bits field</summary>
     /// <returns>Returns byte[] representing the Bits field</returns>
     public getBits(): number[] {
-        const data: number[] = this.getFieldValue(9, 0, Fit.subfieldIndexMainField);
+        const data = this.mesg.getFieldValue(messageFieldsMapByName.field_description_bits.field.id, 0, Fit.subfieldIndexMainField);
+        if (!data || typeof data === 'number')
+            throw new Error("invalid type");
         return data.slice(0, data.length - 1);
     }
 
@@ -287,26 +193,19 @@ export class FieldDescriptionMesg extends Mesg {
     /// Retrieves the Bits field</summary>
     /// <returns>Returns string representing the Bits field</returns>
     public getBitsAsString(): string | undefined {
-        const data: number[] | undefined = this.getFieldValue(9, 0, Fit.subfieldIndexMainField);
+        const data = this.mesg.getFieldValue(messageFieldsMapByName.field_description_bits.field.id, 0, Fit.subfieldIndexMainField);
+        if (typeof data === 'number')
+            throw new Error("invalid type");
         return data !== undefined ? bytesToStringUTF8(data.slice(0, data.length - 1)) : undefined;
-    }
-
-    /// <summary>
-    /// Set Bits field</summary>
-    /// <param name="bits_">field value to be set</param>
-    public setBits(bits: number[] | string): void {
-        if (typeof bits === 'string') {
-            const data: number[] = stringToBytesUTF8(bits);
-            return this.setFieldValue(9, 0, data, Fit.subfieldIndexMainField);
-        }
-        this.setFieldValue(9, 0, bits, Fit.subfieldIndexMainField);
     }
 
     /// <summary>
     /// Retrieves the Accumulate field</summary>
     /// <returns>Returns byte[] representing the Accumulate field</returns>
     public getAccumulate(): number[] {
-        const data: number[] = this.getFieldValue(10, 0, Fit.subfieldIndexMainField);
+        const data = this.mesg.getFieldValue(messageFieldsMapByName.field_description_accumulate.field.id, 0, Fit.subfieldIndexMainField);
+        if (!data || typeof data === 'number')
+            throw new Error("invalid type");
         return data.slice(0, data.length - 1);
     }
 
@@ -314,80 +213,47 @@ export class FieldDescriptionMesg extends Mesg {
     /// Retrieves the Accumulate field</summary>
     /// <returns>Returns string representing the Accumulate field</returns>
     public getAccumulateAsString(): string | undefined {
-        const data: number[] | undefined = this.getFieldValue(10, 0, Fit.subfieldIndexMainField);
+        const data = this.mesg.getFieldValue(messageFieldsMapByName.field_description_accumulate.field.id, 0, Fit.subfieldIndexMainField);
+        if (typeof data === 'number')
+            throw new Error("invalid type");
         return data !== undefined ? bytesToStringUTF8(data.slice(0, data.length - 1)) : undefined;
-    }
-
-    /// <summary>
-    /// Set Accumulate field</summary>
-    /// <param name="accumulate_">field value to be set</param>
-    public setAccumulate(accumulate: number[] | string): void {
-        if (typeof accumulate === 'string') {
-            const data: number[] = stringToBytesUTF8(accumulate);
-            return this.setFieldValue(10, 0, data, Fit.subfieldIndexMainField);
-        }
-        return this.setFieldValue(10, 0, accumulate, Fit.subfieldIndexMainField);
     }
 
     /// <summary>
     /// Retrieves the FitBaseUnitId field</summary>
     /// <returns>Returns nullable ushort representing the FitBaseUnitId field</returns>
     public getFitBaseUnitId(): number | undefined {
-        const val: any = this.getFieldValue(13, 0, Fit.subfieldIndexMainField);
-        if (val === undefined) {
+        const data = this.mesg.getFieldValue(messageFieldsMapByName.field_description_fit_base_unit_id.field.id, 0, Fit.subfieldIndexMainField);
+        if (data === undefined)
             return undefined;
-        }
-
-        return (val);
-
-    }
-
-    /// <summary>
-    /// Set FitBaseUnitId field</summary>
-    /// <param name="fitBaseUnitId_">Nullable field value to be set</param>
-    public setFitBaseUnitId(fitBaseUnitId: number | undefined): void {
-        this.setFieldValue(13, 0, fitBaseUnitId, Fit.subfieldIndexMainField);
+        if (typeof data !== 'number')
+            throw new Error("invalid type");
+        return data;
     }
 
     /// <summary>
     /// Retrieves the NativeMesgNum field</summary>
     /// <returns>Returns nullable ushort representing the NativeMesgNum field</returns>
     public getNativeMesgNum(): number | undefined {
-        const val: any = this.getFieldValue(14, 0, Fit.subfieldIndexMainField);
-        if (val === undefined) {
+        const data = this.mesg.getFieldValue(messageFieldsMapByName.field_description_native_mesg_num.field.id, 0, Fit.subfieldIndexMainField);
+        if (data === undefined)
             return undefined;
-        }
+        if (typeof data !== 'number')
+            throw new Error("invalid type");
 
-        return (val);
-
-    }
-
-    /// <summary>
-    /// Set NativeMesgNum field</summary>
-    /// <param name="nativeMesgNum_">Nullable field value to be set</param>
-    public setNativeMesgNum(nativeMesgNum: number | undefined): void {
-        this.setFieldValue(14, 0, nativeMesgNum, Fit.subfieldIndexMainField);
+        return data;
     }
 
     /// <summary>
     /// Retrieves the NativeFieldNum field</summary>
     /// <returns>Returns nullable byte representing the NativeFieldNum field</returns>
     public getNativeFieldNum(): number | undefined {
-        const val: any = this.getFieldValue(15, 0, Fit.subfieldIndexMainField);
-        if (val === undefined) {
+        const data = this.mesg.getFieldValue(messageFieldsMapByName.field_description_native_field_num.field.id, 0, Fit.subfieldIndexMainField);
+        if (data === undefined)
             return undefined;
-        }
+        if (typeof data !== 'number')
+            throw new Error("invalid type");
 
-        return (val);
-
+        return data;
     }
-
-    /// <summary>
-    /// Set NativeFieldNum field</summary>
-    /// <param name="nativeFieldNum_">Nullable field value to be set</param>
-    public setNativeFieldNum(nativeFieldNum: number | undefined): void {
-        this.setFieldValue(15, 0, nativeFieldNum, Fit.subfieldIndexMainField);
-    }
-
-    //#endregion // Methods
 }

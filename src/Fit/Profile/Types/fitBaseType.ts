@@ -1,4 +1,4 @@
-import { Fit } from '../../fit';
+import { BaseTypesListItem } from '../../../profile';
 
 export enum FitFieldType {
     enum = 0,
@@ -22,67 +22,24 @@ export enum FitFieldType {
 }
 
 export class FitBaseType {
-    public static isNumericInvalid(value: number, type: number): boolean {
+    public static isNumericInvalid(value: number, type: BaseTypesListItem): boolean {
         let isInvalid: boolean = false;
 
-        switch (type) {
-            case FitFieldType.enum:
-            case FitFieldType.byte:
-            case FitFieldType.uint8:
-            case FitFieldType.uint8z: {
-                const val: number = Fit.baseType[type & Fit.baseTypeNumMask].invalidValue as number;
-                if (value === val) {
-                    isInvalid = true;
-                }
-                break;
-            }
-            case FitFieldType.sint8: {
-                const val: number = Fit.baseType[type & Fit.baseTypeNumMask].invalidValue as number;
-                if (value === val) {
-                    isInvalid = true;
-                }
-                break;
-            }
-            case FitFieldType.sint16: {
-                const val: number = Fit.baseType[type & Fit.baseTypeNumMask].invalidValue as number;
-                if (value === val) {
-                    isInvalid = true;
-                }
-                break;
-            }
-            case FitFieldType.uint16:
-            case FitFieldType.uint16z: {
-                const val: number = Fit.baseType[type & Fit.baseTypeNumMask].invalidValue as number;
-                if (value === val) {
-                    isInvalid = true;
-                }
-                break;
-            }
-            case FitFieldType.sint32: {
-                const val: number = Fit.baseType[type & Fit.baseTypeNumMask].invalidValue as number;
-                if (value === val) {
-                    isInvalid = true;
-                }
-                break;
-            }
-            case FitFieldType.uint32:
-            case FitFieldType.uint32z: {
-                const val: number = Fit.baseType[type & Fit.baseTypeNumMask].invalidValue as number;
-                if (value === val) {
-                    isInvalid = true;
-                }
-                break;
-            }
-            case FitFieldType.float32: {
-                const val: number = Fit.baseType[type & Fit.baseTypeNumMask].invalidValue as number;
-                if (value === val) {
-                    isInvalid = true;
-                }
-                break;
-            }
-            case FitFieldType.float64: {
-                const val: number = Fit.baseType[type & Fit.baseTypeNumMask].invalidValue as number;
-                if (value === val) {
+        switch (type.baseType) {
+            case 'enum':
+            case 'byte':
+            case 'uint8':
+            case 'uint8z':
+            case 'sint8':
+            case 'sint16':
+            case 'uint16':
+            case 'uint16z':
+            case 'sint32':
+            case 'uint32':
+            case 'uint32z':
+            case 'float32':
+            case 'float64': {
+                if (value === type.invalidValue) {
                     isInvalid = true;
                 }
                 break;
