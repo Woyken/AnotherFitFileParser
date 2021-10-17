@@ -1,27 +1,27 @@
 // Some sort of header goes here
 // Parsed from
 // SDK version: 21.6
-// On Sat, 18 Sep 2021 14:47:57 GMT
+// On Sun, 17 Oct 2021 18:04:53 GMT
 // Parsed 164 types (3288 values), 87 messages (1092 fields)
 
 export const baseTypesList = {
-  0x00: { name: "enum", id: 0x00, fmt: "B", invalidValue: 0xff },
-  0x01: { name: "sint8", id: 0x01, fmt: "b", invalidValue: 0x7f },
-  0x02: { name: "uint8", id: 0x02, fmt: "B", invalidValue: 0xff },
-  0x83: { name: "sint16", id: 0x83, fmt: "h", invalidValue: 0x7fff },
-  0x84: { name: "uint16", id: 0x84, fmt: "H", invalidValue: 0xffff },
-  0x85: { name: "sint32", id: 0x85, fmt: "i", invalidValue: 0x7fffffff },
-  0x86: { name: "uint32", id: 0x86, fmt: "I", invalidValue: 0xffffffff },
-  0x07: { name: "string", id: 0x07, fmt: "s", invalidValue: 0x00 },
-  0x88: { name: "float32", id: 0x88, fmt: "f", invalidValue: NaN },
-  0x89: { name: "float64", id: 0x89, fmt: "d", invalidValue: NaN },
-  0x0a: { name: "uint8z", id: 0x0a, fmt: "B", invalidValue: 0x0 },
-  0x8b: { name: "uint16z", id: 0x8b, fmt: "H", invalidValue: 0x0 },
-  0x8c: { name: "uint32z", id: 0x8c, fmt: "I", invalidValue: 0x0 },
-  0x0d: { name: "byte", id: 0x0d, fmt: "B", invalidValue: 0xff },
-  0x8e: { name: "sint64", id: 0x8e, fmt: "q", invalidValue: 0x7fffffffffffffff },
-  0x8f: { name: "uint64", id: 0x8f, fmt: "Q", invalidValue: 0xffffffffffffffff },
-  0x90: { name: "uint64z", id: 0x90, fmt: "Q", invalidValue: 0 },
+  0x00: { baseType: "enum", baseTypeid: 0x00, fmt: "B", invalidValue: 0xff, isSigned: false, size: 1, endianAbility: 0 },
+  0x01: { baseType: "sint8", baseTypeid: 0x01, fmt: "b", invalidValue: 0x7f, isSigned: true, size: 1, endianAbility: 0 },
+  0x02: { baseType: "uint8", baseTypeid: 0x02, fmt: "B", invalidValue: 0xff, isSigned: false, size: 1, endianAbility: 0 },
+  0x83: { baseType: "sint16", baseTypeid: 0x83, fmt: "h", invalidValue: 0x7fff, isSigned: true, size: 2, endianAbility: 1 },
+  0x84: { baseType: "uint16", baseTypeid: 0x84, fmt: "H", invalidValue: 0xffff, isSigned: false, size: 2, endianAbility: 1 },
+  0x85: { baseType: "sint32", baseTypeid: 0x85, fmt: "i", invalidValue: 0x7fffffff, isSigned: true, size: 4, endianAbility: 1 },
+  0x86: { baseType: "uint32", baseTypeid: 0x86, fmt: "I", invalidValue: 0xffffffff, isSigned: false, size: 4, endianAbility: 1 },
+  0x07: { baseType: "string", baseTypeid: 0x07, fmt: "s", invalidValue: 0x00, isSigned: false, size: 1, endianAbility: 0 },
+  0x88: { baseType: "float32", baseTypeid: 0x88, fmt: "f", invalidValue: NaN, isSigned: true, size: 4, endianAbility: 1 },
+  0x89: { baseType: "float64", baseTypeid: 0x89, fmt: "d", invalidValue: NaN, isSigned: true, size: 8, endianAbility: 1 },
+  0x0a: { baseType: "uint8z", baseTypeid: 0x0a, fmt: "B", invalidValue: 0x0, isSigned: false, size: 1, endianAbility: 0 },
+  0x8b: { baseType: "uint16z", baseTypeid: 0x8b, fmt: "H", invalidValue: 0x0, isSigned: false, size: 2, endianAbility: 1 },
+  0x8c: { baseType: "uint32z", baseTypeid: 0x8c, fmt: "I", invalidValue: 0x0, isSigned: false, size: 4, endianAbility: 1 },
+  0x0d: { baseType: "byte", baseTypeid: 0x0d, fmt: "B", invalidValue: 0xff, isSigned: false, size: 1, endianAbility: 0 },
+  0x8e: { baseType: "sint64", baseTypeid: 0x8e, fmt: "q", invalidValue: 0x7fffffffffffffff, isSigned: true, size: 8, endianAbility: 1 },
+  0x8f: { baseType: "uint64", baseTypeid: 0x8f, fmt: "Q", invalidValue: 0xffffffffffffffff, isSigned: false, size: 8, endianAbility: 1 },
+  0x90: { baseType: "uint64z", baseTypeid: 0x90, fmt: "Q", invalidValue: 0, isSigned: false, size: 8, endianAbility: 1 },
 } as const;
 
 export const profileTypeList = {
@@ -4783,10 +4783,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'file',
         type: profileTypeList['file'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['file'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -4797,10 +4798,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'manufacturer',
         type: profileTypeList['manufacturer'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['manufacturer'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -4811,6 +4813,8 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -4819,6 +4823,8 @@ export const messageList = [
             name: 'favero_product',
             typeId: 'favero_product',
             type: profileTypeList['favero_product'],
+            baseType: baseTypesList[0x84],
+            profileType: profileTypeList['favero_product'],
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -4838,6 +4844,8 @@ export const messageList = [
             name: 'garmin_product',
             typeId: 'garmin_product',
             type: profileTypeList['garmin_product'],
+            baseType: baseTypesList[0x84],
+            profileType: profileTypeList['garmin_product'],
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -4870,7 +4878,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       },
       {
@@ -4881,10 +4888,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32z',
         type: baseTypesList[0x8C],
+        baseType: baseTypesList[0x8C],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Only set for files that are can be created/erased. */
@@ -4896,10 +4904,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Only set for files that are not created/erased. */
@@ -4911,10 +4920,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Optional free form string to indicate the devices name or model */
@@ -4926,10 +4936,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -4947,10 +4958,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -4961,10 +4973,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -4983,10 +4996,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Fractional part of the UTC timestamp at the time the system timestamp was recorded. */
@@ -4998,10 +5012,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Whole second part of the system timestamp */
@@ -5013,10 +5028,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Fractional part of the system timestamp */
@@ -5028,10 +5044,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** timestamp epoch expressed in local time used to convert timestamps to local time */
@@ -5043,10 +5060,11 @@ export const messageList = [
         units: 's',
         typeId: 'local_date_time',
         type: profileTypeList['local_date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['local_date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Millisecond part of the UTC timestamp at the time the system timestamp was recorded. */
@@ -5058,10 +5076,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Millisecond part of the system timestamp */
@@ -5073,10 +5092,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -5094,10 +5114,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5108,10 +5129,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5122,10 +5144,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -5143,10 +5166,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'manufacturer',
         type: profileTypeList['manufacturer'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['manufacturer'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5157,6 +5181,8 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -5165,6 +5191,8 @@ export const messageList = [
             name: 'favero_product',
             typeId: 'favero_product',
             type: profileTypeList['favero_product'],
+            baseType: baseTypesList[0x84],
+            profileType: profileTypeList['favero_product'],
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -5184,6 +5212,8 @@ export const messageList = [
             name: 'garmin_product',
             typeId: 'garmin_product',
             type: profileTypeList['garmin_product'],
+            baseType: baseTypesList[0x84],
+            profileType: profileTypeList['garmin_product'],
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -5216,7 +5246,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       }
     ],
@@ -5235,10 +5264,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8z',
         type: baseTypesList[0x0A],
+        baseType: baseTypesList[0x0A],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Use sport_bits_x types where x is index of array. */
@@ -5250,10 +5280,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sport_bits_0',
         type: profileTypeList['sport_bits_0'],
+        baseType: baseTypesList[0x0A],
+        profileType: profileTypeList['sport_bits_0'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5264,10 +5295,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'workout_capabilities',
         type: profileTypeList['workout_capabilities'],
+        baseType: baseTypesList[0x8C],
+        profileType: profileTypeList['workout_capabilities'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5278,10 +5310,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'connectivity_capabilities',
         type: profileTypeList['connectivity_capabilities'],
+        baseType: baseTypesList[0x8C],
+        profileType: profileTypeList['connectivity_capabilities'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -5299,10 +5332,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5313,10 +5347,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'file',
         type: profileTypeList['file'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['file'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5327,10 +5362,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'file_flags',
         type: profileTypeList['file_flags'],
+        baseType: baseTypesList[0x0A],
+        profileType: profileTypeList['file_flags'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5341,10 +5377,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5355,10 +5392,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5369,10 +5407,11 @@ export const messageList = [
         units: 'bytes',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -5390,10 +5429,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5404,10 +5444,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'file',
         type: profileTypeList['file'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['file'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5418,10 +5459,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'mesg_num',
         type: profileTypeList['mesg_num'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['mesg_num'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5432,10 +5474,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'mesg_count',
         type: profileTypeList['mesg_count'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['mesg_count'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5446,6 +5489,8 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -5454,6 +5499,8 @@ export const messageList = [
             name: 'num_per_file',
             typeId: 'uint16',
             type: baseTypesList[0x84],
+            baseType: baseTypesList[0x84],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -5473,6 +5520,8 @@ export const messageList = [
             name: 'max_per_file',
             typeId: 'uint16',
             type: baseTypesList[0x84],
+            baseType: baseTypesList[0x84],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -5492,6 +5541,8 @@ export const messageList = [
             name: 'max_per_file_type',
             typeId: 'uint16',
             type: baseTypesList[0x84],
+            baseType: baseTypesList[0x84],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -5506,7 +5557,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       }
     ],
@@ -5524,10 +5574,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5538,10 +5589,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'file',
         type: profileTypeList['file'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['file'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5552,10 +5604,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'mesg_num',
         type: profileTypeList['mesg_num'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['mesg_num'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5566,10 +5619,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5580,10 +5634,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -5602,10 +5657,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Offset from system time. Required to convert timestamp from system time to UTC. */
@@ -5617,10 +5673,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Offset from system time. */
@@ -5632,10 +5689,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Display mode for the time */
@@ -5647,10 +5705,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'time_mode',
         type: profileTypeList['time_mode'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['time_mode'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** timezone offset in 1/4 hour increments */
@@ -5662,10 +5721,11 @@ export const messageList = [
         units: 'hr',
         typeId: 'sint8',
         type: baseTypesList[0x01],
+        baseType: baseTypesList[0x01],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Mode for backlight */
@@ -5677,10 +5737,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'backlight_mode',
         type: profileTypeList['backlight_mode'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['backlight_mode'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Enabled state of the activity tracker functionality */
@@ -5692,10 +5753,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** UTC timestamp used to set the devices clock and date */
@@ -5707,10 +5769,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Bitfield  to configure enabled screens for each supported loop */
@@ -5722,10 +5785,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Enabled state of the move alert */
@@ -5737,10 +5801,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Display mode for the date */
@@ -5752,10 +5817,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_mode',
         type: profileTypeList['date_mode'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['date_mode'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5766,10 +5832,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'display_orientation',
         type: profileTypeList['display_orientation'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['display_orientation'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5780,10 +5847,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'side',
         type: profileTypeList['side'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['side'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Bitfield to indicate one page as default for each supported loop */
@@ -5795,10 +5863,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Minimum steps before an autosync can occur */
@@ -5810,10 +5879,11 @@ export const messageList = [
         units: 'steps',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Minimum minutes before an autosync can occur */
@@ -5825,10 +5895,11 @@ export const messageList = [
         units: 'minutes',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Enable auto-detect setting for the lactate threshold feature. */
@@ -5840,10 +5911,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Automatically upload using BLE */
@@ -5855,10 +5927,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Helps to conserve battery by changing modes */
@@ -5870,10 +5943,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'auto_sync_frequency',
         type: profileTypeList['auto_sync_frequency'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['auto_sync_frequency'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Allows setting specific activities auto-activity detect enabled/disabled settings */
@@ -5885,10 +5959,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'auto_activity_detect',
         type: profileTypeList['auto_activity_detect'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['auto_activity_detect'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Number of screens configured to display */
@@ -5900,10 +5975,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Smart Notification display orientation */
@@ -5915,10 +5991,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'display_orientation',
         type: profileTypeList['display_orientation'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['display_orientation'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5929,10 +6006,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'switch',
         type: profileTypeList['switch'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['switch'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Used to hold the tap threshold setting */
@@ -5944,10 +6022,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'tap_sensitivity',
         type: profileTypeList['tap_sensitivity'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['tap_sensitivity'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -5965,10 +6044,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5979,10 +6059,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -5993,10 +6074,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'gender',
         type: profileTypeList['gender'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['gender'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6007,10 +6089,11 @@ export const messageList = [
         units: 'years',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6021,10 +6104,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6035,10 +6119,11 @@ export const messageList = [
         units: 'kg',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6049,10 +6134,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'language',
         type: profileTypeList['language'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['language'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6063,10 +6149,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'display_measure',
         type: profileTypeList['display_measure'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['display_measure'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6077,10 +6164,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'display_measure',
         type: profileTypeList['display_measure'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['display_measure'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6091,10 +6179,11 @@ export const messageList = [
         units: 'bpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6105,10 +6194,11 @@ export const messageList = [
         units: 'bpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6119,10 +6209,11 @@ export const messageList = [
         units: 'bpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6133,10 +6224,11 @@ export const messageList = [
         units: 'bpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6147,10 +6239,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'display_heart',
         type: profileTypeList['display_heart'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['display_heart'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6161,10 +6254,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'display_measure',
         type: profileTypeList['display_measure'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['display_measure'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6175,10 +6269,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'display_measure',
         type: profileTypeList['display_measure'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['display_measure'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6189,10 +6284,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'display_power',
         type: profileTypeList['display_power'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['display_power'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6203,10 +6299,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'activity_class',
         type: profileTypeList['activity_class'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['activity_class'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6217,10 +6314,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'display_position',
         type: profileTypeList['display_position'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['display_position'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6231,10 +6329,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'display_measure',
         type: profileTypeList['display_measure'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['display_measure'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6245,10 +6344,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'user_local_id',
         type: profileTypeList['user_local_id'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['user_local_id'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6259,10 +6359,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'byte',
         type: baseTypesList[0x0D],
+        baseType: baseTypesList[0x0D],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Typical wake time */
@@ -6274,10 +6375,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'localtime_into_day',
         type: profileTypeList['localtime_into_day'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['localtime_into_day'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Typical bed time */
@@ -6289,10 +6391,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'localtime_into_day',
         type: profileTypeList['localtime_into_day'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['localtime_into_day'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6303,10 +6406,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'display_measure',
         type: profileTypeList['display_measure'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['display_measure'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** User defined running step length set to 0 for auto length */
@@ -6318,10 +6422,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** User defined walking step length set to 0 for auto length */
@@ -6333,10 +6438,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6347,10 +6453,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'display_measure',
         type: profileTypeList['display_measure'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['display_measure'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6361,10 +6468,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -6382,10 +6490,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6396,10 +6505,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6410,10 +6520,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16z',
         type: baseTypesList[0x8B],
+        baseType: baseTypesList[0x8B],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6424,10 +6535,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6438,10 +6550,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8z',
         type: baseTypesList[0x0A],
+        baseType: baseTypesList[0x0A],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -6459,10 +6572,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6473,10 +6587,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6487,10 +6602,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16z',
         type: baseTypesList[0x8B],
+        baseType: baseTypesList[0x8B],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6501,10 +6617,11 @@ export const messageList = [
         units: '%',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6515,10 +6632,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Use footpod for speed source instead of GPS */
@@ -6530,10 +6648,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6544,10 +6663,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8z',
         type: baseTypesList[0x0A],
+        baseType: baseTypesList[0x0A],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Rollover counter that can be used to extend the odometer */
@@ -6559,10 +6679,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -6580,10 +6701,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6594,10 +6716,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6608,10 +6731,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sport',
         type: profileTypeList['sport'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sport'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6622,10 +6746,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sub_sport',
         type: profileTypeList['sub_sport'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sub_sport'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6636,10 +6761,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6650,10 +6776,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16z',
         type: baseTypesList[0x8B],
+        baseType: baseTypesList[0x8B],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6664,10 +6791,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16z',
         type: baseTypesList[0x8B],
+        baseType: baseTypesList[0x8B],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6678,10 +6806,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16z',
         type: baseTypesList[0x8B],
+        baseType: baseTypesList[0x8B],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6692,10 +6821,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16z',
         type: baseTypesList[0x8B],
+        baseType: baseTypesList[0x8B],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6706,10 +6836,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6720,10 +6851,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6734,10 +6866,11 @@ export const messageList = [
         units: 'kg',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6748,10 +6881,11 @@ export const messageList = [
         units: '%',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6762,10 +6896,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6776,10 +6911,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6790,10 +6926,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6804,10 +6941,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6818,10 +6956,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6832,10 +6971,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6846,10 +6986,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6860,10 +7001,11 @@ export const messageList = [
         units: 'mm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6874,10 +7016,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6888,10 +7031,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8z',
         type: baseTypesList[0x0A],
+        baseType: baseTypesList[0x0A],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6902,10 +7046,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8z',
         type: baseTypesList[0x0A],
+        baseType: baseTypesList[0x0A],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6916,10 +7061,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8z',
         type: baseTypesList[0x0A],
+        baseType: baseTypesList[0x0A],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -6930,10 +7076,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8z',
         type: baseTypesList[0x0A],
+        baseType: baseTypesList[0x0A],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Rollover counter that can be used to extend the odometer */
@@ -6945,10 +7092,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Number of front gears */
@@ -6960,10 +7108,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8z',
         type: baseTypesList[0x0A],
+        baseType: baseTypesList[0x0A],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Number of teeth on each gear 0 is innermost */
@@ -6975,10 +7124,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8z',
         type: baseTypesList[0x0A],
+        baseType: baseTypesList[0x0A],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Number of rear gears */
@@ -6990,10 +7140,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8z',
         type: baseTypesList[0x0A],
+        baseType: baseTypesList[0x0A],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Number of teeth on each gear 0 is innermost */
@@ -7005,10 +7156,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8z',
         type: baseTypesList[0x0A],
+        baseType: baseTypesList[0x0A],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7019,10 +7171,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -7041,10 +7194,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Use Bluetooth Low Energy for connectivity features */
@@ -7056,10 +7210,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Use ANT for connectivity features */
@@ -7071,10 +7226,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7085,10 +7241,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7099,10 +7256,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7113,10 +7271,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7127,10 +7286,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7141,10 +7301,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7155,10 +7316,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7169,10 +7331,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7183,10 +7346,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7197,10 +7361,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7211,10 +7376,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -7232,10 +7398,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7246,10 +7413,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'watchface_mode',
         type: profileTypeList['watchface_mode'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['watchface_mode'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7260,6 +7428,8 @@ export const messageList = [
         units: 'undefined',
         typeId: 'byte',
         type: baseTypesList[0x0D],
+        baseType: baseTypesList[0x0D],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -7268,6 +7438,8 @@ export const messageList = [
             name: 'digital_layout',
             typeId: 'digital_watchface_layout',
             type: profileTypeList['digital_watchface_layout'],
+            baseType: baseTypesList[0x00],
+            profileType: profileTypeList['digital_watchface_layout'],
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -7287,6 +7459,8 @@ export const messageList = [
             name: 'analog_layout',
             typeId: 'analog_watchface_layout',
             type: profileTypeList['analog_watchface_layout'],
+            baseType: baseTypesList[0x00],
+            profileType: profileTypeList['analog_watchface_layout'],
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -7301,7 +7475,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       }
     ],
@@ -7319,10 +7492,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7333,10 +7507,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'switch',
         type: profileTypeList['switch'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['switch'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -7354,10 +7529,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7368,10 +7544,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7382,10 +7559,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7396,10 +7574,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'hr_zone_calc',
         type: profileTypeList['hr_zone_calc'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['hr_zone_calc'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7410,10 +7589,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'pwr_zone_calc',
         type: profileTypeList['pwr_zone_calc'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['pwr_zone_calc'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -7431,10 +7611,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sport',
         type: profileTypeList['sport'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sport'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7445,10 +7626,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sub_sport',
         type: profileTypeList['sub_sport'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sub_sport'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7459,10 +7641,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -7480,10 +7663,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7494,10 +7678,11 @@ export const messageList = [
         units: 'bpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7508,10 +7693,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -7529,10 +7715,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7543,10 +7730,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7557,10 +7745,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -7578,10 +7767,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7592,10 +7782,11 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7606,10 +7797,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -7627,10 +7819,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7641,10 +7834,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7655,10 +7849,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -7676,10 +7871,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7690,10 +7886,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7704,10 +7901,11 @@ export const messageList = [
         units: 'kcal / min',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7718,10 +7916,11 @@ export const messageList = [
         units: 'kcal / min',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -7739,10 +7938,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7753,10 +7953,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7767,10 +7968,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'tissue_model_type',
         type: profileTypeList['tissue_model_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['tissue_model_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7781,10 +7983,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7795,10 +7998,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7809,10 +8013,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'water_type',
         type: profileTypeList['water_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['water_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Fresh water is usually 1000; salt water is usually 1025 */
@@ -7824,10 +8029,11 @@ export const messageList = [
         units: 'kg/m^3',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Typically 1.40 */
@@ -7839,10 +8045,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Typically 1.60 */
@@ -7854,10 +8061,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7868,10 +8076,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7882,10 +8091,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7896,10 +8106,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7910,10 +8121,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7924,10 +8136,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7938,10 +8151,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7952,10 +8166,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'dive_backlight_mode',
         type: profileTypeList['dive_backlight_mode'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['dive_backlight_mode'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7966,10 +8181,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -7980,10 +8196,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'backlight_timeout',
         type: profileTypeList['backlight_timeout'],
+        baseType: baseTypesList[0x02],
+        profileType: profileTypeList['backlight_timeout'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Time between surfacing and ending the activity */
@@ -7995,10 +8212,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Time at safety stop (if enabled) */
@@ -8010,10 +8228,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8024,10 +8243,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'source_type',
         type: profileTypeList['source_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['source_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8038,6 +8258,8 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -8046,6 +8268,8 @@ export const messageList = [
             name: 'heart_rate_antplus_device_type',
             typeId: 'antplus_device_type',
             type: profileTypeList['antplus_device_type'],
+            baseType: baseTypesList[0x02],
+            profileType: profileTypeList['antplus_device_type'],
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -8065,6 +8289,8 @@ export const messageList = [
             name: 'heart_rate_local_device_type',
             typeId: 'local_device_type',
             type: profileTypeList['local_device_type'],
+            baseType: baseTypesList[0x02],
+            profileType: profileTypeList['local_device_type'],
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -8079,7 +8305,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       }
     ],
@@ -8098,10 +8323,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8112,10 +8338,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8126,10 +8353,11 @@ export const messageList = [
         units: 's',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8140,10 +8368,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8154,10 +8383,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'dive_alarm_type',
         type: profileTypeList['dive_alarm_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['dive_alarm_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8168,10 +8398,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'tone',
         type: profileTypeList['tone'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['tone'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8182,10 +8413,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sub_sport',
         type: profileTypeList['sub_sport'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sub_sport'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -8203,10 +8435,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8217,10 +8450,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8231,10 +8465,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8245,10 +8480,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'dive_gas_status',
         type: profileTypeList['dive_gas_status'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['dive_gas_status'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -8266,10 +8502,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8280,10 +8517,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sport',
         type: profileTypeList['sport'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sport'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8294,10 +8532,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sub_sport',
         type: profileTypeList['sub_sport'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sub_sport'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8308,10 +8547,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8322,10 +8562,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8336,10 +8577,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'goal',
         type: profileTypeList['goal'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['goal'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8350,10 +8592,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8364,10 +8607,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8378,10 +8622,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8392,10 +8637,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'goal_recurrence',
         type: profileTypeList['goal_recurrence'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['goal_recurrence'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8406,10 +8652,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8420,10 +8667,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8434,10 +8682,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'goal_source',
         type: profileTypeList['goal_source'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['goal_source'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -8455,10 +8704,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Exclude pauses */
@@ -8470,10 +8720,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8484,10 +8735,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8498,10 +8750,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'activity',
         type: profileTypeList['activity'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['activity'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8512,10 +8765,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'event',
         type: profileTypeList['event'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['event'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8526,10 +8780,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'event_type',
         type: profileTypeList['event_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['event_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** timestamp epoch expressed in local time, used to convert activity timestamps to local time  */
@@ -8541,10 +8796,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'local_date_time',
         type: profileTypeList['local_date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['local_date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8555,10 +8811,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -8577,10 +8834,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Sesson end time. */
@@ -8592,10 +8850,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** session */
@@ -8607,10 +8866,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'event',
         type: profileTypeList['event'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['event'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** stop */
@@ -8622,10 +8882,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'event_type',
         type: profileTypeList['event_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['event_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8636,10 +8897,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8650,10 +8912,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8664,10 +8927,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8678,10 +8942,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sport',
         type: profileTypeList['sport'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sport'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8692,10 +8957,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sub_sport',
         type: profileTypeList['sub_sport'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sub_sport'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Time (includes pauses) */
@@ -8707,10 +8973,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Timer Time (excludes pauses) */
@@ -8722,10 +8989,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8736,10 +9004,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8750,6 +9019,8 @@ export const messageList = [
         units: 'cycles',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -8758,6 +9029,8 @@ export const messageList = [
             name: 'total_strides',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'strides',
@@ -8783,6 +9056,8 @@ export const messageList = [
             name: 'total_strokes',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'strokes',
@@ -8815,7 +9090,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       },
       {
@@ -8826,10 +9100,11 @@ export const messageList = [
         units: 'kcal',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8840,10 +9115,11 @@ export const messageList = [
         units: 'kcal',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** total_distance / total_timer_time */
@@ -8855,20 +9131,21 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
           {
-            id: '124',
+            id: 124,
             name: 'enhanced_avg_speed',
-            scale: '1000',
-            offset: 'undefined',
+            scale: 1000,
+            offset: undefined,
             units: 'm/s',
-            accumulate: 'undefined',
-            bits: '16',
-            bitOffset: '0',
+            accumulate: undefined,
+            bits: 16,
+            bitOffset: 0,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -8879,20 +9156,21 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
           {
-            id: '125',
+            id: 125,
             name: 'enhanced_max_speed',
-            scale: '1000',
-            offset: 'undefined',
+            scale: 1000,
+            offset: undefined,
             units: 'm/s',
-            accumulate: 'undefined',
-            bits: '16',
-            bitOffset: '0',
+            accumulate: undefined,
+            bits: 16,
+            bitOffset: 0,
           }
         ],
         subfields: [
-
         ],
       },
       /** average heart rate (excludes pause time) */
@@ -8904,10 +9182,11 @@ export const messageList = [
         units: 'bpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -8918,10 +9197,11 @@ export const messageList = [
         units: 'bpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** total_cycles / total_timer_time if non_zero_avg_cadence otherwise total_cycles / total_elapsed_time */
@@ -8933,6 +9213,8 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -8941,6 +9223,8 @@ export const messageList = [
             name: 'avg_running_cadence',
             typeId: 'uint8',
             type: baseTypesList[0x02],
+            baseType: baseTypesList[0x02],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'strides/min',
@@ -8955,7 +9239,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       },
       {
@@ -8966,6 +9249,8 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -8974,6 +9259,8 @@ export const messageList = [
             name: 'max_running_cadence',
             typeId: 'uint8',
             type: baseTypesList[0x02],
+            baseType: baseTypesList[0x02],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'strides/min',
@@ -8988,7 +9275,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       },
       /** total_power / total_timer_time if non_zero_avg_power otherwise total_power / total_elapsed_time */
@@ -9000,10 +9286,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9014,10 +9301,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9028,10 +9316,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9042,10 +9331,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9056,10 +9346,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9070,10 +9361,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9084,10 +9376,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9098,10 +9391,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9112,10 +9406,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'session_trigger',
         type: profileTypeList['session_trigger'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['session_trigger'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** North east corner latitude */
@@ -9127,10 +9422,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** North east corner longitude */
@@ -9142,10 +9438,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** South west corner latitude */
@@ -9157,10 +9454,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** South west corner longitude */
@@ -9172,10 +9470,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** # of lengths of swim pool */
@@ -9187,10 +9486,11 @@ export const messageList = [
         units: 'lengths',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9201,10 +9501,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9215,10 +9516,11 @@ export const messageList = [
         units: 'tss',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9229,10 +9531,11 @@ export const messageList = [
         units: 'if',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9243,10 +9546,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'left_right_balance_100',
         type: profileTypeList['left_right_balance_100'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['left_right_balance_100'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9257,10 +9561,11 @@ export const messageList = [
         units: 'strokes/lap',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9271,10 +9576,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9285,10 +9591,11 @@ export const messageList = [
         units: 'swim_stroke',
         typeId: 'swim_stroke',
         type: profileTypeList['swim_stroke'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['swim_stroke'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9299,10 +9606,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9313,10 +9621,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9327,10 +9636,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'display_measure',
         type: profileTypeList['display_measure'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['display_measure'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** # of active lengths of swim pool */
@@ -9342,10 +9652,11 @@ export const messageList = [
         units: 'lengths',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9356,10 +9667,11 @@ export const messageList = [
         units: 'J',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9370,20 +9682,21 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
           {
-            id: '126',
+            id: 126,
             name: 'enhanced_avg_altitude',
-            scale: '5',
-            offset: '500',
+            scale: 5,
+            offset: 500,
             units: 'm',
-            accumulate: 'undefined',
-            bits: '16',
-            bitOffset: '0',
+            accumulate: undefined,
+            bits: 16,
+            bitOffset: 0,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -9394,20 +9707,21 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
           {
-            id: '128',
+            id: 128,
             name: 'enhanced_max_altitude',
-            scale: '5',
-            offset: '500',
+            scale: 5,
+            offset: 500,
             units: 'm',
-            accumulate: 'undefined',
-            bits: '16',
-            bitOffset: '0',
+            accumulate: undefined,
+            bits: 16,
+            bitOffset: 0,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -9418,10 +9732,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9432,10 +9747,11 @@ export const messageList = [
         units: '%',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9446,10 +9762,11 @@ export const messageList = [
         units: '%',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9460,10 +9777,11 @@ export const messageList = [
         units: '%',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9474,10 +9792,11 @@ export const messageList = [
         units: '%',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9488,10 +9807,11 @@ export const messageList = [
         units: '%',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9502,10 +9822,11 @@ export const messageList = [
         units: 'C',
         typeId: 'sint8',
         type: baseTypesList[0x01],
+        baseType: baseTypesList[0x01],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9516,10 +9837,11 @@ export const messageList = [
         units: 'C',
         typeId: 'sint8',
         type: baseTypesList[0x01],
+        baseType: baseTypesList[0x01],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9530,10 +9852,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9544,10 +9867,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9558,10 +9882,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9572,10 +9897,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9586,10 +9912,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9600,10 +9927,11 @@ export const messageList = [
         units: 'bpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9614,10 +9942,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9628,10 +9957,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9642,10 +9972,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9656,10 +9987,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9670,10 +10002,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9684,10 +10017,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9698,20 +10032,21 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
           {
-            id: '127',
+            id: 127,
             name: 'enhanced_min_altitude',
-            scale: '5',
-            offset: '500',
+            scale: 5,
+            offset: 500,
             units: 'm',
-            accumulate: 'undefined',
-            bits: '16',
-            bitOffset: '0',
+            accumulate: undefined,
+            bits: 16,
+            bitOffset: 0,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -9722,10 +10057,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9736,10 +10072,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9750,10 +10087,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** stroke_type enum used as the index */
@@ -9765,10 +10103,11 @@ export const messageList = [
         units: 'counts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** zone number used as the index */
@@ -9780,10 +10119,11 @@ export const messageList = [
         units: 'counts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9794,10 +10134,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9808,10 +10149,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9822,10 +10164,11 @@ export const messageList = [
         units: 'mm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9836,10 +10179,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9850,10 +10194,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** fractional part of the avg_cadence */
@@ -9865,10 +10210,11 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** fractional part of the max_cadence */
@@ -9880,10 +10226,11 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** fractional part of the total_cycles */
@@ -9895,10 +10242,11 @@ export const messageList = [
         units: 'cycles',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Avg saturated and unsaturated hemoglobin */
@@ -9910,10 +10258,11 @@ export const messageList = [
         units: 'g/dL',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Min saturated and unsaturated hemoglobin */
@@ -9925,10 +10274,11 @@ export const messageList = [
         units: 'g/dL',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Max saturated and unsaturated hemoglobin */
@@ -9940,10 +10290,11 @@ export const messageList = [
         units: 'g/dL',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Avg percentage of hemoglobin saturated with oxygen */
@@ -9955,10 +10306,11 @@ export const messageList = [
         units: '%',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Min percentage of hemoglobin saturated with oxygen */
@@ -9970,10 +10322,11 @@ export const messageList = [
         units: '%',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Max percentage of hemoglobin saturated with oxygen */
@@ -9985,10 +10338,11 @@ export const messageList = [
         units: '%',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -9999,10 +10353,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10013,10 +10368,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10027,10 +10383,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10041,10 +10398,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10055,10 +10413,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10069,10 +10428,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Total time spend in the standing position */
@@ -10084,10 +10444,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Number of transitions to the standing state */
@@ -10099,10 +10460,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average platform center offset Left */
@@ -10114,10 +10476,11 @@ export const messageList = [
         units: 'mm',
         typeId: 'sint8',
         type: baseTypesList[0x01],
+        baseType: baseTypesList[0x01],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average platform center offset Right */
@@ -10129,10 +10492,11 @@ export const messageList = [
         units: 'mm',
         typeId: 'sint8',
         type: baseTypesList[0x01],
+        baseType: baseTypesList[0x01],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average left power phase angles. Indexes defined by power_phase_type. */
@@ -10144,10 +10508,11 @@ export const messageList = [
         units: 'degrees',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average left power phase peak angles. Data value indexes defined by power_phase_type. */
@@ -10159,10 +10524,11 @@ export const messageList = [
         units: 'degrees',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average right power phase angles. Data value indexes defined by power_phase_type. */
@@ -10174,10 +10540,11 @@ export const messageList = [
         units: 'degrees',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average right power phase peak angles data value indexes  defined by power_phase_type. */
@@ -10189,10 +10556,11 @@ export const messageList = [
         units: 'degrees',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average power by position. Data value indexes defined by rider_position_type. */
@@ -10204,10 +10572,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Maximum power by position. Data value indexes defined by rider_position_type. */
@@ -10219,10 +10588,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average cadence by position. Data value indexes defined by rider_position_type. */
@@ -10234,10 +10604,11 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Maximum cadence by position. Data value indexes defined by rider_position_type. */
@@ -10249,10 +10620,11 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** total_distance / total_timer_time */
@@ -10264,10 +10636,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10278,10 +10651,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10292,10 +10666,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10306,10 +10681,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10320,10 +10696,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** lev average motor power during session */
@@ -10335,10 +10712,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** lev maximum motor power during session */
@@ -10350,10 +10728,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** lev battery consumption during session */
@@ -10365,10 +10744,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10379,10 +10759,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10393,10 +10774,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10407,10 +10789,11 @@ export const messageList = [
         units: 'mm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10421,10 +10804,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10435,10 +10819,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** The grit score estimates how challenging a route could be for a cyclist in terms of time spent going over sharp turns or large grade slopes. */
@@ -10450,10 +10835,11 @@ export const messageList = [
         units: 'kGrit',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** The flow score estimates how long distance wise a cyclist deaccelerates over intervals where deacceleration is unnecessary such as smooth turns or small grade angle intervals. */
@@ -10465,10 +10851,11 @@ export const messageList = [
         units: 'Flow',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10479,10 +10866,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** The grit score estimates how challenging a route could be for a cyclist in terms of time spent going over sharp turns or large grade slopes. */
@@ -10494,10 +10882,11 @@ export const messageList = [
         units: 'kGrit',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** The flow score estimates how long distance wise a cyclist deaccelerates over intervals where deacceleration is unnecessary such as smooth turns or small grade angle intervals. */
@@ -10509,10 +10898,11 @@ export const messageList = [
         units: 'Flow',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** fractional part of total_ascent */
@@ -10524,10 +10914,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** fractional part of total_descent */
@@ -10539,10 +10930,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10553,10 +10945,11 @@ export const messageList = [
         units: 'C',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10567,10 +10960,11 @@ export const messageList = [
         units: 'C',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10581,10 +10975,11 @@ export const messageList = [
         units: 'C',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -10602,10 +10997,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Lap end time. */
@@ -10617,10 +11013,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10631,10 +11028,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'event',
         type: profileTypeList['event'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['event'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10645,10 +11043,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'event_type',
         type: profileTypeList['event_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['event_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10659,10 +11058,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10673,10 +11073,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10687,10 +11088,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10701,10 +11103,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10715,10 +11118,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Time (includes pauses) */
@@ -10730,10 +11134,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Timer Time (excludes pauses) */
@@ -10745,10 +11150,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10759,10 +11165,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10773,6 +11180,8 @@ export const messageList = [
         units: 'cycles',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -10781,6 +11190,8 @@ export const messageList = [
             name: 'total_strides',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'strides',
@@ -10806,6 +11217,8 @@ export const messageList = [
             name: 'total_strokes',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'strokes',
@@ -10838,7 +11251,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       },
       {
@@ -10849,10 +11261,11 @@ export const messageList = [
         units: 'kcal',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** If New Leaf */
@@ -10864,10 +11277,11 @@ export const messageList = [
         units: 'kcal',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10878,20 +11292,21 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
           {
-            id: '110',
+            id: 110,
             name: 'enhanced_avg_speed',
-            scale: '1000',
-            offset: 'undefined',
+            scale: 1000,
+            offset: undefined,
             units: 'm/s',
-            accumulate: 'undefined',
-            bits: '16',
-            bitOffset: '0',
+            accumulate: undefined,
+            bits: 16,
+            bitOffset: 0,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -10902,20 +11317,21 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
           {
-            id: '111',
+            id: 111,
             name: 'enhanced_max_speed',
-            scale: '1000',
-            offset: 'undefined',
+            scale: 1000,
+            offset: undefined,
             units: 'm/s',
-            accumulate: 'undefined',
-            bits: '16',
-            bitOffset: '0',
+            accumulate: undefined,
+            bits: 16,
+            bitOffset: 0,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -10926,10 +11342,11 @@ export const messageList = [
         units: 'bpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -10940,10 +11357,11 @@ export const messageList = [
         units: 'bpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** total_cycles / total_timer_time if non_zero_avg_cadence otherwise total_cycles / total_elapsed_time */
@@ -10955,6 +11373,8 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -10963,6 +11383,8 @@ export const messageList = [
             name: 'avg_running_cadence',
             typeId: 'uint8',
             type: baseTypesList[0x02],
+            baseType: baseTypesList[0x02],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'strides/min',
@@ -10977,7 +11399,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       },
       {
@@ -10988,6 +11409,8 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -10996,6 +11419,8 @@ export const messageList = [
             name: 'max_running_cadence',
             typeId: 'uint8',
             type: baseTypesList[0x02],
+            baseType: baseTypesList[0x02],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'strides/min',
@@ -11010,7 +11435,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       },
       /** total_power / total_timer_time if non_zero_avg_power otherwise total_power / total_elapsed_time */
@@ -11022,10 +11446,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11036,10 +11461,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11050,10 +11476,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11064,10 +11491,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11078,10 +11506,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'intensity',
         type: profileTypeList['intensity'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['intensity'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11092,10 +11521,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'lap_trigger',
         type: profileTypeList['lap_trigger'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['lap_trigger'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11106,10 +11536,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sport',
         type: profileTypeList['sport'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sport'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11120,10 +11551,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** # of lengths of swim pool */
@@ -11135,10 +11567,11 @@ export const messageList = [
         units: 'lengths',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11149,10 +11582,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11163,10 +11597,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'left_right_balance_100',
         type: profileTypeList['left_right_balance_100'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['left_right_balance_100'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11177,10 +11612,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11191,10 +11627,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11205,10 +11642,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'swim_stroke',
         type: profileTypeList['swim_stroke'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['swim_stroke'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11219,10 +11657,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sub_sport',
         type: profileTypeList['sub_sport'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sub_sport'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** # of active lengths of swim pool */
@@ -11234,10 +11673,11 @@ export const messageList = [
         units: 'lengths',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11248,10 +11688,11 @@ export const messageList = [
         units: 'J',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11262,20 +11703,21 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
           {
-            id: '112',
+            id: 112,
             name: 'enhanced_avg_altitude',
-            scale: '5',
-            offset: '500',
+            scale: 5,
+            offset: 500,
             units: 'm',
-            accumulate: 'undefined',
-            bits: '16',
-            bitOffset: '0',
+            accumulate: undefined,
+            bits: 16,
+            bitOffset: 0,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -11286,20 +11728,21 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
           {
-            id: '114',
+            id: 114,
             name: 'enhanced_max_altitude',
-            scale: '5',
-            offset: '500',
+            scale: 5,
+            offset: 500,
             units: 'm',
-            accumulate: 'undefined',
-            bits: '16',
-            bitOffset: '0',
+            accumulate: undefined,
+            bits: 16,
+            bitOffset: 0,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -11310,10 +11753,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11324,10 +11768,11 @@ export const messageList = [
         units: '%',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11338,10 +11783,11 @@ export const messageList = [
         units: '%',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11352,10 +11798,11 @@ export const messageList = [
         units: '%',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11366,10 +11813,11 @@ export const messageList = [
         units: '%',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11380,10 +11828,11 @@ export const messageList = [
         units: '%',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11394,10 +11843,11 @@ export const messageList = [
         units: 'C',
         typeId: 'sint8',
         type: baseTypesList[0x01],
+        baseType: baseTypesList[0x01],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11408,10 +11858,11 @@ export const messageList = [
         units: 'C',
         typeId: 'sint8',
         type: baseTypesList[0x01],
+        baseType: baseTypesList[0x01],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11422,10 +11873,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11436,10 +11888,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11450,10 +11903,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11464,10 +11918,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11478,10 +11933,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11492,10 +11948,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11506,10 +11963,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11520,10 +11978,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11534,10 +11993,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11548,10 +12008,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11562,20 +12023,21 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
           {
-            id: '113',
+            id: 113,
             name: 'enhanced_min_altitude',
-            scale: '5',
-            offset: '500',
+            scale: 5,
+            offset: 500,
             units: 'm',
-            accumulate: 'undefined',
-            bits: '16',
-            bitOffset: '0',
+            accumulate: undefined,
+            bits: 16,
+            bitOffset: 0,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -11586,10 +12048,11 @@ export const messageList = [
         units: 'bpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11600,10 +12063,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11614,10 +12078,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** stroke_type enum used as the index */
@@ -11629,10 +12094,11 @@ export const messageList = [
         units: 'counts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** zone number used as the index */
@@ -11644,10 +12110,11 @@ export const messageList = [
         units: 'counts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11658,10 +12125,11 @@ export const messageList = [
         units: 'mm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11672,10 +12140,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11686,10 +12155,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** fractional part of the avg_cadence */
@@ -11701,10 +12171,11 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** fractional part of the max_cadence */
@@ -11716,10 +12187,11 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** fractional part of the total_cycles */
@@ -11731,10 +12203,11 @@ export const messageList = [
         units: 'cycles',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11745,10 +12218,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Avg saturated and unsaturated hemoglobin */
@@ -11760,10 +12234,11 @@ export const messageList = [
         units: 'g/dL',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Min saturated and unsaturated hemoglobin */
@@ -11775,10 +12250,11 @@ export const messageList = [
         units: 'g/dL',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Max saturated and unsaturated hemoglobin */
@@ -11790,10 +12266,11 @@ export const messageList = [
         units: 'g/dL',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Avg percentage of hemoglobin saturated with oxygen */
@@ -11805,10 +12282,11 @@ export const messageList = [
         units: '%',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Min percentage of hemoglobin saturated with oxygen */
@@ -11820,10 +12298,11 @@ export const messageList = [
         units: '%',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Max percentage of hemoglobin saturated with oxygen */
@@ -11835,10 +12314,11 @@ export const messageList = [
         units: '%',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11849,10 +12329,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11863,10 +12344,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11877,10 +12359,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11891,10 +12374,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -11905,10 +12389,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Total time spent in the standing position */
@@ -11920,10 +12405,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Number of transitions to the standing state */
@@ -11935,10 +12421,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average left platform center offset */
@@ -11950,10 +12437,11 @@ export const messageList = [
         units: 'mm',
         typeId: 'sint8',
         type: baseTypesList[0x01],
+        baseType: baseTypesList[0x01],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average right platform center offset */
@@ -11965,10 +12453,11 @@ export const messageList = [
         units: 'mm',
         typeId: 'sint8',
         type: baseTypesList[0x01],
+        baseType: baseTypesList[0x01],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average left power phase angles. Data value indexes defined by power_phase_type. */
@@ -11980,10 +12469,11 @@ export const messageList = [
         units: 'degrees',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average left power phase peak angles. Data value indexes  defined by power_phase_type. */
@@ -11995,10 +12485,11 @@ export const messageList = [
         units: 'degrees',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average right power phase angles. Data value indexes defined by power_phase_type. */
@@ -12010,10 +12501,11 @@ export const messageList = [
         units: 'degrees',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average right power phase peak angles. Data value indexes  defined by power_phase_type. */
@@ -12025,10 +12517,11 @@ export const messageList = [
         units: 'degrees',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average power by position. Data value indexes defined by rider_position_type. */
@@ -12040,10 +12533,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Maximum power by position. Data value indexes defined by rider_position_type. */
@@ -12055,10 +12549,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average cadence by position. Data value indexes defined by rider_position_type. */
@@ -12070,10 +12565,11 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Maximum cadence by position. Data value indexes defined by rider_position_type. */
@@ -12085,10 +12581,11 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12099,10 +12596,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12113,10 +12611,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12127,10 +12626,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12141,10 +12641,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12155,10 +12656,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** lev average motor power during lap */
@@ -12170,10 +12672,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** lev maximum motor power during lap */
@@ -12185,10 +12688,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** lev battery consumption during lap */
@@ -12200,10 +12704,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12214,10 +12719,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12228,10 +12734,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12242,10 +12749,11 @@ export const messageList = [
         units: 'mm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12256,10 +12764,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** The grit score estimates how challenging a route could be for a cyclist in terms of time spent going over sharp turns or large grade slopes. */
@@ -12271,10 +12780,11 @@ export const messageList = [
         units: 'kGrit',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** The flow score estimates how long distance wise a cyclist deaccelerates over intervals where deacceleration is unnecessary such as smooth turns or small grade angle intervals. */
@@ -12286,10 +12796,11 @@ export const messageList = [
         units: 'Flow',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12300,10 +12811,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** The grit score estimates how challenging a route could be for a cyclist in terms of time spent going over sharp turns or large grade slopes. */
@@ -12315,10 +12827,11 @@ export const messageList = [
         units: 'kGrit',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** The flow score estimates how long distance wise a cyclist deaccelerates over intervals where deacceleration is unnecessary such as smooth turns or small grade angle intervals. */
@@ -12330,10 +12843,11 @@ export const messageList = [
         units: 'Flow',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** fractional part of total_ascent */
@@ -12345,10 +12859,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** fractional part of total_descent */
@@ -12360,10 +12875,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12374,10 +12890,11 @@ export const messageList = [
         units: 'C',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12388,10 +12905,11 @@ export const messageList = [
         units: 'C',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12402,10 +12920,11 @@ export const messageList = [
         units: 'C',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -12423,10 +12942,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12437,10 +12957,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12451,10 +12972,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'event',
         type: profileTypeList['event'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['event'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12465,10 +12987,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'event_type',
         type: profileTypeList['event_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['event_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12479,10 +13002,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12493,10 +13017,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12507,10 +13032,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12521,10 +13047,11 @@ export const messageList = [
         units: 'strokes',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12535,10 +13062,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12549,10 +13077,11 @@ export const messageList = [
         units: 'swim_stroke',
         typeId: 'swim_stroke',
         type: profileTypeList['swim_stroke'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['swim_stroke'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12563,10 +13092,11 @@ export const messageList = [
         units: 'strokes/min',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12577,10 +13107,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12591,10 +13122,11 @@ export const messageList = [
         units: 'kcal',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12605,10 +13137,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'length_type',
         type: profileTypeList['length_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['length_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12619,10 +13152,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12633,10 +13167,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** stroke_type enum used as the index */
@@ -12648,10 +13183,11 @@ export const messageList = [
         units: 'counts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** zone number used as the index */
@@ -12663,10 +13199,11 @@ export const messageList = [
         units: 'counts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -12684,10 +13221,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12698,10 +13236,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12712,10 +13251,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12726,20 +13266,21 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
           {
-            id: '78',
+            id: 78,
             name: 'enhanced_altitude',
-            scale: '5',
-            offset: '500',
+            scale: 5,
+            offset: 500,
             units: 'm',
-            accumulate: 'undefined',
-            bits: '16',
-            bitOffset: '0',
+            accumulate: undefined,
+            bits: 16,
+            bitOffset: 0,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -12750,10 +13291,11 @@ export const messageList = [
         units: 'bpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12764,10 +13306,11 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12778,10 +13321,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12792,20 +13336,21 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
           {
-            id: '73',
+            id: 73,
             name: 'enhanced_speed',
-            scale: '1000',
-            offset: 'undefined',
+            scale: 1000,
+            offset: undefined,
             units: 'm/s',
-            accumulate: 'undefined',
-            bits: '16',
-            bitOffset: '0',
+            accumulate: undefined,
+            bits: 16,
+            bitOffset: 0,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -12816,10 +13361,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12830,30 +13376,31 @@ export const messageList = [
         units: 'undefined',
         typeId: 'byte',
         type: baseTypesList[0x0D],
+        baseType: baseTypesList[0x0D],
+        profileType: undefined,
         components: [
           {
-            id: '6',
+            id: 6,
             name: 'speed',
-            scale: '100',
-            offset: 'undefined',
+            scale: 100,
+            offset: undefined,
             units: 'm/s',
-            accumulate: 'false',
-            bits: '12',
-            bitOffset: '0',
+            accumulate: false,
+            bits: 12,
+            bitOffset: 0,
           },
           {
-            id: '5',
+            id: 5,
             name: 'distance',
-            scale: '16',
-            offset: 'undefined',
+            scale: 16,
+            offset: undefined,
             units: 'm',
-            accumulate: 'true',
-            bits: '12',
-            bitOffset: '12',
+            accumulate: true,
+            bits: 12,
+            bitOffset: 12,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -12864,10 +13411,11 @@ export const messageList = [
         units: '%',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Relative. 0 is none  254 is Max. */
@@ -12879,10 +13427,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12893,10 +13442,11 @@ export const messageList = [
         units: 's',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12907,10 +13457,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12921,10 +13472,11 @@ export const messageList = [
         units: 'C',
         typeId: 'sint8',
         type: baseTypesList[0x01],
+        baseType: baseTypesList[0x01],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Speed at 1s intervals.  Timestamp field indicates time of last array element. */
@@ -12936,10 +13488,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12950,20 +13503,21 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
           {
-            id: '19',
+            id: 19,
             name: 'total_cycles',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'cycles',
-            accumulate: 'true',
-            bits: '8',
-            bitOffset: '0',
+            accumulate: true,
+            bits: 8,
+            bitOffset: 0,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -12974,10 +13528,11 @@ export const messageList = [
         units: 'cycles',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -12988,20 +13543,21 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
           {
-            id: '29',
+            id: 29,
             name: 'accumulated_power',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'watts',
-            accumulate: 'true',
-            bits: '16',
-            bitOffset: '0',
+            accumulate: true,
+            bits: 16,
+            bitOffset: 0,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -13012,10 +13568,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13026,10 +13583,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'left_right_balance',
         type: profileTypeList['left_right_balance'],
+        baseType: baseTypesList[0x02],
+        profileType: profileTypeList['left_right_balance'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13040,10 +13598,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13054,10 +13613,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13068,10 +13628,11 @@ export const messageList = [
         units: 'kcal',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13082,10 +13643,11 @@ export const messageList = [
         units: 'mm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13096,10 +13658,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13110,10 +13673,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13124,10 +13688,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'activity_type',
         type: profileTypeList['activity_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['activity_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13138,10 +13703,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13152,10 +13718,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13166,10 +13733,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13180,10 +13748,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13194,10 +13763,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13208,10 +13778,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13222,10 +13793,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'stroke_type',
         type: profileTypeList['stroke_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['stroke_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13236,10 +13808,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13250,10 +13823,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Log cadence and fractional cadence for backwards compatability */
@@ -13265,10 +13839,11 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13279,10 +13854,11 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Total saturated and unsaturated hemoglobin */
@@ -13294,10 +13870,11 @@ export const messageList = [
         units: 'g/dL',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Min saturated and unsaturated hemoglobin */
@@ -13309,10 +13886,11 @@ export const messageList = [
         units: 'g/dL',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Max saturated and unsaturated hemoglobin */
@@ -13324,10 +13902,11 @@ export const messageList = [
         units: 'g/dL',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Percentage of hemoglobin saturated with oxygen */
@@ -13339,10 +13918,11 @@ export const messageList = [
         units: '%',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Min percentage of hemoglobin saturated with oxygen */
@@ -13354,10 +13934,11 @@ export const messageList = [
         units: '%',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Max percentage of hemoglobin saturated with oxygen */
@@ -13369,10 +13950,11 @@ export const messageList = [
         units: '%',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13383,10 +13965,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'device_index',
         type: profileTypeList['device_index'],
+        baseType: baseTypesList[0x02],
+        profileType: profileTypeList['device_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Left platform center offset */
@@ -13398,10 +13981,11 @@ export const messageList = [
         units: 'mm',
         typeId: 'sint8',
         type: baseTypesList[0x01],
+        baseType: baseTypesList[0x01],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Right platform center offset */
@@ -13413,10 +13997,11 @@ export const messageList = [
         units: 'mm',
         typeId: 'sint8',
         type: baseTypesList[0x01],
+        baseType: baseTypesList[0x01],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Left power phase angles. Data value indexes defined by power_phase_type. */
@@ -13428,10 +14013,11 @@ export const messageList = [
         units: 'degrees',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Left power phase peak angles. Data value indexes defined by power_phase_type. */
@@ -13443,10 +14029,11 @@ export const messageList = [
         units: 'degrees',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Right power phase angles. Data value indexes defined by power_phase_type. */
@@ -13458,10 +14045,11 @@ export const messageList = [
         units: 'degrees',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Right power phase peak angles. Data value indexes defined by power_phase_type. */
@@ -13473,10 +14061,11 @@ export const messageList = [
         units: 'degrees',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13487,10 +14076,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13501,10 +14091,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** lev battery state of charge */
@@ -13516,10 +14107,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** lev motor power */
@@ -13531,10 +14123,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13545,10 +14138,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13559,10 +14153,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13573,10 +14168,11 @@ export const messageList = [
         units: 'mm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Includes atmospheric pressure */
@@ -13588,10 +14184,11 @@ export const messageList = [
         units: 'Pa',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** 0 if above water */
@@ -13603,10 +14200,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** 0 if above water */
@@ -13618,10 +14216,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13632,10 +14231,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13646,10 +14246,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13660,10 +14261,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13674,10 +14276,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13688,10 +14291,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** The grit score estimates how challenging a route could be for a cyclist in terms of time spent going over sharp turns or large grade slopes. */
@@ -13703,10 +14307,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** The flow score estimates how long distance wise a cyclist deaccelerates over intervals where deacceleration is unnecessary such as smooth turns or small grade angle intervals. */
@@ -13718,10 +14323,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13732,10 +14338,11 @@ export const messageList = [
         units: 'km',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13746,10 +14353,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13760,10 +14368,11 @@ export const messageList = [
         units: 'depends on sensor',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13774,10 +14383,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13788,10 +14398,11 @@ export const messageList = [
         units: 'C',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -13809,10 +14420,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13823,10 +14435,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'event',
         type: profileTypeList['event'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['event'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13837,10 +14450,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'event_type',
         type: profileTypeList['event_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['event_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -13851,20 +14465,21 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
           {
-            id: '3',
+            id: 3,
             name: 'data',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '16',
-            bitOffset: '0',
+            accumulate: undefined,
+            bits: 16,
+            bitOffset: 0,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -13875,6 +14490,8 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -13883,6 +14500,8 @@ export const messageList = [
             name: 'timer_trigger',
             typeId: 'timer_trigger',
             type: profileTypeList['timer_trigger'],
+            baseType: baseTypesList[0x00],
+            profileType: profileTypeList['timer_trigger'],
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -13902,6 +14521,8 @@ export const messageList = [
             name: 'course_point_index',
             typeId: 'message_index',
             type: profileTypeList['message_index'],
+            baseType: baseTypesList[0x84],
+            profileType: profileTypeList['message_index'],
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -13921,6 +14542,8 @@ export const messageList = [
             name: 'battery_level',
             typeId: 'uint16',
             type: baseTypesList[0x84],
+            baseType: baseTypesList[0x84],
+            profileType: undefined,
             scale: 1000,
             offset: undefined,
             units: 'V',
@@ -13940,6 +14563,8 @@ export const messageList = [
             name: 'virtual_partner_speed',
             typeId: 'uint16',
             type: baseTypesList[0x84],
+            baseType: baseTypesList[0x84],
+            profileType: undefined,
             scale: 1000,
             offset: undefined,
             units: 'm/s',
@@ -13959,6 +14584,8 @@ export const messageList = [
             name: 'hr_high_alert',
             typeId: 'uint8',
             type: baseTypesList[0x02],
+            baseType: baseTypesList[0x02],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'bpm',
@@ -13978,6 +14605,8 @@ export const messageList = [
             name: 'hr_low_alert',
             typeId: 'uint8',
             type: baseTypesList[0x02],
+            baseType: baseTypesList[0x02],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'bpm',
@@ -13997,6 +14626,8 @@ export const messageList = [
             name: 'speed_high_alert',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: 1000,
             offset: undefined,
             units: 'm/s',
@@ -14016,6 +14647,8 @@ export const messageList = [
             name: 'speed_low_alert',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: 1000,
             offset: undefined,
             units: 'm/s',
@@ -14035,6 +14668,8 @@ export const messageList = [
             name: 'cad_high_alert',
             typeId: 'uint16',
             type: baseTypesList[0x84],
+            baseType: baseTypesList[0x84],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'rpm',
@@ -14054,6 +14689,8 @@ export const messageList = [
             name: 'cad_low_alert',
             typeId: 'uint16',
             type: baseTypesList[0x84],
+            baseType: baseTypesList[0x84],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'rpm',
@@ -14073,6 +14710,8 @@ export const messageList = [
             name: 'power_high_alert',
             typeId: 'uint16',
             type: baseTypesList[0x84],
+            baseType: baseTypesList[0x84],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'watts',
@@ -14092,6 +14731,8 @@ export const messageList = [
             name: 'power_low_alert',
             typeId: 'uint16',
             type: baseTypesList[0x84],
+            baseType: baseTypesList[0x84],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'watts',
@@ -14111,6 +14752,8 @@ export const messageList = [
             name: 'time_duration_alert',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: 1000,
             offset: undefined,
             units: 's',
@@ -14130,6 +14773,8 @@ export const messageList = [
             name: 'distance_duration_alert',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: 100,
             offset: undefined,
             units: 'm',
@@ -14149,6 +14794,8 @@ export const messageList = [
             name: 'calorie_duration_alert',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'calories',
@@ -14168,6 +14815,8 @@ export const messageList = [
             name: 'fitness_equipment_state',
             typeId: 'fitness_equipment_state',
             type: profileTypeList['fitness_equipment_state'],
+            baseType: baseTypesList[0x00],
+            profileType: profileTypeList['fitness_equipment_state'],
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -14187,6 +14836,8 @@ export const messageList = [
             name: 'sport_point',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -14200,24 +14851,24 @@ export const messageList = [
             ],
             components: [
               {
-                id: '7',
+                id: 7,
                 name: 'score',
-                scale: '1',
-                offset: 'undefined',
+                scale: 1,
+                offset: undefined,
                 units: 'undefined',
-                accumulate: 'undefined',
-                bits: '16',
-                bitOffset: '0',
+                accumulate: undefined,
+                bits: 16,
+                bitOffset: 0,
               },
               {
-                id: '8',
+                id: 8,
                 name: 'opponent_score',
-                scale: '1',
-                offset: 'undefined',
+                scale: 1,
+                offset: undefined,
                 units: 'undefined',
-                accumulate: 'undefined',
-                bits: '16',
-                bitOffset: '16',
+                accumulate: undefined,
+                bits: 16,
+                bitOffset: 16,
               }
             ],
           },
@@ -14226,6 +14877,8 @@ export const messageList = [
             name: 'gear_change_data',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -14245,44 +14898,44 @@ export const messageList = [
             ],
             components: [
               {
-                id: '11',
+                id: 11,
                 name: 'rear_gear_num',
-                scale: '1',
-                offset: 'undefined',
+                scale: 1,
+                offset: undefined,
                 units: 'undefined',
-                accumulate: 'undefined',
-                bits: '8',
-                bitOffset: '0',
+                accumulate: undefined,
+                bits: 8,
+                bitOffset: 0,
               },
               {
-                id: '12',
+                id: 12,
                 name: 'rear_gear',
-                scale: '1',
-                offset: 'undefined',
+                scale: 1,
+                offset: undefined,
                 units: 'undefined',
-                accumulate: 'undefined',
-                bits: '8',
-                bitOffset: '8',
+                accumulate: undefined,
+                bits: 8,
+                bitOffset: 8,
               },
               {
-                id: '9',
+                id: 9,
                 name: 'front_gear_num',
-                scale: '1',
-                offset: 'undefined',
+                scale: 1,
+                offset: undefined,
                 units: 'undefined',
-                accumulate: 'undefined',
-                bits: '8',
-                bitOffset: '16',
+                accumulate: undefined,
+                bits: 8,
+                bitOffset: 16,
               },
               {
-                id: '10',
+                id: 10,
                 name: 'front_gear',
-                scale: '1',
-                offset: 'undefined',
+                scale: 1,
+                offset: undefined,
                 units: 'undefined',
-                accumulate: 'undefined',
-                bits: '8',
-                bitOffset: '24',
+                accumulate: undefined,
+                bits: 8,
+                bitOffset: 24,
               }
             ],
           },
@@ -14291,6 +14944,8 @@ export const messageList = [
             name: 'rider_position',
             typeId: 'rider_position_type',
             type: profileTypeList['rider_position_type'],
+            baseType: baseTypesList[0x00],
+            profileType: profileTypeList['rider_position_type'],
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -14310,6 +14965,8 @@ export const messageList = [
             name: 'comm_timeout',
             typeId: 'comm_timeout_type',
             type: profileTypeList['comm_timeout_type'],
+            baseType: baseTypesList[0x84],
+            profileType: profileTypeList['comm_timeout_type'],
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -14329,6 +14986,8 @@ export const messageList = [
             name: 'radar_threat_alert',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -14342,28 +15001,27 @@ export const messageList = [
             ],
             components: [
               {
-                id: '21',
+                id: 21,
                 name: 'radar_threat_level_max',
-                scale: '1',
-                offset: 'undefined',
+                scale: 1,
+                offset: undefined,
                 units: 'undefined',
-                accumulate: 'undefined',
-                bits: '8',
-                bitOffset: '0',
+                accumulate: undefined,
+                bits: 8,
+                bitOffset: 0,
               },
               {
-                id: '22',
+                id: 22,
                 name: 'radar_threat_count',
-                scale: '1',
-                offset: 'undefined',
+                scale: 1,
+                offset: undefined,
                 units: 'undefined',
-                accumulate: 'undefined',
-                bits: '8',
-                bitOffset: '8',
+                accumulate: undefined,
+                bits: 8,
+                bitOffset: 8,
               }
             ],
           }
-
         ],
       },
       {
@@ -14374,10 +15032,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Do not populate directly. Autogenerated by decoder for sport_point subfield components */
@@ -14389,10 +15048,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Do not populate directly. Autogenerated by decoder for sport_point subfield components */
@@ -14404,10 +15064,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Do not populate directly. Autogenerated by decoder for gear_change subfield components.  Front gear number. 1 is innermost. */
@@ -14419,10 +15080,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8z',
         type: baseTypesList[0x0A],
+        baseType: baseTypesList[0x0A],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Do not populate directly. Autogenerated by decoder for gear_change subfield components.  Number of front teeth. */
@@ -14434,10 +15096,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8z',
         type: baseTypesList[0x0A],
+        baseType: baseTypesList[0x0A],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Do not populate directly. Autogenerated by decoder for gear_change subfield components.  Rear gear number. 1 is innermost. */
@@ -14449,10 +15112,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8z',
         type: baseTypesList[0x0A],
+        baseType: baseTypesList[0x0A],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Do not populate directly. Autogenerated by decoder for gear_change subfield components.  Number of rear teeth. */
@@ -14464,10 +15128,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8z',
         type: baseTypesList[0x0A],
+        baseType: baseTypesList[0x0A],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -14478,10 +15143,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'device_index',
         type: profileTypeList['device_index'],
+        baseType: baseTypesList[0x02],
+        profileType: profileTypeList['device_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Do not populate directly. Autogenerated by decoder for threat_alert subfield components. */
@@ -14493,10 +15159,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'radar_threat_level_type',
         type: profileTypeList['radar_threat_level_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['radar_threat_level_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Do not populate directly. Autogenerated by decoder for threat_alert subfield components. */
@@ -14508,10 +15175,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -14529,10 +15197,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -14543,10 +15212,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'device_index',
         type: profileTypeList['device_index'],
+        baseType: baseTypesList[0x02],
+        profileType: profileTypeList['device_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -14557,6 +15227,8 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -14565,6 +15237,8 @@ export const messageList = [
             name: 'antplus_device_type',
             typeId: 'antplus_device_type',
             type: profileTypeList['antplus_device_type'],
+            baseType: baseTypesList[0x02],
+            profileType: profileTypeList['antplus_device_type'],
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -14584,6 +15258,8 @@ export const messageList = [
             name: 'ant_device_type',
             typeId: 'uint8',
             type: baseTypesList[0x02],
+            baseType: baseTypesList[0x02],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -14598,7 +15274,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       },
       {
@@ -14609,10 +15284,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'manufacturer',
         type: profileTypeList['manufacturer'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['manufacturer'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -14623,10 +15299,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32z',
         type: baseTypesList[0x8C],
+        baseType: baseTypesList[0x8C],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -14637,6 +15314,8 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -14645,6 +15324,8 @@ export const messageList = [
             name: 'favero_product',
             typeId: 'favero_product',
             type: profileTypeList['favero_product'],
+            baseType: baseTypesList[0x84],
+            profileType: profileTypeList['favero_product'],
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -14664,6 +15345,8 @@ export const messageList = [
             name: 'garmin_product',
             typeId: 'garmin_product',
             type: profileTypeList['garmin_product'],
+            baseType: baseTypesList[0x84],
+            profileType: profileTypeList['garmin_product'],
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -14696,7 +15379,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       },
       {
@@ -14707,10 +15389,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -14721,10 +15404,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Reset by new battery or charge. */
@@ -14736,10 +15420,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -14750,10 +15435,11 @@ export const messageList = [
         units: 'V',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -14764,10 +15450,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'battery_status',
         type: profileTypeList['battery_status'],
+        baseType: baseTypesList[0x02],
+        profileType: profileTypeList['battery_status'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Indicates the location of the sensor */
@@ -14779,10 +15466,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'body_location',
         type: profileTypeList['body_location'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['body_location'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Used to describe the sensor or location */
@@ -14794,10 +15482,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -14808,10 +15497,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8z',
         type: baseTypesList[0x0A],
+        baseType: baseTypesList[0x0A],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -14822,10 +15512,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16z',
         type: baseTypesList[0x8B],
+        baseType: baseTypesList[0x8B],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -14836,10 +15527,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'ant_network',
         type: profileTypeList['ant_network'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['ant_network'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -14850,10 +15542,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'source_type',
         type: profileTypeList['source_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['source_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Optional free form string to indicate the devices name or model */
@@ -14865,10 +15558,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -14887,10 +15581,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -14901,10 +15596,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'file',
         type: profileTypeList['file'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['file'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -14915,10 +15611,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'manufacturer',
         type: profileTypeList['manufacturer'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['manufacturer'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -14929,6 +15626,8 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -14937,6 +15636,8 @@ export const messageList = [
             name: 'favero_product',
             typeId: 'favero_product',
             type: profileTypeList['favero_product'],
+            baseType: baseTypesList[0x84],
+            profileType: profileTypeList['favero_product'],
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -14956,6 +15657,8 @@ export const messageList = [
             name: 'garmin_product',
             typeId: 'garmin_product',
             type: profileTypeList['garmin_product'],
+            baseType: baseTypesList[0x84],
+            profileType: profileTypeList['garmin_product'],
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -14988,7 +15691,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       },
       {
@@ -14999,10 +15701,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32z',
         type: baseTypesList[0x8C],
+        baseType: baseTypesList[0x8C],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -15013,10 +15716,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -15036,10 +15740,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -15058,10 +15763,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Current or forecast */
@@ -15073,10 +15779,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'weather_report',
         type: profileTypeList['weather_report'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['weather_report'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -15087,10 +15794,11 @@ export const messageList = [
         units: 'C',
         typeId: 'sint8',
         type: baseTypesList[0x01],
+        baseType: baseTypesList[0x01],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Corresponds to GSC Response weatherIcon field */
@@ -15102,10 +15810,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'weather_status',
         type: profileTypeList['weather_status'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['weather_status'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -15116,10 +15825,11 @@ export const messageList = [
         units: 'degrees',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -15130,10 +15840,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** range 0-100 */
@@ -15145,10 +15856,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Heat Index if  GCS heatIdx above or equal to 90F or wind chill if GCS windChill below or equal to 32F */
@@ -15160,10 +15872,11 @@ export const messageList = [
         units: 'C',
         typeId: 'sint8',
         type: baseTypesList[0x01],
+        baseType: baseTypesList[0x01],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -15174,10 +15887,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** string corresponding to GCS response location string */
@@ -15189,10 +15903,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -15203,10 +15918,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -15217,10 +15933,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -15231,10 +15948,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -15245,10 +15963,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'day_of_week',
         type: profileTypeList['day_of_week'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['day_of_week'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -15259,10 +15978,11 @@ export const messageList = [
         units: 'C',
         typeId: 'sint8',
         type: baseTypesList[0x01],
+        baseType: baseTypesList[0x01],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -15273,10 +15993,11 @@ export const messageList = [
         units: 'C',
         typeId: 'sint8',
         type: baseTypesList[0x01],
+        baseType: baseTypesList[0x01],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -15294,10 +16015,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Unique identifier from GCS report ID string, length is 12 */
@@ -15309,10 +16031,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Time alert was issued */
@@ -15324,10 +16047,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Time alert expires */
@@ -15339,10 +16063,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Warning, Watch, Advisory, Statement */
@@ -15354,10 +16079,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'weather_severity',
         type: profileTypeList['weather_severity'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['weather_severity'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Tornado, Severe Thunderstorm, etc. */
@@ -15369,10 +16095,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'weather_severe_type',
         type: profileTypeList['weather_severe_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['weather_severe_type'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -15391,10 +16118,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Millisecond part of the timestamp. */
@@ -15406,10 +16134,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -15420,10 +16149,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -15434,10 +16164,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -15448,10 +16179,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -15462,10 +16194,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -15476,10 +16209,11 @@ export const messageList = [
         units: 'degrees',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Used to correlate UTC to system time if the timestamp of the message is in system time.  This UTC time is derived from the GPS data. */
@@ -15491,10 +16225,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** velocity[0] is lon velocity.  Velocity[1] is lat velocity.  Velocity[2] is altitude velocity. */
@@ -15506,10 +16241,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -15528,10 +16264,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Millisecond part of the timestamp. */
@@ -15543,10 +16280,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -15557,10 +16295,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'camera_event_type',
         type: profileTypeList['camera_event_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['camera_event_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -15571,10 +16310,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -15585,10 +16325,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'camera_orientation_type',
         type: profileTypeList['camera_orientation_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['camera_orientation_type'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -15607,10 +16348,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Millisecond part of the timestamp. */
@@ -15622,10 +16364,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Each time in the array describes the time at which the gyro sample with the corrosponding index was taken. Limited to 30 samples in each message. The samples may span across seconds. Array size must match the number of samples in gyro_x and gyro_y and gyro_z */
@@ -15637,10 +16380,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** These are the raw ADC reading. Maximum number of samples is 30 in each message. The samples may span across seconds. A conversion will need to be done on this data once read. */
@@ -15652,10 +16396,11 @@ export const messageList = [
         units: 'counts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** These are the raw ADC reading. Maximum number of samples is 30 in each message. The samples may span across seconds. A conversion will need to be done on this data once read. */
@@ -15667,10 +16412,11 @@ export const messageList = [
         units: 'counts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** These are the raw ADC reading. Maximum number of samples is 30 in each message. The samples may span across seconds. A conversion will need to be done on this data once read. */
@@ -15682,10 +16428,11 @@ export const messageList = [
         units: 'counts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Calibrated gyro reading */
@@ -15697,10 +16444,11 @@ export const messageList = [
         units: 'deg/s',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Calibrated gyro reading */
@@ -15712,10 +16460,11 @@ export const messageList = [
         units: 'deg/s',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Calibrated gyro reading */
@@ -15727,10 +16476,11 @@ export const messageList = [
         units: 'deg/s',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -15749,10 +16499,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Millisecond part of the timestamp. */
@@ -15764,10 +16515,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Each time in the array describes the time at which the accelerometer sample with the corrosponding index was taken. Limited to 30 samples in each message. The samples may span across seconds. Array size must match the number of samples in accel_x and accel_y and accel_z */
@@ -15779,10 +16531,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** These are the raw ADC reading. Maximum number of samples is 30 in each message. The samples may span across seconds. A conversion will need to be done on this data once read. */
@@ -15794,10 +16547,11 @@ export const messageList = [
         units: 'counts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** These are the raw ADC reading. Maximum number of samples is 30 in each message. The samples may span across seconds. A conversion will need to be done on this data once read. */
@@ -15809,10 +16563,11 @@ export const messageList = [
         units: 'counts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** These are the raw ADC reading. Maximum number of samples is 30 in each message. The samples may span across seconds. A conversion will need to be done on this data once read. */
@@ -15824,10 +16579,11 @@ export const messageList = [
         units: 'counts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Calibrated accel reading */
@@ -15839,10 +16595,11 @@ export const messageList = [
         units: 'g',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Calibrated accel reading */
@@ -15854,10 +16611,11 @@ export const messageList = [
         units: 'g',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Calibrated accel reading */
@@ -15869,10 +16627,11 @@ export const messageList = [
         units: 'g',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Calibrated accel reading */
@@ -15884,10 +16643,11 @@ export const messageList = [
         units: 'mG',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Calibrated accel reading */
@@ -15899,10 +16659,11 @@ export const messageList = [
         units: 'mG',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Calibrated accel reading */
@@ -15914,10 +16675,11 @@ export const messageList = [
         units: 'mG',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -15936,10 +16698,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Millisecond part of the timestamp. */
@@ -15951,10 +16714,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Each time in the array describes the time at which the compass sample with the corrosponding index was taken. Limited to 30 samples in each message. The samples may span across seconds. Array size must match the number of samples in cmps_x and cmps_y and cmps_z */
@@ -15966,10 +16730,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** These are the raw ADC reading. Maximum number of samples is 30 in each message. The samples may span across seconds. A conversion will need to be done on this data once read. */
@@ -15981,10 +16746,11 @@ export const messageList = [
         units: 'counts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** These are the raw ADC reading. Maximum number of samples is 30 in each message. The samples may span across seconds. A conversion will need to be done on this data once read. */
@@ -15996,10 +16762,11 @@ export const messageList = [
         units: 'counts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** These are the raw ADC reading. Maximum number of samples is 30 in each message. The samples may span across seconds. A conversion will need to be done on this data once read. */
@@ -16011,10 +16778,11 @@ export const messageList = [
         units: 'counts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Calibrated Magnetometer reading */
@@ -16026,10 +16794,11 @@ export const messageList = [
         units: 'G',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Calibrated Magnetometer reading */
@@ -16041,10 +16810,11 @@ export const messageList = [
         units: 'G',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Calibrated Magnetometer reading */
@@ -16056,10 +16826,11 @@ export const messageList = [
         units: 'G',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -16078,10 +16849,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Millisecond part of the timestamp. */
@@ -16093,10 +16865,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Each time in the array describes the time at which the barometer sample with the corrosponding index was taken. The samples may span across seconds. Array size must match the number of samples in baro_cal */
@@ -16108,10 +16881,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** These are the raw ADC reading. The samples may span across seconds. A conversion will need to be done on this data once read. */
@@ -16123,10 +16897,11 @@ export const messageList = [
         units: 'Pa',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -16145,10 +16920,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Indicates which sensor the calibration is for */
@@ -16160,10 +16936,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sensor_type',
         type: profileTypeList['sensor_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sensor_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Calibration factor used to convert from raw ADC value to degrees, g,  etc. */
@@ -16175,6 +16952,8 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -16183,6 +16962,8 @@ export const messageList = [
             name: 'accel_cal_factor',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'g',
@@ -16202,6 +16983,8 @@ export const messageList = [
             name: 'gyro_cal_factor',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'deg/s',
@@ -16216,7 +16999,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       },
       /** Calibration factor divisor */
@@ -16228,10 +17010,11 @@ export const messageList = [
         units: 'counts',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Level shift value used to shift the ADC value back into range */
@@ -16243,10 +17026,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Internal calibration factors, one for each: xy, yx, zx */
@@ -16258,10 +17042,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** 3 x 3 rotation matrix (row major) */
@@ -16273,10 +17058,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -16295,10 +17081,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Indicates which sensor the calibration is for */
@@ -16310,10 +17097,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sensor_type',
         type: profileTypeList['sensor_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sensor_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Calibration factor used to convert from raw ADC value to degrees, g,  etc. */
@@ -16325,6 +17113,8 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -16333,6 +17123,8 @@ export const messageList = [
             name: 'baro_cal_factor',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'Pa',
@@ -16347,7 +17139,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       },
       /** Calibration factor divisor */
@@ -16359,10 +17150,11 @@ export const messageList = [
         units: 'counts',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Level shift value used to shift the ADC value back into range */
@@ -16374,10 +17166,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Internal Calibration factor */
@@ -16389,10 +17182,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -16411,10 +17205,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Millisecond part of the timestamp. */
@@ -16426,10 +17221,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Number of the frame that the timestamp and timestamp_ms correlate to */
@@ -16441,10 +17237,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -16463,10 +17260,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Fractional part of timestamp, added to timestamp */
@@ -16478,10 +17276,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Offset of PID reading [i] from start_timestamp+start_timestamp_ms. Readings may span accross seconds. */
@@ -16493,10 +17292,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Parameter ID */
@@ -16508,10 +17308,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'byte',
         type: baseTypesList[0x0D],
+        baseType: baseTypesList[0x0D],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Raw parameter data */
@@ -16523,10 +17324,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'byte',
         type: baseTypesList[0x0D],
+        baseType: baseTypesList[0x0D],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Optional, data size of PID[i].  If not specified refer to SAE J1979. */
@@ -16538,10 +17340,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** System time associated with sample expressed in ms, can be used instead of time_offset.  There will be a system_time value for each raw_data element.  For multibyte pids the system_time is repeated. */
@@ -16553,10 +17356,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Timestamp of first sample recorded in the message.  Used with time_offset to generate time of each sample */
@@ -16568,10 +17372,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Fractional part of start_timestamp */
@@ -16583,10 +17388,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -16605,10 +17411,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Fractional part of timestamp, added to timestamp */
@@ -16620,10 +17427,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** NMEA sentence */
@@ -16635,10 +17443,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -16657,10 +17466,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Fractional part of timestamp, added to timestamp */
@@ -16672,10 +17482,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** System time associated with sample expressed in ms. */
@@ -16687,10 +17498,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Range -PI/2 to +PI/2 */
@@ -16702,10 +17514,11 @@ export const messageList = [
         units: 'radians',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Range -PI to +PI */
@@ -16717,10 +17530,11 @@ export const messageList = [
         units: 'radians',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Range -78.4 to +78.4 (-8 Gs to 8 Gs) */
@@ -16732,10 +17546,11 @@ export const messageList = [
         units: 'm/s^2',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Range -78.4 to +78.4 (-8 Gs to 8 Gs) */
@@ -16747,10 +17562,11 @@ export const messageList = [
         units: 'm/s^2',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Range -8.727 to +8.727 (-500 degs/sec to +500 degs/sec) */
@@ -16762,10 +17578,11 @@ export const messageList = [
         units: 'radians/second',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -16776,10 +17593,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'attitude_stage',
         type: profileTypeList['attitude_stage'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['attitude_stage'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** The percent complete of the current attitude stage.  Set to 0 for attitude stages 0, 1 and 2 and to 100 for attitude stage 3 by AHRS modules that do not support it.  Range - 100 */
@@ -16791,10 +17609,11 @@ export const messageList = [
         units: '%',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Track Angle/Heading Range 0 - 2pi */
@@ -16806,10 +17625,11 @@ export const messageList = [
         units: 'radians',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -16820,10 +17640,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'attitude_validity',
         type: profileTypeList['attitude_validity'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['attitude_validity'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -16841,10 +17662,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -16855,10 +17677,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Playback time of video */
@@ -16870,10 +17693,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -16892,10 +17716,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Total number of title parts */
@@ -16907,10 +17732,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -16921,10 +17747,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -16943,10 +17770,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Total number of description parts */
@@ -16958,10 +17786,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -16972,10 +17801,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -16993,10 +17823,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17007,10 +17838,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17021,10 +17853,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17035,10 +17868,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17049,10 +17883,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Start of clip in video time */
@@ -17064,10 +17899,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** End of clip in video time */
@@ -17079,10 +17915,11 @@ export const messageList = [
         units: 'ms',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -17101,10 +17938,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17115,10 +17953,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** # of repitions of the movement */
@@ -17130,10 +17969,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Amount of weight applied for the set */
@@ -17145,10 +17985,11 @@ export const messageList = [
         units: 'kg',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17159,10 +18000,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'set_type',
         type: profileTypeList['set_type'],
+        baseType: baseTypesList[0x02],
+        profileType: profileTypeList['set_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Start time of the set */
@@ -17174,10 +18016,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17188,10 +18031,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'exercise_category',
         type: profileTypeList['exercise_category'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['exercise_category'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Based on the associated category, see [category]_exercise_names */
@@ -17203,10 +18047,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17217,10 +18062,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'fit_base_unit',
         type: profileTypeList['fit_base_unit'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['fit_base_unit'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17231,10 +18077,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17245,10 +18092,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -17266,10 +18114,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17280,10 +18129,11 @@ export const messageList = [
         units: 'm',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17294,10 +18144,11 @@ export const messageList = [
         units: 'm',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17308,10 +18159,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17322,10 +18174,11 @@ export const messageList = [
         units: 's',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** A score for a jump calculated based on hang time, rotations, and distance. */
@@ -17337,10 +18190,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17351,10 +18205,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17365,10 +18220,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17379,20 +18235,21 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
           {
-            id: '8',
+            id: 8,
             name: 'enhanced_speed',
-            scale: '1000',
-            offset: 'undefined',
+            scale: 1000,
+            offset: undefined,
             units: 'm/s',
-            accumulate: 'undefined',
-            bits: '16',
-            bitOffset: '0',
+            accumulate: undefined,
+            bits: 16,
+            bitOffset: 0,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -17403,10 +18260,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -17424,10 +18282,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sport',
         type: profileTypeList['sport'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sport'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17438,10 +18297,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17452,10 +18312,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'course_capabilities',
         type: profileTypeList['course_capabilities'],
+        baseType: baseTypesList[0x8C],
+        profileType: profileTypeList['course_capabilities'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17466,10 +18327,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sub_sport',
         type: profileTypeList['sub_sport'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sub_sport'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -17487,10 +18349,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17501,10 +18364,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17515,10 +18379,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17529,10 +18394,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17543,10 +18409,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17557,10 +18424,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'course_point',
         type: profileTypeList['course_point'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['course_point'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17571,10 +18439,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17585,10 +18454,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -17608,10 +18478,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** UUID of the segment */
@@ -17623,10 +18494,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Sport associated with the segment */
@@ -17638,10 +18510,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sport',
         type: profileTypeList['sport'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sport'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Segment enabled for evaluation */
@@ -17653,10 +18526,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Primary key of the user that created the segment */
@@ -17668,10 +18542,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** ID of the device that created the segment */
@@ -17683,10 +18558,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Index for the Leader Board entry selected as the default race participant */
@@ -17698,10 +18574,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Indicates if any segments should be deleted */
@@ -17713,10 +18590,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'segment_delete_status',
         type: profileTypeList['segment_delete_status'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['segment_delete_status'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Indicates how the segment was selected to be sent to the device */
@@ -17728,10 +18606,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'segment_selection_type',
         type: profileTypeList['segment_selection_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['segment_selection_type'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -17750,10 +18629,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Friendly name assigned to leader */
@@ -17765,10 +18645,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Leader classification */
@@ -17780,10 +18661,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'segment_leaderboard_type',
         type: profileTypeList['segment_leaderboard_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['segment_leaderboard_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Primary user ID of this leader */
@@ -17795,10 +18677,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** ID of the activity associated with this leader time */
@@ -17810,10 +18693,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Segment Time (includes pauses) */
@@ -17825,10 +18709,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** String version of the activity_id. 21 characters long, express in decimal */
@@ -17840,10 +18725,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -17862,10 +18748,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17876,10 +18763,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17890,10 +18778,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Accumulated distance along the segment at the described point */
@@ -17905,10 +18794,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Accumulated altitude along the segment at the described point */
@@ -17920,10 +18810,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Accumualted time each leader board member required to reach the described point. This value is zero for all leader board members at the starting point of the segment. */
@@ -17935,10 +18826,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -17956,10 +18848,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Lap end time. */
@@ -17971,10 +18864,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17985,10 +18879,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'event',
         type: profileTypeList['event'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['event'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -17999,10 +18894,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'event_type',
         type: profileTypeList['event_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['event_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18013,10 +18909,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18027,10 +18924,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18041,10 +18939,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18055,10 +18954,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18069,10 +18969,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Time (includes pauses) */
@@ -18084,10 +18985,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Timer Time (excludes pauses) */
@@ -18099,10 +19001,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18113,10 +19016,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18127,6 +19031,8 @@ export const messageList = [
         units: 'cycles',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -18135,6 +19041,8 @@ export const messageList = [
             name: 'total_strokes',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'strokes',
@@ -18149,7 +19057,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       },
       {
@@ -18160,10 +19067,11 @@ export const messageList = [
         units: 'kcal',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** If New Leaf */
@@ -18175,10 +19083,11 @@ export const messageList = [
         units: 'kcal',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18189,10 +19098,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18203,10 +19113,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18217,10 +19128,11 @@ export const messageList = [
         units: 'bpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18231,10 +19143,11 @@ export const messageList = [
         units: 'bpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** total_cycles / total_timer_time if non_zero_avg_cadence otherwise total_cycles / total_elapsed_time */
@@ -18246,10 +19159,11 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18260,10 +19174,11 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** total_power / total_timer_time if non_zero_avg_power otherwise total_power / total_elapsed_time */
@@ -18275,10 +19190,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18289,10 +19205,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18303,10 +19220,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18317,10 +19235,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18331,10 +19250,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sport',
         type: profileTypeList['sport'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sport'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18345,10 +19265,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** North east corner latitude. */
@@ -18360,10 +19281,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** North east corner longitude. */
@@ -18375,10 +19297,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** South west corner latitude. */
@@ -18390,10 +19313,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** South west corner latitude. */
@@ -18405,10 +19329,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18419,10 +19344,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18433,10 +19359,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18447,10 +19374,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'left_right_balance_100',
         type: profileTypeList['left_right_balance_100'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['left_right_balance_100'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18461,10 +19389,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sub_sport',
         type: profileTypeList['sub_sport'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sub_sport'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18475,10 +19404,11 @@ export const messageList = [
         units: 'J',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18489,10 +19419,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18503,10 +19434,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18517,10 +19449,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18531,10 +19464,11 @@ export const messageList = [
         units: '%',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18545,10 +19479,11 @@ export const messageList = [
         units: '%',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18559,10 +19494,11 @@ export const messageList = [
         units: '%',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18573,10 +19509,11 @@ export const messageList = [
         units: '%',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18587,10 +19524,11 @@ export const messageList = [
         units: '%',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18601,10 +19539,11 @@ export const messageList = [
         units: 'C',
         typeId: 'sint8',
         type: baseTypesList[0x01],
+        baseType: baseTypesList[0x01],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18615,10 +19554,11 @@ export const messageList = [
         units: 'C',
         typeId: 'sint8',
         type: baseTypesList[0x01],
+        baseType: baseTypesList[0x01],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18629,10 +19569,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18643,10 +19584,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18657,10 +19599,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18671,10 +19614,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18685,10 +19629,11 @@ export const messageList = [
         units: 'm/s',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18699,10 +19644,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18713,10 +19659,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18727,10 +19674,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18741,10 +19689,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18755,10 +19704,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18769,10 +19719,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18783,10 +19734,11 @@ export const messageList = [
         units: 'bpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18797,10 +19749,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18811,10 +19764,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18825,10 +19779,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sport_event',
         type: profileTypeList['sport_event'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sport_event'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18839,10 +19794,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18853,10 +19809,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18867,10 +19824,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18881,10 +19839,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18895,10 +19854,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18909,10 +19869,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'segment_lap_status',
         type: profileTypeList['segment_lap_status'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['segment_lap_status'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18923,10 +19884,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** fractional part of the avg_cadence */
@@ -18938,10 +19900,11 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** fractional part of the max_cadence */
@@ -18953,10 +19916,11 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** fractional part of the total_cycles */
@@ -18968,10 +19932,11 @@ export const messageList = [
         units: 'cycles',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18982,10 +19947,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -18996,10 +19962,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Total time spent in the standing position */
@@ -19011,10 +19978,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Number of transitions to the standing state */
@@ -19026,10 +19994,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average left platform center offset */
@@ -19041,10 +20010,11 @@ export const messageList = [
         units: 'mm',
         typeId: 'sint8',
         type: baseTypesList[0x01],
+        baseType: baseTypesList[0x01],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average right platform center offset */
@@ -19056,10 +20026,11 @@ export const messageList = [
         units: 'mm',
         typeId: 'sint8',
         type: baseTypesList[0x01],
+        baseType: baseTypesList[0x01],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average left power phase angles. Data value indexes defined by power_phase_type. */
@@ -19071,10 +20042,11 @@ export const messageList = [
         units: 'degrees',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average left power phase peak angles. Data value indexes defined by power_phase_type. */
@@ -19086,10 +20058,11 @@ export const messageList = [
         units: 'degrees',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average right power phase angles. Data value indexes defined by power_phase_type. */
@@ -19101,10 +20074,11 @@ export const messageList = [
         units: 'degrees',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average right power phase peak angles. Data value indexes defined by power_phase_type. */
@@ -19116,10 +20090,11 @@ export const messageList = [
         units: 'degrees',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average power by position. Data value indexes defined by rider_position_type. */
@@ -19131,10 +20106,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Maximum power by position. Data value indexes defined by rider_position_type. */
@@ -19146,10 +20122,11 @@ export const messageList = [
         units: 'watts',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Average cadence by position. Data value indexes defined by rider_position_type. */
@@ -19161,10 +20138,11 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Maximum cadence by position. Data value indexes defined by rider_position_type. */
@@ -19176,10 +20154,11 @@ export const messageList = [
         units: 'rpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Manufacturer that produced the segment */
@@ -19191,10 +20170,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'manufacturer',
         type: profileTypeList['manufacturer'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['manufacturer'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** The grit score estimates how challenging a route could be for a cyclist in terms of time spent going over sharp turns or large grade slopes. */
@@ -19206,10 +20186,11 @@ export const messageList = [
         units: 'kGrit',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** The flow score estimates how long distance wise a cyclist deaccelerates over intervals where deacceleration is unnecessary such as smooth turns or small grade angle intervals. */
@@ -19221,10 +20202,11 @@ export const messageList = [
         units: 'Flow',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** The grit score estimates how challenging a route could be for a cyclist in terms of time spent going over sharp turns or large grade slopes. */
@@ -19236,10 +20218,11 @@ export const messageList = [
         units: 'kGrit',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** The flow score estimates how long distance wise a cyclist deaccelerates over intervals where deacceleration is unnecessary such as smooth turns or small grade angle intervals. */
@@ -19251,10 +20234,11 @@ export const messageList = [
         units: 'Flow',
         typeId: 'float32',
         type: baseTypesList[0x88],
+        baseType: baseTypesList[0x88],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** fractional part of total_ascent */
@@ -19266,10 +20250,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** fractional part of total_descent */
@@ -19281,10 +20266,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -19303,10 +20289,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** UUID of the segment file */
@@ -19318,10 +20305,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Enabled state of the segment file */
@@ -19333,10 +20321,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Primary key of the user that created the segment file */
@@ -19348,10 +20337,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Leader type of each leader in the segment file */
@@ -19363,10 +20353,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'segment_leaderboard_type',
         type: profileTypeList['segment_leaderboard_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['segment_leaderboard_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Group primary key of each leader in the segment file */
@@ -19378,10 +20369,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Activity ID of each leader in the segment file */
@@ -19393,10 +20385,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** String version of the activity ID of each leader in the segment file. 21 characters long for each ID, express in decimal */
@@ -19408,10 +20401,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Index for the Leader Board entry selected as the default race participant */
@@ -19423,10 +20417,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -19444,10 +20439,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sport',
         type: profileTypeList['sport'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sport'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -19458,10 +20454,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'workout_capabilities',
         type: profileTypeList['workout_capabilities'],
+        baseType: baseTypesList[0x8C],
+        profileType: profileTypeList['workout_capabilities'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** number of valid steps */
@@ -19473,10 +20470,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -19487,10 +20485,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -19501,10 +20500,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sub_sport',
         type: profileTypeList['sub_sport'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sub_sport'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -19515,10 +20515,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -19529,10 +20530,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'display_measure',
         type: profileTypeList['display_measure'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['display_measure'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -19550,10 +20552,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -19564,10 +20567,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sport',
         type: profileTypeList['sport'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sport'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -19578,10 +20582,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sub_sport',
         type: profileTypeList['sub_sport'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sub_sport'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -19592,10 +20597,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -19606,10 +20612,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -19620,10 +20627,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -19634,10 +20642,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'display_measure',
         type: profileTypeList['display_measure'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['display_measure'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -19655,10 +20664,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -19669,10 +20679,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -19683,10 +20694,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'wkt_step_duration',
         type: profileTypeList['wkt_step_duration'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['wkt_step_duration'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -19697,6 +20709,8 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -19705,6 +20719,8 @@ export const messageList = [
             name: 'duration_time',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: 1000,
             offset: undefined,
             units: 's',
@@ -19730,6 +20746,8 @@ export const messageList = [
             name: 'duration_distance',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: 100,
             offset: undefined,
             units: 'm',
@@ -19749,6 +20767,8 @@ export const messageList = [
             name: 'duration_hr',
             typeId: 'workout_hr',
             type: profileTypeList['workout_hr'],
+            baseType: baseTypesList[0x86],
+            profileType: profileTypeList['workout_hr'],
             scale: undefined,
             offset: undefined,
             units: '% or bpm',
@@ -19774,6 +20794,8 @@ export const messageList = [
             name: 'duration_calories',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'calories',
@@ -19793,6 +20815,8 @@ export const messageList = [
             name: 'duration_step',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -19854,6 +20878,8 @@ export const messageList = [
             name: 'duration_power',
             typeId: 'workout_power',
             type: profileTypeList['workout_power'],
+            baseType: baseTypesList[0x86],
+            profileType: profileTypeList['workout_power'],
             scale: undefined,
             offset: undefined,
             units: '% or watts',
@@ -19879,6 +20905,8 @@ export const messageList = [
             name: 'duration_reps',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -19893,7 +20921,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       },
       {
@@ -19904,10 +20931,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'wkt_step_target',
         type: profileTypeList['wkt_step_target'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['wkt_step_target'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -19918,6 +20946,8 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -19926,6 +20956,8 @@ export const messageList = [
             name: 'target_speed_zone',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -19945,6 +20977,8 @@ export const messageList = [
             name: 'target_hr_zone',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -19964,6 +20998,8 @@ export const messageList = [
             name: 'target_cadence_zone',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -19983,6 +21019,8 @@ export const messageList = [
             name: 'target_power_zone',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -20002,6 +21040,8 @@ export const messageList = [
             name: 'repeat_steps',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -20021,6 +21061,8 @@ export const messageList = [
             name: 'repeat_time',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: 1000,
             offset: undefined,
             units: 's',
@@ -20040,6 +21082,8 @@ export const messageList = [
             name: 'repeat_distance',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: 100,
             offset: undefined,
             units: 'm',
@@ -20059,6 +21103,8 @@ export const messageList = [
             name: 'repeat_calories',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'calories',
@@ -20078,6 +21124,8 @@ export const messageList = [
             name: 'repeat_hr',
             typeId: 'workout_hr',
             type: profileTypeList['workout_hr'],
+            baseType: baseTypesList[0x86],
+            profileType: profileTypeList['workout_hr'],
             scale: undefined,
             offset: undefined,
             units: '% or bpm',
@@ -20103,6 +21151,8 @@ export const messageList = [
             name: 'repeat_power',
             typeId: 'workout_power',
             type: profileTypeList['workout_power'],
+            baseType: baseTypesList[0x86],
+            profileType: profileTypeList['workout_power'],
             scale: undefined,
             offset: undefined,
             units: '% or watts',
@@ -20128,6 +21178,8 @@ export const messageList = [
             name: 'target_stroke_type',
             typeId: 'swim_stroke',
             type: profileTypeList['swim_stroke'],
+            baseType: baseTypesList[0x00],
+            profileType: profileTypeList['swim_stroke'],
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -20142,7 +21194,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       },
       {
@@ -20153,6 +21204,8 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -20161,6 +21214,8 @@ export const messageList = [
             name: 'custom_target_speed_low',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: 1000,
             offset: undefined,
             units: 'm/s',
@@ -20180,6 +21235,8 @@ export const messageList = [
             name: 'custom_target_heart_rate_low',
             typeId: 'workout_hr',
             type: profileTypeList['workout_hr'],
+            baseType: baseTypesList[0x86],
+            profileType: profileTypeList['workout_hr'],
             scale: undefined,
             offset: undefined,
             units: '% or bpm',
@@ -20199,6 +21256,8 @@ export const messageList = [
             name: 'custom_target_cadence_low',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'rpm',
@@ -20218,6 +21277,8 @@ export const messageList = [
             name: 'custom_target_power_low',
             typeId: 'workout_power',
             type: profileTypeList['workout_power'],
+            baseType: baseTypesList[0x86],
+            profileType: profileTypeList['workout_power'],
             scale: undefined,
             offset: undefined,
             units: '% or watts',
@@ -20232,7 +21293,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       },
       {
@@ -20243,6 +21303,8 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -20251,6 +21313,8 @@ export const messageList = [
             name: 'custom_target_speed_high',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: 1000,
             offset: undefined,
             units: 'm/s',
@@ -20270,6 +21334,8 @@ export const messageList = [
             name: 'custom_target_heart_rate_high',
             typeId: 'workout_hr',
             type: profileTypeList['workout_hr'],
+            baseType: baseTypesList[0x86],
+            profileType: profileTypeList['workout_hr'],
             scale: undefined,
             offset: undefined,
             units: '% or bpm',
@@ -20289,6 +21355,8 @@ export const messageList = [
             name: 'custom_target_cadence_high',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: undefined,
             offset: undefined,
             units: 'rpm',
@@ -20308,6 +21376,8 @@ export const messageList = [
             name: 'custom_target_power_high',
             typeId: 'workout_power',
             type: profileTypeList['workout_power'],
+            baseType: baseTypesList[0x86],
+            profileType: profileTypeList['workout_power'],
             scale: undefined,
             offset: undefined,
             units: '% or watts',
@@ -20322,7 +21392,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       },
       {
@@ -20333,10 +21402,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'intensity',
         type: profileTypeList['intensity'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['intensity'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20347,10 +21417,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20361,10 +21432,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'workout_equipment',
         type: profileTypeList['workout_equipment'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['workout_equipment'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20375,10 +21447,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'exercise_category',
         type: profileTypeList['exercise_category'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['exercise_category'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20389,10 +21462,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20403,10 +21477,11 @@ export const messageList = [
         units: 'kg',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20417,10 +21492,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'fit_base_unit',
         type: profileTypeList['fit_base_unit'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['fit_base_unit'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -20438,10 +21514,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20452,10 +21529,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'exercise_category',
         type: profileTypeList['exercise_category'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['exercise_category'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20466,10 +21544,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20480,10 +21559,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -20502,10 +21582,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'manufacturer',
         type: profileTypeList['manufacturer'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['manufacturer'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Corresponds to file_id of scheduled workout / course. */
@@ -20517,6 +21598,8 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -20525,6 +21608,8 @@ export const messageList = [
             name: 'favero_product',
             typeId: 'favero_product',
             type: profileTypeList['favero_product'],
+            baseType: baseTypesList[0x84],
+            profileType: profileTypeList['favero_product'],
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -20544,6 +21629,8 @@ export const messageList = [
             name: 'garmin_product',
             typeId: 'garmin_product',
             type: profileTypeList['garmin_product'],
+            baseType: baseTypesList[0x84],
+            profileType: profileTypeList['garmin_product'],
             scale: undefined,
             offset: undefined,
             units: 'undefined',
@@ -20576,7 +21663,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       },
       /** Corresponds to file_id of scheduled workout / course. */
@@ -20588,10 +21674,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32z',
         type: baseTypesList[0x8C],
+        baseType: baseTypesList[0x8C],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Corresponds to file_id of scheduled workout / course. */
@@ -20603,10 +21690,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** TRUE if this activity has been started */
@@ -20618,10 +21706,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20632,10 +21721,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'schedule',
         type: profileTypeList['schedule'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['schedule'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20646,10 +21736,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'local_date_time',
         type: profileTypeList['local_date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['local_date_time'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -20667,10 +21758,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20681,10 +21773,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Excludes pauses */
@@ -20696,10 +21789,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20710,10 +21804,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20724,10 +21819,11 @@ export const messageList = [
         units: 'kcal',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20738,10 +21834,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sport',
         type: profileTypeList['sport'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['sport'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Includes pauses */
@@ -20753,10 +21850,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20767,10 +21865,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20781,10 +21880,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20795,10 +21895,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -20816,10 +21917,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20830,10 +21932,11 @@ export const messageList = [
         units: 'kg',
         typeId: 'weight',
         type: profileTypeList['weight'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['weight'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20844,10 +21947,11 @@ export const messageList = [
         units: '%',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20858,10 +21962,11 @@ export const messageList = [
         units: '%',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20872,10 +21977,11 @@ export const messageList = [
         units: 'kg',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20886,10 +21992,11 @@ export const messageList = [
         units: 'kg',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20900,10 +22007,11 @@ export const messageList = [
         units: 'kg',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20914,10 +22022,11 @@ export const messageList = [
         units: 'kcal/day',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20928,10 +22037,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** ~4kJ per kcal, 0.25 allows max 16384 kcal */
@@ -20943,10 +22053,11 @@ export const messageList = [
         units: 'kcal/day',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20957,10 +22068,11 @@ export const messageList = [
         units: 'years',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -20971,10 +22083,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Associates this weight scale message to a user.  This corresponds to the index of the user profile message in the weight scale file. */
@@ -20986,10 +22099,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -21007,10 +22121,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21021,10 +22136,11 @@ export const messageList = [
         units: 'mmHg',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21035,10 +22151,11 @@ export const messageList = [
         units: 'mmHg',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21049,10 +22166,11 @@ export const messageList = [
         units: 'mmHg',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21063,10 +22181,11 @@ export const messageList = [
         units: 'mmHg',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21077,10 +22196,11 @@ export const messageList = [
         units: 'mmHg',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21091,10 +22211,11 @@ export const messageList = [
         units: 'mmHg',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21105,10 +22226,11 @@ export const messageList = [
         units: 'bpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21119,10 +22241,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'hr_type',
         type: profileTypeList['hr_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['hr_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21133,10 +22256,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bp_status',
         type: profileTypeList['bp_status'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['bp_status'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Associates this blood pressure message to a user.  This corresponds to the index of the user profile message in the blood pressure file. */
@@ -21148,10 +22272,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -21169,10 +22294,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Use to convert activity timestamps to local time if device does not support time zone and daylight savings time correction. */
@@ -21184,10 +22310,11 @@ export const messageList = [
         units: 's',
         typeId: 'local_date_time',
         type: profileTypeList['local_date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['local_date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21198,10 +22325,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'activity_type',
         type: profileTypeList['activity_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['activity_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Indexed by activity_type */
@@ -21213,10 +22341,11 @@ export const messageList = [
         units: 'm/cycle',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Indexed by activity_type */
@@ -21228,10 +22357,11 @@ export const messageList = [
         units: 'kcal/cycle',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21242,10 +22372,11 @@ export const messageList = [
         units: 'kcal / day',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -21264,10 +22395,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Associates this data to device_info message.  Not required for file with single device (sensor). */
@@ -21279,10 +22411,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'device_index',
         type: profileTypeList['device_index'],
+        baseType: baseTypesList[0x02],
+        profileType: profileTypeList['device_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Accumulated total calories.  Maintained by MonitoringReader for each activity_type.  See SDK documentation */
@@ -21294,10 +22427,11 @@ export const messageList = [
         units: 'kcal',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Accumulated distance.  Maintained by MonitoringReader for each activity_type.  See SDK documentation. */
@@ -21309,10 +22443,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Accumulated cycles.  Maintained by MonitoringReader for each activity_type.  See SDK documentation. */
@@ -21324,6 +22459,8 @@ export const messageList = [
         units: 'cycles',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
@@ -21332,6 +22469,8 @@ export const messageList = [
             name: 'steps',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: 1,
             offset: undefined,
             units: 'steps',
@@ -21357,6 +22496,8 @@ export const messageList = [
             name: 'strokes',
             typeId: 'uint32',
             type: baseTypesList[0x86],
+            baseType: baseTypesList[0x86],
+            profileType: undefined,
             scale: 2,
             offset: undefined,
             units: 'strokes',
@@ -21377,7 +22518,6 @@ export const messageList = [
             components: [
             ],
           }
-
         ],
       },
       {
@@ -21388,10 +22528,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21402,10 +22543,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'activity_type',
         type: profileTypeList['activity_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['activity_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21416,10 +22558,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'activity_subtype',
         type: profileTypeList['activity_subtype'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['activity_subtype'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21430,10 +22573,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'activity_level',
         type: profileTypeList['activity_level'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['activity_level'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21444,10 +22588,11 @@ export const messageList = [
         units: '100 * m',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21458,10 +22603,11 @@ export const messageList = [
         units: '2 * cycles (steps)',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21472,10 +22618,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Must align to logging interval, for example, time must be 00:00:00 for daily log. */
@@ -21487,10 +22634,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'local_date_time',
         type: profileTypeList['local_date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['local_date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Avg temperature during the logging interval ended at timestamp */
@@ -21502,10 +22650,11 @@ export const messageList = [
         units: 'C',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Min temperature during the logging interval ended at timestamp */
@@ -21517,10 +22666,11 @@ export const messageList = [
         units: 'C',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Max temperature during the logging interval ended at timestamp */
@@ -21532,10 +22682,11 @@ export const messageList = [
         units: 'C',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Indexed using minute_activity_level enum */
@@ -21547,10 +22698,11 @@ export const messageList = [
         units: 'minutes',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21561,10 +22713,11 @@ export const messageList = [
         units: 'kcal',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Indicates single type / intensity for duration since last monitoring message. */
@@ -21576,30 +22729,31 @@ export const messageList = [
         units: 'undefined',
         typeId: 'byte',
         type: baseTypesList[0x0D],
+        baseType: baseTypesList[0x0D],
+        profileType: undefined,
         components: [
           {
-            id: '5',
+            id: 5,
             name: 'activity_type',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '5',
-            bitOffset: '0',
+            accumulate: undefined,
+            bits: 5,
+            bitOffset: 0,
           },
           {
-            id: '28',
+            id: 28,
             name: 'intensity',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '3',
-            bitOffset: '5',
+            accumulate: undefined,
+            bits: 3,
+            bitOffset: 5,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -21610,10 +22764,11 @@ export const messageList = [
         units: 'min',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21624,10 +22779,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21638,10 +22794,11 @@ export const messageList = [
         units: 'bpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21652,10 +22809,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21666,10 +22824,11 @@ export const messageList = [
         units: 'min',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21680,10 +22839,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21694,10 +22854,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21708,10 +22869,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21722,10 +22884,11 @@ export const messageList = [
         units: 'minutes',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21736,10 +22899,11 @@ export const messageList = [
         units: 'minutes',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -21757,10 +22921,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21771,10 +22936,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21785,20 +22951,21 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
           {
-            id: '0',
+            id: 0,
             name: 'fractional_timestamp',
-            scale: '256',
-            offset: 'undefined',
+            scale: 256,
+            offset: undefined,
             units: 's',
-            accumulate: 'undefined',
-            bits: '8',
-            bitOffset: '0',
+            accumulate: undefined,
+            bits: 8,
+            bitOffset: 0,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -21809,10 +22976,11 @@ export const messageList = [
         units: 'bpm',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21823,10 +22991,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -21837,110 +23006,111 @@ export const messageList = [
         units: 'undefined',
         typeId: 'byte',
         type: baseTypesList[0x0D],
+        baseType: baseTypesList[0x0D],
+        profileType: undefined,
         components: [
           {
-            id: '9',
+            id: 9,
             name: 'event_timestamp',
-            scale: '1024',
-            offset: 'undefined',
+            scale: 1024,
+            offset: undefined,
             units: 's',
-            accumulate: 'true',
-            bits: '12',
-            bitOffset: '0',
+            accumulate: true,
+            bits: 12,
+            bitOffset: 0,
           },
           {
-            id: '9',
+            id: 9,
             name: 'event_timestamp',
-            scale: '1024',
-            offset: 'undefined',
+            scale: 1024,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'true',
-            bits: '12',
-            bitOffset: '12',
+            accumulate: true,
+            bits: 12,
+            bitOffset: 12,
           },
           {
-            id: '9',
+            id: 9,
             name: 'event_timestamp',
-            scale: '1024',
-            offset: 'undefined',
+            scale: 1024,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'true',
-            bits: '12',
-            bitOffset: '24',
+            accumulate: true,
+            bits: 12,
+            bitOffset: 24,
           },
           {
-            id: '9',
+            id: 9,
             name: 'event_timestamp',
-            scale: '1024',
-            offset: 'undefined',
+            scale: 1024,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'true',
-            bits: '12',
-            bitOffset: '36',
+            accumulate: true,
+            bits: 12,
+            bitOffset: 36,
           },
           {
-            id: '9',
+            id: 9,
             name: 'event_timestamp',
-            scale: '1024',
-            offset: 'undefined',
+            scale: 1024,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'true',
-            bits: '12',
-            bitOffset: '48',
+            accumulate: true,
+            bits: 12,
+            bitOffset: 48,
           },
           {
-            id: '9',
+            id: 9,
             name: 'event_timestamp',
-            scale: '1024',
-            offset: 'undefined',
+            scale: 1024,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'true',
-            bits: '12',
-            bitOffset: '60',
+            accumulate: true,
+            bits: 12,
+            bitOffset: 60,
           },
           {
-            id: '9',
+            id: 9,
             name: 'event_timestamp',
-            scale: '1024',
-            offset: 'undefined',
+            scale: 1024,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'true',
-            bits: '12',
-            bitOffset: '72',
+            accumulate: true,
+            bits: 12,
+            bitOffset: 72,
           },
           {
-            id: '9',
+            id: 9,
             name: 'event_timestamp',
-            scale: '1024',
-            offset: 'undefined',
+            scale: 1024,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'true',
-            bits: '12',
-            bitOffset: '84',
+            accumulate: true,
+            bits: 12,
+            bitOffset: 84,
           },
           {
-            id: '9',
+            id: 9,
             name: 'event_timestamp',
-            scale: '1024',
-            offset: 'undefined',
+            scale: 1024,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'true',
-            bits: '12',
-            bitOffset: '96',
+            accumulate: true,
+            bits: 12,
+            bitOffset: 96,
           },
           {
-            id: '9',
+            id: 9,
             name: 'event_timestamp',
-            scale: '1024',
-            offset: 'undefined',
+            scale: 1024,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'true',
-            bits: '12',
-            bitOffset: '108',
+            accumulate: true,
+            bits: 12,
+            bitOffset: 108,
           }
         ],
         subfields: [
-
         ],
       }
     ],
@@ -21959,10 +23129,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sint16',
         type: baseTypesList[0x83],
+        baseType: baseTypesList[0x83],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Time stress score was calculated */
@@ -21974,10 +23145,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -21996,10 +23168,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Block of utf8 bytes */
@@ -22011,10 +23184,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'byte',
         type: baseTypesList[0x0D],
+        baseType: baseTypesList[0x0D],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Allows relating glob to another mesg  If used only required for first part of each memo_glob */
@@ -22026,10 +23200,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Index of external mesg */
@@ -22041,10 +23216,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -22062,10 +23238,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22076,10 +23253,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8z',
         type: baseTypesList[0x0A],
+        baseType: baseTypesList[0x0A],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22090,10 +23268,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16z',
         type: baseTypesList[0x8B],
+        baseType: baseTypesList[0x8B],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22104,10 +23283,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8z',
         type: baseTypesList[0x0A],
+        baseType: baseTypesList[0x0A],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22118,10 +23298,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'device_index',
         type: profileTypeList['device_index'],
+        baseType: baseTypesList[0x02],
+        profileType: profileTypeList['device_index'],
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -22139,10 +23320,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22153,10 +23335,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22167,10 +23350,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'byte',
         type: baseTypesList[0x0D],
+        baseType: baseTypesList[0x0D],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22181,100 +23365,101 @@ export const messageList = [
         units: 'undefined',
         typeId: 'byte',
         type: baseTypesList[0x0D],
+        baseType: baseTypesList[0x0D],
+        profileType: undefined,
         components: [
           {
-            id: '3',
+            id: 3,
             name: 'channel_number',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '8',
-            bitOffset: '0',
+            accumulate: undefined,
+            bits: 8,
+            bitOffset: 0,
           },
           {
-            id: '4',
+            id: 4,
             name: 'data',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '8',
-            bitOffset: '8',
+            accumulate: undefined,
+            bits: 8,
+            bitOffset: 8,
           },
           {
-            id: '4',
+            id: 4,
             name: 'data',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '8',
-            bitOffset: '16',
+            accumulate: undefined,
+            bits: 8,
+            bitOffset: 16,
           },
           {
-            id: '4',
+            id: 4,
             name: 'data',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '8',
-            bitOffset: '24',
+            accumulate: undefined,
+            bits: 8,
+            bitOffset: 24,
           },
           {
-            id: '4',
+            id: 4,
             name: 'data',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '8',
-            bitOffset: '32',
+            accumulate: undefined,
+            bits: 8,
+            bitOffset: 32,
           },
           {
-            id: '4',
+            id: 4,
             name: 'data',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '8',
-            bitOffset: '40',
+            accumulate: undefined,
+            bits: 8,
+            bitOffset: 40,
           },
           {
-            id: '4',
+            id: 4,
             name: 'data',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '8',
-            bitOffset: '48',
+            accumulate: undefined,
+            bits: 8,
+            bitOffset: 48,
           },
           {
-            id: '4',
+            id: 4,
             name: 'data',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '8',
-            bitOffset: '56',
+            accumulate: undefined,
+            bits: 8,
+            bitOffset: 56,
           },
           {
-            id: '4',
+            id: 4,
             name: 'data',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '8',
-            bitOffset: '64',
+            accumulate: undefined,
+            bits: 8,
+            bitOffset: 64,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -22285,10 +23470,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22299,10 +23485,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'byte',
         type: baseTypesList[0x0D],
+        baseType: baseTypesList[0x0D],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -22320,10 +23507,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22334,10 +23522,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22348,10 +23537,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'byte',
         type: baseTypesList[0x0D],
+        baseType: baseTypesList[0x0D],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22362,100 +23552,101 @@ export const messageList = [
         units: 'undefined',
         typeId: 'byte',
         type: baseTypesList[0x0D],
+        baseType: baseTypesList[0x0D],
+        profileType: undefined,
         components: [
           {
-            id: '3',
+            id: 3,
             name: 'channel_number',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '8',
-            bitOffset: '0',
+            accumulate: undefined,
+            bits: 8,
+            bitOffset: 0,
           },
           {
-            id: '4',
+            id: 4,
             name: 'data',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '8',
-            bitOffset: '8',
+            accumulate: undefined,
+            bits: 8,
+            bitOffset: 8,
           },
           {
-            id: '4',
+            id: 4,
             name: 'data',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '8',
-            bitOffset: '16',
+            accumulate: undefined,
+            bits: 8,
+            bitOffset: 16,
           },
           {
-            id: '4',
+            id: 4,
             name: 'data',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '8',
-            bitOffset: '24',
+            accumulate: undefined,
+            bits: 8,
+            bitOffset: 24,
           },
           {
-            id: '4',
+            id: 4,
             name: 'data',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '8',
-            bitOffset: '32',
+            accumulate: undefined,
+            bits: 8,
+            bitOffset: 32,
           },
           {
-            id: '4',
+            id: 4,
             name: 'data',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '8',
-            bitOffset: '40',
+            accumulate: undefined,
+            bits: 8,
+            bitOffset: 40,
           },
           {
-            id: '4',
+            id: 4,
             name: 'data',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '8',
-            bitOffset: '48',
+            accumulate: undefined,
+            bits: 8,
+            bitOffset: 48,
           },
           {
-            id: '4',
+            id: 4,
             name: 'data',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '8',
-            bitOffset: '56',
+            accumulate: undefined,
+            bits: 8,
+            bitOffset: 56,
           },
           {
-            id: '4',
+            id: 4,
             name: 'data',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '8',
-            bitOffset: '64',
+            accumulate: undefined,
+            bits: 8,
+            bitOffset: 64,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -22466,10 +23657,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22480,10 +23672,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'byte',
         type: baseTypesList[0x0D],
+        baseType: baseTypesList[0x0D],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -22501,10 +23694,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** number of fields in screen */
@@ -22516,10 +23710,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22530,10 +23725,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'exd_layout',
         type: profileTypeList['exd_layout'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['exd_layout'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22544,10 +23740,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -22565,10 +23762,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22579,30 +23777,31 @@ export const messageList = [
         units: 'undefined',
         typeId: 'byte',
         type: baseTypesList[0x0D],
+        baseType: baseTypesList[0x0D],
+        profileType: undefined,
         components: [
           {
-            id: '2',
+            id: 2,
             name: 'field_id',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '4',
-            bitOffset: '0',
+            accumulate: undefined,
+            bits: 4,
+            bitOffset: 0,
           },
           {
-            id: '3',
+            id: 3,
             name: 'concept_count',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '4',
-            bitOffset: '4',
+            accumulate: undefined,
+            bits: 4,
+            bitOffset: 4,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -22613,10 +23812,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22627,10 +23827,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22641,10 +23842,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'exd_display_type',
         type: profileTypeList['exd_display_type'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['exd_display_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22655,10 +23857,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -22676,10 +23879,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22690,30 +23894,31 @@ export const messageList = [
         units: 'undefined',
         typeId: 'byte',
         type: baseTypesList[0x0D],
+        baseType: baseTypesList[0x0D],
+        profileType: undefined,
         components: [
           {
-            id: '2',
+            id: 2,
             name: 'field_id',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '4',
-            bitOffset: '0',
+            accumulate: undefined,
+            bits: 4,
+            bitOffset: 0,
           },
           {
-            id: '3',
+            id: 3,
             name: 'concept_index',
-            scale: 'undefined',
-            offset: 'undefined',
+            scale: undefined,
+            offset: undefined,
             units: 'undefined',
-            accumulate: 'undefined',
-            bits: '4',
-            bitOffset: '4',
+            accumulate: undefined,
+            bits: 4,
+            bitOffset: 4,
           }
         ],
         subfields: [
-
         ],
       },
       {
@@ -22724,10 +23929,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22738,10 +23944,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22752,10 +23959,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22766,10 +23974,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22780,10 +23989,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22794,10 +24004,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'exd_data_units',
         type: profileTypeList['exd_data_units'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['exd_data_units'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22808,10 +24019,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'exd_qualifiers',
         type: profileTypeList['exd_qualifiers'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['exd_qualifiers'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22822,10 +24034,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'exd_descriptors',
         type: profileTypeList['exd_descriptors'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['exd_descriptors'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22836,10 +24049,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'bool',
         type: baseTypesList[0x00],
+        baseType: baseTypesList[0x00],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -22858,10 +24072,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22872,10 +24087,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22886,10 +24102,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'fit_base_type',
         type: profileTypeList['fit_base_type'],
+        baseType: baseTypesList[0x02],
+        profileType: profileTypeList['fit_base_type'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22900,10 +24117,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22914,10 +24132,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22928,10 +24147,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22942,10 +24162,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22956,10 +24177,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'sint8',
         type: baseTypesList[0x01],
+        baseType: baseTypesList[0x01],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22970,10 +24192,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22984,10 +24207,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -22998,10 +24222,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'string',
         type: baseTypesList[0x07],
+        baseType: baseTypesList[0x07],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -23012,10 +24237,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'fit_base_unit',
         type: profileTypeList['fit_base_unit'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['fit_base_unit'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -23026,10 +24252,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'mesg_num',
         type: profileTypeList['mesg_num'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['mesg_num'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -23040,10 +24267,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -23062,10 +24290,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'byte',
         type: baseTypesList[0x0D],
+        baseType: baseTypesList[0x0D],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -23076,10 +24305,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'byte',
         type: baseTypesList[0x0D],
+        baseType: baseTypesList[0x0D],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -23090,10 +24320,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'manufacturer',
         type: profileTypeList['manufacturer'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['manufacturer'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -23104,10 +24335,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -23118,10 +24350,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -23139,10 +24372,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -23153,10 +24387,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'mesg_num',
         type: profileTypeList['mesg_num'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['mesg_num'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -23167,10 +24402,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'message_index',
         type: profileTypeList['message_index'],
+        baseType: baseTypesList[0x84],
+        profileType: profileTypeList['message_index'],
         components: [
         ],
         subfields: [
-
         ],
       },
       /** 0 if above water */
@@ -23182,10 +24418,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** 0 if above water */
@@ -23197,10 +24434,11 @@ export const messageList = [
         units: 'm',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       /** Time since end of last dive */
@@ -23212,10 +24450,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -23226,10 +24465,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -23240,10 +24480,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -23254,10 +24495,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -23268,10 +24510,11 @@ export const messageList = [
         units: 'percent',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -23282,10 +24525,11 @@ export const messageList = [
         units: 'OTUs',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -23296,10 +24540,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -23310,10 +24555,11 @@ export const messageList = [
         units: 's',
         typeId: 'uint32',
         type: baseTypesList[0x86],
+        baseType: baseTypesList[0x86],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
@@ -23331,10 +24577,11 @@ export const messageList = [
         units: 's',
         typeId: 'date_time',
         type: profileTypeList['date_time'],
+        baseType: baseTypesList[0x86],
+        profileType: profileTypeList['date_time'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -23345,10 +24592,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -23359,10 +24607,11 @@ export const messageList = [
         units: 'semicircles',
         typeId: 'sint32',
         type: baseTypesList[0x85],
+        baseType: baseTypesList[0x85],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -23373,10 +24622,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'climb_pro_event',
         type: profileTypeList['climb_pro_event'],
+        baseType: baseTypesList[0x00],
+        profileType: profileTypeList['climb_pro_event'],
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -23387,10 +24637,11 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint16',
         type: baseTypesList[0x84],
+        baseType: baseTypesList[0x84],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       },
       {
@@ -23401,17 +24652,18 @@ export const messageList = [
         units: 'undefined',
         typeId: 'uint8',
         type: baseTypesList[0x02],
+        baseType: baseTypesList[0x02],
+        profileType: undefined,
         components: [
         ],
         subfields: [
-
         ],
       }
     ],
   }
-] as const
-
-export const messageListMapByName = { file_id: messageList[0],
+];
+type ArrayElement<ArrayType extends readonly unknown[]> = ArrayType[number];
+export const messageListMapByName: Record<string, ArrayElement<typeof messageList>> = { file_id: messageList[0],
 file_creator: messageList[1],
 timestamp_correlation: messageList[2],
 software: messageList[3],
@@ -23497,4 +24749,1097 @@ exd_data_concept_configuration: messageList[82],
 field_description: messageList[83],
 developer_data_id: messageList[84],
 dive_summary: messageList[85],
-climb_pro: messageList[86] } as const
+climb_pro: messageList[86] }
+
+export const messageFieldsMapByName: Record<string, {message: ArrayElement<typeof messageList>, field: ArrayElement<ArrayElement<typeof messageList>['fields']>}> = { file_id_type: { message: messageList[0], field: messageList[0].fields[0] },
+file_id_manufacturer: { message: messageList[0], field: messageList[0].fields[1] },
+file_id_product: { message: messageList[0], field: messageList[0].fields[2] },
+file_id_serial_number: { message: messageList[0], field: messageList[0].fields[3] },
+file_id_time_created: { message: messageList[0], field: messageList[0].fields[4] },
+file_id_number: { message: messageList[0], field: messageList[0].fields[5] },
+file_id_product_name: { message: messageList[0], field: messageList[0].fields[6] },
+file_creator_software_version: { message: messageList[1], field: messageList[1].fields[0] },
+file_creator_hardware_version: { message: messageList[1], field: messageList[1].fields[1] },
+timestamp_correlation_timestamp: { message: messageList[2], field: messageList[2].fields[0] },
+timestamp_correlation_fractional_timestamp: { message: messageList[2], field: messageList[2].fields[1] },
+timestamp_correlation_system_timestamp: { message: messageList[2], field: messageList[2].fields[2] },
+timestamp_correlation_fractional_system_timestamp: { message: messageList[2], field: messageList[2].fields[3] },
+timestamp_correlation_local_timestamp: { message: messageList[2], field: messageList[2].fields[4] },
+timestamp_correlation_timestamp_ms: { message: messageList[2], field: messageList[2].fields[5] },
+timestamp_correlation_system_timestamp_ms: { message: messageList[2], field: messageList[2].fields[6] },
+software_message_index: { message: messageList[3], field: messageList[3].fields[0] },
+software_version: { message: messageList[3], field: messageList[3].fields[1] },
+software_part_number: { message: messageList[3], field: messageList[3].fields[2] },
+slave_device_manufacturer: { message: messageList[4], field: messageList[4].fields[0] },
+slave_device_product: { message: messageList[4], field: messageList[4].fields[1] },
+capabilities_languages: { message: messageList[5], field: messageList[5].fields[0] },
+capabilities_sports: { message: messageList[5], field: messageList[5].fields[1] },
+capabilities_workouts_supported: { message: messageList[5], field: messageList[5].fields[2] },
+capabilities_connectivity_supported: { message: messageList[5], field: messageList[5].fields[3] },
+file_capabilities_message_index: { message: messageList[6], field: messageList[6].fields[0] },
+file_capabilities_type: { message: messageList[6], field: messageList[6].fields[1] },
+file_capabilities_flags: { message: messageList[6], field: messageList[6].fields[2] },
+file_capabilities_directory: { message: messageList[6], field: messageList[6].fields[3] },
+file_capabilities_max_count: { message: messageList[6], field: messageList[6].fields[4] },
+file_capabilities_max_size: { message: messageList[6], field: messageList[6].fields[5] },
+mesg_capabilities_message_index: { message: messageList[7], field: messageList[7].fields[0] },
+mesg_capabilities_file: { message: messageList[7], field: messageList[7].fields[1] },
+mesg_capabilities_mesg_num: { message: messageList[7], field: messageList[7].fields[2] },
+mesg_capabilities_count_type: { message: messageList[7], field: messageList[7].fields[3] },
+mesg_capabilities_count: { message: messageList[7], field: messageList[7].fields[4] },
+field_capabilities_message_index: { message: messageList[8], field: messageList[8].fields[0] },
+field_capabilities_file: { message: messageList[8], field: messageList[8].fields[1] },
+field_capabilities_mesg_num: { message: messageList[8], field: messageList[8].fields[2] },
+field_capabilities_field_num: { message: messageList[8], field: messageList[8].fields[3] },
+field_capabilities_count: { message: messageList[8], field: messageList[8].fields[4] },
+device_settings_active_time_zone: { message: messageList[9], field: messageList[9].fields[0] },
+device_settings_utc_offset: { message: messageList[9], field: messageList[9].fields[1] },
+device_settings_time_offset: { message: messageList[9], field: messageList[9].fields[2] },
+device_settings_time_mode: { message: messageList[9], field: messageList[9].fields[3] },
+device_settings_time_zone_offset: { message: messageList[9], field: messageList[9].fields[4] },
+device_settings_backlight_mode: { message: messageList[9], field: messageList[9].fields[5] },
+device_settings_activity_tracker_enabled: { message: messageList[9], field: messageList[9].fields[6] },
+device_settings_clock_time: { message: messageList[9], field: messageList[9].fields[7] },
+device_settings_pages_enabled: { message: messageList[9], field: messageList[9].fields[8] },
+device_settings_move_alert_enabled: { message: messageList[9], field: messageList[9].fields[9] },
+device_settings_date_mode: { message: messageList[9], field: messageList[9].fields[10] },
+device_settings_display_orientation: { message: messageList[9], field: messageList[9].fields[11] },
+device_settings_mounting_side: { message: messageList[9], field: messageList[9].fields[12] },
+device_settings_default_page: { message: messageList[9], field: messageList[9].fields[13] },
+device_settings_autosync_min_steps: { message: messageList[9], field: messageList[9].fields[14] },
+device_settings_autosync_min_time: { message: messageList[9], field: messageList[9].fields[15] },
+device_settings_lactate_threshold_autodetect_enabled: { message: messageList[9], field: messageList[9].fields[16] },
+device_settings_ble_auto_upload_enabled: { message: messageList[9], field: messageList[9].fields[17] },
+device_settings_auto_sync_frequency: { message: messageList[9], field: messageList[9].fields[18] },
+device_settings_auto_activity_detect: { message: messageList[9], field: messageList[9].fields[19] },
+device_settings_number_of_screens: { message: messageList[9], field: messageList[9].fields[20] },
+device_settings_smart_notification_display_orientation: { message: messageList[9], field: messageList[9].fields[21] },
+device_settings_tap_interface: { message: messageList[9], field: messageList[9].fields[22] },
+device_settings_tap_sensitivity: { message: messageList[9], field: messageList[9].fields[23] },
+user_profile_message_index: { message: messageList[10], field: messageList[10].fields[0] },
+user_profile_friendly_name: { message: messageList[10], field: messageList[10].fields[1] },
+user_profile_gender: { message: messageList[10], field: messageList[10].fields[2] },
+user_profile_age: { message: messageList[10], field: messageList[10].fields[3] },
+user_profile_height: { message: messageList[10], field: messageList[10].fields[4] },
+user_profile_weight: { message: messageList[10], field: messageList[10].fields[5] },
+user_profile_language: { message: messageList[10], field: messageList[10].fields[6] },
+user_profile_elev_setting: { message: messageList[10], field: messageList[10].fields[7] },
+user_profile_weight_setting: { message: messageList[10], field: messageList[10].fields[8] },
+user_profile_resting_heart_rate: { message: messageList[10], field: messageList[10].fields[9] },
+user_profile_default_max_running_heart_rate: { message: messageList[10], field: messageList[10].fields[10] },
+user_profile_default_max_biking_heart_rate: { message: messageList[10], field: messageList[10].fields[11] },
+user_profile_default_max_heart_rate: { message: messageList[10], field: messageList[10].fields[12] },
+user_profile_hr_setting: { message: messageList[10], field: messageList[10].fields[13] },
+user_profile_speed_setting: { message: messageList[10], field: messageList[10].fields[14] },
+user_profile_dist_setting: { message: messageList[10], field: messageList[10].fields[15] },
+user_profile_power_setting: { message: messageList[10], field: messageList[10].fields[16] },
+user_profile_activity_class: { message: messageList[10], field: messageList[10].fields[17] },
+user_profile_position_setting: { message: messageList[10], field: messageList[10].fields[18] },
+user_profile_temperature_setting: { message: messageList[10], field: messageList[10].fields[19] },
+user_profile_local_id: { message: messageList[10], field: messageList[10].fields[20] },
+user_profile_global_id: { message: messageList[10], field: messageList[10].fields[21] },
+user_profile_wake_time: { message: messageList[10], field: messageList[10].fields[22] },
+user_profile_sleep_time: { message: messageList[10], field: messageList[10].fields[23] },
+user_profile_height_setting: { message: messageList[10], field: messageList[10].fields[24] },
+user_profile_user_running_step_length: { message: messageList[10], field: messageList[10].fields[25] },
+user_profile_user_walking_step_length: { message: messageList[10], field: messageList[10].fields[26] },
+user_profile_depth_setting: { message: messageList[10], field: messageList[10].fields[27] },
+user_profile_dive_count: { message: messageList[10], field: messageList[10].fields[28] },
+hrm_profile_message_index: { message: messageList[11], field: messageList[11].fields[0] },
+hrm_profile_enabled: { message: messageList[11], field: messageList[11].fields[1] },
+hrm_profile_hrm_ant_id: { message: messageList[11], field: messageList[11].fields[2] },
+hrm_profile_log_hrv: { message: messageList[11], field: messageList[11].fields[3] },
+hrm_profile_hrm_ant_id_trans_type: { message: messageList[11], field: messageList[11].fields[4] },
+sdm_profile_message_index: { message: messageList[12], field: messageList[12].fields[0] },
+sdm_profile_enabled: { message: messageList[12], field: messageList[12].fields[1] },
+sdm_profile_sdm_ant_id: { message: messageList[12], field: messageList[12].fields[2] },
+sdm_profile_sdm_cal_factor: { message: messageList[12], field: messageList[12].fields[3] },
+sdm_profile_odometer: { message: messageList[12], field: messageList[12].fields[4] },
+sdm_profile_speed_source: { message: messageList[12], field: messageList[12].fields[5] },
+sdm_profile_sdm_ant_id_trans_type: { message: messageList[12], field: messageList[12].fields[6] },
+sdm_profile_odometer_rollover: { message: messageList[12], field: messageList[12].fields[7] },
+bike_profile_message_index: { message: messageList[13], field: messageList[13].fields[0] },
+bike_profile_name: { message: messageList[13], field: messageList[13].fields[1] },
+bike_profile_sport: { message: messageList[13], field: messageList[13].fields[2] },
+bike_profile_sub_sport: { message: messageList[13], field: messageList[13].fields[3] },
+bike_profile_odometer: { message: messageList[13], field: messageList[13].fields[4] },
+bike_profile_bike_spd_ant_id: { message: messageList[13], field: messageList[13].fields[5] },
+bike_profile_bike_cad_ant_id: { message: messageList[13], field: messageList[13].fields[6] },
+bike_profile_bike_spdcad_ant_id: { message: messageList[13], field: messageList[13].fields[7] },
+bike_profile_bike_power_ant_id: { message: messageList[13], field: messageList[13].fields[8] },
+bike_profile_custom_wheelsize: { message: messageList[13], field: messageList[13].fields[9] },
+bike_profile_auto_wheelsize: { message: messageList[13], field: messageList[13].fields[10] },
+bike_profile_bike_weight: { message: messageList[13], field: messageList[13].fields[11] },
+bike_profile_power_cal_factor: { message: messageList[13], field: messageList[13].fields[12] },
+bike_profile_auto_wheel_cal: { message: messageList[13], field: messageList[13].fields[13] },
+bike_profile_auto_power_zero: { message: messageList[13], field: messageList[13].fields[14] },
+bike_profile_id: { message: messageList[13], field: messageList[13].fields[15] },
+bike_profile_spd_enabled: { message: messageList[13], field: messageList[13].fields[16] },
+bike_profile_cad_enabled: { message: messageList[13], field: messageList[13].fields[17] },
+bike_profile_spdcad_enabled: { message: messageList[13], field: messageList[13].fields[18] },
+bike_profile_power_enabled: { message: messageList[13], field: messageList[13].fields[19] },
+bike_profile_crank_length: { message: messageList[13], field: messageList[13].fields[20] },
+bike_profile_enabled: { message: messageList[13], field: messageList[13].fields[21] },
+bike_profile_bike_spd_ant_id_trans_type: { message: messageList[13], field: messageList[13].fields[22] },
+bike_profile_bike_cad_ant_id_trans_type: { message: messageList[13], field: messageList[13].fields[23] },
+bike_profile_bike_spdcad_ant_id_trans_type: { message: messageList[13], field: messageList[13].fields[24] },
+bike_profile_bike_power_ant_id_trans_type: { message: messageList[13], field: messageList[13].fields[25] },
+bike_profile_odometer_rollover: { message: messageList[13], field: messageList[13].fields[26] },
+bike_profile_front_gear_num: { message: messageList[13], field: messageList[13].fields[27] },
+bike_profile_front_gear: { message: messageList[13], field: messageList[13].fields[28] },
+bike_profile_rear_gear_num: { message: messageList[13], field: messageList[13].fields[29] },
+bike_profile_rear_gear: { message: messageList[13], field: messageList[13].fields[30] },
+bike_profile_shimano_di2_enabled: { message: messageList[13], field: messageList[13].fields[31] },
+connectivity_bluetooth_enabled: { message: messageList[14], field: messageList[14].fields[0] },
+connectivity_bluetooth_le_enabled: { message: messageList[14], field: messageList[14].fields[1] },
+connectivity_ant_enabled: { message: messageList[14], field: messageList[14].fields[2] },
+connectivity_name: { message: messageList[14], field: messageList[14].fields[3] },
+connectivity_live_tracking_enabled: { message: messageList[14], field: messageList[14].fields[4] },
+connectivity_weather_conditions_enabled: { message: messageList[14], field: messageList[14].fields[5] },
+connectivity_weather_alerts_enabled: { message: messageList[14], field: messageList[14].fields[6] },
+connectivity_auto_activity_upload_enabled: { message: messageList[14], field: messageList[14].fields[7] },
+connectivity_course_download_enabled: { message: messageList[14], field: messageList[14].fields[8] },
+connectivity_workout_download_enabled: { message: messageList[14], field: messageList[14].fields[9] },
+connectivity_gps_ephemeris_download_enabled: { message: messageList[14], field: messageList[14].fields[10] },
+connectivity_incident_detection_enabled: { message: messageList[14], field: messageList[14].fields[11] },
+connectivity_grouptrack_enabled: { message: messageList[14], field: messageList[14].fields[12] },
+watchface_settings_message_index: { message: messageList[15], field: messageList[15].fields[0] },
+watchface_settings_mode: { message: messageList[15], field: messageList[15].fields[1] },
+watchface_settings_layout: { message: messageList[15], field: messageList[15].fields[2] },
+ohr_settings_timestamp: { message: messageList[16], field: messageList[16].fields[0] },
+ohr_settings_enabled: { message: messageList[16], field: messageList[16].fields[1] },
+zones_target_max_heart_rate: { message: messageList[17], field: messageList[17].fields[0] },
+zones_target_threshold_heart_rate: { message: messageList[17], field: messageList[17].fields[1] },
+zones_target_functional_threshold_power: { message: messageList[17], field: messageList[17].fields[2] },
+zones_target_hr_calc_type: { message: messageList[17], field: messageList[17].fields[3] },
+zones_target_pwr_calc_type: { message: messageList[17], field: messageList[17].fields[4] },
+sport_sport: { message: messageList[18], field: messageList[18].fields[0] },
+sport_sub_sport: { message: messageList[18], field: messageList[18].fields[1] },
+sport_name: { message: messageList[18], field: messageList[18].fields[2] },
+hr_zone_message_index: { message: messageList[19], field: messageList[19].fields[0] },
+hr_zone_high_bpm: { message: messageList[19], field: messageList[19].fields[1] },
+hr_zone_name: { message: messageList[19], field: messageList[19].fields[2] },
+speed_zone_message_index: { message: messageList[20], field: messageList[20].fields[0] },
+speed_zone_high_value: { message: messageList[20], field: messageList[20].fields[1] },
+speed_zone_name: { message: messageList[20], field: messageList[20].fields[2] },
+cadence_zone_message_index: { message: messageList[21], field: messageList[21].fields[0] },
+cadence_zone_high_value: { message: messageList[21], field: messageList[21].fields[1] },
+cadence_zone_name: { message: messageList[21], field: messageList[21].fields[2] },
+power_zone_message_index: { message: messageList[22], field: messageList[22].fields[0] },
+power_zone_high_value: { message: messageList[22], field: messageList[22].fields[1] },
+power_zone_name: { message: messageList[22], field: messageList[22].fields[2] },
+met_zone_message_index: { message: messageList[23], field: messageList[23].fields[0] },
+met_zone_high_bpm: { message: messageList[23], field: messageList[23].fields[1] },
+met_zone_calories: { message: messageList[23], field: messageList[23].fields[2] },
+met_zone_fat_calories: { message: messageList[23], field: messageList[23].fields[3] },
+dive_settings_message_index: { message: messageList[24], field: messageList[24].fields[0] },
+dive_settings_name: { message: messageList[24], field: messageList[24].fields[1] },
+dive_settings_model: { message: messageList[24], field: messageList[24].fields[2] },
+dive_settings_gf_low: { message: messageList[24], field: messageList[24].fields[3] },
+dive_settings_gf_high: { message: messageList[24], field: messageList[24].fields[4] },
+dive_settings_water_type: { message: messageList[24], field: messageList[24].fields[5] },
+dive_settings_water_density: { message: messageList[24], field: messageList[24].fields[6] },
+dive_settings_po2_warn: { message: messageList[24], field: messageList[24].fields[7] },
+dive_settings_po2_critical: { message: messageList[24], field: messageList[24].fields[8] },
+dive_settings_po2_deco: { message: messageList[24], field: messageList[24].fields[9] },
+dive_settings_safety_stop_enabled: { message: messageList[24], field: messageList[24].fields[10] },
+dive_settings_bottom_depth: { message: messageList[24], field: messageList[24].fields[11] },
+dive_settings_bottom_time: { message: messageList[24], field: messageList[24].fields[12] },
+dive_settings_apnea_countdown_enabled: { message: messageList[24], field: messageList[24].fields[13] },
+dive_settings_apnea_countdown_time: { message: messageList[24], field: messageList[24].fields[14] },
+dive_settings_backlight_mode: { message: messageList[24], field: messageList[24].fields[15] },
+dive_settings_backlight_brightness: { message: messageList[24], field: messageList[24].fields[16] },
+dive_settings_backlight_timeout: { message: messageList[24], field: messageList[24].fields[17] },
+dive_settings_repeat_dive_interval: { message: messageList[24], field: messageList[24].fields[18] },
+dive_settings_safety_stop_time: { message: messageList[24], field: messageList[24].fields[19] },
+dive_settings_heart_rate_source_type: { message: messageList[24], field: messageList[24].fields[20] },
+dive_settings_heart_rate_source: { message: messageList[24], field: messageList[24].fields[21] },
+dive_alarm_message_index: { message: messageList[25], field: messageList[25].fields[0] },
+dive_alarm_depth: { message: messageList[25], field: messageList[25].fields[1] },
+dive_alarm_time: { message: messageList[25], field: messageList[25].fields[2] },
+dive_alarm_enabled: { message: messageList[25], field: messageList[25].fields[3] },
+dive_alarm_alarm_type: { message: messageList[25], field: messageList[25].fields[4] },
+dive_alarm_sound: { message: messageList[25], field: messageList[25].fields[5] },
+dive_alarm_dive_types: { message: messageList[25], field: messageList[25].fields[6] },
+dive_gas_message_index: { message: messageList[26], field: messageList[26].fields[0] },
+dive_gas_helium_content: { message: messageList[26], field: messageList[26].fields[1] },
+dive_gas_oxygen_content: { message: messageList[26], field: messageList[26].fields[2] },
+dive_gas_status: { message: messageList[26], field: messageList[26].fields[3] },
+goal_message_index: { message: messageList[27], field: messageList[27].fields[0] },
+goal_sport: { message: messageList[27], field: messageList[27].fields[1] },
+goal_sub_sport: { message: messageList[27], field: messageList[27].fields[2] },
+goal_start_date: { message: messageList[27], field: messageList[27].fields[3] },
+goal_end_date: { message: messageList[27], field: messageList[27].fields[4] },
+goal_type: { message: messageList[27], field: messageList[27].fields[5] },
+goal_value: { message: messageList[27], field: messageList[27].fields[6] },
+goal_repeat: { message: messageList[27], field: messageList[27].fields[7] },
+goal_target_value: { message: messageList[27], field: messageList[27].fields[8] },
+goal_recurrence: { message: messageList[27], field: messageList[27].fields[9] },
+goal_recurrence_value: { message: messageList[27], field: messageList[27].fields[10] },
+goal_enabled: { message: messageList[27], field: messageList[27].fields[11] },
+goal_source: { message: messageList[27], field: messageList[27].fields[12] },
+activity_timestamp: { message: messageList[28], field: messageList[28].fields[0] },
+activity_total_timer_time: { message: messageList[28], field: messageList[28].fields[1] },
+activity_num_sessions: { message: messageList[28], field: messageList[28].fields[2] },
+activity_type: { message: messageList[28], field: messageList[28].fields[3] },
+activity_event: { message: messageList[28], field: messageList[28].fields[4] },
+activity_event_type: { message: messageList[28], field: messageList[28].fields[5] },
+activity_local_timestamp: { message: messageList[28], field: messageList[28].fields[6] },
+activity_event_group: { message: messageList[28], field: messageList[28].fields[7] },
+session_message_index: { message: messageList[29], field: messageList[29].fields[0] },
+session_timestamp: { message: messageList[29], field: messageList[29].fields[1] },
+session_event: { message: messageList[29], field: messageList[29].fields[2] },
+session_event_type: { message: messageList[29], field: messageList[29].fields[3] },
+session_start_time: { message: messageList[29], field: messageList[29].fields[4] },
+session_start_position_lat: { message: messageList[29], field: messageList[29].fields[5] },
+session_start_position_long: { message: messageList[29], field: messageList[29].fields[6] },
+session_sport: { message: messageList[29], field: messageList[29].fields[7] },
+session_sub_sport: { message: messageList[29], field: messageList[29].fields[8] },
+session_total_elapsed_time: { message: messageList[29], field: messageList[29].fields[9] },
+session_total_timer_time: { message: messageList[29], field: messageList[29].fields[10] },
+session_total_distance: { message: messageList[29], field: messageList[29].fields[11] },
+session_total_cycles: { message: messageList[29], field: messageList[29].fields[12] },
+session_total_calories: { message: messageList[29], field: messageList[29].fields[13] },
+session_total_fat_calories: { message: messageList[29], field: messageList[29].fields[14] },
+session_avg_speed: { message: messageList[29], field: messageList[29].fields[15] },
+session_max_speed: { message: messageList[29], field: messageList[29].fields[16] },
+session_avg_heart_rate: { message: messageList[29], field: messageList[29].fields[17] },
+session_max_heart_rate: { message: messageList[29], field: messageList[29].fields[18] },
+session_avg_cadence: { message: messageList[29], field: messageList[29].fields[19] },
+session_max_cadence: { message: messageList[29], field: messageList[29].fields[20] },
+session_avg_power: { message: messageList[29], field: messageList[29].fields[21] },
+session_max_power: { message: messageList[29], field: messageList[29].fields[22] },
+session_total_ascent: { message: messageList[29], field: messageList[29].fields[23] },
+session_total_descent: { message: messageList[29], field: messageList[29].fields[24] },
+session_total_training_effect: { message: messageList[29], field: messageList[29].fields[25] },
+session_first_lap_index: { message: messageList[29], field: messageList[29].fields[26] },
+session_num_laps: { message: messageList[29], field: messageList[29].fields[27] },
+session_event_group: { message: messageList[29], field: messageList[29].fields[28] },
+session_trigger: { message: messageList[29], field: messageList[29].fields[29] },
+session_nec_lat: { message: messageList[29], field: messageList[29].fields[30] },
+session_nec_long: { message: messageList[29], field: messageList[29].fields[31] },
+session_swc_lat: { message: messageList[29], field: messageList[29].fields[32] },
+session_swc_long: { message: messageList[29], field: messageList[29].fields[33] },
+session_num_lengths: { message: messageList[29], field: messageList[29].fields[34] },
+session_normalized_power: { message: messageList[29], field: messageList[29].fields[35] },
+session_training_stress_score: { message: messageList[29], field: messageList[29].fields[36] },
+session_intensity_factor: { message: messageList[29], field: messageList[29].fields[37] },
+session_left_right_balance: { message: messageList[29], field: messageList[29].fields[38] },
+session_avg_stroke_count: { message: messageList[29], field: messageList[29].fields[39] },
+session_avg_stroke_distance: { message: messageList[29], field: messageList[29].fields[40] },
+session_swim_stroke: { message: messageList[29], field: messageList[29].fields[41] },
+session_pool_length: { message: messageList[29], field: messageList[29].fields[42] },
+session_threshold_power: { message: messageList[29], field: messageList[29].fields[43] },
+session_pool_length_unit: { message: messageList[29], field: messageList[29].fields[44] },
+session_num_active_lengths: { message: messageList[29], field: messageList[29].fields[45] },
+session_total_work: { message: messageList[29], field: messageList[29].fields[46] },
+session_avg_altitude: { message: messageList[29], field: messageList[29].fields[47] },
+session_max_altitude: { message: messageList[29], field: messageList[29].fields[48] },
+session_gps_accuracy: { message: messageList[29], field: messageList[29].fields[49] },
+session_avg_grade: { message: messageList[29], field: messageList[29].fields[50] },
+session_avg_pos_grade: { message: messageList[29], field: messageList[29].fields[51] },
+session_avg_neg_grade: { message: messageList[29], field: messageList[29].fields[52] },
+session_max_pos_grade: { message: messageList[29], field: messageList[29].fields[53] },
+session_max_neg_grade: { message: messageList[29], field: messageList[29].fields[54] },
+session_avg_temperature: { message: messageList[29], field: messageList[29].fields[55] },
+session_max_temperature: { message: messageList[29], field: messageList[29].fields[56] },
+session_total_moving_time: { message: messageList[29], field: messageList[29].fields[57] },
+session_avg_pos_vertical_speed: { message: messageList[29], field: messageList[29].fields[58] },
+session_avg_neg_vertical_speed: { message: messageList[29], field: messageList[29].fields[59] },
+session_max_pos_vertical_speed: { message: messageList[29], field: messageList[29].fields[60] },
+session_max_neg_vertical_speed: { message: messageList[29], field: messageList[29].fields[61] },
+session_min_heart_rate: { message: messageList[29], field: messageList[29].fields[62] },
+session_time_in_hr_zone: { message: messageList[29], field: messageList[29].fields[63] },
+session_time_in_speed_zone: { message: messageList[29], field: messageList[29].fields[64] },
+session_time_in_cadence_zone: { message: messageList[29], field: messageList[29].fields[65] },
+session_time_in_power_zone: { message: messageList[29], field: messageList[29].fields[66] },
+session_avg_lap_time: { message: messageList[29], field: messageList[29].fields[67] },
+session_best_lap_index: { message: messageList[29], field: messageList[29].fields[68] },
+session_min_altitude: { message: messageList[29], field: messageList[29].fields[69] },
+session_player_score: { message: messageList[29], field: messageList[29].fields[70] },
+session_opponent_score: { message: messageList[29], field: messageList[29].fields[71] },
+session_opponent_name: { message: messageList[29], field: messageList[29].fields[72] },
+session_stroke_count: { message: messageList[29], field: messageList[29].fields[73] },
+session_zone_count: { message: messageList[29], field: messageList[29].fields[74] },
+session_max_ball_speed: { message: messageList[29], field: messageList[29].fields[75] },
+session_avg_ball_speed: { message: messageList[29], field: messageList[29].fields[76] },
+session_avg_vertical_oscillation: { message: messageList[29], field: messageList[29].fields[77] },
+session_avg_stance_time_percent: { message: messageList[29], field: messageList[29].fields[78] },
+session_avg_stance_time: { message: messageList[29], field: messageList[29].fields[79] },
+session_avg_fractional_cadence: { message: messageList[29], field: messageList[29].fields[80] },
+session_max_fractional_cadence: { message: messageList[29], field: messageList[29].fields[81] },
+session_total_fractional_cycles: { message: messageList[29], field: messageList[29].fields[82] },
+session_avg_total_hemoglobin_conc: { message: messageList[29], field: messageList[29].fields[83] },
+session_min_total_hemoglobin_conc: { message: messageList[29], field: messageList[29].fields[84] },
+session_max_total_hemoglobin_conc: { message: messageList[29], field: messageList[29].fields[85] },
+session_avg_saturated_hemoglobin_percent: { message: messageList[29], field: messageList[29].fields[86] },
+session_min_saturated_hemoglobin_percent: { message: messageList[29], field: messageList[29].fields[87] },
+session_max_saturated_hemoglobin_percent: { message: messageList[29], field: messageList[29].fields[88] },
+session_avg_left_torque_effectiveness: { message: messageList[29], field: messageList[29].fields[89] },
+session_avg_right_torque_effectiveness: { message: messageList[29], field: messageList[29].fields[90] },
+session_avg_left_pedal_smoothness: { message: messageList[29], field: messageList[29].fields[91] },
+session_avg_right_pedal_smoothness: { message: messageList[29], field: messageList[29].fields[92] },
+session_avg_combined_pedal_smoothness: { message: messageList[29], field: messageList[29].fields[93] },
+session_sport_index: { message: messageList[29], field: messageList[29].fields[94] },
+session_time_standing: { message: messageList[29], field: messageList[29].fields[95] },
+session_stand_count: { message: messageList[29], field: messageList[29].fields[96] },
+session_avg_left_pco: { message: messageList[29], field: messageList[29].fields[97] },
+session_avg_right_pco: { message: messageList[29], field: messageList[29].fields[98] },
+session_avg_left_power_phase: { message: messageList[29], field: messageList[29].fields[99] },
+session_avg_left_power_phase_peak: { message: messageList[29], field: messageList[29].fields[100] },
+session_avg_right_power_phase: { message: messageList[29], field: messageList[29].fields[101] },
+session_avg_right_power_phase_peak: { message: messageList[29], field: messageList[29].fields[102] },
+session_avg_power_position: { message: messageList[29], field: messageList[29].fields[103] },
+session_max_power_position: { message: messageList[29], field: messageList[29].fields[104] },
+session_avg_cadence_position: { message: messageList[29], field: messageList[29].fields[105] },
+session_max_cadence_position: { message: messageList[29], field: messageList[29].fields[106] },
+session_enhanced_avg_speed: { message: messageList[29], field: messageList[29].fields[107] },
+session_enhanced_max_speed: { message: messageList[29], field: messageList[29].fields[108] },
+session_enhanced_avg_altitude: { message: messageList[29], field: messageList[29].fields[109] },
+session_enhanced_min_altitude: { message: messageList[29], field: messageList[29].fields[110] },
+session_enhanced_max_altitude: { message: messageList[29], field: messageList[29].fields[111] },
+session_avg_lev_motor_power: { message: messageList[29], field: messageList[29].fields[112] },
+session_max_lev_motor_power: { message: messageList[29], field: messageList[29].fields[113] },
+session_lev_battery_consumption: { message: messageList[29], field: messageList[29].fields[114] },
+session_avg_vertical_ratio: { message: messageList[29], field: messageList[29].fields[115] },
+session_avg_stance_time_balance: { message: messageList[29], field: messageList[29].fields[116] },
+session_avg_step_length: { message: messageList[29], field: messageList[29].fields[117] },
+session_total_anaerobic_training_effect: { message: messageList[29], field: messageList[29].fields[118] },
+session_avg_vam: { message: messageList[29], field: messageList[29].fields[119] },
+session_total_grit: { message: messageList[29], field: messageList[29].fields[120] },
+session_total_flow: { message: messageList[29], field: messageList[29].fields[121] },
+session_jump_count: { message: messageList[29], field: messageList[29].fields[122] },
+session_avg_grit: { message: messageList[29], field: messageList[29].fields[123] },
+session_avg_flow: { message: messageList[29], field: messageList[29].fields[124] },
+session_total_fractional_ascent: { message: messageList[29], field: messageList[29].fields[125] },
+session_total_fractional_descent: { message: messageList[29], field: messageList[29].fields[126] },
+session_avg_core_temperature: { message: messageList[29], field: messageList[29].fields[127] },
+session_min_core_temperature: { message: messageList[29], field: messageList[29].fields[128] },
+session_max_core_temperature: { message: messageList[29], field: messageList[29].fields[129] },
+lap_message_index: { message: messageList[30], field: messageList[30].fields[0] },
+lap_timestamp: { message: messageList[30], field: messageList[30].fields[1] },
+lap_event: { message: messageList[30], field: messageList[30].fields[2] },
+lap_event_type: { message: messageList[30], field: messageList[30].fields[3] },
+lap_start_time: { message: messageList[30], field: messageList[30].fields[4] },
+lap_start_position_lat: { message: messageList[30], field: messageList[30].fields[5] },
+lap_start_position_long: { message: messageList[30], field: messageList[30].fields[6] },
+lap_end_position_lat: { message: messageList[30], field: messageList[30].fields[7] },
+lap_end_position_long: { message: messageList[30], field: messageList[30].fields[8] },
+lap_total_elapsed_time: { message: messageList[30], field: messageList[30].fields[9] },
+lap_total_timer_time: { message: messageList[30], field: messageList[30].fields[10] },
+lap_total_distance: { message: messageList[30], field: messageList[30].fields[11] },
+lap_total_cycles: { message: messageList[30], field: messageList[30].fields[12] },
+lap_total_calories: { message: messageList[30], field: messageList[30].fields[13] },
+lap_total_fat_calories: { message: messageList[30], field: messageList[30].fields[14] },
+lap_avg_speed: { message: messageList[30], field: messageList[30].fields[15] },
+lap_max_speed: { message: messageList[30], field: messageList[30].fields[16] },
+lap_avg_heart_rate: { message: messageList[30], field: messageList[30].fields[17] },
+lap_max_heart_rate: { message: messageList[30], field: messageList[30].fields[18] },
+lap_avg_cadence: { message: messageList[30], field: messageList[30].fields[19] },
+lap_max_cadence: { message: messageList[30], field: messageList[30].fields[20] },
+lap_avg_power: { message: messageList[30], field: messageList[30].fields[21] },
+lap_max_power: { message: messageList[30], field: messageList[30].fields[22] },
+lap_total_ascent: { message: messageList[30], field: messageList[30].fields[23] },
+lap_total_descent: { message: messageList[30], field: messageList[30].fields[24] },
+lap_intensity: { message: messageList[30], field: messageList[30].fields[25] },
+lap_lap_trigger: { message: messageList[30], field: messageList[30].fields[26] },
+lap_sport: { message: messageList[30], field: messageList[30].fields[27] },
+lap_event_group: { message: messageList[30], field: messageList[30].fields[28] },
+lap_num_lengths: { message: messageList[30], field: messageList[30].fields[29] },
+lap_normalized_power: { message: messageList[30], field: messageList[30].fields[30] },
+lap_left_right_balance: { message: messageList[30], field: messageList[30].fields[31] },
+lap_first_length_index: { message: messageList[30], field: messageList[30].fields[32] },
+lap_avg_stroke_distance: { message: messageList[30], field: messageList[30].fields[33] },
+lap_swim_stroke: { message: messageList[30], field: messageList[30].fields[34] },
+lap_sub_sport: { message: messageList[30], field: messageList[30].fields[35] },
+lap_num_active_lengths: { message: messageList[30], field: messageList[30].fields[36] },
+lap_total_work: { message: messageList[30], field: messageList[30].fields[37] },
+lap_avg_altitude: { message: messageList[30], field: messageList[30].fields[38] },
+lap_max_altitude: { message: messageList[30], field: messageList[30].fields[39] },
+lap_gps_accuracy: { message: messageList[30], field: messageList[30].fields[40] },
+lap_avg_grade: { message: messageList[30], field: messageList[30].fields[41] },
+lap_avg_pos_grade: { message: messageList[30], field: messageList[30].fields[42] },
+lap_avg_neg_grade: { message: messageList[30], field: messageList[30].fields[43] },
+lap_max_pos_grade: { message: messageList[30], field: messageList[30].fields[44] },
+lap_max_neg_grade: { message: messageList[30], field: messageList[30].fields[45] },
+lap_avg_temperature: { message: messageList[30], field: messageList[30].fields[46] },
+lap_max_temperature: { message: messageList[30], field: messageList[30].fields[47] },
+lap_total_moving_time: { message: messageList[30], field: messageList[30].fields[48] },
+lap_avg_pos_vertical_speed: { message: messageList[30], field: messageList[30].fields[49] },
+lap_avg_neg_vertical_speed: { message: messageList[30], field: messageList[30].fields[50] },
+lap_max_pos_vertical_speed: { message: messageList[30], field: messageList[30].fields[51] },
+lap_max_neg_vertical_speed: { message: messageList[30], field: messageList[30].fields[52] },
+lap_time_in_hr_zone: { message: messageList[30], field: messageList[30].fields[53] },
+lap_time_in_speed_zone: { message: messageList[30], field: messageList[30].fields[54] },
+lap_time_in_cadence_zone: { message: messageList[30], field: messageList[30].fields[55] },
+lap_time_in_power_zone: { message: messageList[30], field: messageList[30].fields[56] },
+lap_repetition_num: { message: messageList[30], field: messageList[30].fields[57] },
+lap_min_altitude: { message: messageList[30], field: messageList[30].fields[58] },
+lap_min_heart_rate: { message: messageList[30], field: messageList[30].fields[59] },
+lap_wkt_step_index: { message: messageList[30], field: messageList[30].fields[60] },
+lap_opponent_score: { message: messageList[30], field: messageList[30].fields[61] },
+lap_stroke_count: { message: messageList[30], field: messageList[30].fields[62] },
+lap_zone_count: { message: messageList[30], field: messageList[30].fields[63] },
+lap_avg_vertical_oscillation: { message: messageList[30], field: messageList[30].fields[64] },
+lap_avg_stance_time_percent: { message: messageList[30], field: messageList[30].fields[65] },
+lap_avg_stance_time: { message: messageList[30], field: messageList[30].fields[66] },
+lap_avg_fractional_cadence: { message: messageList[30], field: messageList[30].fields[67] },
+lap_max_fractional_cadence: { message: messageList[30], field: messageList[30].fields[68] },
+lap_total_fractional_cycles: { message: messageList[30], field: messageList[30].fields[69] },
+lap_player_score: { message: messageList[30], field: messageList[30].fields[70] },
+lap_avg_total_hemoglobin_conc: { message: messageList[30], field: messageList[30].fields[71] },
+lap_min_total_hemoglobin_conc: { message: messageList[30], field: messageList[30].fields[72] },
+lap_max_total_hemoglobin_conc: { message: messageList[30], field: messageList[30].fields[73] },
+lap_avg_saturated_hemoglobin_percent: { message: messageList[30], field: messageList[30].fields[74] },
+lap_min_saturated_hemoglobin_percent: { message: messageList[30], field: messageList[30].fields[75] },
+lap_max_saturated_hemoglobin_percent: { message: messageList[30], field: messageList[30].fields[76] },
+lap_avg_left_torque_effectiveness: { message: messageList[30], field: messageList[30].fields[77] },
+lap_avg_right_torque_effectiveness: { message: messageList[30], field: messageList[30].fields[78] },
+lap_avg_left_pedal_smoothness: { message: messageList[30], field: messageList[30].fields[79] },
+lap_avg_right_pedal_smoothness: { message: messageList[30], field: messageList[30].fields[80] },
+lap_avg_combined_pedal_smoothness: { message: messageList[30], field: messageList[30].fields[81] },
+lap_time_standing: { message: messageList[30], field: messageList[30].fields[82] },
+lap_stand_count: { message: messageList[30], field: messageList[30].fields[83] },
+lap_avg_left_pco: { message: messageList[30], field: messageList[30].fields[84] },
+lap_avg_right_pco: { message: messageList[30], field: messageList[30].fields[85] },
+lap_avg_left_power_phase: { message: messageList[30], field: messageList[30].fields[86] },
+lap_avg_left_power_phase_peak: { message: messageList[30], field: messageList[30].fields[87] },
+lap_avg_right_power_phase: { message: messageList[30], field: messageList[30].fields[88] },
+lap_avg_right_power_phase_peak: { message: messageList[30], field: messageList[30].fields[89] },
+lap_avg_power_position: { message: messageList[30], field: messageList[30].fields[90] },
+lap_max_power_position: { message: messageList[30], field: messageList[30].fields[91] },
+lap_avg_cadence_position: { message: messageList[30], field: messageList[30].fields[92] },
+lap_max_cadence_position: { message: messageList[30], field: messageList[30].fields[93] },
+lap_enhanced_avg_speed: { message: messageList[30], field: messageList[30].fields[94] },
+lap_enhanced_max_speed: { message: messageList[30], field: messageList[30].fields[95] },
+lap_enhanced_avg_altitude: { message: messageList[30], field: messageList[30].fields[96] },
+lap_enhanced_min_altitude: { message: messageList[30], field: messageList[30].fields[97] },
+lap_enhanced_max_altitude: { message: messageList[30], field: messageList[30].fields[98] },
+lap_avg_lev_motor_power: { message: messageList[30], field: messageList[30].fields[99] },
+lap_max_lev_motor_power: { message: messageList[30], field: messageList[30].fields[100] },
+lap_lev_battery_consumption: { message: messageList[30], field: messageList[30].fields[101] },
+lap_avg_vertical_ratio: { message: messageList[30], field: messageList[30].fields[102] },
+lap_avg_stance_time_balance: { message: messageList[30], field: messageList[30].fields[103] },
+lap_avg_step_length: { message: messageList[30], field: messageList[30].fields[104] },
+lap_avg_vam: { message: messageList[30], field: messageList[30].fields[105] },
+lap_total_grit: { message: messageList[30], field: messageList[30].fields[106] },
+lap_total_flow: { message: messageList[30], field: messageList[30].fields[107] },
+lap_jump_count: { message: messageList[30], field: messageList[30].fields[108] },
+lap_avg_grit: { message: messageList[30], field: messageList[30].fields[109] },
+lap_avg_flow: { message: messageList[30], field: messageList[30].fields[110] },
+lap_total_fractional_ascent: { message: messageList[30], field: messageList[30].fields[111] },
+lap_total_fractional_descent: { message: messageList[30], field: messageList[30].fields[112] },
+lap_avg_core_temperature: { message: messageList[30], field: messageList[30].fields[113] },
+lap_min_core_temperature: { message: messageList[30], field: messageList[30].fields[114] },
+lap_max_core_temperature: { message: messageList[30], field: messageList[30].fields[115] },
+length_message_index: { message: messageList[31], field: messageList[31].fields[0] },
+length_timestamp: { message: messageList[31], field: messageList[31].fields[1] },
+length_event: { message: messageList[31], field: messageList[31].fields[2] },
+length_event_type: { message: messageList[31], field: messageList[31].fields[3] },
+length_start_time: { message: messageList[31], field: messageList[31].fields[4] },
+length_total_elapsed_time: { message: messageList[31], field: messageList[31].fields[5] },
+length_total_timer_time: { message: messageList[31], field: messageList[31].fields[6] },
+length_total_strokes: { message: messageList[31], field: messageList[31].fields[7] },
+length_avg_speed: { message: messageList[31], field: messageList[31].fields[8] },
+length_swim_stroke: { message: messageList[31], field: messageList[31].fields[9] },
+length_avg_swimming_cadence: { message: messageList[31], field: messageList[31].fields[10] },
+length_event_group: { message: messageList[31], field: messageList[31].fields[11] },
+length_total_calories: { message: messageList[31], field: messageList[31].fields[12] },
+length_length_type: { message: messageList[31], field: messageList[31].fields[13] },
+length_player_score: { message: messageList[31], field: messageList[31].fields[14] },
+length_opponent_score: { message: messageList[31], field: messageList[31].fields[15] },
+length_stroke_count: { message: messageList[31], field: messageList[31].fields[16] },
+length_zone_count: { message: messageList[31], field: messageList[31].fields[17] },
+record_timestamp: { message: messageList[32], field: messageList[32].fields[0] },
+record_position_lat: { message: messageList[32], field: messageList[32].fields[1] },
+record_position_long: { message: messageList[32], field: messageList[32].fields[2] },
+record_altitude: { message: messageList[32], field: messageList[32].fields[3] },
+record_heart_rate: { message: messageList[32], field: messageList[32].fields[4] },
+record_cadence: { message: messageList[32], field: messageList[32].fields[5] },
+record_distance: { message: messageList[32], field: messageList[32].fields[6] },
+record_speed: { message: messageList[32], field: messageList[32].fields[7] },
+record_power: { message: messageList[32], field: messageList[32].fields[8] },
+record_compressed_speed_distance: { message: messageList[32], field: messageList[32].fields[9] },
+record_grade: { message: messageList[32], field: messageList[32].fields[10] },
+record_resistance: { message: messageList[32], field: messageList[32].fields[11] },
+record_time_from_course: { message: messageList[32], field: messageList[32].fields[12] },
+record_cycle_length: { message: messageList[32], field: messageList[32].fields[13] },
+record_temperature: { message: messageList[32], field: messageList[32].fields[14] },
+record_speed_1s: { message: messageList[32], field: messageList[32].fields[15] },
+record_cycles: { message: messageList[32], field: messageList[32].fields[16] },
+record_total_cycles: { message: messageList[32], field: messageList[32].fields[17] },
+record_compressed_accumulated_power: { message: messageList[32], field: messageList[32].fields[18] },
+record_accumulated_power: { message: messageList[32], field: messageList[32].fields[19] },
+record_left_right_balance: { message: messageList[32], field: messageList[32].fields[20] },
+record_gps_accuracy: { message: messageList[32], field: messageList[32].fields[21] },
+record_vertical_speed: { message: messageList[32], field: messageList[32].fields[22] },
+record_calories: { message: messageList[32], field: messageList[32].fields[23] },
+record_vertical_oscillation: { message: messageList[32], field: messageList[32].fields[24] },
+record_stance_time_percent: { message: messageList[32], field: messageList[32].fields[25] },
+record_stance_time: { message: messageList[32], field: messageList[32].fields[26] },
+record_activity_type: { message: messageList[32], field: messageList[32].fields[27] },
+record_left_torque_effectiveness: { message: messageList[32], field: messageList[32].fields[28] },
+record_right_torque_effectiveness: { message: messageList[32], field: messageList[32].fields[29] },
+record_left_pedal_smoothness: { message: messageList[32], field: messageList[32].fields[30] },
+record_right_pedal_smoothness: { message: messageList[32], field: messageList[32].fields[31] },
+record_combined_pedal_smoothness: { message: messageList[32], field: messageList[32].fields[32] },
+record_time128: { message: messageList[32], field: messageList[32].fields[33] },
+record_stroke_type: { message: messageList[32], field: messageList[32].fields[34] },
+record_zone: { message: messageList[32], field: messageList[32].fields[35] },
+record_ball_speed: { message: messageList[32], field: messageList[32].fields[36] },
+record_cadence256: { message: messageList[32], field: messageList[32].fields[37] },
+record_fractional_cadence: { message: messageList[32], field: messageList[32].fields[38] },
+record_total_hemoglobin_conc: { message: messageList[32], field: messageList[32].fields[39] },
+record_total_hemoglobin_conc_min: { message: messageList[32], field: messageList[32].fields[40] },
+record_total_hemoglobin_conc_max: { message: messageList[32], field: messageList[32].fields[41] },
+record_saturated_hemoglobin_percent: { message: messageList[32], field: messageList[32].fields[42] },
+record_saturated_hemoglobin_percent_min: { message: messageList[32], field: messageList[32].fields[43] },
+record_saturated_hemoglobin_percent_max: { message: messageList[32], field: messageList[32].fields[44] },
+record_device_index: { message: messageList[32], field: messageList[32].fields[45] },
+record_left_pco: { message: messageList[32], field: messageList[32].fields[46] },
+record_right_pco: { message: messageList[32], field: messageList[32].fields[47] },
+record_left_power_phase: { message: messageList[32], field: messageList[32].fields[48] },
+record_left_power_phase_peak: { message: messageList[32], field: messageList[32].fields[49] },
+record_right_power_phase: { message: messageList[32], field: messageList[32].fields[50] },
+record_right_power_phase_peak: { message: messageList[32], field: messageList[32].fields[51] },
+record_enhanced_speed: { message: messageList[32], field: messageList[32].fields[52] },
+record_enhanced_altitude: { message: messageList[32], field: messageList[32].fields[53] },
+record_battery_soc: { message: messageList[32], field: messageList[32].fields[54] },
+record_motor_power: { message: messageList[32], field: messageList[32].fields[55] },
+record_vertical_ratio: { message: messageList[32], field: messageList[32].fields[56] },
+record_stance_time_balance: { message: messageList[32], field: messageList[32].fields[57] },
+record_step_length: { message: messageList[32], field: messageList[32].fields[58] },
+record_absolute_pressure: { message: messageList[32], field: messageList[32].fields[59] },
+record_depth: { message: messageList[32], field: messageList[32].fields[60] },
+record_next_stop_depth: { message: messageList[32], field: messageList[32].fields[61] },
+record_next_stop_time: { message: messageList[32], field: messageList[32].fields[62] },
+record_time_to_surface: { message: messageList[32], field: messageList[32].fields[63] },
+record_ndl_time: { message: messageList[32], field: messageList[32].fields[64] },
+record_cns_load: { message: messageList[32], field: messageList[32].fields[65] },
+record_n2_load: { message: messageList[32], field: messageList[32].fields[66] },
+record_grit: { message: messageList[32], field: messageList[32].fields[67] },
+record_flow: { message: messageList[32], field: messageList[32].fields[68] },
+record_ebike_travel_range: { message: messageList[32], field: messageList[32].fields[69] },
+record_ebike_battery_level: { message: messageList[32], field: messageList[32].fields[70] },
+record_ebike_assist_mode: { message: messageList[32], field: messageList[32].fields[71] },
+record_ebike_assist_level_percent: { message: messageList[32], field: messageList[32].fields[72] },
+record_core_temperature: { message: messageList[32], field: messageList[32].fields[73] },
+event_timestamp: { message: messageList[33], field: messageList[33].fields[0] },
+event_event: { message: messageList[33], field: messageList[33].fields[1] },
+event_event_type: { message: messageList[33], field: messageList[33].fields[2] },
+event_data16: { message: messageList[33], field: messageList[33].fields[3] },
+event_data: { message: messageList[33], field: messageList[33].fields[4] },
+event_event_group: { message: messageList[33], field: messageList[33].fields[5] },
+event_score: { message: messageList[33], field: messageList[33].fields[6] },
+event_opponent_score: { message: messageList[33], field: messageList[33].fields[7] },
+event_front_gear_num: { message: messageList[33], field: messageList[33].fields[8] },
+event_front_gear: { message: messageList[33], field: messageList[33].fields[9] },
+event_rear_gear_num: { message: messageList[33], field: messageList[33].fields[10] },
+event_rear_gear: { message: messageList[33], field: messageList[33].fields[11] },
+event_device_index: { message: messageList[33], field: messageList[33].fields[12] },
+event_radar_threat_level_max: { message: messageList[33], field: messageList[33].fields[13] },
+event_radar_threat_count: { message: messageList[33], field: messageList[33].fields[14] },
+device_info_timestamp: { message: messageList[34], field: messageList[34].fields[0] },
+device_info_device_index: { message: messageList[34], field: messageList[34].fields[1] },
+device_info_device_type: { message: messageList[34], field: messageList[34].fields[2] },
+device_info_manufacturer: { message: messageList[34], field: messageList[34].fields[3] },
+device_info_serial_number: { message: messageList[34], field: messageList[34].fields[4] },
+device_info_product: { message: messageList[34], field: messageList[34].fields[5] },
+device_info_software_version: { message: messageList[34], field: messageList[34].fields[6] },
+device_info_hardware_version: { message: messageList[34], field: messageList[34].fields[7] },
+device_info_cum_operating_time: { message: messageList[34], field: messageList[34].fields[8] },
+device_info_battery_voltage: { message: messageList[34], field: messageList[34].fields[9] },
+device_info_battery_status: { message: messageList[34], field: messageList[34].fields[10] },
+device_info_sensor_position: { message: messageList[34], field: messageList[34].fields[11] },
+device_info_descriptor: { message: messageList[34], field: messageList[34].fields[12] },
+device_info_ant_transmission_type: { message: messageList[34], field: messageList[34].fields[13] },
+device_info_ant_device_number: { message: messageList[34], field: messageList[34].fields[14] },
+device_info_ant_network: { message: messageList[34], field: messageList[34].fields[15] },
+device_info_source_type: { message: messageList[34], field: messageList[34].fields[16] },
+device_info_product_name: { message: messageList[34], field: messageList[34].fields[17] },
+training_file_timestamp: { message: messageList[35], field: messageList[35].fields[0] },
+training_file_type: { message: messageList[35], field: messageList[35].fields[1] },
+training_file_manufacturer: { message: messageList[35], field: messageList[35].fields[2] },
+training_file_product: { message: messageList[35], field: messageList[35].fields[3] },
+training_file_serial_number: { message: messageList[35], field: messageList[35].fields[4] },
+training_file_time_created: { message: messageList[35], field: messageList[35].fields[5] },
+hrv_time: { message: messageList[36], field: messageList[36].fields[0] },
+weather_conditions_timestamp: { message: messageList[37], field: messageList[37].fields[0] },
+weather_conditions_weather_report: { message: messageList[37], field: messageList[37].fields[1] },
+weather_conditions_temperature: { message: messageList[37], field: messageList[37].fields[2] },
+weather_conditions_condition: { message: messageList[37], field: messageList[37].fields[3] },
+weather_conditions_wind_direction: { message: messageList[37], field: messageList[37].fields[4] },
+weather_conditions_wind_speed: { message: messageList[37], field: messageList[37].fields[5] },
+weather_conditions_precipitation_probability: { message: messageList[37], field: messageList[37].fields[6] },
+weather_conditions_temperature_feels_like: { message: messageList[37], field: messageList[37].fields[7] },
+weather_conditions_relative_humidity: { message: messageList[37], field: messageList[37].fields[8] },
+weather_conditions_location: { message: messageList[37], field: messageList[37].fields[9] },
+weather_conditions_observed_at_time: { message: messageList[37], field: messageList[37].fields[10] },
+weather_conditions_observed_location_lat: { message: messageList[37], field: messageList[37].fields[11] },
+weather_conditions_observed_location_long: { message: messageList[37], field: messageList[37].fields[12] },
+weather_conditions_day_of_week: { message: messageList[37], field: messageList[37].fields[13] },
+weather_conditions_high_temperature: { message: messageList[37], field: messageList[37].fields[14] },
+weather_conditions_low_temperature: { message: messageList[37], field: messageList[37].fields[15] },
+weather_alert_timestamp: { message: messageList[38], field: messageList[38].fields[0] },
+weather_alert_report_id: { message: messageList[38], field: messageList[38].fields[1] },
+weather_alert_issue_time: { message: messageList[38], field: messageList[38].fields[2] },
+weather_alert_expire_time: { message: messageList[38], field: messageList[38].fields[3] },
+weather_alert_severity: { message: messageList[38], field: messageList[38].fields[4] },
+weather_alert_type: { message: messageList[38], field: messageList[38].fields[5] },
+gps_metadata_timestamp: { message: messageList[39], field: messageList[39].fields[0] },
+gps_metadata_timestamp_ms: { message: messageList[39], field: messageList[39].fields[1] },
+gps_metadata_position_lat: { message: messageList[39], field: messageList[39].fields[2] },
+gps_metadata_position_long: { message: messageList[39], field: messageList[39].fields[3] },
+gps_metadata_enhanced_altitude: { message: messageList[39], field: messageList[39].fields[4] },
+gps_metadata_enhanced_speed: { message: messageList[39], field: messageList[39].fields[5] },
+gps_metadata_heading: { message: messageList[39], field: messageList[39].fields[6] },
+gps_metadata_utc_timestamp: { message: messageList[39], field: messageList[39].fields[7] },
+gps_metadata_velocity: { message: messageList[39], field: messageList[39].fields[8] },
+camera_event_timestamp: { message: messageList[40], field: messageList[40].fields[0] },
+camera_event_timestamp_ms: { message: messageList[40], field: messageList[40].fields[1] },
+camera_event_camera_event_type: { message: messageList[40], field: messageList[40].fields[2] },
+camera_event_camera_file_uuid: { message: messageList[40], field: messageList[40].fields[3] },
+camera_event_camera_orientation: { message: messageList[40], field: messageList[40].fields[4] },
+gyroscope_data_timestamp: { message: messageList[41], field: messageList[41].fields[0] },
+gyroscope_data_timestamp_ms: { message: messageList[41], field: messageList[41].fields[1] },
+gyroscope_data_sample_time_offset: { message: messageList[41], field: messageList[41].fields[2] },
+gyroscope_data_gyro_x: { message: messageList[41], field: messageList[41].fields[3] },
+gyroscope_data_gyro_y: { message: messageList[41], field: messageList[41].fields[4] },
+gyroscope_data_gyro_z: { message: messageList[41], field: messageList[41].fields[5] },
+gyroscope_data_calibrated_gyro_x: { message: messageList[41], field: messageList[41].fields[6] },
+gyroscope_data_calibrated_gyro_y: { message: messageList[41], field: messageList[41].fields[7] },
+gyroscope_data_calibrated_gyro_z: { message: messageList[41], field: messageList[41].fields[8] },
+accelerometer_data_timestamp: { message: messageList[42], field: messageList[42].fields[0] },
+accelerometer_data_timestamp_ms: { message: messageList[42], field: messageList[42].fields[1] },
+accelerometer_data_sample_time_offset: { message: messageList[42], field: messageList[42].fields[2] },
+accelerometer_data_accel_x: { message: messageList[42], field: messageList[42].fields[3] },
+accelerometer_data_accel_y: { message: messageList[42], field: messageList[42].fields[4] },
+accelerometer_data_accel_z: { message: messageList[42], field: messageList[42].fields[5] },
+accelerometer_data_calibrated_accel_x: { message: messageList[42], field: messageList[42].fields[6] },
+accelerometer_data_calibrated_accel_y: { message: messageList[42], field: messageList[42].fields[7] },
+accelerometer_data_calibrated_accel_z: { message: messageList[42], field: messageList[42].fields[8] },
+accelerometer_data_compressed_calibrated_accel_x: { message: messageList[42], field: messageList[42].fields[9] },
+accelerometer_data_compressed_calibrated_accel_y: { message: messageList[42], field: messageList[42].fields[10] },
+accelerometer_data_compressed_calibrated_accel_z: { message: messageList[42], field: messageList[42].fields[11] },
+magnetometer_data_timestamp: { message: messageList[43], field: messageList[43].fields[0] },
+magnetometer_data_timestamp_ms: { message: messageList[43], field: messageList[43].fields[1] },
+magnetometer_data_sample_time_offset: { message: messageList[43], field: messageList[43].fields[2] },
+magnetometer_data_mag_x: { message: messageList[43], field: messageList[43].fields[3] },
+magnetometer_data_mag_y: { message: messageList[43], field: messageList[43].fields[4] },
+magnetometer_data_mag_z: { message: messageList[43], field: messageList[43].fields[5] },
+magnetometer_data_calibrated_mag_x: { message: messageList[43], field: messageList[43].fields[6] },
+magnetometer_data_calibrated_mag_y: { message: messageList[43], field: messageList[43].fields[7] },
+magnetometer_data_calibrated_mag_z: { message: messageList[43], field: messageList[43].fields[8] },
+barometer_data_timestamp: { message: messageList[44], field: messageList[44].fields[0] },
+barometer_data_timestamp_ms: { message: messageList[44], field: messageList[44].fields[1] },
+barometer_data_sample_time_offset: { message: messageList[44], field: messageList[44].fields[2] },
+barometer_data_baro_pres: { message: messageList[44], field: messageList[44].fields[3] },
+three_d_sensor_calibration_timestamp: { message: messageList[45], field: messageList[45].fields[0] },
+three_d_sensor_calibration_sensor_type: { message: messageList[45], field: messageList[45].fields[1] },
+three_d_sensor_calibration_calibration_factor: { message: messageList[45], field: messageList[45].fields[2] },
+three_d_sensor_calibration_calibration_divisor: { message: messageList[45], field: messageList[45].fields[3] },
+three_d_sensor_calibration_level_shift: { message: messageList[45], field: messageList[45].fields[4] },
+three_d_sensor_calibration_offset_cal: { message: messageList[45], field: messageList[45].fields[5] },
+three_d_sensor_calibration_orientation_matrix: { message: messageList[45], field: messageList[45].fields[6] },
+one_d_sensor_calibration_timestamp: { message: messageList[46], field: messageList[46].fields[0] },
+one_d_sensor_calibration_sensor_type: { message: messageList[46], field: messageList[46].fields[1] },
+one_d_sensor_calibration_calibration_factor: { message: messageList[46], field: messageList[46].fields[2] },
+one_d_sensor_calibration_calibration_divisor: { message: messageList[46], field: messageList[46].fields[3] },
+one_d_sensor_calibration_level_shift: { message: messageList[46], field: messageList[46].fields[4] },
+one_d_sensor_calibration_offset_cal: { message: messageList[46], field: messageList[46].fields[5] },
+video_frame_timestamp: { message: messageList[47], field: messageList[47].fields[0] },
+video_frame_timestamp_ms: { message: messageList[47], field: messageList[47].fields[1] },
+video_frame_frame_number: { message: messageList[47], field: messageList[47].fields[2] },
+obdii_data_timestamp: { message: messageList[48], field: messageList[48].fields[0] },
+obdii_data_timestamp_ms: { message: messageList[48], field: messageList[48].fields[1] },
+obdii_data_time_offset: { message: messageList[48], field: messageList[48].fields[2] },
+obdii_data_pid: { message: messageList[48], field: messageList[48].fields[3] },
+obdii_data_raw_data: { message: messageList[48], field: messageList[48].fields[4] },
+obdii_data_pid_data_size: { message: messageList[48], field: messageList[48].fields[5] },
+obdii_data_system_time: { message: messageList[48], field: messageList[48].fields[6] },
+obdii_data_start_timestamp: { message: messageList[48], field: messageList[48].fields[7] },
+obdii_data_start_timestamp_ms: { message: messageList[48], field: messageList[48].fields[8] },
+nmea_sentence_timestamp: { message: messageList[49], field: messageList[49].fields[0] },
+nmea_sentence_timestamp_ms: { message: messageList[49], field: messageList[49].fields[1] },
+nmea_sentence_sentence: { message: messageList[49], field: messageList[49].fields[2] },
+aviation_attitude_timestamp: { message: messageList[50], field: messageList[50].fields[0] },
+aviation_attitude_timestamp_ms: { message: messageList[50], field: messageList[50].fields[1] },
+aviation_attitude_system_time: { message: messageList[50], field: messageList[50].fields[2] },
+aviation_attitude_pitch: { message: messageList[50], field: messageList[50].fields[3] },
+aviation_attitude_roll: { message: messageList[50], field: messageList[50].fields[4] },
+aviation_attitude_accel_lateral: { message: messageList[50], field: messageList[50].fields[5] },
+aviation_attitude_accel_normal: { message: messageList[50], field: messageList[50].fields[6] },
+aviation_attitude_turn_rate: { message: messageList[50], field: messageList[50].fields[7] },
+aviation_attitude_stage: { message: messageList[50], field: messageList[50].fields[8] },
+aviation_attitude_attitude_stage_complete: { message: messageList[50], field: messageList[50].fields[9] },
+aviation_attitude_track: { message: messageList[50], field: messageList[50].fields[10] },
+aviation_attitude_validity: { message: messageList[50], field: messageList[50].fields[11] },
+video_url: { message: messageList[51], field: messageList[51].fields[0] },
+video_hosting_provider: { message: messageList[51], field: messageList[51].fields[1] },
+video_duration: { message: messageList[51], field: messageList[51].fields[2] },
+video_title_message_index: { message: messageList[52], field: messageList[52].fields[0] },
+video_title_message_count: { message: messageList[52], field: messageList[52].fields[1] },
+video_title_text: { message: messageList[52], field: messageList[52].fields[2] },
+video_description_message_index: { message: messageList[53], field: messageList[53].fields[0] },
+video_description_message_count: { message: messageList[53], field: messageList[53].fields[1] },
+video_description_text: { message: messageList[53], field: messageList[53].fields[2] },
+video_clip_clip_number: { message: messageList[54], field: messageList[54].fields[0] },
+video_clip_start_timestamp: { message: messageList[54], field: messageList[54].fields[1] },
+video_clip_start_timestamp_ms: { message: messageList[54], field: messageList[54].fields[2] },
+video_clip_end_timestamp: { message: messageList[54], field: messageList[54].fields[3] },
+video_clip_end_timestamp_ms: { message: messageList[54], field: messageList[54].fields[4] },
+video_clip_clip_start: { message: messageList[54], field: messageList[54].fields[5] },
+video_clip_clip_end: { message: messageList[54], field: messageList[54].fields[6] },
+set_timestamp: { message: messageList[55], field: messageList[55].fields[0] },
+set_duration: { message: messageList[55], field: messageList[55].fields[1] },
+set_repetitions: { message: messageList[55], field: messageList[55].fields[2] },
+set_weight: { message: messageList[55], field: messageList[55].fields[3] },
+set_set_type: { message: messageList[55], field: messageList[55].fields[4] },
+set_start_time: { message: messageList[55], field: messageList[55].fields[5] },
+set_category: { message: messageList[55], field: messageList[55].fields[6] },
+set_category_subtype: { message: messageList[55], field: messageList[55].fields[7] },
+set_weight_display_unit: { message: messageList[55], field: messageList[55].fields[8] },
+set_message_index: { message: messageList[55], field: messageList[55].fields[9] },
+set_wkt_step_index: { message: messageList[55], field: messageList[55].fields[10] },
+jump_timestamp: { message: messageList[56], field: messageList[56].fields[0] },
+jump_distance: { message: messageList[56], field: messageList[56].fields[1] },
+jump_height: { message: messageList[56], field: messageList[56].fields[2] },
+jump_rotations: { message: messageList[56], field: messageList[56].fields[3] },
+jump_hang_time: { message: messageList[56], field: messageList[56].fields[4] },
+jump_score: { message: messageList[56], field: messageList[56].fields[5] },
+jump_position_lat: { message: messageList[56], field: messageList[56].fields[6] },
+jump_position_long: { message: messageList[56], field: messageList[56].fields[7] },
+jump_speed: { message: messageList[56], field: messageList[56].fields[8] },
+jump_enhanced_speed: { message: messageList[56], field: messageList[56].fields[9] },
+course_sport: { message: messageList[57], field: messageList[57].fields[0] },
+course_name: { message: messageList[57], field: messageList[57].fields[1] },
+course_capabilities: { message: messageList[57], field: messageList[57].fields[2] },
+course_sub_sport: { message: messageList[57], field: messageList[57].fields[3] },
+course_point_message_index: { message: messageList[58], field: messageList[58].fields[0] },
+course_point_timestamp: { message: messageList[58], field: messageList[58].fields[1] },
+course_point_position_lat: { message: messageList[58], field: messageList[58].fields[2] },
+course_point_position_long: { message: messageList[58], field: messageList[58].fields[3] },
+course_point_distance: { message: messageList[58], field: messageList[58].fields[4] },
+course_point_type: { message: messageList[58], field: messageList[58].fields[5] },
+course_point_name: { message: messageList[58], field: messageList[58].fields[6] },
+course_point_favorite: { message: messageList[58], field: messageList[58].fields[7] },
+segment_id_name: { message: messageList[59], field: messageList[59].fields[0] },
+segment_id_uuid: { message: messageList[59], field: messageList[59].fields[1] },
+segment_id_sport: { message: messageList[59], field: messageList[59].fields[2] },
+segment_id_enabled: { message: messageList[59], field: messageList[59].fields[3] },
+segment_id_user_profile_primary_key: { message: messageList[59], field: messageList[59].fields[4] },
+segment_id_device_id: { message: messageList[59], field: messageList[59].fields[5] },
+segment_id_default_race_leader: { message: messageList[59], field: messageList[59].fields[6] },
+segment_id_delete_status: { message: messageList[59], field: messageList[59].fields[7] },
+segment_id_selection_type: { message: messageList[59], field: messageList[59].fields[8] },
+segment_leaderboard_entry_message_index: { message: messageList[60], field: messageList[60].fields[0] },
+segment_leaderboard_entry_name: { message: messageList[60], field: messageList[60].fields[1] },
+segment_leaderboard_entry_type: { message: messageList[60], field: messageList[60].fields[2] },
+segment_leaderboard_entry_group_primary_key: { message: messageList[60], field: messageList[60].fields[3] },
+segment_leaderboard_entry_activity_id: { message: messageList[60], field: messageList[60].fields[4] },
+segment_leaderboard_entry_segment_time: { message: messageList[60], field: messageList[60].fields[5] },
+segment_leaderboard_entry_activity_id_string: { message: messageList[60], field: messageList[60].fields[6] },
+segment_point_message_index: { message: messageList[61], field: messageList[61].fields[0] },
+segment_point_position_lat: { message: messageList[61], field: messageList[61].fields[1] },
+segment_point_position_long: { message: messageList[61], field: messageList[61].fields[2] },
+segment_point_distance: { message: messageList[61], field: messageList[61].fields[3] },
+segment_point_altitude: { message: messageList[61], field: messageList[61].fields[4] },
+segment_point_leader_time: { message: messageList[61], field: messageList[61].fields[5] },
+segment_lap_message_index: { message: messageList[62], field: messageList[62].fields[0] },
+segment_lap_timestamp: { message: messageList[62], field: messageList[62].fields[1] },
+segment_lap_event: { message: messageList[62], field: messageList[62].fields[2] },
+segment_lap_event_type: { message: messageList[62], field: messageList[62].fields[3] },
+segment_lap_start_time: { message: messageList[62], field: messageList[62].fields[4] },
+segment_lap_start_position_lat: { message: messageList[62], field: messageList[62].fields[5] },
+segment_lap_start_position_long: { message: messageList[62], field: messageList[62].fields[6] },
+segment_lap_end_position_lat: { message: messageList[62], field: messageList[62].fields[7] },
+segment_lap_end_position_long: { message: messageList[62], field: messageList[62].fields[8] },
+segment_lap_total_elapsed_time: { message: messageList[62], field: messageList[62].fields[9] },
+segment_lap_total_timer_time: { message: messageList[62], field: messageList[62].fields[10] },
+segment_lap_total_distance: { message: messageList[62], field: messageList[62].fields[11] },
+segment_lap_total_cycles: { message: messageList[62], field: messageList[62].fields[12] },
+segment_lap_total_calories: { message: messageList[62], field: messageList[62].fields[13] },
+segment_lap_total_fat_calories: { message: messageList[62], field: messageList[62].fields[14] },
+segment_lap_avg_speed: { message: messageList[62], field: messageList[62].fields[15] },
+segment_lap_max_speed: { message: messageList[62], field: messageList[62].fields[16] },
+segment_lap_avg_heart_rate: { message: messageList[62], field: messageList[62].fields[17] },
+segment_lap_max_heart_rate: { message: messageList[62], field: messageList[62].fields[18] },
+segment_lap_avg_cadence: { message: messageList[62], field: messageList[62].fields[19] },
+segment_lap_max_cadence: { message: messageList[62], field: messageList[62].fields[20] },
+segment_lap_avg_power: { message: messageList[62], field: messageList[62].fields[21] },
+segment_lap_max_power: { message: messageList[62], field: messageList[62].fields[22] },
+segment_lap_total_ascent: { message: messageList[62], field: messageList[62].fields[23] },
+segment_lap_total_descent: { message: messageList[62], field: messageList[62].fields[24] },
+segment_lap_sport: { message: messageList[62], field: messageList[62].fields[25] },
+segment_lap_event_group: { message: messageList[62], field: messageList[62].fields[26] },
+segment_lap_nec_lat: { message: messageList[62], field: messageList[62].fields[27] },
+segment_lap_nec_long: { message: messageList[62], field: messageList[62].fields[28] },
+segment_lap_swc_lat: { message: messageList[62], field: messageList[62].fields[29] },
+segment_lap_swc_long: { message: messageList[62], field: messageList[62].fields[30] },
+segment_lap_name: { message: messageList[62], field: messageList[62].fields[31] },
+segment_lap_normalized_power: { message: messageList[62], field: messageList[62].fields[32] },
+segment_lap_left_right_balance: { message: messageList[62], field: messageList[62].fields[33] },
+segment_lap_sub_sport: { message: messageList[62], field: messageList[62].fields[34] },
+segment_lap_total_work: { message: messageList[62], field: messageList[62].fields[35] },
+segment_lap_avg_altitude: { message: messageList[62], field: messageList[62].fields[36] },
+segment_lap_max_altitude: { message: messageList[62], field: messageList[62].fields[37] },
+segment_lap_gps_accuracy: { message: messageList[62], field: messageList[62].fields[38] },
+segment_lap_avg_grade: { message: messageList[62], field: messageList[62].fields[39] },
+segment_lap_avg_pos_grade: { message: messageList[62], field: messageList[62].fields[40] },
+segment_lap_avg_neg_grade: { message: messageList[62], field: messageList[62].fields[41] },
+segment_lap_max_pos_grade: { message: messageList[62], field: messageList[62].fields[42] },
+segment_lap_max_neg_grade: { message: messageList[62], field: messageList[62].fields[43] },
+segment_lap_avg_temperature: { message: messageList[62], field: messageList[62].fields[44] },
+segment_lap_max_temperature: { message: messageList[62], field: messageList[62].fields[45] },
+segment_lap_total_moving_time: { message: messageList[62], field: messageList[62].fields[46] },
+segment_lap_avg_pos_vertical_speed: { message: messageList[62], field: messageList[62].fields[47] },
+segment_lap_avg_neg_vertical_speed: { message: messageList[62], field: messageList[62].fields[48] },
+segment_lap_max_pos_vertical_speed: { message: messageList[62], field: messageList[62].fields[49] },
+segment_lap_max_neg_vertical_speed: { message: messageList[62], field: messageList[62].fields[50] },
+segment_lap_time_in_hr_zone: { message: messageList[62], field: messageList[62].fields[51] },
+segment_lap_time_in_speed_zone: { message: messageList[62], field: messageList[62].fields[52] },
+segment_lap_time_in_cadence_zone: { message: messageList[62], field: messageList[62].fields[53] },
+segment_lap_time_in_power_zone: { message: messageList[62], field: messageList[62].fields[54] },
+segment_lap_repetition_num: { message: messageList[62], field: messageList[62].fields[55] },
+segment_lap_min_altitude: { message: messageList[62], field: messageList[62].fields[56] },
+segment_lap_min_heart_rate: { message: messageList[62], field: messageList[62].fields[57] },
+segment_lap_active_time: { message: messageList[62], field: messageList[62].fields[58] },
+segment_lap_wkt_step_index: { message: messageList[62], field: messageList[62].fields[59] },
+segment_lap_sport_event: { message: messageList[62], field: messageList[62].fields[60] },
+segment_lap_avg_left_torque_effectiveness: { message: messageList[62], field: messageList[62].fields[61] },
+segment_lap_avg_right_torque_effectiveness: { message: messageList[62], field: messageList[62].fields[62] },
+segment_lap_avg_left_pedal_smoothness: { message: messageList[62], field: messageList[62].fields[63] },
+segment_lap_avg_right_pedal_smoothness: { message: messageList[62], field: messageList[62].fields[64] },
+segment_lap_avg_combined_pedal_smoothness: { message: messageList[62], field: messageList[62].fields[65] },
+segment_lap_status: { message: messageList[62], field: messageList[62].fields[66] },
+segment_lap_uuid: { message: messageList[62], field: messageList[62].fields[67] },
+segment_lap_avg_fractional_cadence: { message: messageList[62], field: messageList[62].fields[68] },
+segment_lap_max_fractional_cadence: { message: messageList[62], field: messageList[62].fields[69] },
+segment_lap_total_fractional_cycles: { message: messageList[62], field: messageList[62].fields[70] },
+segment_lap_front_gear_shift_count: { message: messageList[62], field: messageList[62].fields[71] },
+segment_lap_rear_gear_shift_count: { message: messageList[62], field: messageList[62].fields[72] },
+segment_lap_time_standing: { message: messageList[62], field: messageList[62].fields[73] },
+segment_lap_stand_count: { message: messageList[62], field: messageList[62].fields[74] },
+segment_lap_avg_left_pco: { message: messageList[62], field: messageList[62].fields[75] },
+segment_lap_avg_right_pco: { message: messageList[62], field: messageList[62].fields[76] },
+segment_lap_avg_left_power_phase: { message: messageList[62], field: messageList[62].fields[77] },
+segment_lap_avg_left_power_phase_peak: { message: messageList[62], field: messageList[62].fields[78] },
+segment_lap_avg_right_power_phase: { message: messageList[62], field: messageList[62].fields[79] },
+segment_lap_avg_right_power_phase_peak: { message: messageList[62], field: messageList[62].fields[80] },
+segment_lap_avg_power_position: { message: messageList[62], field: messageList[62].fields[81] },
+segment_lap_max_power_position: { message: messageList[62], field: messageList[62].fields[82] },
+segment_lap_avg_cadence_position: { message: messageList[62], field: messageList[62].fields[83] },
+segment_lap_max_cadence_position: { message: messageList[62], field: messageList[62].fields[84] },
+segment_lap_manufacturer: { message: messageList[62], field: messageList[62].fields[85] },
+segment_lap_total_grit: { message: messageList[62], field: messageList[62].fields[86] },
+segment_lap_total_flow: { message: messageList[62], field: messageList[62].fields[87] },
+segment_lap_avg_grit: { message: messageList[62], field: messageList[62].fields[88] },
+segment_lap_avg_flow: { message: messageList[62], field: messageList[62].fields[89] },
+segment_lap_total_fractional_ascent: { message: messageList[62], field: messageList[62].fields[90] },
+segment_lap_total_fractional_descent: { message: messageList[62], field: messageList[62].fields[91] },
+segment_file_message_index: { message: messageList[63], field: messageList[63].fields[0] },
+segment_file_file_uuid: { message: messageList[63], field: messageList[63].fields[1] },
+segment_file_enabled: { message: messageList[63], field: messageList[63].fields[2] },
+segment_file_user_profile_primary_key: { message: messageList[63], field: messageList[63].fields[3] },
+segment_file_leader_type: { message: messageList[63], field: messageList[63].fields[4] },
+segment_file_leader_group_primary_key: { message: messageList[63], field: messageList[63].fields[5] },
+segment_file_leader_activity_id: { message: messageList[63], field: messageList[63].fields[6] },
+segment_file_leader_activity_id_string: { message: messageList[63], field: messageList[63].fields[7] },
+segment_file_default_race_leader: { message: messageList[63], field: messageList[63].fields[8] },
+workout_sport: { message: messageList[64], field: messageList[64].fields[0] },
+workout_capabilities: { message: messageList[64], field: messageList[64].fields[1] },
+workout_num_valid_steps: { message: messageList[64], field: messageList[64].fields[2] },
+workout_wkt_name: { message: messageList[64], field: messageList[64].fields[3] },
+workout_sub_sport: { message: messageList[64], field: messageList[64].fields[4] },
+workout_pool_length: { message: messageList[64], field: messageList[64].fields[5] },
+workout_pool_length_unit: { message: messageList[64], field: messageList[64].fields[6] },
+workout_session_message_index: { message: messageList[65], field: messageList[65].fields[0] },
+workout_session_sport: { message: messageList[65], field: messageList[65].fields[1] },
+workout_session_sub_sport: { message: messageList[65], field: messageList[65].fields[2] },
+workout_session_num_valid_steps: { message: messageList[65], field: messageList[65].fields[3] },
+workout_session_first_step_index: { message: messageList[65], field: messageList[65].fields[4] },
+workout_session_pool_length: { message: messageList[65], field: messageList[65].fields[5] },
+workout_session_pool_length_unit: { message: messageList[65], field: messageList[65].fields[6] },
+workout_step_message_index: { message: messageList[66], field: messageList[66].fields[0] },
+workout_step_wkt_step_name: { message: messageList[66], field: messageList[66].fields[1] },
+workout_step_duration_type: { message: messageList[66], field: messageList[66].fields[2] },
+workout_step_duration_value: { message: messageList[66], field: messageList[66].fields[3] },
+workout_step_target_type: { message: messageList[66], field: messageList[66].fields[4] },
+workout_step_target_value: { message: messageList[66], field: messageList[66].fields[5] },
+workout_step_custom_target_value_low: { message: messageList[66], field: messageList[66].fields[6] },
+workout_step_custom_target_value_high: { message: messageList[66], field: messageList[66].fields[7] },
+workout_step_intensity: { message: messageList[66], field: messageList[66].fields[8] },
+workout_step_notes: { message: messageList[66], field: messageList[66].fields[9] },
+workout_step_equipment: { message: messageList[66], field: messageList[66].fields[10] },
+workout_step_exercise_category: { message: messageList[66], field: messageList[66].fields[11] },
+workout_step_exercise_name: { message: messageList[66], field: messageList[66].fields[12] },
+workout_step_exercise_weight: { message: messageList[66], field: messageList[66].fields[13] },
+workout_step_weight_display_unit: { message: messageList[66], field: messageList[66].fields[14] },
+exercise_title_message_index: { message: messageList[67], field: messageList[67].fields[0] },
+exercise_title_exercise_category: { message: messageList[67], field: messageList[67].fields[1] },
+exercise_title_exercise_name: { message: messageList[67], field: messageList[67].fields[2] },
+exercise_title_wkt_step_name: { message: messageList[67], field: messageList[67].fields[3] },
+schedule_manufacturer: { message: messageList[68], field: messageList[68].fields[0] },
+schedule_product: { message: messageList[68], field: messageList[68].fields[1] },
+schedule_serial_number: { message: messageList[68], field: messageList[68].fields[2] },
+schedule_time_created: { message: messageList[68], field: messageList[68].fields[3] },
+schedule_completed: { message: messageList[68], field: messageList[68].fields[4] },
+schedule_type: { message: messageList[68], field: messageList[68].fields[5] },
+schedule_scheduled_time: { message: messageList[68], field: messageList[68].fields[6] },
+totals_message_index: { message: messageList[69], field: messageList[69].fields[0] },
+totals_timestamp: { message: messageList[69], field: messageList[69].fields[1] },
+totals_timer_time: { message: messageList[69], field: messageList[69].fields[2] },
+totals_distance: { message: messageList[69], field: messageList[69].fields[3] },
+totals_calories: { message: messageList[69], field: messageList[69].fields[4] },
+totals_sport: { message: messageList[69], field: messageList[69].fields[5] },
+totals_elapsed_time: { message: messageList[69], field: messageList[69].fields[6] },
+totals_sessions: { message: messageList[69], field: messageList[69].fields[7] },
+totals_active_time: { message: messageList[69], field: messageList[69].fields[8] },
+totals_sport_index: { message: messageList[69], field: messageList[69].fields[9] },
+weight_scale_timestamp: { message: messageList[70], field: messageList[70].fields[0] },
+weight_scale_weight: { message: messageList[70], field: messageList[70].fields[1] },
+weight_scale_percent_fat: { message: messageList[70], field: messageList[70].fields[2] },
+weight_scale_percent_hydration: { message: messageList[70], field: messageList[70].fields[3] },
+weight_scale_visceral_fat_mass: { message: messageList[70], field: messageList[70].fields[4] },
+weight_scale_bone_mass: { message: messageList[70], field: messageList[70].fields[5] },
+weight_scale_muscle_mass: { message: messageList[70], field: messageList[70].fields[6] },
+weight_scale_basal_met: { message: messageList[70], field: messageList[70].fields[7] },
+weight_scale_physique_rating: { message: messageList[70], field: messageList[70].fields[8] },
+weight_scale_active_met: { message: messageList[70], field: messageList[70].fields[9] },
+weight_scale_metabolic_age: { message: messageList[70], field: messageList[70].fields[10] },
+weight_scale_visceral_fat_rating: { message: messageList[70], field: messageList[70].fields[11] },
+weight_scale_user_profile_index: { message: messageList[70], field: messageList[70].fields[12] },
+blood_pressure_timestamp: { message: messageList[71], field: messageList[71].fields[0] },
+blood_pressure_systolic_pressure: { message: messageList[71], field: messageList[71].fields[1] },
+blood_pressure_diastolic_pressure: { message: messageList[71], field: messageList[71].fields[2] },
+blood_pressure_mean_arterial_pressure: { message: messageList[71], field: messageList[71].fields[3] },
+blood_pressure_map_3_sample_mean: { message: messageList[71], field: messageList[71].fields[4] },
+blood_pressure_map_morning_values: { message: messageList[71], field: messageList[71].fields[5] },
+blood_pressure_map_evening_values: { message: messageList[71], field: messageList[71].fields[6] },
+blood_pressure_heart_rate: { message: messageList[71], field: messageList[71].fields[7] },
+blood_pressure_heart_rate_type: { message: messageList[71], field: messageList[71].fields[8] },
+blood_pressure_status: { message: messageList[71], field: messageList[71].fields[9] },
+blood_pressure_user_profile_index: { message: messageList[71], field: messageList[71].fields[10] },
+monitoring_info_timestamp: { message: messageList[72], field: messageList[72].fields[0] },
+monitoring_info_local_timestamp: { message: messageList[72], field: messageList[72].fields[1] },
+monitoring_info_activity_type: { message: messageList[72], field: messageList[72].fields[2] },
+monitoring_info_cycles_to_distance: { message: messageList[72], field: messageList[72].fields[3] },
+monitoring_info_cycles_to_calories: { message: messageList[72], field: messageList[72].fields[4] },
+monitoring_info_resting_metabolic_rate: { message: messageList[72], field: messageList[72].fields[5] },
+monitoring_timestamp: { message: messageList[73], field: messageList[73].fields[0] },
+monitoring_device_index: { message: messageList[73], field: messageList[73].fields[1] },
+monitoring_calories: { message: messageList[73], field: messageList[73].fields[2] },
+monitoring_distance: { message: messageList[73], field: messageList[73].fields[3] },
+monitoring_cycles: { message: messageList[73], field: messageList[73].fields[4] },
+monitoring_active_time: { message: messageList[73], field: messageList[73].fields[5] },
+monitoring_activity_type: { message: messageList[73], field: messageList[73].fields[6] },
+monitoring_activity_subtype: { message: messageList[73], field: messageList[73].fields[7] },
+monitoring_activity_level: { message: messageList[73], field: messageList[73].fields[8] },
+monitoring_distance_16: { message: messageList[73], field: messageList[73].fields[9] },
+monitoring_cycles_16: { message: messageList[73], field: messageList[73].fields[10] },
+monitoring_active_time_16: { message: messageList[73], field: messageList[73].fields[11] },
+monitoring_local_timestamp: { message: messageList[73], field: messageList[73].fields[12] },
+monitoring_temperature: { message: messageList[73], field: messageList[73].fields[13] },
+monitoring_temperature_min: { message: messageList[73], field: messageList[73].fields[14] },
+monitoring_temperature_max: { message: messageList[73], field: messageList[73].fields[15] },
+monitoring_activity_time: { message: messageList[73], field: messageList[73].fields[16] },
+monitoring_active_calories: { message: messageList[73], field: messageList[73].fields[17] },
+monitoring_current_activity_type_intensity: { message: messageList[73], field: messageList[73].fields[18] },
+monitoring_timestamp_min_8: { message: messageList[73], field: messageList[73].fields[19] },
+monitoring_timestamp_16: { message: messageList[73], field: messageList[73].fields[20] },
+monitoring_heart_rate: { message: messageList[73], field: messageList[73].fields[21] },
+monitoring_intensity: { message: messageList[73], field: messageList[73].fields[22] },
+monitoring_duration_min: { message: messageList[73], field: messageList[73].fields[23] },
+monitoring_duration: { message: messageList[73], field: messageList[73].fields[24] },
+monitoring_ascent: { message: messageList[73], field: messageList[73].fields[25] },
+monitoring_descent: { message: messageList[73], field: messageList[73].fields[26] },
+monitoring_moderate_activity_minutes: { message: messageList[73], field: messageList[73].fields[27] },
+monitoring_vigorous_activity_minutes: { message: messageList[73], field: messageList[73].fields[28] },
+hr_timestamp: { message: messageList[74], field: messageList[74].fields[0] },
+hr_fractional_timestamp: { message: messageList[74], field: messageList[74].fields[1] },
+hr_time256: { message: messageList[74], field: messageList[74].fields[2] },
+hr_filtered_bpm: { message: messageList[74], field: messageList[74].fields[3] },
+hr_event_timestamp: { message: messageList[74], field: messageList[74].fields[4] },
+hr_event_timestamp_12: { message: messageList[74], field: messageList[74].fields[5] },
+stress_level_stress_level_value: { message: messageList[75], field: messageList[75].fields[0] },
+stress_level_stress_level_time: { message: messageList[75], field: messageList[75].fields[1] },
+memo_glob_part_index: { message: messageList[76], field: messageList[76].fields[0] },
+memo_glob_memo: { message: messageList[76], field: messageList[76].fields[1] },
+memo_glob_message_number: { message: messageList[76], field: messageList[76].fields[2] },
+memo_glob_message_index: { message: messageList[76], field: messageList[76].fields[3] },
+ant_channel_id_channel_number: { message: messageList[77], field: messageList[77].fields[0] },
+ant_channel_id_device_type: { message: messageList[77], field: messageList[77].fields[1] },
+ant_channel_id_device_number: { message: messageList[77], field: messageList[77].fields[2] },
+ant_channel_id_transmission_type: { message: messageList[77], field: messageList[77].fields[3] },
+ant_channel_id_device_index: { message: messageList[77], field: messageList[77].fields[4] },
+ant_rx_timestamp: { message: messageList[78], field: messageList[78].fields[0] },
+ant_rx_fractional_timestamp: { message: messageList[78], field: messageList[78].fields[1] },
+ant_rx_mesg_id: { message: messageList[78], field: messageList[78].fields[2] },
+ant_rx_mesg_data: { message: messageList[78], field: messageList[78].fields[3] },
+ant_rx_channel_number: { message: messageList[78], field: messageList[78].fields[4] },
+ant_rx_data: { message: messageList[78], field: messageList[78].fields[5] },
+ant_tx_timestamp: { message: messageList[79], field: messageList[79].fields[0] },
+ant_tx_fractional_timestamp: { message: messageList[79], field: messageList[79].fields[1] },
+ant_tx_mesg_id: { message: messageList[79], field: messageList[79].fields[2] },
+ant_tx_mesg_data: { message: messageList[79], field: messageList[79].fields[3] },
+ant_tx_channel_number: { message: messageList[79], field: messageList[79].fields[4] },
+ant_tx_data: { message: messageList[79], field: messageList[79].fields[5] },
+exd_screen_configuration_screen_index: { message: messageList[80], field: messageList[80].fields[0] },
+exd_screen_configuration_field_count: { message: messageList[80], field: messageList[80].fields[1] },
+exd_screen_configuration_layout: { message: messageList[80], field: messageList[80].fields[2] },
+exd_screen_configuration_screen_enabled: { message: messageList[80], field: messageList[80].fields[3] },
+exd_data_field_configuration_screen_index: { message: messageList[81], field: messageList[81].fields[0] },
+exd_data_field_configuration_concept_field: { message: messageList[81], field: messageList[81].fields[1] },
+exd_data_field_configuration_field_id: { message: messageList[81], field: messageList[81].fields[2] },
+exd_data_field_configuration_concept_count: { message: messageList[81], field: messageList[81].fields[3] },
+exd_data_field_configuration_display_type: { message: messageList[81], field: messageList[81].fields[4] },
+exd_data_field_configuration_title: { message: messageList[81], field: messageList[81].fields[5] },
+exd_data_concept_configuration_screen_index: { message: messageList[82], field: messageList[82].fields[0] },
+exd_data_concept_configuration_concept_field: { message: messageList[82], field: messageList[82].fields[1] },
+exd_data_concept_configuration_field_id: { message: messageList[82], field: messageList[82].fields[2] },
+exd_data_concept_configuration_concept_index: { message: messageList[82], field: messageList[82].fields[3] },
+exd_data_concept_configuration_data_page: { message: messageList[82], field: messageList[82].fields[4] },
+exd_data_concept_configuration_concept_key: { message: messageList[82], field: messageList[82].fields[5] },
+exd_data_concept_configuration_scaling: { message: messageList[82], field: messageList[82].fields[6] },
+exd_data_concept_configuration_data_units: { message: messageList[82], field: messageList[82].fields[7] },
+exd_data_concept_configuration_qualifier: { message: messageList[82], field: messageList[82].fields[8] },
+exd_data_concept_configuration_descriptor: { message: messageList[82], field: messageList[82].fields[9] },
+exd_data_concept_configuration_is_signed: { message: messageList[82], field: messageList[82].fields[10] },
+field_description_developer_data_index: { message: messageList[83], field: messageList[83].fields[0] },
+field_description_field_definition_number: { message: messageList[83], field: messageList[83].fields[1] },
+field_description_fit_base_type_id: { message: messageList[83], field: messageList[83].fields[2] },
+field_description_field_name: { message: messageList[83], field: messageList[83].fields[3] },
+field_description_array: { message: messageList[83], field: messageList[83].fields[4] },
+field_description_components: { message: messageList[83], field: messageList[83].fields[5] },
+field_description_scale: { message: messageList[83], field: messageList[83].fields[6] },
+field_description_offset: { message: messageList[83], field: messageList[83].fields[7] },
+field_description_units: { message: messageList[83], field: messageList[83].fields[8] },
+field_description_bits: { message: messageList[83], field: messageList[83].fields[9] },
+field_description_accumulate: { message: messageList[83], field: messageList[83].fields[10] },
+field_description_fit_base_unit_id: { message: messageList[83], field: messageList[83].fields[11] },
+field_description_native_mesg_num: { message: messageList[83], field: messageList[83].fields[12] },
+field_description_native_field_num: { message: messageList[83], field: messageList[83].fields[13] },
+developer_data_id_developer_id: { message: messageList[84], field: messageList[84].fields[0] },
+developer_data_id_application_id: { message: messageList[84], field: messageList[84].fields[1] },
+developer_data_id_manufacturer_id: { message: messageList[84], field: messageList[84].fields[2] },
+developer_data_id_developer_data_index: { message: messageList[84], field: messageList[84].fields[3] },
+developer_data_id_application_version: { message: messageList[84], field: messageList[84].fields[4] },
+dive_summary_timestamp: { message: messageList[85], field: messageList[85].fields[0] },
+dive_summary_reference_mesg: { message: messageList[85], field: messageList[85].fields[1] },
+dive_summary_reference_index: { message: messageList[85], field: messageList[85].fields[2] },
+dive_summary_avg_depth: { message: messageList[85], field: messageList[85].fields[3] },
+dive_summary_max_depth: { message: messageList[85], field: messageList[85].fields[4] },
+dive_summary_surface_interval: { message: messageList[85], field: messageList[85].fields[5] },
+dive_summary_start_cns: { message: messageList[85], field: messageList[85].fields[6] },
+dive_summary_end_cns: { message: messageList[85], field: messageList[85].fields[7] },
+dive_summary_start_n2: { message: messageList[85], field: messageList[85].fields[8] },
+dive_summary_end_n2: { message: messageList[85], field: messageList[85].fields[9] },
+dive_summary_o2_toxicity: { message: messageList[85], field: messageList[85].fields[10] },
+dive_summary_dive_number: { message: messageList[85], field: messageList[85].fields[11] },
+dive_summary_bottom_time: { message: messageList[85], field: messageList[85].fields[12] },
+climb_pro_timestamp: { message: messageList[86], field: messageList[86].fields[0] },
+climb_pro_position_lat: { message: messageList[86], field: messageList[86].fields[1] },
+climb_pro_position_long: { message: messageList[86], field: messageList[86].fields[2] },
+climb_pro_climb_pro_event: { message: messageList[86], field: messageList[86].fields[3] },
+climb_pro_climb_number: { message: messageList[86], field: messageList[86].fields[4] },
+climb_pro_climb_category: { message: messageList[86], field: messageList[86].fields[5] } }
