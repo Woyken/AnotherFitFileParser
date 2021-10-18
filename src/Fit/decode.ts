@@ -290,7 +290,7 @@ export class Decode {
             const newMesg = Mesg.readAndCreate(new ByteStreamReader(new Uint8Array(mesgBuffer)), this.localMesgDefs[localMesgNum]);
             // If the new message contains a timestamp field, record the value to use as
             // a reference for compressed timestamp headers
-            const timestampField = newMesg.getField('Timestamp');
+            const timestampField = newMesg.getField('timestamp');
             if (timestampField !== undefined) {
                 const tsValue = timestampField.getValue();
                 if (tsValue !== undefined) {
