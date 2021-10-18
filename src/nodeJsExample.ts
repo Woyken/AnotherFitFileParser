@@ -18,6 +18,7 @@ class Main {
             });
         let monitoringCurrentTimestamp = 0;
         decoder.mesgEvent = (ev): void => {
+            console.log(ev.messageDefinition.profileMessage.name)
             const timestampField = ev.getField('Timestamp');
             if (timestampField) {
                 // this is actual timestamp. save it for later.
