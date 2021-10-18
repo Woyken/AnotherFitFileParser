@@ -1,4 +1,4 @@
-import { MessageListMessageFieldType, BaseTypesListItem, baseTypesList } from '../profile';
+import { MessageListMessageFieldType, BaseTypesListItem, baseTypesList, ArrayElement } from '../profile';
 import { Fit } from './fit';
 
 export const invalidField = {
@@ -11,8 +11,8 @@ export const invalidField = {
     type: baseTypesList[0x00],
     baseType: baseTypesList[0x00],
     profileType: undefined,
-    subfields: [],
-    components: [],
+    subfields: [] as ArrayElement<MessageListMessageFieldType['subfields']>[],
+    components: [] as ArrayElement<MessageListMessageFieldType['components']>[],
 } as const;
 
 export type ProfileFieldTypeWithInvalid = MessageListMessageFieldType | typeof invalidField;

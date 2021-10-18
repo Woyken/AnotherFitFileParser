@@ -353,10 +353,14 @@ function formatTypeListToString(typeList: ParsedType[]) {
     }
   }`;
   }
+  const typesListObjListStr = typeList.map(formatTypeToString).join(",\n");
   return `\
-const profileTypeList = {
-${typeList.map(formatTypeToString).join(",\n")}
-} as const`;
+type profileTypeList = {
+  ${typesListObjListStr}
+};
+export const profileTypeList: profileTypeList = {
+  ${typesListObjListStr}
+};`;
 }
 
 function baseTypeOrTypeAsString(type: string, typeList: ParsedType[]) {
@@ -465,10 +469,14 @@ function formatMessageListToString(
     ],
   }`;
   }
+  const messageListObjListStr = messageList.map(formatMessageToString).join(",\n");
   return `\
-const messageList = [
-${messageList.map(formatMessageToString).join(",\n")}
-] as const`;
+type messageList = [
+  ${messageListObjListStr}
+];
+export const messageList: messageList = [
+  ${messageListObjListStr}
+];`;
 }
 
 async function main() {
@@ -517,11 +525,11 @@ async function main() {
     messageList.map((m) => m.fields).flat().length
   } fields)
 
-export ${baseTypesListStr}
+${baseTypesListStr}
 
-export ${typeListStr}
+${typeListStr}
 
-export ${messageListStr}
+${messageListStr}
 
 export ${messageListMapByName}
 
@@ -540,7 +548,27 @@ export ${messageFieldsMapByName}
 main();
 
 const baseTypesListStr = `\
-const baseTypesList = {
+type baseTypesList = {
+  0x00: { baseType: "enum", baseTypeid: 0x00, fmt: "B", invalidValue: 0xff, isSigned: false, size: 1, endianAbility: 0 },
+  0x01: { baseType: "sint8", baseTypeid: 0x01, fmt: "b", invalidValue: 0x7f, isSigned: true, size: 1, endianAbility: 0 },
+  0x02: { baseType: "uint8", baseTypeid: 0x02, fmt: "B", invalidValue: 0xff, isSigned: false, size: 1, endianAbility: 0 },
+  0x83: { baseType: "sint16", baseTypeid: 0x83, fmt: "h", invalidValue: 0x7fff, isSigned: true, size: 2, endianAbility: 1 },
+  0x84: { baseType: "uint16", baseTypeid: 0x84, fmt: "H", invalidValue: 0xffff, isSigned: false, size: 2, endianAbility: 1 },
+  0x85: { baseType: "sint32", baseTypeid: 0x85, fmt: "i", invalidValue: 0x7fffffff, isSigned: true, size: 4, endianAbility: 1 },
+  0x86: { baseType: "uint32", baseTypeid: 0x86, fmt: "I", invalidValue: 0xffffffff, isSigned: false, size: 4, endianAbility: 1 },
+  0x07: { baseType: "string", baseTypeid: 0x07, fmt: "s", invalidValue: 0x00, isSigned: false, size: 1, endianAbility: 0 },
+  0x88: { baseType: "float32", baseTypeid: 0x88, fmt: "f", invalidValue: typeof NaN, isSigned: true, size: 4, endianAbility: 1 },
+  0x89: { baseType: "float64", baseTypeid: 0x89, fmt: "d", invalidValue: typeof NaN, isSigned: true, size: 8, endianAbility: 1 },
+  0x0a: { baseType: "uint8z", baseTypeid: 0x0a, fmt: "B", invalidValue: 0x0, isSigned: false, size: 1, endianAbility: 0 },
+  0x8b: { baseType: "uint16z", baseTypeid: 0x8b, fmt: "H", invalidValue: 0x0, isSigned: false, size: 2, endianAbility: 1 },
+  0x8c: { baseType: "uint32z", baseTypeid: 0x8c, fmt: "I", invalidValue: 0x0, isSigned: false, size: 4, endianAbility: 1 },
+  0x0d: { baseType: "byte", baseTypeid: 0x0d, fmt: "B", invalidValue: 0xff, isSigned: false, size: 1, endianAbility: 0 },
+  0x8e: { baseType: "sint64", baseTypeid: 0x8e, fmt: "q", invalidValue: 0x7fffffffffffffff, isSigned: true, size: 8, endianAbility: 1 },
+  0x8f: { baseType: "uint64", baseTypeid: 0x8f, fmt: "Q", invalidValue: 0xffffffffffffffff, isSigned: false, size: 8, endianAbility: 1 },
+  0x90: { baseType: "uint64z", baseTypeid: 0x90, fmt: "Q", invalidValue: 0, isSigned: false, size: 8, endianAbility: 1 },
+};
+
+export const baseTypesList: baseTypesList = {
   0x00: { baseType: "enum", baseTypeid: 0x00, fmt: "B", invalidValue: 0xff, isSigned: false, size: 1, endianAbility: 0 },
   0x01: { baseType: "sint8", baseTypeid: 0x01, fmt: "b", invalidValue: 0x7f, isSigned: true, size: 1, endianAbility: 0 },
   0x02: { baseType: "uint8", baseTypeid: 0x02, fmt: "B", invalidValue: 0xff, isSigned: false, size: 1, endianAbility: 0 },
@@ -558,4 +586,4 @@ const baseTypesList = {
   0x8e: { baseType: "sint64", baseTypeid: 0x8e, fmt: "q", invalidValue: 0x7fffffffffffffff, isSigned: true, size: 8, endianAbility: 1 },
   0x8f: { baseType: "uint64", baseTypeid: 0x8f, fmt: "Q", invalidValue: 0xffffffffffffffff, isSigned: false, size: 8, endianAbility: 1 },
   0x90: { baseType: "uint64z", baseTypeid: 0x90, fmt: "Q", invalidValue: 0, isSigned: false, size: 8, endianAbility: 1 },
-} as const;`;
+};`;
