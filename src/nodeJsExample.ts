@@ -8,7 +8,7 @@ import { MesgNum } from './Fit/Profile/Types/mesgNum';
  */
 class Main {
     public start(): void {
-        const bytes = fs.readFileSync('fit.fit').buffer;
+        const bytes = fs.readFileSync('fit.fit');
         const decoder = new FitDecoder();
         Promise.resolve()
             .then(() => decoder.decode(new Uint8Array(bytes)))
