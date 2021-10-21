@@ -21,7 +21,7 @@ class Main {
             const timestampField = ev.getField('Timestamp');
             if (timestampField) {
                 // this is actual timestamp. save it for later.
-                const data = timestampField.getValue();
+                const data = timestampField.getValue3();
                 if (typeof data !== 'number')
                     throw new Error("invalid type");
                 monitoringCurrentTimestamp = data;
@@ -31,24 +31,24 @@ class Main {
                 ev.fields.forEach((field) => {
                     if (field.fieldDefinition.profileField.id === 253) {
                         // timestamp
-                        const data = field.getValue();
+                        const data = field.getValue3();
                         if (typeof data !== 'number')
                             throw new Error("invalid type");
                         monitoringCurrentTimestamp = data;
                     }
                     if (field.fieldDefinition.profileField.id === 26) {
                         // timestamp16
-                        const data = field.getValue();
+                        const data = field.getValue3();
                         if (typeof data !== 'number')
                             throw new Error("invalid type");
                         monitoringCurrentTimestamp += (data - (monitoringCurrentTimestamp & 0xFFFF)) & 0xFFFF;
                     }
                     if (field.fieldDefinition.profileField.id === 27) {
                         // HR
-                        const value = field.getValue();
+                        const value = field.getValue3();
                         const date = ev.timestampToDateTime(monitoringCurrentTimestamp);
                         console.log(`HR - at: ${date!.toString()} - ${value} bpm`);
-                        // console.log('time - ' + time + 'HR - ' + field.getValue());
+                        // console.log('time - ' + time + 'HR - ' + field.getValue3());
                     }
                 });
             }

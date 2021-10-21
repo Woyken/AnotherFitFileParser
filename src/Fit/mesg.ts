@@ -424,7 +424,7 @@ export class Mesg<T extends MessageListMessageTypeWithInvalid> {
             const subfield = field.getSubfield(subFieldIndex);
 
             if ((subfield === undefined) || (canSubfieldSupportMesg(subfield, this))) {
-                return field.getValue(fieldArrayIndex, subFieldIndex);
+                return field.getValue1(fieldArrayIndex, subFieldIndex);
             }
             return;
         }
@@ -445,7 +445,7 @@ export class Mesg<T extends MessageListMessageTypeWithInvalid> {
 
         if ((subfield === undefined) || (canSubfieldSupportMesg(subfield, this))) {
             const subfield = field.getSubfieldByName(subfieldName);
-            return field.getValue(fieldArrayIndex, subfield);
+            return field.getValue3(fieldArrayIndex, subfield);
         }
         return undefined;
     }
@@ -460,7 +460,7 @@ export class Mesg<T extends MessageListMessageTypeWithInvalid> {
         const subfield = field.getSubfieldByName(fieldName);
 
         if ((subfield == null) || (canSubfieldSupportMesg(subfield, this))) {
-            return field.getValue(fieldArrayIndex, subfield);
+            return field.getValue3(fieldArrayIndex, subfield);
         }
 
         return;
@@ -601,7 +601,6 @@ function canSubfieldSupportMesg<T extends MessageListMessageTypeWithInvalid>(sub
         const referencedField = mesg.fields.find(f => f.fieldDefinition.profileField.id === refField.id);
         if (!referencedField)
             continue;
-        //
         if (referencedField.getValue1(0, Fit.subfieldIndexMainField) === refField.rawValue)
             // this subfield can support this message
             return true;

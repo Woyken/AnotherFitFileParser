@@ -278,7 +278,7 @@ export class Decode {
             // a reference for compressed timestamp headers
             const timestampField = newMesg.getField('timestamp');
             if (timestampField !== undefined) {
-                const tsValue = timestampField.getValue();
+                const tsValue = timestampField.getValue3();
                 if (tsValue !== undefined) {
                     if (typeof tsValue !== 'number')
                         throw new Error("invalid timestamp value");
