@@ -18,8 +18,6 @@ export class Decode {
     private readonly CRCSIZE: number = 2;
     private readonly INVALID_DATA_SIZE: number = 0;
 
-    //#region Fields
-    // tslint:disable-next-line: prefer-array-literal
     /** Message definitions in current FIT file */
     private localMesgDefs: MesgDefinitionAny[] = new Array<MesgDefinitionAny>(Fit.maxLocalMesgs);
     private fileHeader?: Header;
@@ -29,24 +27,17 @@ export class Decode {
 
     private readonly developerFieldLookup: FieldDescriptionMesg[] = [];
     private readonly developerDataLookup: DeveloperDataIdMesg[] = [];
-    //#endregion
 
-    //#region Properties
     public get InvalidDataSize(): boolean {
         return this.invalidDataSize;
     }
     public set InvalidDataSize(value: boolean) {
         this.invalidDataSize = value;
     }
-    //#endregion
 
-    //#region Constructors
-    // tslint:disable-next-line: no-empty
     constructor() {
     }
-    //#endregion
 
-    //#region Methods
     public mesgEvent?: (mesg: MesgAny) => void;
 
     /**
@@ -58,7 +49,6 @@ export class Decode {
     public isFit(fitStream: ByteStreamReader): boolean {
         const position = fitStream.position;
         let status = false;
-        // TODO: Investigate if needed try/catch
         const header = new Header(fitStream);
         status = header.isValid();
 
@@ -90,7 +80,6 @@ export class Decode {
                 // Is the file CRC ok?
                 // Need to rewind the header size because the header is part of the CRC calculation.
 
-                // tslint:disable-next-line:prefer-array-literal
                 const data: number[] = new Array(fileSize);
 
                 fitStream.position = fitStream.position - header.size;
@@ -144,7 +133,6 @@ export class Decode {
 
             // Get the file size from the header
             // When the data size is invalid set the file size to the fitstream length
-            // tslint:disable-next-line: prefer-conditional-expression
             if (!this.invalidDataSize) {
                 fileSize = this.fileHeader.size + this.fileHeader.dataSize + this.CRCSIZE;
             } else {
@@ -154,7 +142,6 @@ export class Decode {
             if (!readOK) {
                 throw new Error(`FIT decode error: File is not FIT format. Check file header data type. Error at stream position: ${fitStream.position}`);
             }
-            // tslint:disable-next-line: max-line-length
             if ((this.fileHeader.protocolVersion & Fit.protocolVersionMajorMask) > (Fit.protocolMajorVersion << Fit.protocolVersionMajorShift)) {
                 // The decoder does not support decode accross protocol major revisions
                 throw new Error(`FIT decode error: Protocol Version ${(this.fileHeader.protocolVersion & Fit.protocolVersionMajorMask) >> Fit.protocolVersionMajorShift}.X not supported by SDK Protocol Ver${Fit.protocolMajorVersion}.${Fit.protocolMinorVersion} `);
@@ -180,7 +167,6 @@ export class Decode {
 
         // Is the file CRC ok?
         if ((mode === DecodeMode.Normal) && !this.invalidDataSize) {
-            // tslint:disable-next-line: prefer-array-literal
             const data: number[] = new Array(fileSize);
             fitStream.position = filePosition;
             fitStream.read(data, 0, data.length);
@@ -365,5 +351,4 @@ export class Decode {
         }
         return false
     }
-    //#endregion
-} // class
+}

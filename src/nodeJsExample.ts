@@ -13,7 +13,6 @@ class Main {
         Promise.resolve()
             .then(() => decoder.decode(new Uint8Array(bytes)))
             .catch((err) => {
-                // tslint:disable-next-line: no-console
                 console.error(err);
             });
         let monitoringCurrentTimestamp = 0;
@@ -48,7 +47,6 @@ class Main {
                         // HR
                         const value = field.getValue();
                         const date = ev.timestampToDateTime(monitoringCurrentTimestamp);
-                        // tslint:disable-next-line: no-console
                         console.log(`HR - at: ${date!.toString()} - ${value} bpm`);
                         // console.log('time - ' + time + 'HR - ' + field.getValue());
                     }

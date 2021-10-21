@@ -14,14 +14,12 @@ class DetailedProtocolVersion {
     }
 }
 
-// tslint:disable-next-line: max-classes-per-file
 export class ProtocolVersion {
     public static V10: DetailedProtocolVersion = new DetailedProtocolVersion(1, 0);
     public static V20: DetailedProtocolVersion = new DetailedProtocolVersion(2, 0);
 
 }
 
-// tslint:disable-next-line:max-classes-per-file
 export class FitType {
     public constructor(
         public endianAbility: boolean,
@@ -34,10 +32,8 @@ export class FitType {
     ) {}
 }
 
-// tslint:disable-next-line: max-classes-per-file
 export class Fit {
     public static readonly protocolVersionMajorShift = 4;
-    // tslint:disable-next-line: max-line-length
     public static readonly protocolVersionMajorMask = (0x0F << Fit.protocolVersionMajorShift);
 
     public static readonly protocolVersion: number = ProtocolVersion.V20.version;
@@ -46,7 +42,6 @@ export class Fit {
 
     public static readonly profileMajorVersion = 20;
     public static readonly profileMinorVersion = 96;
-    // tslint:disable-next-line: max-line-length
     public static readonly profileVersion = ((Fit.profileMajorVersion * 100) + Fit.profileMinorVersion);
 
     // public static readonly headerTypeMask = 0b11110000;//240;
@@ -87,9 +82,7 @@ export class Fit {
         new FitType(true, 0x85, 'sint32', 0x7FFFFFFF, 4, true, true),
         new FitType(true, 0x86, 'uint32', 0xFFFFFFFF, 4, false, true),
         new FitType(false, 0x07, 'string', 0x00, 1, false, false),
-        // tslint:disable-next-line: max-line-length
         new FitType(true, 0x88, 'float32', BitConverter.toSingle([0xFF, 0xFF, 0xFF, 0xFF], 0), 4, true, false),
-        // tslint:disable-next-line: max-line-length
         new FitType(true, 0x89, 'float64', BitConverter.toDouble([0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF], 0), 8, true, false),
         new FitType(false, 0x0A, 'uint8z', 0x00, 1, false, true),
         new FitType(true, 0x8B, 'uint16z', 0x0000, 2, false, true),

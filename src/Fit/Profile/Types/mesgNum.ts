@@ -38,7 +38,6 @@ export enum MesgNum {
     antRx = 80,
     antTx = 81,
     antChannelId = 82,
-    // tslint:disable-next-line:variable-name
     Length = 101,
     monitoringInfo = 103,
     pad = 105,

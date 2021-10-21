@@ -39,7 +39,6 @@ export class Field<T extends ProfileFieldTypeWithInvalid> {
     }
 
     public getSubfield(index: keyof T['subfields']): ArrayElement<T['subfields']> | undefined;
-    // tslint:disable-next-line: unified-signatures
     public getSubfield(subfieldName: ArrayElement<T['subfields']>['name']): ArrayElement<T['subfields']> | undefined;
     public getSubfield(subfieldNameOrIndex: ArrayElement<T['subfields']>['name'] | keyof T['subfields']): ArrayElement<T['subfields']> | undefined {
         if (typeof subfieldNameOrIndex === 'string') {
@@ -301,9 +300,7 @@ export class Field<T extends ProfileFieldTypeWithInvalid> {
                     throw new Error("invalid scale or offset");
 
                 if (scale !== 1.0 || offset !== 0.0) {
-                    // tslint:disable-next-line: no-parameter-reassignment
                     value = value;
-                    // tslint:disable-next-line: no-parameter-reassignment
                     value = (value + (offset as number)) * (scale as number);
                 }
             }

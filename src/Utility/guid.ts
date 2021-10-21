@@ -14,9 +14,7 @@ export class Guid {
     }
 
     private static fromBytes(bytes: number[]): Guid {
-        // tslint:disable-next-line: max-line-length
         // reverse first four bytes, and join with following two reversed, joined with following two reversed, joined with rest of the bytes
-        // tslint:disable-next-line: max-line-length
         const preparedBytes = bytes.slice(0, 4).reverse().concat(bytes.slice(4, 6).reverse()).concat(bytes.slice(6, 8).reverse()).concat(bytes.slice(8));
 
         const guidParts = preparedBytes.map((item) => {

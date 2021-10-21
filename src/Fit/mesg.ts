@@ -530,9 +530,9 @@ export class Mesg<T extends MessageListMessageTypeWithInvalid> {
                             }
                         }
                     } else {
-                            // Shouldn't apply scale/offset to string or enum
+                        // Shouldn't apply scale/offset to string or enum
                         let nonNumericBitsValue: any;
-                            // Ensure strings are added as byte[]
+                        // Ensure strings are added as byte[]
                         if (newField.fieldDefinition.profileField.baseType.baseType === 'string') {
                             nonNumericBitsValue = [];
                             nonNumericBitsValue.push(bitsValue);
@@ -545,7 +545,6 @@ export class Mesg<T extends MessageListMessageTypeWithInvalid> {
                             newField.setValue1(nonNumericBitsValue);
                         }
                     }
-                    // tslint:disable-next-line:no-parameter-reassignment
                     offset += fC.bits;
 
                     // Return each field as we iterate
@@ -558,13 +557,11 @@ export class Mesg<T extends MessageListMessageTypeWithInvalid> {
     public expandComponents(accumulator: Accumulator): void {
         // Traverse the field list
         // Change to for loop so we can add items as we iterate
-        // tslint:disable-next-line: prefer-for-of
         for (let i = 0; i < this.fields.length; ++i) {
             let componentList: FieldComponent[];
             // Determine the active subfield
             const activeSubfield = this.getActiveSubFieldIndex(this.fields[i].fieldDefinition.profileField.id);
 
-            // tslint:disable-next-line: prefer-conditional-expression
             if (activeSubfield === Fit.subfieldIndexMainField) {
                 componentList = this.fields[i].components;
             } else {
@@ -585,7 +582,6 @@ export class Mesg<T extends MessageListMessageTypeWithInvalid> {
             }
         }
     }
-    //#endregion
 }
 
 export type MesgAny = Mesg<MessageListMessageTypeWithInvalid>;

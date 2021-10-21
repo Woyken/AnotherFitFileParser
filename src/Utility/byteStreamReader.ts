@@ -27,7 +27,6 @@ export class ByteStreamReader {
         isBigEndian?: boolean,
     );
     public constructor(
-        // tslint:disable-next-line: unified-signatures
         buffer: Uint8Array,
         isBigEndian?: boolean,
     );
