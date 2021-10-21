@@ -531,7 +531,7 @@ export class Mesg<T extends MessageListMessageTypeWithInvalid> {
                         }
                     } else {
                         // Shouldn't apply scale/offset to string or enum
-                        let nonNumericBitsValue: any;
+                        let nonNumericBitsValue: number | number[];
                         // Ensure strings are added as byte[]
                         if (newField.fieldDefinition.profileField.baseType.baseType === 'string') {
                             nonNumericBitsValue = [];
@@ -590,8 +590,8 @@ class FieldComponentExpansion<T extends ProfileFieldTypeWithInvalid> {
     public offset: number;
     public field: Field<T>;
 
-    public constructor(f: Field<T>, offset: number) {
-        this.field = f;
+    public constructor(field: Field<T>, offset: number) {
+        this.field = field;
         this.offset = offset;
     }
 }
